@@ -1,0 +1,23 @@
+.cad-forms{
+  table.striped{
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+      th, td{
+          border: 1px solid #ddd;
+          padding: 10px;
+          min-height: 40px;
+          text-align: left;
+      }
+      th{
+          background-color: #f2f2f2;
+      }
+      tr:nth-child(even){
+          background-color: #f2f2f2;
+      }
+      tr:hover{
+          background-color: #f1f1f1;
+      }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "pega-html-reports",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:scss": "node-sass -w styles/ -r --output-style expanded -o styles/css/"
+  },
+  "author": "arslan.ansari@lowcodesol.com",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^9.0.0",
+    "orbitcss": "^2.0.0"
+  }
+}
+

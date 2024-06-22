@@ -1,0 +1,64 @@
+//
+// Frow and Columns
+// --------------------------------------------------
+
+// Flexible row
+//
+// Flexible rows contain your columns.
+
+$sizes: map-merge($sizes-mobile, $sizes-desktop);
+$sizes-names: map-keys($sizes);
+
+.frow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  // Fix for IE text not wrapping wihin a Frow
+  > * {
+    max-width: 100%;
+  }
+  @include flexbox-rules;
+
+  // Columns
+  //
+  // Generate the various columns widths.
+
+  @if $frow-enable-columns == true {
+    $all-columns: ();
+    $all-columns-direct: ();
+
+    @each $size in $sizes-names {
+      $all-columns: append($all-columns, "[class*=col-#{$size}]", comma);
+    }
+
+    @each $column in $all-columns {
+      $all-columns-direct: append($all-columns-direct, "& > #{$column}", comma);
+    }
+
+    &.gutters {
+      // margin-left: calc(- (#{$grid-gutter-width} / 2));
+      // margin-right: calc(- #{$grid-gutter-width} / 2);
+
+      > * {
+        padding-left: calc( #{$grid-gutter-width} / 2);
+        padding-right: calc( #{$grid-gutter-width} / 2);
+      }
+    }
+    
+      width: 100%;
+    
+    @each $size in $sizes-names {
+      // @media (min-width: map-get($sizes, $size)) {
+        @for $denominator from 1 through $grid-max-columns {
+          @for $numerator from 1 through $denominator {
+            // .col-#{$size}-#{$numerator}-#{$denominator} {
+            .col-#{$numerator}-#{$denominator} {
+              width: calc( #{$numerator} / #{$denominator} * 100%);
+            }
+          }
+        }
+      // }
+    }
+  }
+}

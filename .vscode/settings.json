@@ -1,0 +1,6 @@
+{
+  "css.styleSheets": [
+    "styles/*.css"
+  ],
+  "CodeGPT.apiKey": "OpenAI"
+}

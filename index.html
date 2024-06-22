@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/orbitcss/css/orbit.min.css" /> -->
+    <link rel="stylesheet" href="styles/css/styles.css" />
+    <title>Pega Report Demo</title>
+  </head>
+  <body class="cad-forms">
+    <section class="frow" id="referal-form">
+      <div class="container-padding  width-100">
+        <div class="container centered mb-20">
+            <h2 class="fc m-auto">Referal Form</h2>
+        </div>
+        <div class="mds p-10 mb-10 mb-20 ba">
+            <div class="frow">
+              <div class="checkbox-container col-6-12">
+                <input type="checkbox" name="doctor-name" id="" />
+                <label for="doctor-name">Name of the Doctor Comes here...</label>
+              </div>
+              <div class="md-id-container col-3-6">
+                <span class="md-id">MD ID: Comes here...</span>
+              </div>
+            </div>
+            <!-- <pega:forEach name="Doctors.pxResults">
+              <div class="md-name">
+                <div class="checkbox-container">
+                  
+                  <input type="checkbox" name="doctor-name" id="" <pega:when java=<% tools.getProperty("DoctorsValues.pxResults").
+                  contain("$THIS.pyDoctorName") %>>
+                  checked
+                  </pega:when> />
+                  <label for="doctor-name"
+                    ><pega:reference name="$THIS.pyDoctorName"
+                  /></label>
+                </div>
+                <div class="md-id-container">
+                  <span class="md-id"
+                    ><pega:reference name="$THIS.pyDoctorID"
+                  /></span>
+                </div></div
+            ></pega:forEach> -->
+        </div>
+        <div class="agency p-10 mb-10 mb-20 ba">
+          
+            <div class="frow">
+              <div class="item col-6-6">
+                <span class="label">Name of Agency </span>
+                <span class="value">Your value</span>
+              </div>
+              <div class="item col-6-6">
+                <span class="label">Home Health Service </span>
+                <span class="value">Your value</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="skillnursing" id="" />
+                <span class="label">For Skill Nursing Services</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="skillnursing" id="" />
+                <span class="label">For Physical Therapy Treatment</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="skillnursing" id="" />
+                <span class="label">For Occupational Therapy</span>
+              </div>
+              <div class="item col-6-6"></div>
+              <div class="item col-6-6 mt-30">
+                <h3 class="label">Treatment</h3>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="Pain Management" id="" />
+                <span class="label">Pain Management</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="Psychiatry" id="" />
+                <span class="label">Psychiatry</span>
+              </div>
+            </div>
+          
+        </div>
+        <div class="labs p-10 mb-10 ba">
+          
+            <div class="lab-info">
+              <div class="frow justify-start">
+                <div class="item col-6-6 ">
+                  <span class="label">Lab(s) </span>
+                  <span class="value">Your value</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="cbc" id="" />
+                  <span class="label">CBC</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="BMP" id="" />
+                  <span class="label">BMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+              
+             
+                <div class="item col-3-6">
+                  <input type="checkbox" name="cbc" id="" />
+                  <span class="label">CBC</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="BMP" id="" />
+                  <span class="label">BMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                <div class="item col-3-6">
+                  <input type="checkbox" name="CMP" id="" />
+                  <span class="label">CMP</span>
+                </div>
+                </div>
+            </div>
+          
+        </div>
+        <div class="signatures mt-60 mb-10">
+          <div class="frow provider justify-start mb-60">
+            <div class="frow title col-6-12 justify-start">
+              <div class="col-4-12">
+                <span>
+                  Provider Name: 
+                </span>
+              </div>
+              <div class="col-8-12">
+                <span class="name text-underline px-30 ">Name</span>
+              </div>
+            </div>
+            <div class="signature col-6-12 bb">
+              Signature: 
+              <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+            </div>
+            <div class="frow date col-6-12 justify-start">
+              <div class="col-4-12">
+                <span>
+                  Date: 
+                </span>
+              </div>
+              <div class="col-8-12">
+                <span class="name text-underline px-30 ">Date here</span>
+              </div>
+            </div>
+          </div>
+          <div class="frow medical-provider justify-start">
+            <div class="frow title col-6-12">
+              <div class="col-4-12">
+                <span>
+                  Medical Provider Name: 
+                </span>
+              </div>
+              <div class="col-8-12">
+                <span class="name text-underline px-30 ">Name</span>
+              </div>
+            </div>
+            <div class="signature col-6-12 bb">
+              Signature: 
+              <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+            </div>
+            <div class="frow date col-6-12">
+              <div class="col-4-12">
+                <span>
+                  Date: 
+                </span>
+              </div>
+              <div class="col-8-12">
+                <span class="name text-underline px-30 ">Date here</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="frow" id="admission-orders">
+      <div class="container-padding  width-100">
+        <div class="container  mb-20">
+          <h2 class="fc m-auto">Admission Orders</h2>
+        </div>
+        <div class="new-medications ba">
+          <div class="frow container p-10 ba">
+            <div class="frow col-5-12">
+              <span class="text-uppercase col-3-6">New Medications</span>
+              <div class="col-3-6">
+                <input type="checkbox" name="spanish" id="spanish">
+                <label for="spanish">Spanish Translation</label>
+              </div>
+            </div>
+          </div>
+          <table class="striped width-100">
+            <thead>
+              <th>#</th>
+              <th>Date</th>
+              <th>Medication</th>
+              <th>Dose</th>
+              <th>Route</th>
+              <th>Frequency</th>
+              <th>Purpose</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Date</td>
+                <td>Meds</td>
+                <td>Dos</td>
+                <td>Rout</td>
+                <td>Freq</td>
+                <td>Purpose</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="treatment-orders ba">
+          <div class="frow container p-10 ba">
+            <div class="frow col-6-12">
+              <span class="text-center col-3-6">Treatment Orders</span>              
+              </div>
+            </div>
+          <table class="striped width-100">
+            <tbody>
+              <tr>
+                <td colspan="100">
+                  <div class="cb">
+                    <input type="checkbox" name="discontinue" id="discontinue">
+                    <label for="discontinue">Discontinue</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="100">
+                  <div class="cb">
+                    <input type="checkbox" name="refill" id="refill">
+                    <label for="refil">Refill Medications</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="100">
+    
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                  <span>DIET</span>   
+                </td>
+                <td colspan="5">
+                  <div class="frow cbs justify-start gutters">
+                    <div class="cb">
+                      <input type="checkbox" name="dash" id="dash">
+                      <label for="dash">DASH</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="renal" id="renal">
+                      <label for="renal">RENAL</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="diabetic" id="diabetic">
+                      <label for="diabetic">DIABETIC</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="mechanical-soft" id="mechanical-soft">
+                      <label for="mechanical-soft">Mechanical Soft</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                  <span>DME</span>   
+                </td>
+                <td colspan="5">
+                  <div class="frow cbs justify-start gutters">
+                    <div class="cb">
+                      <input type="checkbox" name="dash" id="dash">
+                      <label for="dash">DASH</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="renal" id="renal">
+                      <label for="renal">RENAL</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="diabetic" id="diabetic">
+                      <label for="diabetic">DIABETIC</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="mechanical-soft" id="mechanical-soft">
+                      <label for="mechanical-soft">Mechanical Soft</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="100">
+                  <div class="frow cbs justify-start gutters">
+                    <div class="cb">
+                      <input type="checkbox" name="dash" id="dash">
+                      <label for="dash">DASH</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="renal" id="renal">
+                      <label for="renal">RENAL</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="diabetic" id="diabetic">
+                      <label for="diabetic">DIABETIC</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="mechanical-soft" id="mechanical-soft">
+                      <label for="mechanical-soft">Mechanical Soft</label>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                  <span>SUPPLIES</span>   
+                </td>
+                <td colspan="5">
+                  <div class="frow cbs justify-start gutters">
+                    <div class="cb">
+                      <input type="checkbox" name="dash" id="dash">
+                      <label for="dash">DASH</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="renal" id="renal">
+                      <label for="renal">RENAL</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="diabetic" id="diabetic">
+                      <label for="diabetic">DIABETIC</label>
+                    </div>
+                    <div class="cb">
+                      <input type="checkbox" name="mechanical-soft" id="mechanical-soft">
+                      <label for="mechanical-soft">Mechanical Soft</label>
+                  </div>
+                </td>
+              </tr>
+              <tr >
+                <td colspan="100" class="ba">
+                  <div class="frow">
+                    <Span>Refer To:</Span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="hhdueto" id="hhdueto">
+                    <label for="hhdueto">Home Health Due To:</label>
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div class="frow justify-start">
+                    <div class="frow col-6-6 justify-start gutters">
+                      <span>Name of Health Agency:</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-6-6 justify-start gutters">
+                      <span>Name of Hospice Agency:</span>
+                      <span>...</span>
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="cardio" id="cardio">
+                    <label for="cardio">Cardiology</label>
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div class="frow justify-start">
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Name</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Tel:</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Location:</span>
+                      <span>...</span>
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="woundc" id="woundc">
+                    <label for="woundc">Wound Care</label>
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div class="frow justify-start">
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Name</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Tel:</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Location:</span>
+                      <span>...</span>
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="frow justify-start gutters">
+                    <div class="col-3-6 cb">
+                      <input type="checkbox" name="cardio" id="cardio">
+                      <label for="cardio">Surgery</label>
+                    </div>
+                    <div class="col-3-6 procedure">
+                      <span>Procedure:</span>
+                      <span>...</span>
+                    </div>
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div class="frow justify-start">
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Name</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Tel:</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Location:</span>
+                      <span>...</span>
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div class="frow justify-start">
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Name</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Tel:</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Location:</span>
+                      <span>...</span>
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="orthop" id="orthop">
+                    <label for="orthop">Orthopaedic</label>
+                  </div>
+                </td>
+                <td colspan="5">
+                  <div class="frow justify-start">
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Name</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Tel:</span>
+                      <span>...</span>
+                    </div>
+                    <div class="frow col-2-6 justify-start gutters">
+                      <span>Location:</span>
+                      <span>...</span>
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+              <tr >
+                <td colspan="100" class="ba">
+                  <div class="frow">
+                    <Span>Laboratory and Diagnostics</Span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <div class="cb">
+                    <input type="checkbox" name="painsp" id="painsp">
+                    <label for="painsp">Pain Specialist</label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="signatures mt-60 mb-10">
+          <div class="frow provider justify-start mb-60">
+            <div class="frow title col-6-12 justify-start">
+              <div class="col-4-12">
+                <span>
+                  Provider Name: 
+                </span>
+              </div>
+              <div class="col-8-12">
+                <span class="name text-underline px-30 ">Name</span>
+              </div>
+            </div>
+            <div class="signature col-6-12 bb">
+              Signature: 
+              <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+            </div>
+            <div class="frow date col-6-12 justify-start">
+              <div class="col-4-12">
+                <span>
+                  Date: 
+                </span>
+              </div>
+              <div class="col-8-12">
+                <span class="name text-underline px-30 ">Date here</span>
+              </div>
+            </div>
+          </div>
+          <div class="frow medical-provider justify-start">
+            <div class="frow title col-6-12">
+              <div class="col-4-12">
+                <span>
+                  Physician Name: 
+                </span>
+              </div>
+              <div class="col-8-12">
+                <span class="name text-underline px-30 ">Name</span>
+              </div>
+            </div>
+            <div class="signature col-6-12 bb">
+              Signature: 
+              <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+            </div>
+            <div class="frow date col-6-12">
+              <div class="col-4-12">
+                <span>
+                  Date: 
+                </span>
+              </div>
+              <div class="col-8-12">
+                <span class="name text-underline px-30 ">Date here</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="frow" id="impression-plan">
+      <div class="container-padding  width-100">
+        <div class="container  mb-20">
+          <h2 class="fc m-auto">Impression / Plan DX </h2>
+        </div>
+        <div class="col-1-1 cb fc m-auto">
+          <input type="checkbox" name="tcare" id="tcare">
+          <label for="tcare">Transitional Care</label>
+        </div>
+        <div class="col-1-1 impressions py-10 bb stripes">
+          <div class="frow impression ">
+            <div class="col-2-12 title">
+              <p><strong>Stroke</strong></p>
+            </div>
+            <div class="col-10-12 description">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus doloremque fugit repellat tempora voluptatibus quasi vel perspiciatis debitis aperiam voluptas et sint asperiores, minima aut officia minus quisquam autem qui.
+              Eum dolorem exercitationem nisi obcaecati aut repudiandae fuga, eos distinctio rerum ut commodi qui corrupti veritatis ullam vel eaque illo assumenda labore officia! Voluptatem, voluptatum temporibus odio cum facilis sit.</p>
+            </div>
+          </div>
+          <div class="frow impression ">
+            <div class="col-2-12 title">
+              <p><strong>Mucosa Dry</strong></p>
+            </div>
+            <div class="col-10-12 description">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus doloremque fugit repellat tempora voluptatibus quasi vel perspiciatis debitis aperiam voluptas et sint asperiores, minima aut officia minus quisquam autem qui.
+              Eum dolorem exercitationem nisi obcaecati aut repudiandae fuga, eos distinctio rerum ut commodi qui corrupti veritatis ullam vel eaque illo assumenda labore officia! Voluptatem, voluptatum temporibus odio cum facilis sit.
+            </p>
+            </div>
+          </div>
+          <div class="frow impression ">
+            <div class="col-2-12 title">
+              <p><strong>Mucosa Dry</strong></p>
+            </div>
+            <div class="col-10-12 description">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus doloremque fugit repellat tempora voluptatibus quasi vel perspiciatis debitis aperiam voluptas et sint asperiores, minima aut officia minus quisquam autem qui.
+              Eum dolorem exercitationem nisi obcaecati aut repudiandae fuga, eos distinctio rerum ut commodi qui corrupti veritatis ullam vel eaque illo assumenda labore officia! Voluptatem, voluptatum temporibus odio cum facilis sit.</p>
+            </div>
+          </div>
+          <div class="frow impression ">
+            <div class="col-2-12 title">
+              <p><strong>Mucosa Dry</strong></p>
+            </div>
+            <div class="col-10-12 description">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus doloremque fugit repellat tempora voluptatibus quasi vel perspiciatis debitis aperiam voluptas et sint asperiores, minima aut officia minus quisquam autem qui.
+              Eum dolorem exercitationem nisi obcaecati aut repudiandae fuga, eos distinctio rerum ut commodi qui corrupti veritatis ullam vel eaque illo assumenda labore officia! Voluptatem, voluptatum temporibus odio cum facilis sit.</p>
+            </div>
+          </div>
+        </div>
+        <div class="notes">
+          <p>
+            <span>Advanced Care Planning: Advanced care planning with patient, time spent <strong>15</strong> minutes. Reviewed care plan options such as code status, intubation and hospitalization. Reviewed risks of cardiac resuscitation including rib fracture. Reviewed prolong life expectancy and benefit to aggressive care and treatment.</span>
+          </p>
+          <h3>
+            Orders: AS ATTACHED
+          </h3>
+          <h4>Discussion Notes:</h4>
+          <p>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fugiat dolores numquam possimus quod corrupti omnis laborum ab dolorem! Velit possimus, atque amet quaerat soluta dignissimos earum similique voluptatem a.</span>
+          </p>
+        </div>
+       
+
+
+    </section>
+
+    <section class="frow" id="initial-assesment">
+      <div class="container-padding width-100">
+        <div class="container centered mb-20">
+          <h2 class="fc m-auto">INITIAL ASSESSMENT FORM</h2>
+        </div>
+        <table class="striped width-100">
+          <tbody>
+            <tr>
+              <td colspan="1">
+                <div class="cb">
+                  <input type="checkbox" name="initial-visit" id="initial-visit">
+                  <label for="initial-visit">initial visit</label>
+                </div>
+              </td>
+              <td colspan="1">
+                <div class="frow">
+                  <div class="cb">
+                    <input type="checkbox" name="name" id="name">
+                    <label for="name">name</label>
+                  </div> <span class="px-5">/</span> 
+                  <div class="cb">
+                    <input type="checkbox" name="name" id="name">
+                    <label for="name">name</label>
+                  </div>
+                </div>
+              </td>
+            
+              <td colspan="1">
+                <div class="cb">
+                  <input type="checkbox" name="name" id="name">
+                  <label for="name">name</label>
+                </div>
+              </td>
+              <td colspan="2">Dos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+</html>
+

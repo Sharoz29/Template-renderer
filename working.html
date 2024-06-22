@@ -1,0 +1,92 @@
+
+
+
+<pega:forEach name="D_LabsList.pxResults">
+
+    <div class="item">
+        <pega:forEach name=".ReferralForm.Labs">
+            <pega:withReference name="$this">
+                <span><p:r n=".LabTypes"/></span>
+                <span><p:r n="$THIS.LabTypes"/></span>
+                <pega:when test="$THIS.LabTypes == .LabTypes">
+                    <input type="checkbox" name="<p:r n='$THIS.LabTypes'/>" checked>
+                </pega:when>
+            </pega:withReference>
+        </pega:forEach>
+
+        <pre class="label"><pega:reference name="$THIS.LabTypes"></pega:reference></pre>
+    </div>
+</pega:forEach>
+
+
+<pega:forEach name="D_LabsList.pxResults">
+  <%
+boolean isInList = tools.getProperty(".AppointmentInformation.ReferralForm.Labs")
+        .getPageList().stream()
+        .anyMatch(lab -> lab.getProperty(".pyGUID").getStringValue().equals(labItem.getProperty(".pyGUID").getStringValue()));
+%>
+      <div>
+          Lab Name: ${labItem.pyLabel} -
+          <c:if test="${isInList}">
+              <span>In List</span>
+          </c:if>
+          <c:if test="${!isInList}">
+              <span>Not In List</span>
+          </c:if>
+      </div>
+</pega:forEach>
+
+
+<c:forEach items="${D_LabsList.pxResults}" var="labItem">
+    <c:set var="isInList" value="false"/>
+    <c:forEach items="${.AppointmentInformation.ReferralForm.Labs}" var="lab">
+        <c:if test="${labItem.pyGUID == lab.pyGUID}">
+            <c:set var="isInList" value="true"/>
+        </c:if>
+    </c:forEach>
+    <div>
+        Lab Name: ${labItem.pyLabel} -
+        <c:if test="${isInList}">
+            <span>In List</span>
+        </c:if>
+        <c:if test="${!isInList}">
+            <span>Not In List</span>
+        </c:if>
+    </div>
+</c:forEach>
+
+
+<pega:forEach name="D_LabsList.pxResults">
+  <div class="item">
+    <input type="checkbox" name="<p:r n='$THIS.LabTypes'/>" 
+           <pega:when test="$this.isChecked == true">
+              checked 
+           </pega:when>>
+    <span class="label"><pega:reference name="$THIS.LabTypes"></pega:reference></span>
+  </div>
+</pega:forEach>
+
+
+ <!--
+                            <pega:forEach name="D_LabsList.pxResults">
+                                <div class="item">
+                                    <input type="checkbox" name="<p:r n='$THIS.LabTypes'/>" <pega:when java="<%= tools.getProperty('.ReferralForm.Labs').getStringValue().contains("
+                                        CAB ")%>"> checked
+                                    </pega:when>>
+                                    <span class="label"><pega:reference name="$THIS.LabTypes"></pega:reference></span>
+                                </div>
+                            </pega:forEach>
+                            -->
+
+
+                            <%
+                            String labsValue="";
+                            try{
+                            labsValue = tools.getProperty(".ReferralForm.Labs").iterator().next().getClass().getSimpleName();
+                            }catch(Throwable e) {
+                               out.print(e.getMessage());
+                             }
+                          %>
+                           <h3> Value:   <%= labsValue %> </h3>
+     
+
