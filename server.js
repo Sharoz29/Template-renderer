@@ -51,6 +51,14 @@ app.get("/get-html/:id", async (req, res) => {
       data.content.SelectedMedicalConditionsOnTelemedicine;
     const SelectedMedicalConditionsOnFaceToFace =
       data.content.SelectedMedicalConditionsOnFaceToFace;
+    const SelectedHomeBound = data.content.SelectedHomeBound;
+    const SelectedHomeBoundOnTelemedicine =
+      data.content.SelectedHomeBoundOnTelemedicine;
+    const SelectedHomeBoundStatusOnFaceToFace =
+      data.content.SelectedHomeBoundStatusOnFaceToFace;
+    const SelectedHomeBoundStatusOnTelemedicine =
+      data.content.SelectedHomeBoundStatusOnTelemedicine;
+    const SelectMD = data.content.SelectMD;
 
     res.render("home", {
       ...mockContext,
@@ -63,18 +71,16 @@ app.get("/get-html/:id", async (req, res) => {
       SelectedLabsOnReferal,
       SelectedMedicalConditionsOnTelemedicine,
       SelectedMedicalConditionsOnFaceToFace,
-      SelectedHomeBound: data.content.SelectedHomeBound,
-      SelectedHomeBoundOnTelemedicine:
-        data.content.SelectedHomeBoundOnTelemedicine,
-      SelectedHomeBoundStatusOnFaceToFace:
-        data.content.SelectedHomeBoundStatusOnFaceToFace,
-      SelectedHomeBoundStatusOnTelemedicine:
-        data.content.SelectedHomeBoundStatusOnTelemedicine,
+      SelectedHomeBound,
+      SelectedHomeBoundOnTelemedicine,
+      SelectedHomeBoundStatusOnFaceToFace,
+      SelectedHomeBoundStatusOnTelemedicine,
+      SelectMD,
     });
     // res.send(response.data);
   } catch (error) {
     console.log("Has Error:", error.message);
-    res.error(error.message);
+    // res?.error(error.message);
   }
 });
 

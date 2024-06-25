@@ -19,7 +19,7 @@
           <tr>
             <th>#</th>
             <th>Date</th>
-            <th>Medication</th>
+            <th>Medication Name</th>
             <th>Dose</th>
             <th>Route</th>
             <th>Frequency</th>
@@ -72,7 +72,7 @@
               <span>DIET</span>
             </td>
             <td colspan="5">
-              <div class="frow cbs justify-start gutters">
+              <div class="frow cbs justify-start">
                 {{#each @root.SelectedPatientDiets}}
                 {{> checkbox IsChecked=IsChecked name=DietName }}
                 {{/each}}
@@ -84,8 +84,8 @@
               <span>DME</span>
             </td>
             <td colspan="5">
-              <div class="frow cbs justify-start gutters">
-                <div class="frow cbs justify-start gutters">
+              <div class="frow cbs justify-start">
+                <div class="frow cbs justify-start">
                 {{#each @root.SelectedPatientsDME}}
                 {{> checkbox IsChecked=IsChecked name=DMEName }}
                 {{/each}}
@@ -99,8 +99,8 @@
               <span>SUPPLIES</span>
             </td>
             <td colspan="5">
-              <div class="frow cbs justify-start gutters">
-                <div class="frow cbs justify-start gutters">
+              <div class="frow cbs justify-start">
+                <div class="frow cbs justify-start">
                 {{#each @root.SelectedPatientSupplies}}
                 {{> checkbox IsChecked=IsChecked name=SuppliesName }}
                 {{/each}}
@@ -118,19 +118,18 @@
           <tr>
             <td>
               <div class="cb">
-                <input type="checkbox" name="hhdueto" id="hhdueto" />
-                <label for="hhdueto">Home Health Due To:</label>
+                {{> checkbox IsChecked=HomeHealthDueTo name="Home Health Due To" }}
               </div>
             </td>
             <td colspan="5">
               <div class="frow justify-start">
                 <div class="frow col-6-6 justify-start gutters">
                   <span>Name of Health Agency:</span>
-                  <span>...</span>
+                  <span>{{NameofHealthAgency}}</span>
                 </div>
                 <div class="frow col-6-6 justify-start gutters">
                   <span>Name of Hospice Agency:</span>
-                  <span>...</span>
+                  <span>{{NameofHospiceAgency}}</span>
                 </div>
               </div>
             </td>
@@ -138,23 +137,22 @@
           <tr>
             <td>
               <div class="cb">
-                <input type="checkbox" name="cardio" />
-                <label for="cardio">Cardiology</label>
+                {{> checkbox IsChecked=Cardiology name="Cardiology" }}
               </div>
             </td>
             <td colspan="5">
               <div class="frow justify-start">
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Name</span>
-                  <span>...</span>
+                  <span>{{CardiologyName}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Tel:</span>
-                  <span>...</span>
+                  <span>{{CardiologyTel}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span>...</span>
+                  <span>{{CardiologyLocation}}</span>
                 </div>
               </div>
             </td>
@@ -162,23 +160,22 @@
           <tr>
             <td>
               <div class="cb">
-                <input type="checkbox" name="woundc" id="woundc" />
-                <label for="woundc">Wound Care</label>
+                 {{> checkbox IsChecked=WoundCare name="WoundCare" }}
               </div>
             </td>
             <td colspan="5">
               <div class="frow justify-start">
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Name</span>
-                  <span>...</span>
+                  <span>{{WoundCareName}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Tel:</span>
-                  <span>...</span>
+                  <span>{{WoundCareTel}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span>...</span>
+                  <span>{{WoundCareLocation}}</span>
                 </div>
               </div>
             </td>
@@ -186,13 +183,12 @@
           <tr>
             <td>
               <div class="frow justify-start gutters">
-                <div class="col-3-6 cb">
-                  <input type="checkbox" name="cardio" />
-                  <label for="cardio">Surgery</label>
+                <div class="col-2.5-6 cb">
+                    {{> checkbox IsChecked=Surgery name="Surgery" }}
                 </div>
-                <div class="col-3-6 procedure">
+                <div class="col-3.5-6" style="margin-left: 15px;">
                   <span>Procedure:</span>
-                  <span>...</span>
+                  <span>{{Procedure}}</span>
                 </div>
               </div>
             </td>
@@ -200,15 +196,15 @@
               <div class="frow justify-start">
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Name</span>
-                  <span>...</span>
+                  <span>{{SurgeryName}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Tel:</span>
-                  <span>...</span>
+                  <span>{{SurgeryTel}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span>...</span>
+                  <span>{{SurgeryLocation}}</span>
                 </div>
               </div>
             </td>
@@ -216,23 +212,22 @@
           <tr>
             <td>
               <div class="cb">
-                <input type="checkbox" name="painsp" />
-                <label for="painsp">Pain Specialist</label>
+                {{> checkbox IsChecked=PainSpecialist name="Pain Specialist" }}
               </div>
             </td>
             <td colspan="5">
               <div class="frow justify-start">
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Name</span>
-                  <span>...</span>
+                  <span>{{PainSpecialisName}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Tel:</span>
-                  <span>...</span>
+                  <span>{{PainSpecialistTel}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span>...</span>
+                  <span>{{PainSpecialistLocation}}</span>
                 </div>
               </div>
             </td>
@@ -240,23 +235,22 @@
           <tr>
             <td>
               <div class="cb">
-                <input type="checkbox" name="orthop" id="orthop" />
-                <label for="orthop">Orthopaedic</label>
+                 {{> checkbox IsChecked=Orthopaedic name="Orthopaedic" }}
               </div>
             </td>
             <td colspan="5">
               <div class="frow justify-start">
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Name</span>
-                  <span>...</span>
+                  <span>{{OrthopaedicName}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Tel:</span>
-                  <span>...</span>
+                  <span>{{OrthopaedicTel}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span>...</span>
+                  <span>{{OrthopaedicLocation}}</span>
                 </div>
               </div>
             </td>
