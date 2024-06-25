@@ -7,50 +7,46 @@
 //## Select the Frow features needed
 
 //** Basics (anchor links, h1-h6, etc.)
-$frow-enable-html-basics:                true !default;
+$frow-enable-html-basics: true !default;
 
 //** Columns
-$frow-enable-columns:                    true !default;
+$frow-enable-columns: true !default;
 
 //** Form elements
-$frow-enable-buttons:                    false !default;
-$frow-enable-forms:                      false !default;
+$frow-enable-buttons: false !default;
+$frow-enable-forms: false !default;
 
 //** Responsive design
-$frow-enable-responsive-design-classes:  false !default;
+$frow-enable-responsive-design-classes: false !default;
 
 //** Utilities
-$frow-enable-box-model-shorcuts:         true !default;
-$frow-enable-utilities:                  true !default;
+$frow-enable-box-model-shorcuts: true !default;
+$frow-enable-utilities: true !default;
 
 //** Normalize.css
-$frow-enable-normalize:                  true !default;
-
-
+$frow-enable-normalize: false !default;
 
 //== Colors
 //
 //## Gray and colors for use across Frow
 
-$gray-lighter: #EAEAEA !default;
-$gray-light: #9E9E9E !default;
+$gray-lighter: #eaeaea !default;
+$gray-light: #9e9e9e !default;
 $gray-dark: #888888 !default;
-$gray-darker: #4F4F51 !default;
+$gray-darker: #4f4f51 !default;
 
-$off-white: #BBB !default;
+$off-white: #bbb !default;
 $off-black: #333 !default;
 
-$white: #FFF !default;
+$white: #fff !default;
 $black: #000 !default;
-
-
 
 //== Scaffolding
 //
 //## Settings for some of the most global styles
 
 //** Background color
-$background-color: #F6F6F6 !default;
+$background-color: #f6f6f6 !default;
 
 //** Global text color on `<body>`
 $text-color: $off-black !default;
@@ -60,8 +56,6 @@ $link-color: $off-black !default;
 
 //** Link hover color set via `darken()` function
 $link-hover-color: darken($link-color, 15%) !default;
-
-
 
 //== Button colors
 //
@@ -85,8 +79,6 @@ $button-disabled-border-color: $gray-lighter !default;
 //** Button active click size
 $button-active-size: 0.96 !default;
 
-
-
 //== Form element colors
 //
 //## Define various form element colors
@@ -106,8 +98,6 @@ $form-focus-size: 1.15 !default;
 //** Checkmark color
 $form-checkmark-color: $white !default;
 
-
-
 //== Media queries breakpoints
 //
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes
@@ -118,9 +108,9 @@ $sizes-mobile: () !default;
 
 //** Desktops / laptops
 // $sizes-desktop: (md: 992px, lg: 1200px) !default;
-$sizes-desktop: (md: 992px) !default;
-
-
+$sizes-desktop: (
+  md: 992px,
+) !default;
 
 //== Grid system
 //
@@ -132,19 +122,15 @@ $grid-max-columns: 12 !default;
 //** Padding between columns. Gets divided in half for the left and right
 $grid-gutter-width: 30px !default;
 
-
-
 //== Box Shadows
 //
 //## Define shadow for material style cards
 
 //** Shadow design for light backgrounds
-$shadow-light: 0px 1px 3px 0px #A0A0A0 !default;
+$shadow-light: 0px 1px 3px 0px #a0a0a0 !default;
 
 //** Shadow design for dark backgrounds
-$shadow-dark: 0px 1px 3px 0px #1B1B1B !default;
-
-
+$shadow-dark: 0px 1px 3px 0px #1b1b1b !default;
 
 //== Animations
 //

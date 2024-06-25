@@ -3,7 +3,16 @@
     text-transform: uppercase;
   }
   label {
+    padding-left: 5px;
+  }
+  label {
     text-transform: capitalize;
+  }
+  .cb-table {
+    height: 40px;
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
   }
   #referal-form {
   }

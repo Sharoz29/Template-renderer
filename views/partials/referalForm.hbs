@@ -1,0 +1,148 @@
+
+
+<section class="frow" id="referal-form">
+        <div class="container-padding width-100">
+          <div class="container centered mb-20">
+            {{heading title}}
+          </div>
+
+{{#with ReferralForm}}
+          <div class="mds p-10 mb-10 mb-20 ba">
+            <div class="frow">
+              {{#each doctors}}
+              <div class="checkbox-container col-6-12">
+                <input type="checkbox" name="doctor-name" {{#if IsChecked}}checked{{/if}} />
+                <label for="doctor-name">{{name}}</label>
+              </div>
+              {{/each}}
+              <div class="md-id-container col-3-6">
+                <span class="md-id">MD ID: Comes here...</span>
+              </div>
+            </div>
+            <!-- <pega:forEach name="Doctors.pxResults">
+              <div class="md-name">
+                <div class="checkbox-container">
+
+                  <input type="checkbox" name="doctor-name"  <pega:when java=<% tools.getProperty("DoctorsValues.pxResults").
+                  contain("$THIS.pyDoctorName") %>>
+                  checked
+                  </pega:when> />
+                  <label for="doctor-name"
+                    ><pega:reference name="$THIS.pyDoctorName"
+                  /></label>
+                </div>
+                <div class="md-id-container">
+                  <span class="md-id"
+                    ><pega:reference name="$THIS.pyDoctorID"
+                  /></span>
+                </div></div
+            ></pega:forEach> -->
+          </div>
+          <div class="agency p-10 mb-10 mb-20 ba">
+            <div class="frow">
+              <div class="item col-6-6">
+                <span class="label">Name of Agency </span>
+                <span class="value">Your value</span>
+              </div>
+              <div class="item col-6-6">
+                <span class="label">Home Health Service </span>
+                <span class="value">Your value</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="skillnursing" />
+                <span class="label">For Skill Nursing Services</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="skillnursing" />
+                <span class="label">For Physical Therapy Treatment</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="skillnursing" />
+                <span class="label">For Occupational Therapy</span>
+              </div>
+              <div class="item col-6-6"></div>
+              <div class="item col-6-6 mt-30">
+                <h3 class="label">Treatment</h3>
+              </div>
+              <div class="item col-6-6">
+                {{> checkbox name="PainManagement" IsChecked=PainManagement}}
+              </div>
+              <div class="item col-6-6">
+                {{> checkbox name="Psychiatry" IsChecked=Psychiatry}}
+              </div>
+              <div class="item col-6-6">
+                {{> checkbox name="Neurology" IsChecked=Neurology}}
+              </div>
+              <div class="item col-6-6">
+                {{> checkbox name="WoundCareSpecialist" IsChecked=WoundCareSpecialist}}
+              </div>
+            </div>
+          </div>
+          <div class="labs p-10 mb-10 ba">
+            <div class="lab-info">
+              <div class="frow justify-start">
+                <div class="item col-6-6">
+                  <span class="label">Lab(s) </span>
+                  <span class="value">Your value</span>
+                </div>
+                {{#each @root.SelectedLabsOnReferal}}
+                  <div class="item col-3-6" style="width: 50%">
+                   {{> checkbox name=LabTypes IsChecked=IsChecked}}
+                  </div>
+                {{/each}}
+
+              </div>
+            </div>
+          </div>
+          <div class="signatures mt-60 mb-10">
+            <div class="frow provider justify-start mb-60">
+              <div class="frow title col-6-12 justify-start">
+                <div class="col-4-12">
+                  <span> Provider Name: </span>
+                </div>
+                <div class="col-8-12">
+                  <span class="name text-underline px-30">Name</span>
+                </div>
+              </div>
+              <div class="signature col-6-12 bb">
+                Signature:
+                <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+              </div>
+              <div class="frow date col-6-12 justify-start">
+                <div class="col-4-12">
+                  <span> Date: </span>
+                </div>
+                <div class="col-8-12">
+                  <span class="name text-underline px-30">Date here</span>
+                </div>
+              </div>
+            </div>
+            <div class="frow medical-provider justify-start">
+              <div class="frow title col-6-12">
+                <div class="col-4-12">
+                  <span> Medical Provider Name: </span>
+                </div>
+                <div class="col-8-12">
+                  <span class="name text-underline px-30">Name</span>
+                </div>
+              </div>
+              <div class="signature col-6-12 bb">
+                Signature:
+                <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+              </div>
+              <div class="frow date col-6-12">
+                <div class="col-4-12">
+                  <span> Date: </span>
+                </div>
+                <div class="col-8-12">
+                  <span class="name text-underline px-30">Date here</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+{{/with}}
+
+
+</section>
+

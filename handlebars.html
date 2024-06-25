@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handlebars test</title>
+    <link rel="stylesheet" href="dist/css/styles.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+      integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div class="introduction"></div>
+
+    <script id="introduction-template" type="text/x-handlebars-template">
+
+      {{#each allForms}}
+        {{#if (formsToPrint @root.selectedForms .)}}
+          {{> (formsToPrint @root.selectedForms .) (addToObject @root 'currentForm' .) }}
+        {{/if}}
+      {{/each}}
+    </script>
+    <script id="referal-form" type="text/x-handlebars-template">
+       <section class="frow" id="referal-form">
+        <div class="container-padding width-100">
+          <div class="container centered mb-20">
+            {{heading .}}
+          </div>
+          <div class="mds p-10 mb-10 mb-20 ba">
+            <div class="frow">
+              {{#each doctors}}
+              <div class="checkbox-container col-6-12">
+                <input type="checkbox" name="doctor-name" {{#if IsChecked}}checked{{/if}} />
+                <label for="doctor-name">{{name}}</label>
+              </div>
+              {{/each}}
+              <div class="md-id-container col-3-6">
+                <span class="md-id">MD ID: Comes here...</span>
+              </div>
+            </div>
+            <!-- <pega:forEach name="Doctors.pxResults">
+              <div class="md-name">
+                <div class="checkbox-container">
+
+                  <input type="checkbox" name="doctor-name"  <pega:when java=<% tools.getProperty("DoctorsValues.pxResults").
+                  contain("$THIS.pyDoctorName") %>>
+                  checked
+                  </pega:when> />
+                  <label for="doctor-name"
+                    ><pega:reference name="$THIS.pyDoctorName"
+                  /></label>
+                </div>
+                <div class="md-id-container">
+                  <span class="md-id"
+                    ><pega:reference name="$THIS.pyDoctorID"
+                  /></span>
+                </div></div
+            ></pega:forEach> -->
+          </div>
+          <div class="agency p-10 mb-10 mb-20 ba">
+            <div class="frow">
+              <div class="item col-6-6">
+                <span class="label">Name of Agency </span>
+                <span class="value">Your value</span>
+              </div>
+              <div class="item col-6-6">
+                <span class="label">Home Health Service </span>
+                <span class="value">Your value</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="skillnursing" />
+                <span class="label">For Skill Nursing Services</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="skillnursing" />
+                <span class="label">For Physical Therapy Treatment</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="skillnursing" />
+                <span class="label">For Occupational Therapy</span>
+              </div>
+              <div class="item col-6-6"></div>
+              <div class="item col-6-6 mt-30">
+                <h3 class="label">Treatment</h3>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="Pain Management" />
+                <span class="label">Pain Management</span>
+              </div>
+              <div class="item col-6-6">
+                <input type="checkbox" name="Psychiatry" />
+                <span class="label">Psychiatry</span>
+              </div>
+            </div>
+          </div>
+          <div class="labs p-10 mb-10 ba">
+            <div class="lab-info">
+              <div class="frow justify-start">
+                <div class="item col-6-6">
+                  <span class="label">Lab(s) </span>
+                  <span class="value">Your value</span>
+                </div>
+                {{#each labReferences as |value key|}}
+                  <div class="item col-3-6" style="width: 50%">
+                    <input type="checkbox" name="{{.}}" id="{{.}}" {{#isSelected value @root.selectedLabs}}checked{{/isSelected}} />
+                    <label for="{{.}}">{{.}}</label>
+                  </div>
+                {{/each}}
+
+              </div>
+            </div>
+          </div>
+          <div class="signatures mt-60 mb-10">
+            <div class="frow provider justify-start mb-60">
+              <div class="frow title col-6-12 justify-start">
+                <div class="col-4-12">
+                  <span> Provider Name: </span>
+                </div>
+                <div class="col-8-12">
+                  <span class="name text-underline px-30">Name</span>
+                </div>
+              </div>
+              <div class="signature col-6-12 bb">
+                Signature:
+                <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+              </div>
+              <div class="frow date col-6-12 justify-start">
+                <div class="col-4-12">
+                  <span> Date: </span>
+                </div>
+                <div class="col-8-12">
+                  <span class="name text-underline px-30">Date here</span>
+                </div>
+              </div>
+            </div>
+            <div class="frow medical-provider justify-start">
+              <div class="frow title col-6-12">
+                <div class="col-4-12">
+                  <span> Medical Provider Name: </span>
+                </div>
+                <div class="col-8-12">
+                  <span class="name text-underline px-30">Name</span>
+                </div>
+              </div>
+              <div class="signature col-6-12 bb">
+                Signature:
+                <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+              </div>
+              <div class="frow date col-6-12">
+                <div class="col-4-12">
+                  <span> Date: </span>
+                </div>
+                <div class="col-8-12">
+                  <span class="name text-underline px-30">Date here</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </script>
+    <script id="tele-medicines" type="text/x-handlebars-template">
+      <section class="frow" id="tele-medicine">
+        <div class="container-padding width-100">
+          <div class="container centered mb-20">
+            {{heading .}}
+          </div>
+
+        </div>
+      </section>
+    </script>
+    <script>
+      // grab the source
+      const source = document.querySelector("#introduction-template").innerHTML;
+      // compile it using Handlebars
+      const template = Handlebars.compile(source);
+
+      Handlebars.registerPartial(
+        "referalForm",
+        document.querySelector("#referal-form").innerHTML
+      );
+      Handlebars.registerPartial(
+        "teleMedicines",
+        document.querySelector("#tele-medicines").innerHTML
+      );
+
+      Handlebars.registerHelper("addToObject", function (obj, key, value) {
+        return { ...obj, [key]: value };
+      });
+
+      // Create camel case to sentence case
+      Handlebars.registerHelper("camelToSentence", function (str) {
+        return str.replace(/([A-Z])/g, " $1").replace(/^./, function (str) {
+          return str.toUpperCase();
+        });
+      });
+
+      Handlebars.registerHelper(
+        "isSelected",
+        function (lab, selectedLabs, options) {
+          if (selectedLabs.includes(lab)) {
+            return options.fn(this);
+          }
+          return options.inverse(this);
+        }
+      );
+      Handlebars.registerHelper(
+        "formsToPrint",
+        function (allForms, form, options) {
+          if (allForms.includes(form)) {
+            return form;
+          }
+          return "";
+        }
+      );
+
+      Handlebars.registerHelper("heading", function (context) {
+        return new Handlebars.SafeString(
+          `<h2 class="text-center m-auto">${Handlebars.helpers.camelToSentence(
+            context.currentForm
+          )}</h2>`
+        );
+      });
+
+      // create context
+      const context = {
+        doctors: [
+          {
+            name: "Doctor Name is Shahroz",
+            IsChecked: true,
+          },
+          {
+            name: "Doctor Name is Shahroz2",
+            IsChecked: true,
+          },
+          {
+            name: "Doctor Name is Shahroz3",
+            IsChecked: false,
+          },
+          {
+            name: "Doctor Name is Shahroz4",
+            IsChecked: false,
+          },
+          {
+            name: "Doctor Name is Shahroz5",
+            IsChecked: false,
+          },
+          {
+            name: "Doctor Name is Shahroz6",
+            IsChecked: false,
+          },
+        ],
+        allForms: [
+          "referalForm",
+          "admissionOrders",
+          "impressionPlan",
+          "initialAssesment",
+          "faceToFaceEncounter",
+          "teleMedicines",
+        ],
+        selectedForms: ["referalForm", "teleMedicines"],
+        labReferences: [
+          "CBC",
+          "BMP",
+          "CMP",
+          "CMP1",
+          "CMP2",
+          "CMP3",
+          "CMP4",
+          "CMP5",
+          "CMP6",
+        ],
+        selectedLabs: ["CBC", "BMP", "CMP", "CMP1"],
+      };
+      // get the HTML after passing the template the context
+      const html = template(context);
+      // get the element to set the new HTML into
+      const destination = document.querySelector(".introduction");
+      // set the new HTML
+      destination.innerHTML = html;
+    </script>
+  </body>
+</html>

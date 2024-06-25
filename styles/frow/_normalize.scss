@@ -3,8 +3,9 @@
 
   html {
     line-height: 1.15;
-    -webkit-text-size-adjust: 100%;
-    font-family: system-ui, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-text-size-adjust: 80%;
+    font-family: system-ui, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
   }
   body {
     margin: 0;
@@ -78,7 +79,6 @@
     margin: 0;
     overflow: visible;
     text-transform: none;
-    -webkit-appearance: button;
     &::-moz-focus-inner {
       border-style: none;
       padding: 0;
@@ -115,7 +115,6 @@
     overflow: auto;
   }
   [type="button"] {
-    -webkit-appearance: button;
     &::-moz-focus-inner {
       border-style: none;
       padding: 0;
@@ -125,7 +124,6 @@
     }
   }
   [type="reset"] {
-    -webkit-appearance: button;
     &::-moz-focus-inner {
       border-style: none;
       padding: 0;
@@ -135,7 +133,6 @@
     }
   }
   [type="submit"] {
-    -webkit-appearance: button;
     &::-moz-focus-inner {
       border-style: none;
       padding: 0;
@@ -174,17 +171,7 @@
       height: auto;
     }
   }
-  [type="search"] {
-    -webkit-appearance: textfield;
-    outline-offset: -2px;
-    &::-webkit-search-decoration {
-      -webkit-appearance: none;
-    }
-    &::-webkit-file-upload-button {
-      -webkit-appearance: button;
-      font: inherit;
-    }
-  }
+
   details {
     display: block;
   }

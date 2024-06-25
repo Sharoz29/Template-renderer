@@ -1,20 +1,47 @@
 <!-- Check Box -->
 <div class="cb">
-  <input type="checkbox" name="name" id="name">
+  <input type="checkbox" name="name" id="name" />
   <label for="name">name</label>
 </div>
 
+<section class="frow" id="tele-medicine">
+  <div class="container-padding width-100"></div>
+</section>
+
+<div class="container centered mb-20">
+  <h2 class="fc m-auto">FACE-TO-FACE ENCOUNTER</h2>
+</div>
+
+<pega:forEach name="D_LabsList.pxResults">
+    <div class="item">
+        <input type="checkbox" name="<p:r n='$THIS.LabTypes'/>" 
+          <pega:when test="$this.IsChecked == true">                            
+            checked
+        </pega:when>>
+        <span class="label"><pega:reference name="$THIS.LabTypes"></pega:reference></span>
+    </div>
+</pega:forEach>
+
+                <div class="item">
+                    <input type="checkbox" name="skillnursing" id="skillnursing" <pega:when test=".ReferralForm.ForSkillNursingServices == true">                    checked
+                    </pega:when>
+
+                    />
+                    <label for="skillnursing" class="label">For Skill Nursing Services</label>
+                </div>
 
 <!-- Striped Table -->
 <table class="striped width-100">
   <thead>
-    <th>#</th>
-    <th>Date</th>
-    <th>Medication</th>
-    <th>Dose</th>
-    <th>Route</th>
-    <th>Frequency</th>
-    <th>Purpose</th>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Medication</th>
+      <th>Dose</th>
+      <th>Route</th>
+      <th>Frequency</th>
+      <th>Purpose</th>
+    </tr>
   </thead>
   <tbody>
     <tr>

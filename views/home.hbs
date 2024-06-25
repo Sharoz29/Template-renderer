@@ -1,0 +1,5 @@
+ {{#each allForms}}
+    {{#if (formsToPrint @root.selectedForms .)}}
+      {{> (formsToPrint @root.selectedForms .) title=. }}
+    {{/if}}
+  {{/each}}

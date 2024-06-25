@@ -70,7 +70,8 @@
     }
   }
 }
-@if $frow-enable-utilities == true {  // Width and height rules
+@if $frow-enable-utilities == true {
+  // Width and height rules
   // -------------------------
   .width-100 {
     width: 100% !important;
@@ -128,46 +129,42 @@
     flex-grow: 1 !important;
   }
 
-  .fit-content, .fc{
+  .fit-content,
+  .fc {
     width: fit-content !important;
   }
 
-  .border-all ,.ba{
+  .border-all,
+  .ba {
     border: 1px solid grey !important;
   }
-  .border-bottom ,.bb{
+  .border-bottom,
+  .bb {
     border-bottom: 1px solid grey !important;
   }
-  .border-top ,.bt{
+  .border-top,
+  .bt {
     border-top: 1px solid grey !important;
   }
-  .border-right ,.br{
+  .border-right,
+  .br {
     border-right: 1px solid grey !important;
   }
-  .border-left ,.bl{
+  .border-left,
+  .bl {
     border-left: 1px solid grey !important;
   }
 
   // even odd stripes
   .stripes {
-    >*{
+    > * {
       padding: 0 10px 0 10px;
     }
-    >*:nth-child(odd){
+    > *:nth-child(odd) {
       background-color: #f2f2f2;
     }
   }
 
-  // Cursor pointer classes
-  // -------------------------
-  .clickable:not([disabled]),
-  [onclick]:not([disabled]) {
-    cursor: pointer !important;
-  }
-  .not-clickable,
-  .not-clickable[onclick] {
-    cursor: default !important;
-  }
   // Hidden rule for letsGo (letsgojs.com)
   // -------------------------
   .letsGo-hide {
@@ -219,51 +216,51 @@
   }
   // Text overflow styles
   // -------------------------
-  .text-ellipsis {
-    overflow: hidden !important;
-    white-space: nowrap !important;
-    text-overflow: ellipsis !important;
-  }
-  // Opacity styles
-  // -------------------------
-  .opacity-0 {
-    opacity: 0 !important;
-  }
-  .opacity-100 {
-    opacity: 1 !important;
-  }
+  //   .text-ellipsis {
+  //     overflow: hidden !important;
+  //     white-space: nowrap !important;
+  //     text-overflow: ellipsis !important;
+  //   }
+  //   // Opacity styles
+  //   // -------------------------
+  //   .opacity-0 {
+  //     opacity: 0 !important;
+  //   }
+  //   .opacity-100 {
+  //     opacity: 1 !important;
+  //   }
 
-  // Print display rules
-  // -------------------------
-  .visible-print,
-  .frow.visible-print {
-    display: none !important;
-  }
-  @media print {
-    .hidden-print,
-    .frow.hidden-print {
-      display: none !important;
-    }
-    .visible-print {
-      display: block !important;
-    }
-    .frow.visible-print {
-      display: flex !important;
-    }
-  };
-;
-  // Accessibility rules
-  // -------------------------
-  .visible-sr,
-  .visible-sr-focusable:not(:focus) {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-  }
+  //   // Print display rules
+  //   // -------------------------
+  //   .visible-print,
+  //   .frow.visible-print {
+  //     display: none !important;
+  //   }
+  //   @media print {
+  //     .hidden-print,
+  //     .frow.hidden-print {
+  //       display: none !important;
+  //     }
+  //     .visible-print {
+  //       display: block !important;
+  //     }
+  //     .frow.visible-print {
+  //       display: flex !important;
+  //     }
+  //   };
+  // ;
+  //   // Accessibility rules
+  //   // -------------------------
+  //   .visible-sr,
+  //   .visible-sr-focusable:not(:focus) {
+  //     position: absolute !important;
+  //     width: 1px !important;
+  //     height: 1px !important;
+  //     padding: 0 !important;
+  //     margin: -1px !important;
+  //     overflow: hidden !important;
+  //     clip: rect(0, 0, 0, 0) !important;
+  //     white-space: nowrap !important;
+  //     border: 0 !important;
+  //   }
 }
