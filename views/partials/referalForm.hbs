@@ -9,12 +9,12 @@
 {{#with ReferralForm}}
           <div class="mds p-10 mb-10 mb-20 ba">
             <div class="frow">
-              {{#each doctors}}
+              {{!-- {{#each doctors}} --}}
               <div class="checkbox-container col-6-12">
-                <input type="checkbox" name="doctor-name" {{#if IsChecked}}checked{{/if}} />
-                <label for="doctor-name">{{name}}</label>
+                - <label for="doctor-name">{{@root.SelectMD}}</label> --}}
+                <span class="md-id">{{@root.SelectMD}}</span>
               </div>
-              {{/each}}
+              {{!-- {{/each}} --}}
               <div class="md-id-container col-3-6">
                 <span class="md-id">MD ID: Comes here...</span>
               </div>
@@ -42,7 +42,7 @@
             <div class="frow">
               <div class="item col-6-6">
                 <span class="label">Name of Agency </span>
-                <span class="value">Your value</span>
+                <span class="value">{{NameofHealthAgency}}</span>
               </div>
               <div class="item col-6-6">
                  <h3 class="label">Home Health Service </h3>
