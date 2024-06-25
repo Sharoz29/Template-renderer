@@ -1626,6 +1626,10 @@ canvas:focus {
   border: 1px solid #ddd;
 }
 
+.cad-forms input[type="checkbox" i]:disabled {
+  background-color: blue;
+}
+
 .cad-forms {
   /* page-break-after works, as well */
 }
