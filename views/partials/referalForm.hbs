@@ -3,7 +3,7 @@
 <section class="frow" id="referal-form">
         <div class="container-padding width-100">
           <div class="container centered mb-20">
-            {{heading title}}
+            {{heading .}}
           </div>
 
 {{#with ReferralForm}}
@@ -45,20 +45,17 @@
                 <span class="value">Your value</span>
               </div>
               <div class="item col-6-6">
-                <span class="label">Home Health Service </span>
-                <span class="value">Your value</span>
+                 <h3 class="label">Home Health Service </h3>
               </div>
               <div class="item col-6-6">
-                <input type="checkbox" name="skillnursing" />
-                <span class="label">For Skill Nursing Services</span>
+                {{> checkbox name="ForSkillNursingServices" IsChecked=ForSkillNursingServices}}
               </div>
               <div class="item col-6-6">
-                <input type="checkbox" name="skillnursing" />
-                <span class="label">For Physical Therapy Treatment</span>
+                {{> checkbox name="ForPhysicalTherapyTreatment" IsChecked=ForPhysicalTherapyTreatment}}
+                
               </div>
               <div class="item col-6-6">
-                <input type="checkbox" name="skillnursing" />
-                <span class="label">For Occupational Therapy</span>
+                {{> checkbox name="ForOccupationalTherapy" IsChecked=ForOccupationalTherapy}}
               </div>
               <div class="item col-6-6"></div>
               <div class="item col-6-6 mt-30">
@@ -140,8 +137,8 @@
               </div>
             </div>
           </div>
-        </div>
 {{/with}}
+        </div>
 
 
 </section>

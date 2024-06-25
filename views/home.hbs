@@ -1,5 +1,5 @@
  {{#each allForms}}
     {{#if (formsToPrint @root.selectedForms .)}}
-      {{> (formsToPrint @root.selectedForms .) title=. }}
+      {{> (formsToPrint @root.selectedForms .) (addToObject @root 'currentForm' .)}}
     {{/if}}
   {{/each}}
