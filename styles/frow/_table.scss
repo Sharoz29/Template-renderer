@@ -1,23 +1,26 @@
-.cad-forms{
-  table.striped{
-      border-collapse: collapse;
-      border-spacing: 0;
-      width: 100%;
+.cad-forms {
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    th,
+    td {
       border: 1px solid #ddd;
-      th, td{
-          border: 1px solid #ddd;
-          padding: 10px;
-          min-height: 40px;
-          text-align: left;
+      padding: 10px;
+      min-height: 40px;
+      text-align: left;
+    }
+    &.striped {
+      th {
+        background-color: #f2f2f2;
       }
-      th{
-          background-color: #f2f2f2;
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
       }
-      tr:nth-child(even){
-          background-color: #f2f2f2;
+      tr:hover {
+        background-color: #f1f1f1;
       }
-      tr:hover{
-          background-color: #f1f1f1;
-      }
+    }
   }
 }

@@ -1,4 +1,7 @@
 <div class="cb">
-  <input type="checkbox" readonly="true" name="{{name}}" id="name" {{#if (isTrue IsChecked)}}checked{{/if}} />
-  <label for="name" class="text-capitalize">{{name}}</label>
+    <input type="checkbox" disabled  name="{{name}}" id="name" {{#if (isTrue IsChecked)}}checked{{/if}} />
+  <label for="name" class="text-capitalize">
+    {{name}}
+
+  </label>
 </div>

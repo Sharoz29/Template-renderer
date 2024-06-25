@@ -73,6 +73,15 @@
 @if $frow-enable-utilities == true {
   // Width and height rules
   // -------------------------
+
+  @for $amount from 5 through 30 {
+    $multiplier: 2;
+
+    .fz-#{$amount * $multiplier} {
+      font-size: ($amount * $multiplier + px) !important;
+    }
+  }
+
   .width-100 {
     width: 100% !important;
   }
@@ -163,6 +172,16 @@
     > *:nth-child(odd) {
       background-color: #f2f2f2;
     }
+  }
+
+  .background-black {
+    background-color: black !important;
+    color: #f2f2f2;
+  }
+
+  .background-dgrey {
+    background-color: rgb(57, 57, 57) !important;
+    color: #ffff;
   }
 
   // Hidden rule for letsGo (letsgojs.com)

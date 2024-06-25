@@ -1422,6 +1422,110 @@ canvas:focus {
   padding-left: 100px !important;
 }
 
+.fz-10 {
+  font-size: 10px !important;
+}
+
+.fz-12 {
+  font-size: 12px !important;
+}
+
+.fz-14 {
+  font-size: 14px !important;
+}
+
+.fz-16 {
+  font-size: 16px !important;
+}
+
+.fz-18 {
+  font-size: 18px !important;
+}
+
+.fz-20 {
+  font-size: 20px !important;
+}
+
+.fz-22 {
+  font-size: 22px !important;
+}
+
+.fz-24 {
+  font-size: 24px !important;
+}
+
+.fz-26 {
+  font-size: 26px !important;
+}
+
+.fz-28 {
+  font-size: 28px !important;
+}
+
+.fz-30 {
+  font-size: 30px !important;
+}
+
+.fz-32 {
+  font-size: 32px !important;
+}
+
+.fz-34 {
+  font-size: 34px !important;
+}
+
+.fz-36 {
+  font-size: 36px !important;
+}
+
+.fz-38 {
+  font-size: 38px !important;
+}
+
+.fz-40 {
+  font-size: 40px !important;
+}
+
+.fz-42 {
+  font-size: 42px !important;
+}
+
+.fz-44 {
+  font-size: 44px !important;
+}
+
+.fz-46 {
+  font-size: 46px !important;
+}
+
+.fz-48 {
+  font-size: 48px !important;
+}
+
+.fz-50 {
+  font-size: 50px !important;
+}
+
+.fz-52 {
+  font-size: 52px !important;
+}
+
+.fz-54 {
+  font-size: 54px !important;
+}
+
+.fz-56 {
+  font-size: 56px !important;
+}
+
+.fz-58 {
+  font-size: 58px !important;
+}
+
+.fz-60 {
+  font-size: 60px !important;
+}
+
 .width-100 {
   width: 100% !important;
 }
@@ -1528,6 +1632,16 @@ canvas:focus {
   background-color: #f2f2f2;
 }
 
+.background-black {
+  background-color: black !important;
+  color: #f2f2f2;
+}
+
+.background-dgrey {
+  background-color: #393939 !important;
+  color: #ffff;
+}
+
 .letsGo-hide {
   display: none !important;
 }
@@ -1580,14 +1694,15 @@ canvas:focus {
   font-style: italic !important;
 }
 
-.cad-forms table.striped {
+.cad-forms table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
 }
 
-.cad-forms table.striped th, .cad-forms table.striped td {
+.cad-forms table th,
+.cad-forms table td {
   border: 1px solid #ddd;
   padding: 10px;
   min-height: 40px;
@@ -1626,8 +1741,72 @@ canvas:focus {
   border: 1px solid #ddd;
 }
 
+.cad-forms .cb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.cad-forms .cb input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.05em solid currentColor;
+  border-radius: 0.15em;
+  display: flex;
+  align-items: center;
+}
+
+.cad-forms .cb input[type="checkbox"]::before {
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  clip-path: polygon(22% 50%, 40% 63%, 80% 19%, 86% 24%, 46% 77%, 11% 66%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+.cad-forms .cb input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.cad-forms .cb input[type="checkbox"]:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.cad-forms .cb input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+@page {
+  size: A4;
+  margin: 11mm 17mm 17mm 17mm;
+}
+
 .cad-forms {
   /* page-break-after works, as well */
+}
+
+.cad-forms footer {
+  font-size: 9px;
+  color: #f00;
+  text-align: center;
 }
 
 .cad-forms section {
@@ -1641,27 +1820,31 @@ canvas:focus {
 }
 
 @media print {
-  .cad-forms {
-    zoom: 70%;
-    /* page-break-after works, as well */
-    /* page-break-after works, as well */
-    /* page-break-after works, as well */
+  footer {
+    position: fixed;
+    bottom: 0;
   }
-  .cad-forms section:not(:last-of-type) {
+  section:not(:last-of-type) {
     page-break-after: always;
   }
-  .cad-forms .frow .container-padding {
+  .cad-forms {
+    zoom: 0.75;
+  }
+  .frow .container-padding {
     padding: 0 !important;
   }
-  .cad-forms .pagebreakafter,
-  .cad-forms .pagebreakbefore,
-  .cad-forms section {
+  .pagebreakafter,
+  .pagebreakbefore,
+  section {
     border-bottom: none !important;
   }
-  .cad-forms .pagebreakbefore {
+  /* page-break-after works, as well */
+  .pagebreakbefore {
     page-break-before: always;
   }
-  .cad-forms .pagebreakafter {
+  /* page-break-after works, as well */
+  .pagebreakafter {
     page-break-after: always;
   }
+  /* page-break-after works, as well */
 }

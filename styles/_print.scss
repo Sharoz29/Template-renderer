@@ -1,4 +1,13 @@
+@page {
+  size: A4;
+  margin: 11mm 17mm 17mm 17mm;
+}
 .cad-forms {
+  footer {
+    font-size: 9px;
+    color: #f00;
+    text-align: center;
+  }
   section {
     margin-top: 30px;
     border-bottom: 1px dotted grey !important;
@@ -8,29 +17,40 @@
   .pagebreakbefore {
     border-bottom: 1px dotted grey !important;
   } /* page-break-after works, as well */
+}
 
-  @media print {
-    zoom: 70%;
-    section:not(:last-of-type) {
-      page-break-after: always;
-    }
-
-    .frow {
-      .container-padding {
-        padding: 0 !important;
-      }
-    }
-
-    .pagebreakafter,
-    .pagebreakbefore,
-    section {
-      border-bottom: none !important;
-    } /* page-break-after works, as well */
-    .pagebreakbefore {
-      page-break-before: always;
-    } /* page-break-after works, as well */
-    .pagebreakafter {
-      page-break-after: always;
-    } /* page-break-after works, as well */
+@media print {
+  // html,
+  // body {
+  //   width: 210mm;
+  //   height: 200mm;
+  // }
+  footer {
+    position: fixed;
+    bottom: 0;
   }
+  section:not(:last-of-type) {
+    page-break-after: always;
+  }
+  .cad-forms {
+    zoom: 0.75;
+  }
+
+  .frow {
+    .container-padding {
+      padding: 0 !important;
+    }
+  }
+
+  .pagebreakafter,
+  .pagebreakbefore,
+  section {
+    border-bottom: none !important;
+  } /* page-break-after works, as well */
+  .pagebreakbefore {
+    page-break-before: always;
+  } /* page-break-after works, as well */
+  .pagebreakafter {
+    page-break-after: always;
+  } /* page-break-after works, as well */
 }

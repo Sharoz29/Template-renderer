@@ -26,6 +26,7 @@ export const mockContext = {
     },
   ],
   allForms: [
+    "polst",
     "referalForm",
     "admissionOrders",
     "impressionPlan",
@@ -40,6 +41,7 @@ export const mockContext = {
     "initialAssesment",
     "faceToFaceEncounter",
     "teleMedicines",
+    "polst",
   ],
   labReferences: [
     "CBC",

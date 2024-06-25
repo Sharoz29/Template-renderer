@@ -17,4 +17,62 @@
   }
   #referal-form {
   }
+
+  .cb {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    input[type="checkbox"] {
+      /* Add if not using autoprefixer */
+      -webkit-appearance: none;
+      /* Remove most all native input styles */
+      appearance: none;
+      /* For iOS < 15 */
+      background-color: var(--form-background);
+      /* Not removed via appearance */
+      margin: 0;
+
+      font: inherit;
+      color: currentColor;
+      width: 1.15em;
+      height: 1.15em;
+      border: 0.05em solid currentColor;
+      border-radius: 0.15em;
+      // transform: translateY(-0.075em);
+
+      // display: grid;
+      // place-content: center;
+      display: flex;
+      align-items: center;
+    }
+
+    input[type="checkbox"]::before {
+      content: "";
+      width: 1.5em;
+      height: 1.5em;
+      clip-path: polygon(22% 50%, 40% 63%, 80% 19%, 86% 24%, 46% 77%, 11% 66%);
+      transform: scale(0);
+      transform-origin: bottom left;
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em var(--form-control-color);
+      /* Windows High Contrast Mode */
+      background-color: CanvasText;
+    }
+
+    input[type="checkbox"]:checked::before {
+      transform: scale(1);
+    }
+
+    input[type="checkbox"]:focus {
+      outline: max(2px, 1.5px) solid currentColor;
+      outline-offset: max(2px, 1.5px);
+    }
+
+    input[type="checkbox"]:disabled {
+      --form-control-color: var(--form-control-disabled);
+
+      color: var(--form-control-disabled);
+      cursor: not-allowed;
+    }
+  }
 }
