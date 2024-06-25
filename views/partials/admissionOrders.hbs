@@ -27,15 +27,17 @@
           </tr>
         </thead>
         <tbody>
+           {{#each MedicineDoseAdvised}}
           <tr>
-            <td>1</td>
-            <td>Date</td>
-            <td>Meds</td>
-            <td>Dos</td>
-            <td>Rout</td>
-            <td>Freq</td>
-            <td>Purpose</td>
+            <td>{{counter @index}}</td>
+            <td>{{Date}}</td>
+            <td>{{MedicineName}}</td>
+            <td>{{Dose}}</td>
+            <td>{{Route}}</td>
+            <td>{{Frequency}}</td>
+            <td>{{Purpose}}</td>
           </tr>
+          {{/each}}
         </tbody>
       </table>
     </div>

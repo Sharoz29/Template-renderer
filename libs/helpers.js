@@ -57,6 +57,10 @@ export function copyTelemedecineToFaceToFace(
   };
 }
 
+export function counter(index) {
+  return index + 1;
+}
+
 export const helpers = {
   camelToSentence,
   formsToPrint,
@@ -66,6 +70,7 @@ export const helpers = {
   findWithKey,
   isTrue,
   copyTelemedecineToFaceToFace,
+  counter,
 };
 
 export const HBS = create({
