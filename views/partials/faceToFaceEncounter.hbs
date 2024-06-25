@@ -1,10 +1,12 @@
+  
+
   <section class="frow" id="face-to-face">
         <div class="container-padding width-100">
           <div class="content">
             <div class="container centered mb-20">
-              <h2 class="text-center m-auto">FACE-TO-FACE ENCOUNTER</h2>
+               {{heading .}}
             </div>
-
+          {{#with FaceToFace}}
             <div class="frow">
               <div class="frow col-1-2 justify-start gutters">
                 <strong>Home Health:</strong>
@@ -68,15 +70,11 @@
             </div>
 
             <div class="frow justify-start">
-              <div class="col-1-4 ba p-10">
-                <!-- Repeat this -->
-                <div class="cb">
-                  <input type="checkbox" name="hthd" id="hthd" />
-                  <label for="hthd">
-                    Hypertensive Heart Disease with Heart failure
-                  </label>
-                </div>
+              {{#each ../SelectedMedicalConditionsOnFaceToFace}}
+              <div class="cb-table col-1-4">
+                {{> checkbox name=HHSMedicalCondition IsChecked=IsChecked}}
               </div>
+              {{/each}}
             </div>
 
             <div class="mt-20">
@@ -90,36 +88,13 @@
               </p>
             </div>
 
-            <table class="striped width-100">
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="cb">
-                      <input type="checkbox" name="hthd" id="hthd" />
-                      <label for="hthd">Cardiac/CHF Care</label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="cb">
-                      <input type="checkbox" name="hthd" id="hthd" />
-                      <label for="hthd">Home Health Aide</label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="cb">
-                      <input type="checkbox" name="hthd" id="hthd" />
-                      <label for="hthd">Occupational Therapy</label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="cb">
-                      <input type="checkbox" name="hthd" id="hthd" />
-                      <label for="hthd">Speech Pathology</label>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="frow justify-start">
+              {{#each ../SelectedHomeBound}}
+              <div class="cb-table col-1-4">
+                {{> checkbox name=ReasonsForHomeBound IsChecked=IsChecked}}
+              </div>
+              {{/each}}
+            </div>
 
             <div class="mt-20">
               <strong class="text-underline">
@@ -132,38 +107,14 @@
               </span>
             </div>
 
-            <table class="striped width-100">
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="cb">
-                      <input type="checkbox" name="hthd" id="hthd" />
-                      <label for="hthd"
-                        >Unable to leave home without maximum assistance and/or
-                        effort</label
-                      >
-                    </div>
-                  </td>
-                  <td>
-                    <div class="cb">
-                      <input type="checkbox" name="hthd" id="hthd" />
-                      <label for="hthd"
-                        >Requires an assistive device to ambulate</label
-                      >
-                    </div>
-                  </td>
-                  <td>
-                    <div class="cb">
-                      <input type="checkbox" name="hthd" id="hthd" />
-                      <label for="hthd"
-                        >Medical restrictions: open draining wound, legs
-                        elevated all times</label
-                      >
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="frow justify-start">
+              {{#each ../SelectedHomeBoundStatusOnFaceToFace}}
+              <div class="cb-table col-1-4">
+                {{> checkbox name=HomeboundDueTo IsChecked=IsChecked}}
+              </div>
+              {{/each}}
+            </div>
+            
 
             <div class="signatures mt-60 mb-10">
               <div class="frow provider justify-start mb-60">
@@ -211,6 +162,8 @@
                 </div>
               </div>
             </div>
+
+            {{/with}}
           </div>
         </div>
-      </section>
+  </section>

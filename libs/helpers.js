@@ -41,6 +41,22 @@ export function findWithKey(array, key, value) {
   return array.find((obj) => obj[key] === value);
 }
 
+export function copyTelemedecineToFaceToFace(
+  context,
+  teleMedicines,
+  medicalConditions,
+  homeBound,
+  certOfHomeBound
+) {
+  return {
+    ...context,
+    FaceToFace: { ...teleMedicines },
+    SelectedMedicalConditionsOnFaceToFace: [...medicalConditions],
+    SelectedHomeBound: [...homeBound],
+    SelectedHomeBoundStatusOnFaceToFace: [...certOfHomeBound],
+  };
+}
+
 export const helpers = {
   camelToSentence,
   formsToPrint,
@@ -49,6 +65,7 @@ export const helpers = {
   isSelected,
   findWithKey,
   isTrue,
+  copyTelemedecineToFaceToFace,
 };
 
 export const HBS = create({
