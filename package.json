@@ -5,7 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "watch:scss": "node-sass -w styles/ -r --output-style expanded -o dist/css/"
+    "watch:scss": "node-sass -w styles/ -r --output-style expanded -o dist/css/",
+    "watch:server": "nodemon server.js"
   },
   "author": "arslan.ansari@lowcodesol.com",
   "license": "ISC",
