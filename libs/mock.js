@@ -33,7 +33,14 @@ export const mockContext = {
     "faceToFaceEncounter",
     "teleMedicines",
   ],
-  selectedForms: ["referalForm", "admissionOrders"],
+  selectedForms: [
+    "referalForm",
+    "admissionOrders",
+    "impressionPlan",
+    "initialAssesment",
+    "faceToFaceEncounter",
+    "teleMedicines",
+  ],
   labReferences: [
     "CBC",
     "BMP",
