@@ -175,10 +175,10 @@
               <div class="frow col-1-1">
                 <strong class="col-1-6">Tobacco / THC</strong>
                 <div class="cb col-1-6">
-                  {{> checkbox IsChecked=(usageChceker PatientUseTobacco "Yes") name="Yes" }}
+                  {{> checkbox IsChecked=(checker PatientUseTobacco "Yes") name="Yes" }}
                 </div>
                 <div class="cb col-1-6">
-                   {{> checkbox IsChecked=(usageChceker PatientUseTobacco "No") name="No" }}
+                   {{> checkbox IsChecked=(checker PatientUseTobacco "No") name="No" }}
                 </div>
                 <div class="cb col-1-6">
                   {{#each TobaccoTHC}}
@@ -200,12 +200,12 @@
               <div class="frow col-1-1">
                 <strong class="col-1-6">ETOH/Alcohol</strong>
                 <div class="cb col-1-6">
-                  {{> checkbox IsChecked=(usageChceker PatientConsumeAlcohol "Yes") name="Yes" }}
+                  {{> checkbox IsChecked=(checker PatientConsumeAlcohol "Yes") name="Yes" }}
                 </div>
                 <div class="cb col-1-6">
                   {{!-- <input type="checkbox" name="name" id="name" />
                   <label for="name">No</label> --}}
-                  {{> checkbox IsChecked=(usageChceker PatientConsumeAlcohol "No") name="No" }}
+                  {{> checkbox IsChecked=(checker PatientConsumeAlcohol "No") name="No" }}
                 </div>
                 <div class="cb col-1-6">
                    {{#each ETOHAlcohol}}

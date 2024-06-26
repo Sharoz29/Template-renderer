@@ -68,7 +68,7 @@ export function genderChecker(gender, name) {
 export function allergiesChecker(allergies) {
   return allergies === "No Known Allergies";
 }
-export function usageChceker(use, name) {
+export function checker(use, name) {
   return name === "Yes" ? use === true || use === "true" : false;
 }
 export function dailyUseChecker(frequency, name) {
@@ -87,7 +87,7 @@ export const helpers = {
   counter,
   genderChecker,
   allergiesChecker,
-  usageChceker,
+  checker,
   dailyUseChecker,
 };
 
