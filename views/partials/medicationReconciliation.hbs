@@ -1,3 +1,4 @@
+{{#with MedicalReconciliation}}
 <section class="frow" id="medication-recon">
   <div class="container-padding width-100">
     <div class="content">
@@ -9,61 +10,61 @@
         <div class="frow justify-start">
           <div class="col-1-2">
             <span>Phone:</span>
-            <span class="p-5 text-underline">Number</span>
+            <span class="p-5 text-underline">{{Phone}}</span>
           </div>
           <div class="col-1-2">
             <span>HICN:</span>
-            <span class="p-5 text-underline">HICN#</span>
+            <span class="p-5 text-underline">{{HICN}}</span>
           </div>
           <div class="col-1-4">
             <span>DIAGNOSIS:</span>
-            <span class="p-5 text-underline">DIAGNOSIS</span>
+            <span class="p-5 text-underline">{{Diagnosis}}</span>
           </div>
           <div class="col-1-4">
             <span>ALLERGIES:</span>
-            <span class="p-5 text-underline">ALLERGIES</span>
+            <span class="p-5 text-underline">{{Allergies}}</span>
           </div>
           <div class="col-1-4">
             <span>HEIGHT:</span>
-            <span class="p-5 text-underline">HEIGHT</span>
+            <span class="p-5 text-underline">{{Height}}</span>
           </div>
           <div class="col-1-4">
             <span>WEIGHT:</span>
-            <span class="p-5 text-underline">WEIGHT</span>
+            <span class="p-5 text-underline">{{Weight}}</span>
           </div>
 
-          <div class="frow col-1-2 justify-start gutters">
+          <div class="frow col-1-2 justify-start">
             <span>REVIEWED FOR CONTRAINDICATIONS:</span>
             <div class="cb">
-              <label for="name">YES</label>
+              {{> checkbox name="Yes" IsChecked=(checker ReviewedForContrainedications "Yes")}}
             </div>
             <div class="cb">
-              <label for="name">NO</label>
+               {{> checkbox name="No" IsChecked=(checker ReviewedForContrainedications "No")}}
             </div>
           </div>
-          <div class="frow col-1-2 justify-start gutters">
+          <div class="frow col-1-2 justify-start">
             <span>REVIEWED FOR INTERACTIONS:</span>
             <div class="cb">
-              <label for="name">YES</label>
+               {{> checkbox name="Yes" IsChecked=(checker ReviewedForInteractions "Yes")}}
             </div>
             <div class="cb">
-              <label for="name">NO</label>
+               {{> checkbox name="No" IsChecked=(checker ReviewedForInteractions "No")}}
             </div>
           </div>
 
-          <div class="frow col-1-1 justify-start gutters">
+          <div class="frow col-1-1 justify-start">
             <span>PHARMACY NAME:</span>
-            <span class="p-l text-underline">PHARMACY NAME</span>
+            <span class="p-l text-underline">{{PharmacyName}}</span>
           </div>
 
-          <div class="frow col-1-1 justify-start gutters">
+          <div class="frow col-1-1 justify-start">
             <span>ADDRESS:</span>
-            <span class="p-l text-underline">address</span>
+            <span class="p-l text-underline">{{PharmacyAddress}}</span>
           </div>
 
-          <div class="frow col-1-1 justify-start gutters">
+          <div class="frow col-1-1 justify-start">
             <span>PHONE:</span>
-            <span class="p-l text-underline">phone</span>
+            <span class="p-l text-underline">{{PharmacyPhone}}</span>
           </div>
 
           <!-- Rest... -->
@@ -80,24 +81,16 @@
               </tr>
             </thead>
             <tbody>
+              {{#each PrescribedMedicines}}
               <tr>
-                <td>a</td>
-                <td>1</td>
-                <td>Po</td>
-                <td>Topical</td>
-                <td>BID</td>
-                <td>1</td>
+                <td>{{MedicineName}}</td>
+                <td>{{Dose}}</td>
+                <td>{{Route}}</td>
+                <td>{{Frequency}}</td>
+                <td>{{Purpose}}</td>
+                <td>{{Refills}}</td>
               </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <td>b</td>
-                <td>2</td>
-                <td>Po</td>
-                <td>Topical</td>
-                <td>BID</td>
-                <td>2</td>
-              </tr>
+              {{/each}}
             </tbody>
           </table>
 
@@ -109,3 +102,4 @@
     </div>
   </div>
 </section>
+{{/with}}

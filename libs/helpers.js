@@ -61,6 +61,20 @@ export function counter(index) {
   return index + 1;
 }
 
+export function genderChecker(gender, name) {
+  return gender === name;
+}
+
+export function allergiesChecker(allergies) {
+  return allergies === "No Known Allergies";
+}
+export function checker(use, name) {
+  return name === "Yes" ? use === true || use === "true" : false;
+}
+export function dailyUseChecker(frequency, name) {
+  console.log(frequency);
+  return frequency === name;
+}
 export const helpers = {
   camelToSentence,
   formsToPrint,
@@ -71,6 +85,10 @@ export const helpers = {
   isTrue,
   copyTelemedecineToFaceToFace,
   counter,
+  genderChecker,
+  allergiesChecker,
+  checker,
+  dailyUseChecker,
 };
 
 export const HBS = create({

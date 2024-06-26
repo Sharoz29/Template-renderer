@@ -1,3 +1,4 @@
+{{#with InitialAssessmentForm}}
 <section class="frow" id="initial-assesment">
   <div class="container-padding width-100">
     <div class="container centered mb-20">
@@ -15,33 +16,45 @@
         <tr>
           <td colspan="1">
             <div class="cb">
-              <input type="checkbox" name="initial-visit" id="initial-visit" />
-              <label for="initial-visit">initial visit</label>
+                {{> checkbox IsChecked=InitialVisit name="Initial Visit" }}
             </div>
           </td>
 
           <td colspan="1">
-            <div class="frow">
-              <div class="cb">
-                <input type="checkbox" name="name" id="name" />
-                <label for="name">name</label>
+            <div class="frow" style="display: flex; flex-direction: row; width: 100%; align-items: flex-start; justify-content: flex-start;">
+              <div class="cb ">
+                 {{> checkbox IsChecked=FollowUpVisit name="Follow Up Visit" }}
               </div>
               <span class="px-5">/</span>
-              <div class="cb">
-                <input type="checkbox" name="name" id="name" />
-                <label for="name">name</label>
+              <div class="cb ">
+                {{> checkbox IsChecked=RecertVisit name="Recert Visit" }}
+              </div>
               </div>
             </div>
           </td>
 
           <td colspan="1">
-            <div class="cb">
-              <input type="checkbox" name="name" id="name" />
-              <label for="name">name</label>
+            <div class="cb" style="align-items: center;">
+              <span>Sex :</span>
+              <div style="margin-left: 10px; display:flex; flex-direction:row; margin-top:10px">
+                <div class="cb">
+                  {{> checkbox IsChecked=(genderChecker Sex "M") name="M" }}
+                </div>
+                <span class="px-5">/</span>
+                  <div class="cb">
+                  {{> checkbox IsChecked=(genderChecker Sex "F") name="F" }}
+                  </div>
+                </div>
             </div>
           </td>
 
-          <td colspan="3">Dos</td>
+          <td colspan="3">
+            <div style="display: flex; gap:15px;">
+              <span>Location patient is accessed:</span>
+              {{> checkbox IsChecked=Homevisit name="Home Visit" }}
+               {{> checkbox IsChecked=CracklesLoc name="Boarding Care" }}
+            </div>
+          </td>
         </tr>
         <tr>
           <td colspan="6">
@@ -73,20 +86,17 @@
         <tr>
           <td colspan="2">
             <div class="cb">
-              <input type="checkbox" name="penicillin" id="penicillin" />
-              <label for="penicillin">Penicillin</label>
+               {{> checkbox IsChecked=Penicillin name="Penicillin" }}
             </div>
           </td>
           <td colspan="2">
             <div class="cb">
-              <input type="checkbox" name="sulfa" id="sulfa" />
-              <label for="sulfa">Sulfa</label>
+               {{> checkbox IsChecked=Sulfa name="Sulfa" }}
             </div>
           </td>
           <td colspan="2">
             <div class="cb">
-              <input type="checkbox" name="noallergies" id="noallergies" />
-              <label for="noallergies">No Known Allergies</label>
+               {{> checkbox IsChecked=NOKNOWNALLERGIES name="NO KNOWN ALLERGIES" }}
             </div>
           </td>
         </tr>
@@ -100,72 +110,39 @@
         </tr>
         <tr>
           <td colspan="3">
-            <div class="frow gutters cbs justify-start">
+            <div class="frow cbs justify-start">
+              {{#each @root.SelectedFunctionalLimitations}}
               <div class="col-1-2 cb">
-                <input type="checkbox" name="Amputation" id="Amputation" />
-                <label for="Amputation">Amputation</label>
+                 {{> checkbox IsChecked=IsChecked name=PatientFunctionalLimitation }}
               </div>
-              <div class="col-1-2 cb">
-                <input type="checkbox" name="Paralysis" id="Paralysis" />
-                <label for="Paralysis">Paralysis</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input
-                  type="checkbox"
-                  name="Legally-blind"
-                  id="Legally-blind"
-                />
-                <label for="Legally-blind">Legally blind</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input
-                  type="checkbox"
-                  name="Bowel-bladder"
-                  id="Bowel-bladder"
-                />
-                <label for="Bowel-bladder">Bowel/bladder</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input type="checkbox" name="Weakness" id="Weakness" />
-                <label for="Weakness">Weakness</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input type="checkbox" name="sobmin" id="sobmin" />
-                <label for="sobmin">SOB Minimum Exertion</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input type="checkbox" name="Contracture" id="Contracture" />
-                <label for="Contracture">Contracture</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input type="checkbox" name="Ambulation" id="Ambulation" />
-                <label for="Ambulation">Ambulation</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input type="checkbox" name="Confused" id="Confused" />
-                <label for="Confused">Confused</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input type="checkbox" name="Hearing" id="Hearing" />
-                <label for="Hearing">Hearing</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input type="checkbox" name="Speech" id="Speech" />
-                <label for="Speech">Speech</label>
-              </div>
-              <div class="col-1-2 cb">
-                <input type="checkbox" name="visiondef" id="visiondef" />
-                <label for="visiondef">Vision deficit</label>
-              </div>
+              {{/each}}
             </div>
           </td>
           <td colspan="3">
-            <div class="frow gutters cbs justify-start">
+            <div class="frow cbs justify-start">
               <!-- Repeat Below for all list of activities permited -->
+              {{#each @root.SelectedActivitiesPermitted}}
               <div class="cb col-1-2">
-                <input type="checkbox" name="cbedrest" id="cbedrest" />
-                <label for="cbedrest">Complete bedrest</label>
+                  {{> checkbox IsChecked=IsChecked name=ActivitiesPermited }}
               </div>
+              {{/each}}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <h4 class="fc m-auto">PAST MEDICAL HISTORY</h4>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <div class="frow cbs justify-start">
+              <!-- Repeat Below for all Surgical Histories -->
+              {{#each @root.SelectedPastMedicalHistory}}
+              <div class="cb col-1-8">
+                {{> checkbox IsChecked=IsChecked name=PASTMEDICALHISTORY }}
+              </div>
+              {{/each}}
             </div>
           </td>
         </tr>
@@ -176,55 +153,14 @@
         </tr>
         <tr>
           <td colspan="6">
-            <div class="frow gutters cbs justify-start">
+            <div class="frow cbs justify-start">
               <!-- Repeat Below for all Surgical Histories -->
-              <div class="cb col-1-10">
-                <input type="checkbox" name="name" id="name" />
-                <label for="name">name</label>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="6">
-            <h4 class="fc m-auto">PAST SURGICAL HISTORY</h4>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="1">
-            <div class="frow gutters cbs justify-start">
-              <!-- Repeat Below for all Surgical Histories -->
+
+              {{#each @root.SelectedPastSurgicalHistory}}
               <div class="cb col-1-2">
-                <input type="checkbox" name="name" id="name" />
-                <label for="name">name</label>
+                {{> checkbox IsChecked=IsChecked name=PastSurgicalHistory }}
               </div>
-            </div>
-          </td>
-          <td colspan="1">
-            <div class="frow gutters cbs justify-start">
-              <!-- Repeat Below for all Surgical Histories -->
-              <div class="cb col-1-2">
-                <input type="checkbox" name="name" id="name" />
-                <label for="name">name</label>
-              </div>
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="frow gutters cbs justify-start">
-              <!-- Repeat Below for all Surgical Histories -->
-              <div class="cb col-1-2">
-                <input type="checkbox" name="name" id="name" />
-                <label for="name">name</label>
-              </div>
-            </div>
-          </td>
-          <td colspan="2">
-            <div class="frow gutters cbs justify-start">
-              <!-- Repeat Below for all Surgical Histories -->
-              <div class="cb col-1-2">
-                <input type="checkbox" name="name" id="name" />
-                <label for="name">name</label>
-              </div>
+              {{/each}}
             </div>
           </td>
         </tr>
@@ -239,48 +175,52 @@
               <div class="frow col-1-1">
                 <strong class="col-1-6">Tobacco / THC</strong>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Yes</label>
+                  {{> checkbox IsChecked=(checker PatientUseTobacco "Yes") name="Yes" }}
                 </div>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">No</label>
+                   {{> checkbox IsChecked=(checker PatientUseTobacco "No") name="No" }}
                 </div>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Daily</label>
+                  {{#each TobaccoTHC}}
+                   {{> checkbox IsChecked=(dailyUseChecker TobaccoTHC "Daily") name="Daily" }}
+                   {{/each}}
                 </div>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Socially</label>
+                   {{#each TobaccoTHC}}
+                   {{> checkbox IsChecked=(dailyUseChecker TobaccoTHC "Socially") name="Socially" }}
+                   {{/each}}
                 </div>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Occasionally</label>
+                  {{#each TobaccoTHC}}
+                   {{> checkbox IsChecked=(dailyUseChecker TobaccoTHC "Occasionally") name="Occasionally" }}
+                   {{/each}}
                 </div>
               </div>
 
               <div class="frow col-1-1">
                 <strong class="col-1-6">ETOH/Alcohol</strong>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Yes</label>
+                  {{> checkbox IsChecked=(checker PatientConsumeAlcohol "Yes") name="Yes" }}
                 </div>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">No</label>
+                  {{!-- <input type="checkbox" name="name" id="name" />
+                  <label for="name">No</label> --}}
+                  {{> checkbox IsChecked=(checker PatientConsumeAlcohol "No") name="No" }}
                 </div>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Daily</label>
+                   {{#each ETOHAlcohol}}
+                   {{> checkbox IsChecked=(dailyUseChecker ETOHAlcohol "Daily") name="Daily" }}
+                   {{/each}}
                 </div>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Socially</label>
+                  {{#each ETOHAlcohol}}
+                   {{> checkbox IsChecked=(dailyUseChecker ETOHAlcohol "Socially") name="Socially" }}
+                   {{/each}}
                 </div>
                 <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Occasionally</label>
+                   {{#each ETOHAlcohol}}
+                   {{> checkbox IsChecked=(dailyUseChecker ETOHAlcohol "Occasionally") name="Occasionally" }}
+                   {{/each}}
                 </div>
               </div>
 
@@ -366,27 +306,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosGeneral}}
+                      <div class="cb col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=General }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -396,27 +325,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosHead}}
+                      <div class="cb col-1-6">
+                         {{> checkbox IsChecked=IsChecked name=Head }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -426,27 +344,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosNeckAxilliaBreasts}}
+                      <div class="cb col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=NeckAxillaBreasts }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -456,27 +363,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosEyes}}
+                      <div class="cb col-1-6">
+                         {{> checkbox IsChecked=IsChecked name=Eyes }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -486,27 +382,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosEars}}
+                      <div class="cb col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=Ears }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -516,27 +401,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                    <div class="frow cbs justify-start">
+                        {{#each @root.SelectedRosNose}}
+                        <div class="cb col-1-6">
+                          {{> checkbox IsChecked=IsChecked name=Nose }}
+                        </div>
+                        {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -546,27 +420,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosMouth}}
+                      <div class="cb col-1-6">
+                         {{> checkbox IsChecked=IsChecked name=Mouth }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -576,27 +439,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosCardiovascular}}
+                      <div class="cb col-1-6">
+                         {{> checkbox IsChecked=IsChecked name=Cardiovascular }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -606,27 +458,19 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosPulmonary}}
+                      <div class="cb col-1-6">
                         <input type="checkbox" name="name" id="name" />
                         <label for="name">name</label>
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
+                      
+                      
                     </div>
                   </td>
                 </tr>
@@ -636,27 +480,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosAbdomen}}
+                      <div class="cb col-1-6">
+                         {{> checkbox IsChecked=IsChecked name=Abdomen }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -666,27 +499,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosGenitourinary}}
+                      <div class="cb col-1-6">
+                       {{> checkbox IsChecked=IsChecked name=Genitourinary }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -696,27 +518,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosRectal}}
+                      <div class="cb col-1-6">
+                         {{> checkbox IsChecked=IsChecked name=Rectal }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -726,27 +537,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosUpperExtremities}}
+                      <div class="cb col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=UpperExtremities }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -756,27 +556,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs  justify-start">
+                      {{#each @root.SelectedLowerExtremities}}
+                      <div class="cb col-1-6">
+                       {{> checkbox IsChecked=IsChecked name=LowerExtremities }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -786,27 +575,17 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosSkin}}
+                      <div class="cb col-1-6">
                         <input type="checkbox" name="name" id="name" />
                         <label for="name">name</label>
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -816,27 +595,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosNutrition}}
+                      <div class="cb col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=Nutrition }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -850,23 +618,12 @@
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs  justify-start">
+                      {{#each @root.SelectedRosMuscleSkeletal}}
+                      <div class="cb col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=MuscleSketetal }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -876,27 +633,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosEndocrine}}
+                      <div class="cb col-1-6">
+                         {{> checkbox IsChecked=IsChecked name=Endocrine }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -906,27 +652,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosPelvic}}
+                      <div class="cb col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=Pelvic }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -936,27 +671,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosNeurological}}
+                      <div class="cb col-1-6">
+                         {{> checkbox IsChecked=IsChecked name=Neurological }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -966,27 +690,16 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
-                    <div class="frow cbs gutters justify-start">
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                    <div class="frow cbs justify-start">
+                      {{#each @root.SelectedRosMental}}
+                      <div class="cb col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=Mental }}
                       </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
-                      <div class="cb col-1-8">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
-                      </div>
+                      {{/each}}
                     </div>
                   </td>
                 </tr>
@@ -1127,3 +840,4 @@
     </div>
   </div>
 </section>
+{{/with}}

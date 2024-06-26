@@ -1694,6 +1694,10 @@ canvas:focus {
   font-style: italic !important;
 }
 
+.text-bold {
+  font-weight: bold !important;
+}
+
 .cad-forms table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -1829,6 +1833,9 @@ canvas:focus {
   }
   .cad-forms {
     zoom: 0.75;
+  }
+  #polist {
+    zoom: 0.5;
   }
   .frow .container-padding {
     padding: 0 !important;

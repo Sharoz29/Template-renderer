@@ -1,3 +1,4 @@
+{{#with PatientData}}
 <section class="frow" id="polst">
   <div class="container-padding width-100">
     <table class="width-100">
@@ -16,7 +17,7 @@
         <tr>
           <td colspan="1">
             <div class="frow">
-              <img src="/assets/polst.jpeg" alt="polst" />
+              <img src="http://localhost:3000/assets/polst.jpeg" alt="polst" />
               <div class="col-1-1 text-center">EMSA #111B</div>
               <div class="col-1-1 text-center">(Effective 10/1/2014)</div>
             </div>
@@ -46,16 +47,49 @@
                     <table>
                       <tbody>
                         <tr>
-                          <td>Patient Last Name:</td>
-                          <td>Date Form Prepared:</td>
+                          <td>Patient Last Name: <span>
+                            {{pyLastName}}
+                          </span></td>
+                          <td>
+                            <span>Date Form Prepared:</span>
+                            <span>{{../DateFormPrepared}}</span>
+                          </td>
                         </tr>
                         <tr>
-                          <td>Patient First Name:</td>
-                          <td>Patient Date of Birth:</td>
+                          <td>
+                            <span>
+                              Patient First Name: 
+                            </span>
+                            <span>
+                              {{pyFirstName}}
+                            </span>
+                          </td>
+                          <td>
+                            <span>
+                              Patient Date of Birth:
+                            </span>
+                            <span>
+                              {{DateOfBirth}}
+                            </span>
+                          </td>
                         </tr>
                         <tr>
-                          <td>Patient Middle Name:</td>
-                          <td>Medical Record#</td>
+                          <td>
+                            <span>
+                              Patient Middle Name:
+                            </span>
+                            <span>
+                              {{pyMiddleName}}
+                              </span>
+                          </td>
+                          <td>
+                            <span>
+                              Medical Record#
+                            </span>
+                            <span>
+                              {{../MedicalRecordID}}
+                            </span>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -76,7 +110,7 @@
             <div class="fz-16">Check One</div>
           </td>
           <td>
-            <table class="striped">
+            <table class="width-100">
               <tbody>
                 <tr>
                   <div class="fz-24 background-dgrey p-5">
@@ -89,12 +123,12 @@
                 <tr>
                   <div class="p-5">
                     <div class="cb">
-                      <input type="checkbox" disabled name="CPR" id="CPR" />
-                      <label for="CPR">Attempt CPR</label>
+                      {{> checkbox name="Attempt Resuscitation/CPR" IsChecked=../POLST/AttemptResuscitationCPR}}
+                      <span class="cb" style="padding-left: 10px;">(Selecting CPR in Section A requires selecting Full Treatment in Section B)</span>
                     </div>
                     <div class="cb">
-                      <input type="checkbox" disabled name="CPR" id="CPR" />
-                      <label for="CPR">Do Not Attempt CPR</label>
+                      {{> checkbox name="Do Not Attempt Resuscitation/DNR" IsChecked=../POLST/DoNotAttemptResuscitationDNR}}
+                      <span class="cb" style="padding-left: 10px;">(Allow Natural Death)</span>
                     </div>
                   </div>
                 </tr>
@@ -109,7 +143,7 @@
             <div class="fz-16">Check One</div>
           </td>
           <td>
-            <table class="striped">
+            <table class="width-100">
               <tbody>
                 <tr>
                   <div class="fz-24 background-dgrey p-5">
@@ -118,16 +152,47 @@
                   </div>
                 </tr>
                 <tr>
-                  <div class="p-5">
-                    <div class="cb">
-                      <input type="checkbox" disabled name="CPR" id="CPR" />
-                      <label for="CPR">Attempt CPR</label>
+                  <div class="p-5" style="display:flex; flex-direction:column; gap: 10px;">
+                    <div style="display: flex; flex-direction:column;">
+                      <div style="display: flex; flex-direction:row; gap:7px">
+                        {{> checkbox name="Full Treatment" IsChecked=../POLST/FullTreatment}}
+                        <strong class="cb">– primary goal of prolonging life by all medically effective means.</strong>
+                      </div>
+                      <span class="cb" style="padding-left: 25px;">
+                        In addition to treatment described in Selective Treatment and Comfort-Focused Treatment use intubation, advanced airway interventions, mechanical ventilation, and cardioversion as indicated.
+                      </span>
                     </div>
-                    <div class="cb">
-                      <input type="checkbox" disabled name="CPR" id="CPR" />
-                      <label for="CPR">Do Not Attempt CPR</label>
+                    <div style="align-self: center;">
+                      {{> checkbox name="Trial Period Of Full Treatment" IsChecked=../POLST/TrialPeriodOfFullTreatment}}
+                    </div>
+                    <div style="display: flex; flex-direction:column;">
+                      <div style="display: flex; flex-direction:row; gap:7px">
+                          {{> checkbox name="Selective Treatment" IsChecked=../POLST/SelectiveTreatment}}
+                          <strong class="cb">– goal of treating medical conditions while avoiding burdensome measures.</strong>
+                      </div>
+                      <span class="cb" style="padding-left: 25px;">
+                       In addition to treatment described in Comfort-Focused Treatment, use medical treatment, IV antibiotics, and IV fluids as indicated. Do not intubate. May use non-invasive positive airway pressure. Generally, avoid intensive care.
+                      </span>
+                    </div>
+                    <div style="display:flex; flex-direction:row; align-self: center;">
+                      {{> checkbox name="Request Transfer To Hospital" IsChecked=../POLST/RequestTransferToHospitalOnly}}
+                      <strong style="padding-left: 3px;"> only if comfort needs cannot be met in current location.</strong>
+                    </div>
+                    <div style="display: flex; flex-direction:column;">
+                      <div style="display: flex; flex-direction:row; gap:7px">
+                        {{> checkbox name="Comfort-Focused Treatment" IsChecked=../POLST/ComfortFocusedTreatment}}
+                        <strong class="cb">– primary goal of maximizing comfort.</strong>
+                      </div>
+                      <span class="cb" style="padding-left: 25px;">
+                       Relieve pain and suffering with medication by any route as needed; use oxygen, suctioning, and manual treatment of airway obstruction. Do not use treatments listed in Full and Selective Treatment unless consistent with comfort goal.
+                      </span>
+                    </div>
+                    <div style="display:flex; flex-direction:row; align-self: center;">
+                      {{> checkbox name="Request Transfer To Hospital" IsChecked=../POLST/RequestTransferToHospitalOnly}}
+                      <strong style="padding-left: 3px;"> only if comfort needs cannot be met in current location.</strong>
                     </div>
                   </div>
+                  <b>Additional Orders: ______________________________</b>
                 </tr>
               </tbody>
             </table>
@@ -140,7 +205,7 @@
             <div class="fz-16">Check One</div>
           </td>
           <td>
-            <table class="striped">
+            <table class="width-100">
               <tbody>
                 <tr>
                   <div class="fz-24 background-dgrey p-5">
@@ -149,16 +214,21 @@
                   </div>
                 </tr>
                 <tr>
-                  <div class="p-5">
-                    <div class="cb">
-                      <input type="checkbox" disabled name="CPR" id="CPR" />
-                      <label for="CPR">Attempt CPR</label>
+                  <tr>
+                    <div class="p-5">
+                      <div class="cb">
+                       {{> checkbox name="Long-term Artificial Nutrition" IsChecked=../POLST/LongtermartificialNutrition}}
+                       <span class="cb">, including feeding tubes</span>
+                      </div>
+                      <div class="cb">
+                       {{> checkbox name="Trial Period Of Artificial Nutrition" IsChecked=../POLST/TrialPeriodOfArtificialNutrition}}
+                      </div>
+                      <div class="cb">
+                       {{> checkbox name="No Artificial Means Of Nutrition" IsChecked=../POLST/NoArtificialMeansOfNutrition}}
+                      </div>
+                       <b>Additional Orders: ______________________________</b>
                     </div>
-                    <div class="cb">
-                      <input type="checkbox" disabled name="CPR" id="CPR" />
-                      <label for="CPR">Do Not Attempt CPR</label>
-                    </div>
-                  </div>
+                  </tr>
                 </tr>
               </tbody>
             </table>
@@ -171,24 +241,184 @@
             <div class="fz-16">Check One</div>
           </td>
           <td>
-            <table class="striped">
+            <table class="">
+
               <tbody>
                 <tr>
-                  <div class="fz-24 background-dgrey p-5">
-                    <b>INFORMATION AND SIGNATURES:</b>
-                  </div>
+                  <td>
+                    <div class="fz-24 background-dgrey p-5">
+                      <b>INFORMATION AND SIGNATURES:</b>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
-                  <div class="p-5">
-                    <div class="cb">
-                      <input type="checkbox" disabled name="CPR" id="CPR" />
-                      <label for="CPR">Attempt CPR</label>
-                    </div>
-                    <div class="cb">
-                      <input type="checkbox" disabled name="CPR" id="CPR" />
-                      <label for="CPR">Do Not Attempt CPR</label>
-                    </div>
-                  </div>
+                  <td>
+                    <table>
+                      <col width="50%" />
+                      <col width="25%" />
+                      <col width="25%" />
+                      <tbody>
+                        <tr>
+                          <td>Discussed with:</td>
+                          <td>
+                            <div class="cb">
+                               {{> checkbox name="Patient (Patient Has Capacity)" IsChecked=../POLST/PatientHasCapacity}}
+                            </div>
+                          </td>
+                          <td>
+                            <div class="cb">
+                               {{> checkbox name="Legally Recognized Decisionmaker" IsChecked=../POLST/LegallyRecognizedDecisionmaker}}
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="frow justify-start">
+                              <div class="cb">
+                               {{> checkbox name="Advance Directive Dated" IsChecked=../POLST/AdvanceDirectiveDated}}
+                                </label>
+                              </div>
+                              <div class="date px-5 text-underline">Date comes here</div>
+                              <div>,available and reviewed -&gt; </div>
+                            </div>
+                            <div class="cb">
+                               {{> checkbox name="Advance Directive Not Available" IsChecked=../POLST/AdvanceDirectiveNotAvailable}}
+                              </label>
+                            </div>
+
+                            <div class="cb">
+                               {{> checkbox name="No Advance Directive" IsChecked=../POLST/NoAdvanceDirective}}
+                              </label>
+                            </div>
+
+                          </td>
+                          <td class="vat" colspan="2">
+                            <div class="text-bold">
+                              Healthcare Agent if named in Advance Directive:
+                            </div>
+                            <div class="name">
+                              <span>Name:</span>
+                              <span class="text-underline">Name</span>
+                            </div>
+                            <div class="phone">
+                              <span>Phone:</span>
+                              <span class="text-underline">Phone</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="3" class="background-dgrey">
+                            <div class="fz-16">
+                              <b>Signature Physician:</b><br />
+                              <span>My signature below indicates to the best of
+                                my knowledge that these orders are consistent
+                                with the patient’s medical condition and
+                                preferences.</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">Print Physician Name:</span>
+                            <span class="">{{../POLST/Physician/pyFullName}}</span>
+                          </td>
+                          <td>
+                            <div class="phone">
+                              <span>Phone:</span>
+                              <span class="">{{../POLST/Physician/pyPhoneNumber}}</span>
+                            </div>
+                          </td>
+
+                          <td>
+                            <div class="license">
+                              <span>License #:</span>
+                              <span class="">{{../POLST/Physician/LicenseNumber}}</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <div class="physian-signature">
+                              <span>Physician Signature:</span>
+                              <span class="">{{../POLST/Physician/PhysicianSignature}}</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="date">
+                              <span>Date:</span>
+                              <span class="">{{../POLST/Physician/SignatureDate}}</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="3" class="background-dgrey">
+                            <div class="fz-16">
+                              <b>Signature of Patient or Legally Recognized
+                                Decisionmaker:</b><br />
+                              <span>I am aware that this form is voluntary. By
+                                signing this form, the legally recognized
+                                decisionmaker acknowledges that this request
+                                regarding resuscitative measures is consistent
+                                with the known desires of, and with the best
+                                interest of, the patient who is the subject of
+                                the form.</span>
+                            </div>
+
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2">
+                            <div class="name">
+                              <span>Print Name:</span>
+                              <span class="">Name</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="relationship">
+                              <span>Relationship (write self if patient):</span>
+                              <span class="">Relationship</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <div class="signature">
+                              <span>Signature:</span>
+                              <span class="">Signature</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="date">
+                              <span>Date:</span>
+                              <span class="">Date</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="address">
+                              <span>Mailing Address (street/city/state/zip):</span>
+                              <span class="">Address</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="phone">
+                              <span>Phone:</span>
+                              <span class="">Phone</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="office-use-only">
+                              <span>Office Use Only:</span>
+                              <span class="">Office Use Only</span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+
                 </tr>
               </tbody>
             </table>
@@ -196,5 +426,7 @@
         </tr>
       </tbody>
     </table>
+
   </div>
 </section>
+{{/with}}
