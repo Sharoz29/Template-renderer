@@ -22,7 +22,7 @@ export async function createPdfFromHtml(htmlContent, options = {}) {
   // Generate the PDF and save it to the specified path
   const pdfBuffer = await page.pdf({
     format: "A4",
-    scale: 0.8,
+    scale: 0.7,
     printBackground: true,
     headerTemplate: `
       <div style="font-size:10px; width: 100%; text-align: center; margin-top: 10px;">
@@ -31,16 +31,16 @@ export async function createPdfFromHtml(htmlContent, options = {}) {
     `,
     footerTemplate: `
       <div style="font-size:10px; width: 100%; text-align: center; margin-bottom: 10px;">
-        Footer here
+        <span class="pageNumber"></span> / <span class="totalPages"></span>
       </div>
     `,
     displayHeaderFooter: true,
     preferCSSPageSize: false,
     margin: {
-      top: "20px",
-      bottom: "20px",
-      left: "10px",
-      right: "10px",
+      top: "1cm",
+      bottom: "1cm",
+      left: "3mm",
+      right: "3mm",
     },
     ...options,
   });

@@ -1800,7 +1800,7 @@ canvas:focus {
 
 @page {
   size: A4;
-  margin: 11mm 17mm 17mm 17mm;
+  margin: 10mm 3mm 10mm 3mm;
 }
 
 .cad-forms {
@@ -1830,12 +1830,6 @@ canvas:focus {
   }
   section:not(:last-of-type) {
     page-break-after: always;
-  }
-  .cad-forms {
-    zoom: 0.75;
-  }
-  #polist {
-    zoom: 0.5;
   }
   .frow .container-padding {
     padding: 0 !important;
