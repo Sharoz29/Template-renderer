@@ -11,7 +11,6 @@
             <div class="frow">
               {{!-- {{#each doctors}} --}}
               <div class="checkbox-container col-6-12">
-                - <label for="doctor-name">{{@root.SelectMD}}</label> --}}
                 <span class="md-id">{{@root.SelectMD}}</span>
               </div>
               {{!-- {{/each}} --}}
@@ -41,8 +40,8 @@
           <div class="agency p-10 mb-10 mb-20 ba">
             <div class="frow">
               <div class="item col-6-6">
-                <span class="label">Name of Agency </span>
-                <span class="value">{{NameofHealthAgency}}</span>
+                <span class="label">Name of Agency : </span>
+                <span class="value">{{@root.AdmissionOrders.NameofHealthAgency}}</span>
               </div>
               <div class="item col-6-6">
                  <h3 class="label">Home Health Service </h3>
@@ -80,7 +79,7 @@
               <div class="frow justify-start">
                 <div class="item col-6-6">
                   <span class="label">Lab(s) </span>
-                  <span class="value">Your value</span>
+                  <span class="value">_________</span>
                 </div>
                 {{#each @root.SelectedLabsOnReferal}}
                   <div class="item col-3-6" style="width: 50%">
