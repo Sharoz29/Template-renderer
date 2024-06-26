@@ -29,7 +29,9 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:focus, a:active {
+a:hover,
+a:focus,
+a:active {
   color: #0d0d0d;
   text-decoration: underline;
 }
@@ -1694,6 +1696,10 @@ canvas:focus {
   font-style: italic !important;
 }
 
+.text-bold {
+  font-weight: bold !important;
+}
+
 .cad-forms table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -1818,8 +1824,11 @@ canvas:focus {
 .cad-forms .pagebreakbefore {
   border-bottom: 1px dotted grey !important;
 }
-
 @media print {
+  #polist {
+    zoom: 50%;
+  }
+
   footer {
     position: fixed;
     bottom: 0;
