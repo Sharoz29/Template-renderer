@@ -192,6 +192,7 @@
                       <strong style="padding-left: 3px;"> only if comfort needs cannot be met in current location.</strong>
                     </div>
                   </div>
+                  <b>Additional Orders: ______________________________</b>
                 </tr>
               </tbody>
             </table>
@@ -216,13 +217,16 @@
                   <tr>
                     <div class="p-5">
                       <div class="cb">
-                        <input type="checkbox" disabled name="CPR" id="CPR" />
-                        <label for="CPR">Attempt CPR</label>
+                       {{> checkbox name="Long-term Artificial Nutrition" IsChecked=../POLST/LongtermartificialNutrition}}
+                       <span class="cb">, including feeding tubes</span>
                       </div>
                       <div class="cb">
-                        <input type="checkbox" disabled name="CPR" id="CPR" />
-                        <label for="CPR">Do Not Attempt CPR</label>
+                       {{> checkbox name="Trial Period Of Artificial Nutrition" IsChecked=../POLST/TrialPeriodOfArtificialNutrition}}
                       </div>
+                      <div class="cb">
+                       {{> checkbox name="No Artificial Means Of Nutrition" IsChecked=../POLST/NoArtificialMeansOfNutrition}}
+                      </div>
+                       <b>Additional Orders: ______________________________</b>
                     </div>
                   </tr>
                 </tr>
@@ -258,14 +262,12 @@
                           <td>Discussed with:</td>
                           <td>
                             <div class="cb">
-                              <input type="checkbox" disabled name="CPR" />
-                              <label for="CPR">Patient (Patient Has Capacity)</label>
+                               {{> checkbox name="Patient (Patient Has Capacity)" IsChecked=../POLST/PatientHasCapacity}}
                             </div>
                           </td>
                           <td>
                             <div class="cb">
-                              <input type="checkbox" disabled name="CPR" />
-                              <label for="CPR">Legally Recognized Decisionmaker</label>
+                               {{> checkbox name="Legally Recognized Decisionmaker" IsChecked=../POLST/LegallyRecognizedDecisionmaker}}
                             </div>
                           </td>
                         </tr>
@@ -273,23 +275,19 @@
                           <td>
                             <div class="frow justify-start">
                               <div class="cb">
-                                <input type="checkbox" disabled name="CPR" />
-                                <label for="CPR">Advanced Directive Dated
+                               {{> checkbox name="Advance Directive Dated" IsChecked=../POLST/AdvanceDirectiveDated}}
                                 </label>
                               </div>
-                              <div class="date px-5 text-underline">Date comes
-                                here</div>
+                              <div class="date px-5 text-underline">Date comes here</div>
                               <div>,available and reviewed -&gt; </div>
                             </div>
                             <div class="cb">
-                              <input type="checkbox" disabled name="CPR" />
-                              <label for="CPR">Advance Directive not available
+                               {{> checkbox name="Advance Directive Not Available" IsChecked=../POLST/AdvanceDirectiveNotAvailable}}
                               </label>
                             </div>
 
                             <div class="cb">
-                              <input type="checkbox" disabled name="CPR" />
-                              <label for="CPR">No Advance Directive
+                               {{> checkbox name="No Advance Directive" IsChecked=../POLST/NoAdvanceDirective}}
                               </label>
                             </div>
 
@@ -322,19 +320,19 @@
                         <tr>
                           <td>
                             <span class="name">Print Physician Name:</span>
-                            <span class="">Name here...</span>
+                            <span class="">{{../POLST/Physician/pyFullName}}</span>
                           </td>
                           <td>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="">Phone</span>
+                              <span class="">{{../POLST/Physician/pyPhoneNumber}}</span>
                             </div>
                           </td>
 
                           <td>
                             <div class="license">
                               <span>License #:</span>
-                              <span class="">License#</span>
+                              <span class="">{{../POLST/Physician/LicenseNumber}}</span>
                             </div>
                           </td>
                         </tr>
@@ -342,13 +340,13 @@
                           <td colspan="2">
                             <div class="physian-signature">
                               <span>Physician Signature:</span>
-                              <span class="">Signature...</span>
+                              <span class="">{{../POLST/Physician/PhysicianSignature}}</span>
                             </div>
                           </td>
                           <td>
                             <div class="date">
                               <span>Date:</span>
-                              <span class="">Date</span>
+                              <span class="">{{../POLST/Physician/SignatureDate}}</span>
                             </div>
                           </td>
                         </tr>
