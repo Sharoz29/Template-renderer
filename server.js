@@ -6,7 +6,15 @@ import { fileURLToPath } from "url";
 import { mockContext } from "./libs/mock.js";
 import axios from "axios";
 import { getToken } from "./libs/oauth.js";
+import {
+  createPdfFromHtml,
+  attachPdfToCase,
+  uploadPdfToPega,
+} from "./libs/pdf.js";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+let access_token = "";
 
 const app = express();
 
@@ -22,11 +30,66 @@ var jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+app.get("/attach-pdf/:id", async (req, res) => {
+  axios
+    .get(`http://localhost:3000/get-html/${req.params.id}`, {
+      headers: {
+        // htmlContent,
+        "Content-Type": "application/html",
+      },
+    })
+    .then((response) => createPdfFromHtml(response.data))
+    .then((pdfBuffer) => uploadPdfToPega(pdfBuffer, access_token))
+    .then((response) =>
+      attachPdfToCase(
+        `LCS-CALLADOC-WORK ${req.params.id}`,
+        response.ID,
+        access_token
+      )
+    )
+    .then((response) => {
+      console.log("PDF uploaded successfully");
+      res.send(response.data);
+    })
+    .catch((error) => {
+      console.log("Has Error:", error.message);
+      res.send(error);
+      // res?.error(error.message);
+    });
+});
+
+app.get("/get-pdf/:id", async (req, res) => {
+  axios
+    .get(`http://localhost:3000/get-html/${req.params.id}`, {
+      headers: {
+        // htmlContent,
+        "Content-Type": "application/html",
+      },
+    })
+    .then((response) =>
+      createPdfFromHtml(response.data, {
+        path: path.join(__dirname, "output.pdf"),
+        printBackground: true,
+      })
+    )
+    .then((pdfBuffer) => {
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
+      console.log("PDF created successfully");
+      res.send(pdfBuffer);
+    })
+    .catch((error) => {
+      console.log("Has Error:", error.message);
+      res.send(error);
+      // res?.error(error.message);
+    });
+});
+
 app.get("/get-html/:id", async (req, res) => {
-  const access_token = await getToken();
+  access_token = await getToken();
   // const access_token =
   //   "eyJraWQiOiJiOTk4YWY5YzJiOWY3MWI2ZDA3NGFmZThjMjUzN2JmOCIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJhdWQiOiJ1cm46MTQ5NjUwOTA1NjQwODExMzY1MzUiLCJzdWIiOiJBcnNsYW4uYW5zYXJpQGxvd2NvZGVzb2wuY29tIiwiYXBwX25hbWUiOiJDb21tb25UZXN0IiwibmJmIjoxNzE5MzkzMDMyLCJhcHBfdmVyc2lvbiI6IjAxLjAxLjAxIiwiaXNzIjoidXJuOndlYi5wZWdhMjMubG93Y29kZXNvbC5jby51ayIsImV4cCI6MTcxOTM5NjYzMiwiaWF0IjoxNzE5MzkzMDMyLCJqdGkiOiI0ZjQ2MDFkMDM3NWQ2ZjllZmQ5ZDE0MTkxMGIzNzU4MCIsIm9wZXJhdG9yX2FjY2VzcyI6IkNvbW1vblRlc3Q6QWRtaW4ifQ.NHjbBBP32bM8FSj21I4fA-sCTYRd1sdajLWixun0zQFIuhkMz_fYO5FystO_pRaejE76vxkxKqJAtgdKGv10P4aq_3jAx8wezHB76oDtXP6JYu87pRBLwO9MeFVxNuuRtqkiVlVAJv_n5fXNsIUGUMo77YcruIxPfILmbwZzm15z86J6Ez8C3obsQNGRkf4oykIeJHbjHW3dZN5Wl6MfI_Epd4xAAUqE1nlu58iSoTZQC3T0LO7N6_NQQdBrw7YhUOisz1jauJs9U2s_ugJj-ft99eIEfE4K_CbpaUZo81yU0NpfArkN_6ZjujA2sSljafjoIAXp3iX6W81FVMP1iDGmL6sSWomreQX61OMRairXvs-bpwMMEfEZoRbtH55i00fE_L3_3a-tsB1ePMPx-kx_Iyu3jAYk1jZCoFhJKdmad9Y--N1KUyUEUOqhcooLUFoCN0USZ7-OXh5zHOib_SoGFbq9DYDmvWF7XubnWWmaHyfUxUi3RJmRgLKsCkuadSZQTezfc_GIeN-cae8CsgNQ1wwiWz0ZBu4gkOmttIBNRA58tBMw4ftf9tJcWRns3G2e3MBVU2DVCN5a9DGdqIiROBiHRlcYK9WgHslt0ucjzuKZnsqmiRHSOFKz07jva49fKGnfv50urDxIob__PqHLCqaTeLDQchNQARn_F5k";
-  console.log(access_token);
+  // console.log(access_token);
 
   try {
     const response = await axios.get(
