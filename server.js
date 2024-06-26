@@ -122,6 +122,34 @@ app.get("/get-html/:id", async (req, res) => {
     const SelectedHomeBoundStatusOnTelemedicine =
       data.content.SelectedHomeBoundStatusOnTelemedicine;
     const SelectMD = data.content.SelectMD;
+    const SelectedActivitiesPermitted =
+      data.content.SelectedActivitiesPermitted;
+    const SelectedPastMedicalHistory = data.content.SelectedPastMedicalHistory;
+    const SelectedPastSurgicalHistory =
+      data.content.SelectedPastSurgicalHistory;
+    const SelectedRosGeneral = data.content.SelectedRosGeneral;
+    const SelectedRosHead = data.content.SelectedRosHead;
+    const SelectedRosNeckAxilliaBreasts =
+      data.content.SelectedRosNeckAxilliaBreasts;
+    const SelectedRosEyes = data.content.SelectedRosEyes;
+    const SelectedRosEars = data.content.SelectedRosEars;
+    const SelectedRosNose = data.content.SelectedRosNose;
+    const SelectedRosMouth = data.content.SelectedRosMouth;
+    const SelectedRosCardiovascular = data.content.SelectedRosCardiovascular;
+    const SelectedRosPulmonary = data.content.SelectedRosPulmonary;
+    const SelectedRosAbdomen = data.content.SelectedRosAbdomen;
+    const SelectedRosGenitourinary = data.content.SelectedRosGenitourinary;
+    const SelectedRosRectal = data.content.SelectedRosRectal;
+    const SelectedRosUpperExtremities =
+      data.content.SelectedRosUpperExtremities;
+    const SelectedLowerExtremities = data.content.SelectedLowerExtremities;
+    const SelectedRosSkin = data.content.SelectedRosSkin;
+    const SelectedRosNutrition = data.content.SelectedRosNutrition;
+    const SelectedRosMuscleSkeletal = data.content.SelectedRosMuscleSkeletal;
+    const SelectedRosEndocrine = data.content.SelectedRosEndocrine;
+    const SelectedRosPelvic = data.content.SelectedRosPelvic;
+    const SelectedRosNeurological = data.content.SelectedRosNeurological;
+    const SelectedRosMental = data.content.SelectedRosMental;
 
     res.render("home", {
       ...mockContext,
@@ -139,6 +167,30 @@ app.get("/get-html/:id", async (req, res) => {
       SelectedHomeBoundStatusOnFaceToFace,
       SelectedHomeBoundStatusOnTelemedicine,
       SelectMD,
+      SelectedActivitiesPermitted,
+      SelectedPastMedicalHistory,
+      SelectedPastSurgicalHistory,
+      SelectedRosGeneral,
+      SelectedRosHead,
+      SelectedRosNeckAxilliaBreasts,
+      SelectedRosEyes,
+      SelectedRosEars,
+      SelectedRosNose,
+      SelectedRosMouth,
+      SelectedRosCardiovascular,
+      SelectedRosPulmonary,
+      SelectedRosAbdomen,
+      SelectedRosGenitourinary,
+      SelectedRosRectal,
+      SelectedRosUpperExtremities,
+      SelectedLowerExtremities,
+      SelectedRosSkin,
+      SelectedRosNutrition,
+      SelectedRosMuscleSkeletal,
+      SelectedRosEndocrine,
+      SelectedRosPelvic,
+      SelectedRosNeurological,
+      SelectedRosMental,
     });
     // res.send(response.data);
   } catch (error) {
