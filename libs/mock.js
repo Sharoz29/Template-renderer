@@ -26,6 +26,10 @@ export const mockContext = {
     },
   ],
   allForms: [
+    "polst",
+    "medicationReconciliation",
+    "assignmentInsurance",
+    "annualWellness",
     "referalForm",
     "admissionOrders",
     "impressionPlan",
@@ -34,12 +38,16 @@ export const mockContext = {
     "teleMedicines",
   ],
   selectedForms: [
+    "medicationReconciliation",
+    "assignmentInsurance",
+    "annualWellness",
     "referalForm",
     "admissionOrders",
     "impressionPlan",
     "initialAssesment",
     "faceToFaceEncounter",
     "teleMedicines",
+    "polst",
   ],
   labReferences: [
     "CBC",
