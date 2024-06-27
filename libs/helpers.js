@@ -61,18 +61,19 @@ export function counter(index) {
   return index + 1;
 }
 
-export function genderChecker(gender, name) {
-  return gender === name;
+export function radioButtonChecker(option, name) {
+  return option === name;
 }
 
 export function allergiesChecker(allergies) {
   return allergies === "No Known Allergies";
 }
 export function checker(use, name) {
-  return name === "Yes" ? use === true || use === "true" : false;
+  return name === "Yes"
+    ? use === true || use === "true"
+    : use === false || use === "false";
 }
 export function dailyUseChecker(frequency, name) {
-  console.log(frequency);
   return frequency === name;
 }
 export const helpers = {
@@ -85,7 +86,7 @@ export const helpers = {
   isTrue,
   copyTelemedecineToFaceToFace,
   counter,
-  genderChecker,
+  radioButtonChecker,
   allergiesChecker,
   checker,
   dailyUseChecker,
