@@ -49,7 +49,9 @@ app.get("/attach-pdf/:id", async (req, res) => {
     )
     .then((response) => {
       console.log("PDF uploaded successfully");
-      res.send(response.data);
+      res.send(
+        `<h2 style="{text-align: center}">PDF CREATED AND ATTACHED IN PEGA CASE ID: ${req.params.id}</h2>`
+      );
     })
     .catch((error) => {
       console.log("Has Error:", error.message);
