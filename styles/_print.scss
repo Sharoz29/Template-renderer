@@ -10,13 +10,8 @@
   }
   section {
     margin-top: 30px;
-    border-bottom: 1px dotted grey !important;
+    border-bottom: 1px dotted grey;
   }
-
-  .pagebreakafter,
-  .pagebreakbefore {
-    border-bottom: 1px dotted grey !important;
-  } /* page-break-after works, as well */
 }
 
 @media print {
@@ -32,9 +27,9 @@
   section:not(:last-of-type) {
     page-break-after: always;
   }
-  // .cad-forms {
-  //   zoom: 0.75;
-  // }
+  .cad-forms {
+    background-color: #fff;
+  }
 
   // #polist {
   //   zoom: 0.5;
@@ -50,6 +45,11 @@
   .pagebreakbefore,
   section {
     border-bottom: none !important;
+    background-color: inherit !important;
+    box-shadow: none !important;
+    margin: 20px 10px !important;
+    padding: 0px !important;
+    zoom: 0.8;
   } /* page-break-after works, as well */
   .pagebreakbefore {
     page-break-before: always;

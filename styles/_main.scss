@@ -1,4 +1,14 @@
 .cad-forms {
+  // Create each section as a card with box-shadow with min-height of a screen.
+  background-color: #333;
+  section {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    margin: 30px;
+    padding: 10px;
+    min-height: 100vh;
+  }
   h2 {
     text-transform: uppercase;
   }

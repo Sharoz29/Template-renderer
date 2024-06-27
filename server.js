@@ -47,10 +47,15 @@ app.get("/attach-pdf/:id", async (req, res) => {
         access_token
       )
     )
-    .then((response) => {
+    .then(async (response) => {
       console.log("PDF uploaded successfully");
       res.send(
-        `<h2 style="{text-align: center}">PDF CREATED AND ATTACHED IN PEGA CASE ID: ${req.params.id}</h2>`
+        await HBS.renderView(
+          path.resolve(__dirname, "./views", "success.hbs"),
+          {
+            caseID: `${req.params.id}`,
+          }
+        )
       );
     })
     .catch((error) => {
@@ -201,45 +206,16 @@ app.get("/get-html/:id", async (req, res) => {
   }
 });
 
-// app.get("/yell", (req, res) => {
-//   res.render("yell", {
-//     title: "Yell",
-
-//     // This `message` will be transformed by our `yell()` helper.
-//     message: "hello world",
-//   });
-// });
-
-// app.get("/exclaim", (req, res) => {
-//   res.render("yell", {
-//     title: "Exclaim",
-//     message: "hello world",
-
-//     // This overrides _only_ the default `yell()` helper.
-//     helpers: {
-//       yell(msg) {
-//         return msg + "!!!";
-//       },
-//     },
-//   });
-// });
-
-// app.get("/echo/:message?", exposeTemplates, (req, res) => {
-//   res.render("echo", {
-//     title: "Echo",
-//     message: req.params.message,
-
-//     // Overrides which layout to use, instead of the defaul "main" layout.
-//     layout: "shared-templates",
-
-//     partials: Promise.resolve({
-//       echo: hbs.handlebars.compile("<p>ECHO: {{message}}</p>"),
-//     }),
-//   });
-// });
-
 app.use(express.static("dist"));
 
 app.listen(3000, () => {
   console.log("express-handlebars example server listening on: 3000");
 });
+
+// HBS.render("footer", {
+//   title: "My Footer",
+// }).then((template) => console.log("Footer:", template));
+
+// HBS.render(path.resolve(__dirname, "./views", "header.hbs"), {
+//   title: "My Header",
+// }).then((template) => console.log("Header:", template));
