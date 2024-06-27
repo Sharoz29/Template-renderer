@@ -1,3 +1,4 @@
+{{#with AnnualWellnessForm}}
 <section class="frow" id="annual-wellness-form">
   <div class="container-padding width-100">
     <div class="content">
@@ -31,21 +32,21 @@
                 <span>Special Diet</span>
               </div>
               <div class="cb">
-                <label for="name">YES</label>
+                {{> checkbox name="Yes" IsChecked=(checker SpecialDiet "Yes")}}
               </div>
               <div class="cb">
-                <label for="name">NO</label>
+                {{> checkbox name="No" IsChecked=(checker SpecialDiet "No")}}
               </div>
             </td>
             <td>Description:</td>
             <td>
               <div class="cb">
-                <label for="name">Diabetic</label>
+                {{> checkbox name="Diabetic" IsChecked=Diabetic}}
               </div>
             </td>
             <td colspan="3">
               <div class="cb">
-                <label for="name">Dash</label>
+                {{> checkbox name="Dash" IsChecked=Dash}}
               </div>
             </td>
           </tr>
@@ -53,17 +54,17 @@
             <td>Cognitive Impairment</td>
             <td>
               <div class="cb">
-                <label for="name">None</label>
+                 {{> checkbox name="None" IsChecked=(radioButtonChecker CognitiveImpairment "None")}}
               </div>
             </td>
             <td>
               <div class="cb">
-                <label for="name">Dementia</label>
+                 {{> checkbox name="Dimentia" IsChecked=(radioButtonChecker CognitiveImpairment "Dimentia")}}
               </div>
             </td>
             <td colspan="3">
               <div class="cb">
-                <label for="name">Mild Memory Loss</label>
+                 {{> checkbox name="Mild Memory Loss" IsChecked=(radioButtonChecker CognitiveImpairment "Mild Memory Loss")}}
               </div>
             </td>
           </tr>
@@ -77,10 +78,10 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker FeltDepressedhopelessOverTheLast2Weeks "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker FeltDepressedhopelessOverTheLast2Weeks "No")}}
                 </div>
               </div>
             </td>
@@ -98,18 +99,41 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker LittleOrNoPleasureInDoingThingsOverTheLast2Weeks "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker LittleOrNoPleasureInDoingThingsOverTheLast2Weeks "No")}}
                 </div>
               </div>
             </td>
             <td colspan="2">
-              <div class="frow justify-start">Evaluation/Referrals:</div>
-              <div class="frow justify-start">Schedule Appointments:</div>
+              <div class="frow justify-start">
+                <span>
+                  Evaluation/Referrals:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{LittleOrNoPleasureEvaluationReferrals}}
+                </span>
+              </div>
+              <div class="frow justify-start">
+                <span>
+                  Schedule Appointments:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{LittleOrNoPleasureScheduleAppointments}}
+                </span>
+              </div>
             </td>
-            <td>Notes:</td>
+            <td>
+              <div class="frow justify-start">
+                <span>
+                 Notes:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{LittleOrNoPleasureNotes}}
+                </span>
+              </div>
+            </td>
           </tr>
 
           <tr>
@@ -120,18 +144,41 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker TroubleHearingTelevisionAndAudioWhenOthersDoNot "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker TroubleHearingTelevisionAndAudioWhenOthersDoNot "No")}}
                 </div>
               </div>
             </td>
             <td colspan="2">
-              <div class="frow justify-start">Evaluation/Referrals:</div>
-              <div class="frow justify-start">Schedule Appointments:</div>
+              <div class="frow justify-start">
+                <span>
+                  Evaluation/Referrals:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{TroubleHearingEvaluationReferrals}}
+                </span>
+              </div>
+              <div class="frow justify-start">
+                <span>
+                  Schedule Appointments:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{TroubleHearingScheduleAppointments}}
+                </span>
+              </div>
             </td>
-            <td>Notes:</td>
+            <td>
+              <div class="frow justify-start">
+                <span>
+                 Notes:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{TroubleHearingNotes}}
+                </span>
+              </div>
+            </td>
           </tr>
           <tr>
             <td></td>
@@ -139,18 +186,41 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker StrainOrStruggleToHearunderstandConversations "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker StrainOrStruggleToHearunderstandConversations "No")}}
                 </div>
               </div>
             </td>
             <td colspan="2">
-              <div class="frow justify-start">Evaluation/Referrals:</div>
-              <div class="frow justify-start">Schedule Appointments:</div>
+             <div class="frow justify-start">
+                <span>
+                  Evaluation/Referrals:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{StrainEvaluationReferrals}}
+                </span>
+              </div>
+             <div class="frow justify-start">
+                <span>
+                  Schedule Appointments:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{StrainScheduleAppointments}}
+                </span>
+              </div>
             </td>
-            <td>Notes:</td>
+            <td>
+              <div class="frow justify-start">
+                <span>
+                 Notes:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{StrainNotes}}
+                </span>
+              </div>
+            </td>
           </tr>
 
           <tr>
@@ -161,18 +231,41 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker ThrowRugsPoorLightingOrSlipperyBathtubshowerAtHome "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker ThrowRugsPoorLightingOrSlipperyBathtubshowerAtHome "No")}}
                 </div>
               </div>
             </td>
             <td colspan="2">
-              <div class="frow justify-start">Evaluation/Referrals:</div>
-              <div class="frow justify-start">Schedule Appointments:</div>
+             <div class="frow justify-start">
+                <span>
+                  Evaluation/Referrals:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{ThrowRugsEvaluationReferrals}}
+                </span>
+              </div>
+              <div class="frow justify-start">
+                <span>
+                  Schedule Appointments:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{ThrowRugsScheduleAppointments}}
+                </span>
+              </div>
             </td>
-            <td>Notes:</td>
+            <td>
+              <div class="frow justify-start">
+                <span>
+                 Notes:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{ThrowRugsNotes}}
+                </span>
+              </div>
+            </td>
           </tr>
           <tr>
             <td></td>
@@ -183,18 +276,41 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker LackOfGrabBarsbathroomsHandrailsOnStairsAndStepAtHom "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker LackOfGrabBarsbathroomsHandrailsOnStairsAndStepAtHom "No")}}
                 </div>
               </div>
             </td>
             <td colspan="2">
-              <div class="frow justify-start">Evaluation/Referrals:</div>
-              <div class="frow justify-start">Schedule Appointments:</div>
+              <div class="frow justify-start">
+                <span>
+                  Evaluation/Referrals:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{LackOfGrabBarsEvaluationReferrals}}
+                </span>
+              </div>
+              <div class="frow justify-start">
+                <span>
+                  Schedule Appointments:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{LackOfGrabBarsScheduleAppoinments}}
+                </span>
+              </div>
             </td>
-            <td>Notes:</td>
+            <td>
+              <div class="frow justify-start">
+                <span>
+                  Notes:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{LackOfGrabBarsNotes}}
+                </span>
+              </div>
+            </td>
           </tr>
 
           <tr>
@@ -205,18 +321,41 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker UnsteadyAndTakeLongerTha30SecondsToGetUpAndGo "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker UnsteadyAndTakeLongerTha30SecondsToGetUpAndGo "No")}}
                 </div>
               </div>
             </td>
             <td colspan="2">
-              <div class="frow justify-start">Evaluation/Referrals:</div>
-              <div class="frow justify-start">Schedule Appointments:</div>
+              <div class="frow justify-start">
+                <span>
+                  Evaluation/Referrals:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{UnsteadyEvaluationReferrals}}
+                </span>
+              </div>
+              <div class="frow justify-start">
+                <span>
+                  Schedule Appointments:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{UnsteadyScheduleAppoinments}}
+                </span>
+              </div>
             </td>
-            <td>Notes:</td>
+           <td>
+              <div class="frow justify-start">
+                <span>
+                  Notes:
+                </span>
+                <span style="padding-left: 10px;">
+                  {{UnsteadyNotes}}
+                </span>
+              </div>
+            </td>
           </tr>
 
           <tr>
@@ -227,7 +366,7 @@
             </td>
             <td>PATIENT SIGNATURE</td>
             <td colspan="2"></td>
-            <td>DATE</td>
+            <td>{{DATE}}</td>
           </tr>
 
           <tr>
@@ -236,10 +375,10 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker PatientsHaveAlradyExecutedAndAdvanceDirective "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker PatientsHaveAlradyExecutedAndAdvanceDirective "No")}}
                 </div>
               </div>
             </td>
@@ -255,10 +394,10 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker IfNoPatientWasGivenAnOppurtunityToExecuteAnAdvanceDi "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker IfNoPatientWasGivenAnOppurtunityToExecuteAnAdvanceDi "No")}}
                 </div>
               </div>
             </td>
@@ -293,10 +432,10 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker PhysicianHaveCompletedAPhysicianOrder "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker PhysicianHaveCompletedAPhysicianOrder "No")}}
                 </div>
               </div>
             </td>
@@ -337,12 +476,27 @@
               <td>
                 Medicare patients at risk for developing osteoporosis
               </td>
-              <td></td>
-              <td></td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
+                  <div class="cb">
+                    {{> checkbox name="Yes" IsChecked=(checker BoneMassMeasurements.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker BoneMassMeasurements.PreviouslyScreening "No")}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{BoneMassMeasurements.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
               <td>
                 <div class="frow justify-start gutters">
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="NEEDS" IsChecked=BoneMassMeasurements.ScreeningRequired}}
                   </div>
                 </div>
               </td>
@@ -358,12 +512,27 @@
               <td>
                 All asymptomatic Medicare patients (12-hour fast is required)
               </td>
-              <td></td>
-              <td></td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
+                  <div class="cb">
+                    {{> checkbox name="Yes" IsChecked=(checker CardiovascularScreeningBloodTests.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker CardiovascularScreeningBloodTests.PreviouslyScreening "No")}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{CardiovascularScreeningBloodTests.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
               <td>
                 <div class="frow justify-start gutters">
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="NEEDS" IsChecked=CardiovascularScreeningBloodTests.ScreeningRequired}}
                   </div>
                 </div>
               </td>
@@ -392,12 +561,27 @@
                 barium enema as an alternative to a high risk screening
                 colonoscopy if the patient is at high risk
               </td>
-              <td></td>
-              <td></td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
+                  <div class="cb">
+                    {{> checkbox name="Yes" IsChecked=(checker ColorectalCancerScreeningFlexibleSigmoidoscopy.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker ColorectalCancerScreeningFlexibleSigmoidoscopy.PreviouslyScreening "No")}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{ColorectalCancerScreeningFlexibleSigmoidoscopy.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
               <td>
                 <div class="frow justify-start gutters">
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="NEEDS" IsChecked=ColorectalCancerScreeningFlexibleSigmoidoscopy.ScreeningRequired}}
                   </div>
                 </div>
               </td>
@@ -415,12 +599,27 @@
                 those diagnosed with pre-diabetes (patients previously diagnosed
                 with diabetes aren't eligible)
               </td>
-              <td></td>
-              <td></td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
+                  <div class="cb">
+                    {{> checkbox name="Yes" IsChecked=(checker DiabetesScreeningTests.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker DiabetesScreeningTests.PreviouslyScreening "No")}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{DiabetesScreeningTests.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
               <td>
                 <div class="frow justify-start gutters">
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="NEEDS" IsChecked=DiabetesScreeningTests.ScreeningRequired}}
                   </div>
                 </div>
               </td>
@@ -438,12 +637,27 @@
                 recently diagnosed with diabetes or previously diagnosed with
                 diabetes (must certify DSMT need)
               </td>
-              <td></td>
-              <td></td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
+                  <div class="cb">
+                    {{> checkbox name="Yes" IsChecked=(checker DiabetesSelfManagementTrainingDSMT.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker DiabetesSelfManagementTrainingDSMT.PreviouslyScreening "No")}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{DiabetesSelfManagementTrainingDSMT.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
               <td>
                 <div class="frow justify-start gutters">
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="NEEDS" IsChecked=DiabetesSelfManagementTrainingDSMT.ScreeningRequired}}
                   </div>
                 </div>
               </td>
@@ -459,12 +673,27 @@
                 African-Americans age 50 andup, or Hispanic-Americans age 65 and
                 up
               </td>
-              <td></td>
-              <td></td>
+               <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
+                  <div class="cb">
+                    {{> checkbox name="Yes" IsChecked=(checker GlaucomaScreening.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker GlaucomaScreening.PreviouslyScreening "No")}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{GlaucomaScreening.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
               <td>
                 <div class="frow justify-start gutters">
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="NEEDS" IsChecked=GlaucomaScreening.ScreeningRequired}}
                   </div>
                 </div>
               </td>
@@ -477,12 +706,27 @@
                 antigen test
               </td>
               <td>Male Medicare patients 50 and up</td>
-              <td></td>
-              <td></td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
+                  <div class="cb">
+                    {{> checkbox name="Yes" IsChecked=(checker ProstateCancerScreening.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker ProstateCancerScreening.PreviouslyScreening "No")}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{ProstateCancerScreening.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
               <td>
                 <div class="frow justify-start gutters">
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="NEEDS" IsChecked=ProstateCancerScreening.ScreeningRequired}}
                   </div>
                 </div>
               </td>
@@ -495,12 +739,27 @@
                 test within past 3 years; every 24 months for all other women)
               </td>
               <td>Female Medicare patients</td>
-              <td></td>
-              <td></td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
+                  <div class="cb">
+                    {{> checkbox name="Yes" IsChecked=(checker ScreeningPAPTestsAndPelvicExamination.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker ScreeningPAPTestsAndPelvicExamination.PreviouslyScreening "No")}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{ScreeningPAPTestsAndPelvicExamination.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
               <td>
                 <div class="frow justify-start gutters">
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="NEEDS" IsChecked=ScreeningPAPTestsAndPelvicExamination.ScreeningRequired}}
                   </div>
                 </div>
               </td>
@@ -509,15 +768,31 @@
             <tr>
               <td><b>Screening mammography</b> (annually)</td>
               <td>All female patients 40 or older</td>
-              <td></td>
-              <td></td>
               <td>
-                <div class="frow justify-start gutters">
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="Yes" IsChecked=(checker ScreeningMammography.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker ScreeningMammography.PreviouslyScreening "No")}}
                   </div>
                 </div>
               </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{ScreeningMammography.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="frow justify-start gutters">
+                  <div class="cb">
+                    {{> checkbox name="NEEDS" IsChecked=ScreeningMammography.ScreeningRequired}}
+                  </div>
+                </div>
+              </td>
+
             </tr>
 
             <tr>
@@ -533,12 +808,27 @@
                 since previous dose; for hepatitis B, if patient is medium/high
                 risk
               </td>
-              <td></td>
-              <td></td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened: </span>
+                  <div class="cb">
+                    {{> checkbox name="Yes" IsChecked=(checker Vaccines.PreviouslyScreening "Yes")}}
+                  </div>
+                  <div class="cb">
+                    {{> checkbox name="No" IsChecked=(checker Vaccines.PreviouslyScreening "No")}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
+                  <span class="cb">Previously Screened On: </span>
+                  <span class="cb">{{Vaccines.PreviouslyScreeningDate}}</span>
+                </div>
+              </td>
               <td>
                 <div class="frow justify-start gutters">
                   <div class="cb">
-                    <label for="name">NEEDS</label>
+                    {{> checkbox name="NEEDS" IsChecked=Vaccines.ScreeningRequired}}
                   </div>
                 </div>
               </td>
@@ -549,3 +839,4 @@
     </div>
   </div>
 </section>
+{{/with}}
