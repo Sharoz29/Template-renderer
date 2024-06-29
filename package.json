@@ -5,8 +5,17 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "watch:scss": "node-sass -w styles/ -r --output-style expanded -o dist/css/",
-    "watch:server": "nodemon server.js"
+    "watch:scss": "node-sass -w styles/ -r --output-style expanded -o public/css/",
+    "watch:server": "nodemon server.js",
+    "build:docker": "docker build -t lcs-reports:1.0.4 .",
+    "tag:docker": "docker tag lcs-reports:1.0.4 ansaries/lcs-reports:1.0.6",
+    "push:docker": "docker push ansaries/lcs-reports:1.0.6",
+    "dockerize": "npm run build:docker && npm run tag:docker && npm run push:docker",
+    "build:deploy": "npm run dockerize && kubectl apply -f ./k8s.yaml -n pega23",
+    "deploy": "kubectl apply -f ./k8s.yaml -n pega23",
+    "preinstall": "npm install -g nodemon",
+    "start": "nodemon server.js",
+    "postinstall": "npm run start"
   },
   "author": "arslan.ansari@lowcodesol.com",
   "license": "ISC",
@@ -19,5 +28,8 @@
     "nodemon": "^3.1.4",
     "orbitcss": "^2.0.0",
     "puppeteer": "^22.12.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
   }
 }

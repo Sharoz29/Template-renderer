@@ -17,7 +17,7 @@
         <tr>
           <td colspan="1">
             <div class="frow">
-              <img src="http://localhost:3000/assets/polst.jpeg" alt="polst" />
+              <img src="{{hostUrl}}/reports/assets/polst.jpeg" alt="polst" />
               <div class="col-1-1 text-center">EMSA #111B</div>
               <div class="col-1-1 text-center">(Effective 10/1/2014)</div>
             </div>
@@ -101,7 +101,7 @@
         </tr>
       </tbody>
     </table>
-    <table>
+    <table class="no-padding">
       <tbody>
         <!-- A -->
         <tr>
@@ -426,7 +426,52 @@
         </tr>
       </tbody>
     </table>
-
+    <div class="signatures mt-60 mb-10">
+      <div class="frow provider justify-start mb-60">
+        <div class="frow title col-6-12 justify-start">
+          <div class="col-4-12">
+            <span> Provider Name: </span>
+          </div>
+          <div class="col-8-12">
+            <span class="name text-underline px-30">Name</span>
+          </div>
+        </div>
+        <div class="signature col-6-12 bb">
+          Signature:
+          <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+        </div>
+        <div class="frow date col-6-12 justify-start">
+          <div class="col-4-12">
+            <span> Date: </span>
+          </div>
+          <div class="col-8-12">
+            <span class="name text-underline px-30">Date here</span>
+          </div>
+        </div>
+      </div>
+      <div class="frow medical-provider justify-start">
+        <div class="frow title col-6-12">
+          <div class="col-4-12">
+            <span> Physician Name: </span>
+          </div>
+          <div class="col-8-12">
+            <span class="name text-underline px-30">Name</span>
+          </div>
+        </div>
+        <div class="signature col-6-12 bb">
+          Signature:
+          <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+        </div>
+        <div class="frow date col-6-12">
+          <div class="col-4-12">
+            <span> Date: </span>
+          </div>
+          <div class="col-8-12">
+            <span class="name text-underline px-30">Date here</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 {{/with}}

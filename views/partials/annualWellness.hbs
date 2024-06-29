@@ -1,11 +1,11 @@
-{{#with AnnualWellnessForm}}
 <section class="frow" id="annual-wellness-form">
   <div class="container-padding width-100">
     <div class="content">
       <div class="container centered mb-20">
-        <h2 class="text-center m-auto">ANNUAL WELLNESS FORM</h2>
+        {{> formTitle }}
       </div>
 
+      {{#with AnnualWellnessForm}}
       <table class="striped width-100">
         <col width="16.6%" />
         <col width="16.6%" />
@@ -836,7 +836,9 @@
           </tbody>
         </table>
       </div>
+      {{/with}}
+
+
     </div>
   </div>
 </section>
-{{/with}}

@@ -3,14 +3,14 @@
   rel="stylesheet"
 />
 <style>
-  body { text-align: center; padding: 40px 0; background: #EBF0F5; display:
-  flex; } h1 { color: #88B04B; font-family: "Nunito Sans", "Helvetica Neue",
-  sans-serif; font-weight: 900; font-size: 40px; margin-bottom: 10px; } p {
-  color: #404F5E; font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
-  font-size:20px; margin: 0; } i { color: #9ABC66; font-size: 100px;
-  line-height: 200px; margin-left:-15px; } .card { background: white; padding:
-  60px; border-radius: 4px; box-shadow: 0 2px 3px #C8D0D8; display:
-  inline-block; margin: auto; }
+  main { text-align: center; padding: 40px 0; background: #EBF0F5; display:
+  flex; min-height: 100%; min-width: 100%; } h1 { color: #88B04B; font-family:
+  "Nunito Sans", "Helvetica Neue", sans-serif; font-weight: 900; font-size:
+  40px; margin-bottom: 10px; } p { color: #404F5E; font-family: "Nunito Sans",
+  "Helvetica Neue", sans-serif; font-size:20px; margin: 0; } i { color: #9ABC66;
+  font-size: 100px; line-height: 200px; margin-left:-15px; } .card { background:
+  white; padding: 60px; border-radius: 4px; box-shadow: 0 2px 3px #C8D0D8;
+  display: inline-block; margin: auto; }
 </style>
 <div class="card">
   <div
@@ -24,11 +24,13 @@
     {{caseID}}
     report has been prepared and uploaded successfully<br />
     Please
-    <a href="http://localhost:3000/get-html/{{caseID}}">click here</a>
-    to download the report or
+    <a href="{{hostUrl 'web'}}/reports/get-html/{{caseID}}">click here</a>
+    to view the report or
     <a
-      href="https://web.pega23.lowcodesol.co.uk/prweb/app/call-a-doctor/book-an-appointments/{{caseID}}?portal=WebPortal"
+      href="{{hostUrl
+        'web'
+      }}/prweb/app/call-a-doctor/book-an-appointments/{{caseID}}?portal=WebPortal"
       _target="blank"
-    >view the report in the pega</a>.
+    >view and download the report in pega</a>.
   </p>
 </div>

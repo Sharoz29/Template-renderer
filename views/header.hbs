@@ -1,3 +1,26 @@
-<div class="header">
-  <h1>{{title}}</h1>
+<div
+  style="font-size:10px; display:flex; justify-content: space-between; align-items: flex-end; width: calc(100% - 40px); margin: 5px 20px; color: #666"
+>
+  <div style="flex: 1 1 33%;">
+    <b>Patient Name:</b>
+    <span>
+      {{SelectedPatientData.pyFullName}}
+      --
+      {{SelectedPatientData.PatAccountID}}
+    </span>
+  </div>
+
+  <div style="flex: 1 1 33%; text-align: center;">
+    <b>DOB:</b>
+    <span>
+      {{formatDate SelectedPatientData.pxCreateDateTime}}
+    </span>
+  </div>
+
+  <div style="flex: 1 1 33%; text-align: end">
+    <span>
+      <b>Date of Service: </b>
+      {{formatDate SelectedPatientData.pxCommitDateTime}}
+    </span>
+  </div>
 </div>

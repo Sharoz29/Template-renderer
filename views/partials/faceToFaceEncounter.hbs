@@ -1,12 +1,12 @@
   
+  {{#with FaceToFace}}
 
   <section class="frow" id="face-to-face">
         <div class="container-padding width-100">
           <div class="content">
             <div class="container centered mb-20">
-               {{heading .}}
+               {{>formTitle ..}}
             </div>
-          {{#with FaceToFace}}
             <div class="frow">
               <div class="frow col-1-2 justify-start gutters">
                 <strong>Home Health:</strong>
@@ -163,7 +163,7 @@
               </div>
             </div>
 
-            {{/with}}
           </div>
         </div>
   </section>
+{{/with}}

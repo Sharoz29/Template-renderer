@@ -1928,7 +1928,7 @@ canvas:focus {
   text-align: left;
 }
 
-.cad-forms table.no-padding td {
+.cad-forms table.no-padding tbody:first-child > tr > td {
   padding: 0;
 }
 
@@ -1942,6 +1942,19 @@ canvas:focus {
 
 .cad-forms table.striped tr:hover {
   background-color: #f1f1f1;
+}
+
+.header .patient-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.header .patient-dob {
+  font-size: 1em;
+}
+
+.header .date-of-hs {
+  font-size: 1em;
 }
 
 .cad-forms {
@@ -2030,11 +2043,6 @@ canvas:focus {
   cursor: not-allowed;
 }
 
-@page {
-  size: A4;
-  margin: 10mm 3mm 10mm 3mm;
-}
-
 .cad-forms footer {
   font-size: 9px;
   color: #f00;
@@ -2047,10 +2055,6 @@ canvas:focus {
 }
 
 @media print {
-  footer {
-    position: fixed;
-    bottom: 0;
-  }
   section:not(:last-of-type) {
     page-break-after: always;
   }
@@ -2066,7 +2070,7 @@ canvas:focus {
     border-bottom: none !important;
     background-color: inherit !important;
     box-shadow: none !important;
-    margin: 20px 10px !important;
+    margin: 40px 10px !important;
     padding: 0px !important;
     zoom: 0.8;
   }

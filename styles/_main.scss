@@ -1,3 +1,15 @@
+.header {
+  .patient-name {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  .patient-dob {
+    font-size: 1em;
+  }
+  .date-of-hs {
+    font-size: 1em;
+  }
+}
 .cad-forms {
   // Create each section as a card with box-shadow with min-height of a screen.
   background-color: #333;
@@ -9,6 +21,7 @@
     padding: 10px;
     min-height: 100vh;
   }
+
   h2 {
     text-transform: uppercase;
   }

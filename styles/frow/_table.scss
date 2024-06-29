@@ -13,7 +13,7 @@
     }
 
     &.no-padding {
-      td {
+      tbody:first-child > tr > td {
         padding: 0;
       }
     }
