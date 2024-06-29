@@ -1,12 +1,15 @@
 import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
+
+import { pegaBaseUrl } from "./global.js";
 
 // URL to get the token
-const url =
-  "https://web.pega23.lowcodesol.co.uk/prweb/PRRestService/oauth2/v1/token";
+const url = `${pegaBaseUrl}/prweb/PRRestService/oauth2/v1/token`;
 
 // Your client credentials
-const client_id = "14965090564081136535";
-const client_secret = "5038AA181BD81B18D9E6113E7668A9FD";
+const client_id = process.env.CLIENTID;
+const client_secret = process.env.CLIENTSECRET;
 
 // Prepare the data for the POST request
 const data = new URLSearchParams();
@@ -33,10 +36,6 @@ export async function getToken() {
     })
     .catch((error) => {
       // Handle error
-      console.error(
-        "Failed to get access token:",
-        error.response.status,
-        error.response.data
-      );
+      console.error("Failed to get access token:", error);
     });
 }

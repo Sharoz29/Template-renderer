@@ -1,12 +1,10 @@
-
-
+{{#with ReferralForm}}
 <section class="frow" id="referal-form">
         <div class="container-padding width-100">
           <div class="container centered mb-20">
-            {{heading .}}
+            {{>formTitle ..}}
           </div>
 
-{{#with ReferralForm}}
           <div class="mds p-10 mb-10 mb-20 ba">
             <div class="frow">
               {{!-- {{#each doctors}} --}}
@@ -136,9 +134,10 @@
               </div>
             </div>
           </div>
-{{/with}}
         </div>
 
 
 </section>
 
+
+{{/with}}

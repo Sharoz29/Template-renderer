@@ -1,11 +1,11 @@
-{{#with AnnualWellnessForm}}
 <section class="frow" id="annual-wellness-form">
   <div class="container-padding width-100">
     <div class="content">
       <div class="container centered mb-20">
-        <h2 class="text-center m-auto">ANNUAL WELLNESS FORM</h2>
+        {{> formTitle }}
       </div>
 
+      {{#with AnnualWellnessForm}}
       <table class="striped width-100">
         <col width="16.6%" />
         <col width="16.6%" />
@@ -364,7 +364,10 @@
               Patient consent: I consent to discuss end-of- life issues with my
               healthcare provider
             </td>
-            <td>PATIENT SIGNATURE</td>
+            <td>
+              <div>PATIENT SIGNATURE</div>
+              <img class="signature-img" src="{{getSignatureUrl @root 'patient'}}" alt="patient_signatures">
+            </td>
             <td colspan="2"></td>
             <td>{{DATE}}</td>
           </tr>
@@ -836,7 +839,9 @@
           </tbody>
         </table>
       </div>
+      {{/with}}
+
+
     </div>
   </div>
 </section>
-{{/with}}

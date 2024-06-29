@@ -1,4 +1,9 @@
 import { create } from "express-handlebars"; // "express-handlebars"
+import { hostUrl } from "./global.js";
+import * as path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export function camelToSentence(str) {
   if (!str) return;
@@ -76,6 +81,25 @@ export function checker(use, name) {
 export function dailyUseChecker(frequency, name) {
   return frequency === name;
 }
+
+export function formatDate(date) {
+  // return date as mm-dd-yy-hh-mm
+  return new Date(date).toLocaleDateString().replace(/\//g, "-");
+}
+
+export function getSignatureUrl(context, person) {
+  switch (person) {
+    case "patient":
+      return context?.AdmissionOrders?.PatientsSignature || "";
+    case "physician":
+      return context?.AdmissionOrders?.PhysiciansSignature || "";
+    case "witness":
+      return context?.AdmissionOrders?.WitnessSignature || "";
+    case "provider":
+      return context?.AdmissionOrders?.ProviderSignature || "";
+  }
+}
+
 export const helpers = {
   camelToSentence,
   formsToPrint,
@@ -90,6 +114,9 @@ export const helpers = {
   allergiesChecker,
   checker,
   dailyUseChecker,
+  formatDate,
+  hostUrl,
+  getSignatureUrl,
 };
 
 export const HBS = create({

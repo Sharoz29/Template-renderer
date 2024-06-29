@@ -1,9 +1,9 @@
-{{#with PrescribedDiagnosis}}
 <section class="frow" id="impression-plan">
   <div class="container-padding width-100">
     <div class="container mb-20">
-      <h2 class="text-center m-auto">Impression / Plan DX</h2>
+      {{> formTitle }}
     </div>
+    {{#with PrescribedDiagnosis}}
     <div class="col-1-1 cb fc m-auto">
       <input type="checkbox" name="tcare" id="tcare" />
       <label for="tcare">Transitional Care</label>
@@ -40,6 +40,6 @@
           similique voluptatem a.</span>
       </p>
     </div>
+    {{/with}}
   </div>
 </section>
-{{/with}}

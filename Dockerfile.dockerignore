@@ -1,0 +1,9 @@
+
+node_modules
+
+# Ignore the build directory
+build
+.vscode
+.idea
+
+
