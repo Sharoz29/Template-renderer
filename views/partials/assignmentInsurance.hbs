@@ -68,6 +68,8 @@
         </ol>
       </div>
       <table class="striped">
+        <col width="50%">
+        <col width="50%">
         <tbody>
           <tr>
             <td colspan="2">Name of Patient</td>
@@ -80,7 +82,12 @@
             <td colspan="2">Address</td>
           </tr>
           <tr>
-            <td>Signature of Patient:</td>
+            <td>
+              <div class="frow justify-start">
+                <b class="col-1-1">Signature of Patient:</b>
+                <img class="signature-img" src="{{getSignatureUrl @root 'patient'}}" alt="patient_signatures">
+              </div>
+            </td>
             <td>Date:</td>
           </tr>
         </tbody>

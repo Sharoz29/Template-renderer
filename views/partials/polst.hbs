@@ -23,7 +23,7 @@
             </div>
           </td>
           <td colspan="4">
-            <table>
+            <table >
               <col width="50%" />
               <col width="50%" />
               <tbody>
@@ -146,53 +146,51 @@
             <table class="width-100">
               <tbody>
                 <tr>
-                  <div class="fz-24 background-dgrey p-5">
+                 <td> <div class="fz-24 background-dgrey p-5">
                     <b>MEDICAL INTERVENTIONS:</b>
                     If patient is found with a pulse and/or is breathing.
-                  </div>
+                  </div></td>
                 </tr>
                 <tr>
-                  <div class="p-5" style="display:flex; flex-direction:column; gap: 10px;">
-                    <div style="display: flex; flex-direction:column;">
-                      <div style="display: flex; flex-direction:row; gap:7px">
+                  <td> <div class="p-5">
+                    <div>
+                      <div class="frow justify-start">
                         {{> checkbox name="Full Treatment" IsChecked=../POLST/FullTreatment}}
                         <strong class="cb">– primary goal of prolonging life by all medically effective means.</strong>
                       </div>
-                      <span class="cb" style="padding-left: 25px;">
+                      <span class="cb pl-25">
                         In addition to treatment described in Selective Treatment and Comfort-Focused Treatment use intubation, advanced airway interventions, mechanical ventilation, and cardioversion as indicated.
                       </span>
                     </div>
-                    <div style="align-self: center;">
+                    <div class="pl-25">
                       {{> checkbox name="Trial Period Of Full Treatment" IsChecked=../POLST/TrialPeriodOfFullTreatment}}
                     </div>
-                    <div style="display: flex; flex-direction:column;">
-                      <div style="display: flex; flex-direction:row; gap:7px">
+                    <div>
+                      <div class="frow justify-start">
                           {{> checkbox name="Selective Treatment" IsChecked=../POLST/SelectiveTreatment}}
                           <strong class="cb">– goal of treating medical conditions while avoiding burdensome measures.</strong>
                       </div>
-                      <span class="cb" style="padding-left: 25px;">
+                      <span class="cb pl-25">
                        In addition to treatment described in Comfort-Focused Treatment, use medical treatment, IV antibiotics, and IV fluids as indicated. Do not intubate. May use non-invasive positive airway pressure. Generally, avoid intensive care.
                       </span>
                     </div>
-                    <div style="display:flex; flex-direction:row; align-self: center;">
+                    <div class="frow justify-start pl-25">
                       {{> checkbox name="Request Transfer To Hospital" IsChecked=../POLST/RequestTransferToHospitalOnly}}
                       <strong style="padding-left: 3px;"> only if comfort needs cannot be met in current location.</strong>
                     </div>
-                    <div style="display: flex; flex-direction:column;">
-                      <div style="display: flex; flex-direction:row; gap:7px">
+                    <div>
+                      <div class="frow justify-start">
                         {{> checkbox name="Comfort-Focused Treatment" IsChecked=../POLST/ComfortFocusedTreatment}}
                         <strong class="cb">– primary goal of maximizing comfort.</strong>
                       </div>
-                      <span class="cb" style="padding-left: 25px;">
-                       Relieve pain and suffering with medication by any route as needed; use oxygen, suctioning, and manual treatment of airway obstruction. Do not use treatments listed in Full and Selective Treatment unless consistent with comfort goal.
-                      </span>
-                    </div>
-                    <div style="display:flex; flex-direction:row; align-self: center;">
-                      {{> checkbox name="Request Transfer To Hospital" IsChecked=../POLST/RequestTransferToHospitalOnly}}
-                      <strong style="padding-left: 3px;"> only if comfort needs cannot be met in current location.</strong>
+                      <div class="cb pl-25">
+                        <span>
+                        Relieve pain and suffering with medication by any route as needed; use oxygen, suctioning, and manual treatment of airway obstruction. Do not use treatments listed in Full and Selective Treatment unless consistent with comfort goal. <b>Request Transfer To Hospital only if comfort needs cannot be met in current location.</b>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <b>Additional Orders: ______________________________</b>
+                  <b>Additional Orders: ______________________________</b></td>
                 </tr>
               </tbody>
             </table>
@@ -206,15 +204,17 @@
           </td>
           <td>
             <table class="width-100">
+              <col width="50%" />
+              <col width="50%" />
               <tbody>
                 <tr>
-                  <div class="fz-24 background-dgrey p-5">
+                  <td colspan="2"><div class="fz-24 background-dgrey p-5">
                     <b>ARTIFICIALLY ADMINISTERED NUTRITION:</b>
                     Offer food by mouth if feasible and desired.
-                  </div>
+                  </div></td>
                 </tr>
                 <tr>
-                  <tr>
+                  <td>
                     <div class="p-5">
                       <div class="cb">
                        {{> checkbox name="Long-term Artificial Nutrition" IsChecked=../POLST/LongtermartificialNutrition}}
@@ -226,9 +226,11 @@
                       <div class="cb">
                        {{> checkbox name="No Artificial Means Of Nutrition" IsChecked=../POLST/NoArtificialMeansOfNutrition}}
                       </div>
-                       <b>Additional Orders: ______________________________</b>
                     </div>
-                  </tr>
+                  </td>
+                  <td class="va-top">
+                       <b>Additional Orders: ______________________________</b>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -292,7 +294,7 @@
                             </div>
 
                           </td>
-                          <td class="vat" colspan="2">
+                          <td class="va-top" colspan="2">
                             <div class="text-bold">
                               Healthcare Agent if named in Advance Directive:
                             </div>
@@ -354,7 +356,9 @@
                           <td colspan="3" class="background-dgrey">
                             <div class="fz-16">
                               <b>Signature of Patient or Legally Recognized
-                                Decisionmaker:</b><br />
+                                Decisionmaker:</b>
+                              
+                              <br />
                               <span>I am aware that this form is voluntary. By
                                 signing this form, the legally recognized
                                 decisionmaker acknowledges that this request
@@ -383,9 +387,9 @@
                         </tr>
                         <tr>
                           <td colspan="2">
-                            <div class="signature">
-                              <span>Signature:</span>
-                              <span class="">Signature</span>
+                            <div class="frow justify-start">
+                              <span class="col-1-1">Signature:</span>
+                              <img class="signature-img" src="{{getSignatureUrl @root 'patient'}}" alt="patient_signatures">
                             </div>
                           </td>
                           <td>
@@ -421,57 +425,12 @@
 
                 </tr>
               </tbody>
+
             </table>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="signatures mt-60 mb-10">
-      <div class="frow provider justify-start mb-60">
-        <div class="frow title col-6-12 justify-start">
-          <div class="col-4-12">
-            <span> Provider Name: </span>
-          </div>
-          <div class="col-8-12">
-            <span class="name text-underline px-30">Name</span>
-          </div>
-        </div>
-        <div class="signature col-6-12 bb">
-          Signature:
-          <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
-        </div>
-        <div class="frow date col-6-12 justify-start">
-          <div class="col-4-12">
-            <span> Date: </span>
-          </div>
-          <div class="col-8-12">
-            <span class="name text-underline px-30">Date here</span>
-          </div>
-        </div>
-      </div>
-      <div class="frow medical-provider justify-start">
-        <div class="frow title col-6-12">
-          <div class="col-4-12">
-            <span> Physician Name: </span>
-          </div>
-          <div class="col-8-12">
-            <span class="name text-underline px-30">Name</span>
-          </div>
-        </div>
-        <div class="signature col-6-12 bb">
-          Signature:
-          <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
-        </div>
-        <div class="frow date col-6-12">
-          <div class="col-4-12">
-            <span> Date: </span>
-          </div>
-          <div class="col-8-12">
-            <span class="name text-underline px-30">Date here</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 {{/with}}

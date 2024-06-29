@@ -87,6 +87,19 @@ export function formatDate(date) {
   return new Date(date).toLocaleDateString().replace(/\//g, "-");
 }
 
+export function getSignatureUrl(context, person) {
+  switch (person) {
+    case "patient":
+      return context?.AdmissionOrders?.PatientsSignature || "";
+    case "physician":
+      return context?.AdmissionOrders?.PhysiciansSignature || "";
+    case "witness":
+      return context?.AdmissionOrders?.WitnessSignature || "";
+    case "provider":
+      return context?.AdmissionOrders?.ProviderSignature || "";
+  }
+}
+
 export const helpers = {
   camelToSentence,
   formsToPrint,
@@ -103,6 +116,7 @@ export const helpers = {
   dailyUseChecker,
   formatDate,
   hostUrl,
+  getSignatureUrl,
 };
 
 export const HBS = create({

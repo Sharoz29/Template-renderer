@@ -7,8 +7,8 @@
   "scripts": {
     "watch:scss": "node-sass -w styles/ -r --output-style expanded -o public/css/",
     "watch:server": "nodemon server.js",
-    "build:docker": "docker build -t lcs-reports:1.0.4 .",
-    "tag:docker": "docker tag lcs-reports:1.0.4 ansaries/lcs-reports:1.0.6",
+    "build:docker": "docker build -t lcs-reports:latest .",
+    "tag:docker": "docker tag lcs-reports:latest ansaries/lcs-reports:1.0.6",
     "push:docker": "docker push ansaries/lcs-reports:1.0.6",
     "dockerize": "npm run build:docker && npm run tag:docker && npm run push:docker",
     "build:deploy": "npm run dockerize && kubectl apply -f ./k8s.yaml -n pega23",

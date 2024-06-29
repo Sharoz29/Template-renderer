@@ -1909,6 +1909,18 @@ canvas:focus {
   font-style: italic !important;
 }
 
+.va-top {
+  vertical-align: top !important;
+}
+
+.va-bottom {
+  vertical-align: bottom !important;
+}
+
+.va-middle {
+  vertical-align: middle !important;
+}
+
 .text-bold {
   font-weight: bold !important;
 }
@@ -1968,6 +1980,10 @@ canvas:focus {
   margin: 30px;
   padding: 10px;
   min-height: 100vh;
+}
+
+.cad-forms .signature-img {
+  width: 200px;
 }
 
 .cad-forms h2 {
