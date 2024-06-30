@@ -65,16 +65,18 @@
             <div class="frow justify-start text-bold mt-50">
                 <div class="col-1-1">
                     <span>Signature</span>
-                    <span class="p-5 text-underline">.....signature.....</span>
+                    <span class="p-5 text-underline">
+                        <img class="signature-img" src="{{getSignatureUrl @root 'provider'}}" alt="provider_signatures">
+                    </span>
                 </div>
             </div>
             <div class="fro justify-start text-bold">
                 <span>Name of Provider</span>
-                <span class="p-5 text-underline">.. name of provider ..</span>
+                <span class="p-5 text-underline">{{@root.AppointmentInformation.SelectProvider}}</span>
             </div>
             <div class="fro justify-start text-bold">
                 <span>Date:</span>
-                <span class="p-5 text-underline">../../....</span>
+                <span class="p-5 text-underline">{{@root.AppointmentInformation.SignatureDate}}</span>
             </div>
         </div>
     </div>

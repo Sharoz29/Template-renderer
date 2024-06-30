@@ -95,19 +95,19 @@
                   <span> Provider Name: </span>
                 </div>
                 <div class="col-8-12">
-                  <span class="name text-underline px-30">Name</span>
+                  <span class="name text-underline px-30">{{@root.AppointmentInformation.SelectProvider}}</span>
                 </div>
               </div>
               <div class="signature col-6-12 bb">
                 Signature:
-                <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+                <img class="signature-img" src="{{getSignatureUrl @root 'provider'}}" alt="provider_signatures">
               </div>
               <div class="frow date col-6-12 justify-start">
                 <div class="col-4-12">
                   <span> Date: </span>
                 </div>
                 <div class="col-8-12">
-                  <span class="name text-underline px-30">Date here</span>
+                  <span class="name text-underline px-30">{{@root.AppointmentInformation.SignatureDate}}</span>
                 </div>
               </div>
             </div>
@@ -117,27 +117,23 @@
                   <span> Medical Provider Name: </span>
                 </div>
                 <div class="col-8-12">
-                  <span class="name text-underline px-30">Name</span>
+                  <span class="name text-underline px-30">{{@root.SelectMD}}</span>
                 </div>
               </div>
               <div class="signature col-6-12 bb">
                 Signature:
-                <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+                <img class="signature-img" src="{{getSignatureUrl @root 'physician'}}" alt="physician_signatures">
               </div>
               <div class="frow date col-6-12">
                 <div class="col-4-12">
                   <span> Date: </span>
                 </div>
                 <div class="col-8-12">
-                  <span class="name text-underline px-30">Date here</span>
+                  <span class="name text-underline px-30">{{@root.AppointmentInformation.PhysicianSignatureDate}}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
 </section>
-
-
 {{/with}}

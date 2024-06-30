@@ -172,7 +172,7 @@
         <tr>
           <td colspan="6">
             <div class="frow justify-start">
-              <div class="frow col-1-1">
+              <div class="frow col-1-1 justify-start">
                 <strong class="col-1-6">Tobacco / THC</strong>
                 <div class="cb col-1-6">
                   {{> checkbox IsChecked=(checker PatientUseTobacco "Yes") name="Yes" }}
@@ -197,14 +197,12 @@
                 </div>
               </div>
 
-              <div class="frow col-1-1">
+              <div class="frow col-1-1 justify-start">
                 <strong class="col-1-6">ETOH/Alcohol</strong>
                 <div class="cb col-1-6">
                   {{> checkbox IsChecked=(checker PatientConsumeAlcohol "Yes") name="Yes" }}
                 </div>
                 <div class="cb col-1-6">
-                  {{!-- <input type="checkbox" name="name" id="name" />
-                  <label for="name">No</label> --}}
                   {{> checkbox IsChecked=(checker PatientConsumeAlcohol "No") name="No" }}
                 </div>
                 <div class="cb col-1-6">
@@ -224,24 +222,13 @@
                 </div>
               </div>
 
-              <div class="frow col-1-1">
+              <div class="frow col-1-1 justify-start">
                 <strong class="col-1-6">Drugs</strong>
-                <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Methamphetamines</label>
-                </div>
-                <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Cocaine</label>
-                </div>
-                <div class="cb col-1-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Heroin</label>
-                </div>
-                <div class="cb col-2-6">
-                  <input type="checkbox" name="name" id="name" />
-                  <label for="name">Ecstasy</label>
-                </div>
+                  {{#each @root.SelectedDrugsOnSocialHistory}}
+                  <div class="cb col-1-6">
+                    {{> checkbox name=Drugs IsChecked=IsChecked}}
+                  </div>
+                  {{/each}}
               </div>
             </div>
           </td>
@@ -274,13 +261,13 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Date</td>
-                  <td>Meds</td>
-                  <td>Dos</td>
-                  <td>Rout</td>
-                  <td>Freq</td>
-                  <td>Purpose</td>
-                  <td>Purpose</td>
+                  <td>{{HT}}</td>
+                  <td>{{WT}}</td>
+                  <td>{{TEMP}}</td>
+                  <td>{{BP}}</td>
+                  <td>{{HR}}</td>
+                  <td>{{RR}}</td>
+                  <td>{{SAT}}</td>
                 </tr>
               </tbody>
             </table>
@@ -463,14 +450,11 @@
                   </td>
                   <td>
                     <div class="frow cbs justify-start">
-                      {{#each @root.SelectedRosPulmonary}}
+                      {{#each @root.SelectedPulmonary}}
                       <div class="cb col-1-6">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                         {{> checkbox IsChecked=IsChecked name=Pulmonary }}
                       </div>
                       {{/each}}
-                      
-                      
                     </div>
                   </td>
                 </tr>
@@ -580,10 +564,9 @@
                   </td>
                   <td>
                     <div class="frow cbs justify-start">
-                      {{#each @root.SelectedRosSkin}}
+                      {{#each @root.SelectedSkin}}
                       <div class="cb col-1-6">
-                        <input type="checkbox" name="name" id="name" />
-                        <label for="name">name</label>
+                        {{> checkbox IsChecked=IsChecked name=Skin }}
                       </div>
                       {{/each}}
                     </div>
@@ -614,7 +597,7 @@
                   </td>
                   <td>
                     <div class="cb">
-                      <span>WNL...</span>
+                      <span></span>
                     </div>
                   </td>
                   <td>
@@ -724,71 +707,33 @@
           </td>
         </tr>
         <!-- loop here... -->
+        <!-- Need to reevaluate below logic to slice the array into 3-->
         <tr>
+        {{#each (columnSeperator 0 3 @root.SelectedPlanOnInitialAssesment)}}
           <td colspan="2">
             <div class="cb">
-              <input type="checkbox" name="sendtoed" id="sendtoed" />
-              <label for="sendtoed">Send to ED now</label>
+              {{> checkbox name=Plan IsChecked=IsChecked}}
             </div>
           </td>
-          <td colspan="2">
-            <!-- followup in 1 week with ECP -->
-            <div class="cb">
-              <input type="checkbox" name="followup" id="followup" />
-              <label for="followup">Follow up in 1 week with ECP</label>
-            </div>
-          </td>
-          <td colspan="2">
-            <!-- Continue current medications -->
-            <div class="cb">
-              <input type="checkbox" name="continue" id="continue" />
-              <label for="continue">Continue current medications/ Treatment</label>
-            </div>
-          </td>
+        {{/each}}
         </tr>
         <tr>
+        {{#each (columnSeperator 4 7 @root.SelectedPlanOnInitialAssesment)}}
           <td colspan="2">
             <div class="cb">
-              <input type="checkbox" name="newmeds" id="newmeds" />
-              <label for="newmeds">New Med/Tx/Sup/DME: See orders</label>
+              {{> checkbox name=Plan IsChecked=IsChecked}}
             </div>
           </td>
-          <td colspan="2">
-            <!-- followup in 1 week with ECP -->
-            <div class="cb">
-              <input type="checkbox" name="labsdiag" id="labsdiag" />
-              <label for="labsdiag">Labs/Diagnostics: See AdmissionOrders</label>
-            </div>
-          </td>
-          <td colspan="2">
-            <!-- Continue current medications -->
-            <div class="cb">
-              <input type="checkbox" name="referals" id="referals" />
-              <label for="referals">Referrals: See Admission Orders</label>
-            </div>
-          </td>
+        {{/each}}
         </tr>
         <tr>
+        {{#each (columnSeperator 8 9 @root.SelectedPlanOnInitialAssesment)}}
           <td colspan="2">
             <div class="cb">
-              <input type="checkbox" name="wellnespre" id="wellnespre" />
-              <label for="wellnespre">Wellness/preventive intervention</label>
+              {{> checkbox name=Plan IsChecked=IsChecked}}
             </div>
           </td>
-          <td colspan="2">
-            <!-- followup in 1 week with ECP -->
-            <div class="cb">
-              <input type="checkbox" name="ptoh" id="ptoh" />
-              <label for="ptoh">PT/OT/HH for disease or pain management</label>
-            </div>
-          </td>
-          <td colspan="2">
-            <!-- Continue current medications -->
-            <div class="cb">
-              <input type="checkbox" name="refilmeds" id="refilmeds" />
-              <label for="refilmeds">Refill medications</label>
-            </div>
-          </td>
+        {{/each}}
         </tr>
       </tbody>
     </table>
@@ -799,19 +744,19 @@
             <span> Provider Name: </span>
           </div>
           <div class="col-8-12">
-            <span class="name text-underline px-30">Name</span>
+            <span class="name text-underline px-30">{{@root.AppointmentInformation.SelectProvider}}</span>
           </div>
         </div>
         <div class="signature col-6-12 bb">
           Signature:
-          <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+           <img class="signature-img" src="{{getSignatureUrl @root 'provider'}}" alt="provider_signatures">
         </div>
         <div class="frow date col-6-12 justify-start">
           <div class="col-4-12">
             <span> Date: </span>
           </div>
           <div class="col-8-12">
-            <span class="name text-underline px-30">Date here</span>
+             <span class="name text-underline px-30">{{@root.AppointmentInformation.SignatureDate}}</span>
           </div>
         </div>
       </div>
@@ -821,19 +766,19 @@
             <span> Physician Name: </span>
           </div>
           <div class="col-8-12">
-            <span class="name text-underline px-30">Name</span>
+            <span class="name text-underline px-30">{{@root.SelectMD}}</span>
           </div>
         </div>
         <div class="signature col-6-12 bb">
           Signature:
-          <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+          <img class="signature-img" src="{{getSignatureUrl @root 'physician'}}" alt="physician_signatures">
         </div>
         <div class="frow date col-6-12">
           <div class="col-4-12">
             <span> Date: </span>
           </div>
           <div class="col-8-12">
-            <span class="name text-underline px-30">Date here</span>
+            <span class="name text-underline px-30">{{@root.AppointmentInformation.PhysicianSignatureDate}}</span>
           </div>
         </div>
       </div>

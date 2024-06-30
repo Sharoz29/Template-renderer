@@ -100,16 +100,24 @@ export function countOfOption(boolOfIsChecked, context) {
   return count;
 }
 
+export function columnSeperator(indexStart, indexEnd, context) {
+  const seperatedContext = context?.slice(indexStart, indexEnd);
+  console.log("checking", seperatedContext);
+  return seperatedContext;
+}
+
 export function getSignatureUrl(context, person) {
   switch (person) {
     case "patient":
-      return context?.AdmissionOrders?.PatientsSignature || "";
+      return context?.AnnualWellnessForm?.PatientsSignature || "";
     case "physician":
-      return context?.AdmissionOrders?.PhysiciansSignature || "";
+      return context?.SignatureCapture3 || "";
     case "witness":
-      return context?.AdmissionOrders?.WitnessSignature || "";
+      return context?.RecordReleaseAuthorization?.Witness || "";
     case "provider":
-      return context?.AdmissionOrders?.ProviderSignature || "";
+      return context?.SignatureCapture2 || "";
+    case "authorization":
+      return context?.RecordReleaseAuthorization?.AuthorizationSignature || "";
   }
 }
 
@@ -131,6 +139,7 @@ export const helpers = {
   hostUrl,
   getSignatureUrl,
   countOfOption,
+  columnSeperator,
 };
 
 export const HBS = create({

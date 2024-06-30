@@ -1,3 +1,4 @@
+{{#with ChecklistForTobacco}}
 <section class="frow" id="checklist-for-tobacco">
     <div class="container-padding width-100">
         <div class="content">
@@ -59,7 +60,7 @@
                                         <td>
                                             <span>Name:</span>
                                             <span class="p-5 text-underline">
-                                                ..... name sample .....
+                                               {{@root.SelectedPatientData.pyFullName}}
                                             </span>
                                         </td>
                                     </tr>
@@ -67,7 +68,7 @@
                                         <td>
                                             <span>DOB:</span>
                                             <span class="p-5 text-underline">
-                                                .. / .. / ....
+                                                {{@root.SelectedPatientData.DateOfBirth}}
                                             </span>
                                         </td>
                                     </tr>
@@ -179,103 +180,28 @@
                     <span># of Children</span>
                 </div>
             </div>
-            <div class="frow justify-start gutters">
-                <span class="text-bold">SYMPTOMS:</span>
-                <div class="cb">
-                    <label for="name">Diminished Air Movement</label>
-                </div>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-5">
-                    <div class="cb">
-                        <label for="name">Cough:</label>
-                    </div>
-                </div>
-                <div class="col-1-5">
-                    <div class="cb">
-                        <label for="name">Abnormal Sputum:</label>
-                    </div>
-                </div>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-5">
-                    <div class="cb">
-                        <label for="name">Wheeze:</label>
-                    </div>
-                </div>
-                <div class="col-1-5">
-                    <div class="cb">
-                        <label for="name">Dyspnea:</label>
-                    </div>
-                </div>
-            </div>
-            <div class="frow justify-start mb-10">
-                <div class="col-1-5">
-                    <div class="cb">
-                        <label for="name">Hemoptysis:</label>
-                    </div>
-                </div>
-                <div class="col-1-5">
-                    <div class="cb">
-                        <label for="name">Asthma:</label>
-                    </div>
-                </div>
-            </div>
-            <div class="frow justify-start gutters">
-                <span>Withdrawal Symptoms:</span>
-                <div class="cb">
-                    <label for="name">Nausea</label>
-                </div>
-                <div class="cb">
-                    <label for="name">Vomiting</label>
-                </div>
-            </div>
-            <div class="frow justify-start gutters">
-                <span>Mood:</span>
-                <div class="cb">
-                    <label for="name">Anxiety</label>
-                </div>
-                <div class="cb">
-                    <label for="name">Depression</label>
-                </div>
+            <div class="frow justify-start gutters" style="margin-top: 15px;">
+                 <div class="frow col-1-1 justify-start">
+                    <strong class="col-1-7">SYMPTOMS:</strong>
+                 </div>
+                  {{#each @root.SelectedSmokingSymptoms}}
+                  <div class="cb col-1-7">
+                    {{> checkbox name=Symptoms IsChecked=IsChecked}}
+                  </div>
+                  {{/each}}
             </div>
             <div class="frow justify-start text-bold mb-10">MEDICATIONS:</div>
             <div class="frow justify-start gutters">
                 <div class="col-1-6">
                     <span>Nicotine replacement therapy:</span>
                 </div>
-                <div class="col-1-6">
-                    <div class="cb">
-                        <label for="name">Patch</label>
-                    </div>
-                </div>
-                <div class="col-1-6">
-                    <div class="cb">
-                        <label for="name">Inhaler</label>
-                    </div>
-                </div>
-                <div class="col-1-7">
-                    <div class="cb">
-                        <label for="name">Lozenge</label>
-                    </div>
-                </div>
+                 {{#each @root.SelectedNicotineReplacement}}
+                  <div class="cb col-1-7">
+                    {{> checkbox name=NicotineReplacementTherapy IsChecked=IsChecked}}
+                  </div>
+                  {{/each}}
             </div>
-
-            <div class="frow justify-start gutters">
-                <div class="col-1-6">
-                    <span></span>
-                </div>
-                <div class="col-1-6">
-                    <div class="cb">
-                        <label for="name">Gum</label>
-                    </div>
-                </div>
-                <div class="col-1-6">
-                    <div class="cb">
-                        <label for="name">Nasal Spray</label>
-                    </div>
-                </div>
-            </div>
+                
             <div class="frow justify-start gutters">
                 <span>Bupropion SR:</span>
                 <div class="cb">
@@ -318,3 +244,4 @@
         </div>
     </div>
 </section>
+{{/with}}
