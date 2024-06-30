@@ -87,6 +87,19 @@ export function formatDate(date) {
   return new Date(date).toLocaleDateString().replace(/\//g, "-");
 }
 
+export function countOfOption(boolOfIsChecked, context) {
+  let count = 0;
+  context.forEach((item) => {
+    if (
+      item.IsChecked === boolOfIsChecked ||
+      item.IsChecked === `${boolOfIsChecked}`
+    ) {
+      count++;
+    }
+  });
+  return count;
+}
+
 export function getSignatureUrl(context, person) {
   switch (person) {
     case "patient":
@@ -117,6 +130,7 @@ export const helpers = {
   formatDate,
   hostUrl,
   getSignatureUrl,
+  countOfOption,
 };
 
 export const HBS = create({

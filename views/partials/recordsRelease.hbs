@@ -2,8 +2,9 @@
     <div class="container-padding width-100">
         <div class="content">
             <div class="container centered mb-20">
-                <h2 class="text-center m-auto">RECORDS RELEASE/AUTHORIZATION</h2>
+                 {{> formTitle }}
             </div>
+        {{#with RecordReleaseAuthorization}}
             <div class="text-center m-auto text-bold">RECORDS REQUESTED</div>
             <ul class="text-bold ml-50">
                 <li>The patient's significant medical history</li>
@@ -14,7 +15,7 @@
             <div class="frow justify-start">
                 <div class="col-1-2">
                     <span>Name of Patient:</span>
-                    <span class="p-5 text-underline">.....name.....</span>
+                    <span class="p-5 text-underline">{{../PatientData/pyFullName}}.</span>
                 </div>
                 <div class="col-1-2">
                     <span>Medicare No:</span>
@@ -28,7 +29,7 @@
                 </div>
                 <div class="col-1-2">
                     <span>Date of Birth:</span>
-                    <span class="p-5 text-underline">../../....</span>
+                    <span class="p-5 text-underline">{{../PatientData/DateOfBirth}}</span>
                 </div>
                 <div class="col-1-1 text-bold">
                     <span>Address:</span>
@@ -54,13 +55,13 @@
                 </div>
                 <div class="col-1-2">
                     <span>DATE:</span>
-                    <span class="p-5 text-underline">../../....</span>
+                    <span class="p-5 text-underline">{{SignatureDate}}.</span>
                 </div>
             </div>
             <div class="frow justify-start mt-10 mb-5">
                 <div class="col-1-1">
                     <span>NAME OF SIGNATORY:</span>
-                    <span class="p-5 text-underline">...name..of..person..</span>
+                    <span class="p-5 text-underline">{{NameOfSignatory}}</span>
                 </div>
             </div>
             <div class="frow justify-start mb-5">
@@ -69,7 +70,7 @@
             <div class="frow justify-start">
                 <div class="col-1-1">
                     <span>Relationship to patient:</span>
-                    <span class="p-5 text-underline">.....relationship.....</span>
+                    <span class="p-5 text-underline">{{RelationshipToPatient}}</span>
                 </div>
             </div>
             <div class="frow justify-start">
@@ -79,7 +80,7 @@
                 </div>
                 <div class="col-1-2">
                     <span>Date</span>
-                    <span class="p-5 text-underline">../../....</span>
+                    <span class="p-5 text-underline">{{WitnessDate}}</span>
                 </div>
             </div>
             <div class="frow justify-start mt-10">
@@ -88,5 +89,6 @@
                 </div>
             </div>
         </div>
+        {{/with}}
     </div>
 </section>
