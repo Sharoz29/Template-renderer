@@ -34,8 +34,9 @@ export const mockContext = {
     "teleMedicines",
     "polst",
     "medicationReconciliation",
-    "assignmentInsurance",
     "annualWellness",
+    "intakeForm",
+    "assignmentInsurance",
     "checklistForTobacco",
     "fallRiskList",
     "recordsRelease",
@@ -54,6 +55,7 @@ export const mockContext = {
     "checklistForTobacco",
     "fallRiskList",
     "recordsRelease",
+    "intakeForm",
   ],
   labReferences: [
     "CBC",

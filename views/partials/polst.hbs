@@ -300,11 +300,11 @@
                             </div>
                             <div class="name">
                               <span>Name:</span>
-                              <span class="text-underline">Name</span>
+                              <span class="text-underline">{{../POLST/HealthcareAgentName}}</span>
                             </div>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="text-underline">Phone</span>
+                              <span class="text-underline">{{../POLST/HealthcareAgentPhone}}</span>
                             </div>
                           </td>
                         </tr>
@@ -322,7 +322,7 @@
                         <tr>
                           <td>
                             <span class="name">Print Physician Name:</span>
-                            <span class="">{{../POLST/Physician/pyFullName}}</span>
+                            <span class="">{{@root.SelectMD}}</span>
                           </td>
                           <td>
                             <div class="phone">
@@ -342,13 +342,13 @@
                           <td colspan="2">
                             <div class="physian-signature">
                               <span>Physician Signature:</span>
-                              <span class="">{{../POLST/Physician/PhysicianSignature}}</span>
+                               {{> signature name="physician"}}
                             </div>
                           </td>
                           <td>
                             <div class="date">
                               <span>Date:</span>
-                              <span class="">{{../POLST/Physician/SignatureDate}}</span>
+                              <span class="">{{@root.AppointmentInformation.PhysicianSignatureDate}}</span>
                             </div>
                           </td>
                         </tr>
@@ -375,7 +375,7 @@
                           <td colspan="2">
                             <div class="name">
                               <span>Print Name:</span>
-                              <span class="">Name</span>
+                              <span class="">{{pyFullName}}</span>
                             </div>
                           </td>
                           <td>
@@ -389,13 +389,13 @@
                           <td colspan="2">
                             <div class="frow justify-start">
                               <span class="col-1-1">Signature:</span>
-                              <img class="signature-img" src="{{getSignatureUrl @root 'patient'}}" alt="patient_signatures">
+                              {{> signature name="patient"}}
                             </div>
                           </td>
                           <td>
                             <div class="date">
                               <span>Date:</span>
-                              <span class="">Date</span>
+                              <span class="">{{SignatureDate}}</span>
                             </div>
                           </td>
                         </tr>
@@ -403,13 +403,13 @@
                           <td>
                             <div class="address">
                               <span>Mailing Address (street/city/state/zip):</span>
-                              <span class="">Address</span>
+                              <span class="">{{pyHomeAddress1}} {{pyHomeAddress2}}</span>
                             </div>
                           </td>
                           <td>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="">Phone</span>
+                              <span class="">{{pyPhoneNumber}}</span>
                             </div>
                           </td>
                           <td>

@@ -10,7 +10,7 @@
             <div class="frow">
               <div class="frow col-1-2 justify-start gutters">
                 <strong>Home Health:</strong>
-                <span> Home health name...</span>
+                <span> {{@root.AppointmentInformation.ReferralHH}}</span>
               </div>
               <div class="frow col-1-2 justify-start gutters">
                 <strong>Date of Service</strong>
@@ -68,15 +68,25 @@
                 home health care because
               </span>
             </div>
-
-            <div class="frow justify-start">
-              {{#each ../SelectedMedicalConditionsOnFaceToFace}}
-              <div class="cb-table col-1-4">
-                {{> checkbox name=HHSMedicalCondition IsChecked=IsChecked}}
-              </div>
-              {{/each}}
-            </div>
-
+           <table class="striped width-100 no-padding mt-10">
+            <col width="25%" />
+            <col width="25%" />
+            <col width="25%" />
+            <col width="25%" />
+            <tbody>
+              {{#splitArrayByNumber ../SelectedMedicalConditionsOnFaceToFace 4}}
+              <tr>
+                 {{#each chunk}}
+                 <td  style="width: 25%;">
+                    <div class="cb">
+                      {{> checkbox name=HHSMedicalCondition IsChecked=IsChecked}}
+                    </div>
+                  </td>
+                {{/each}}
+              </tr>
+              {{/splitArrayByNumber}}
+              </tbody>
+            </table>
             <div class="mt-20">
               <p>
                 I further certify that, based on my findings, this patient is
@@ -88,14 +98,25 @@
               </p>
             </div>
 
-            <div class="frow justify-start">
-              {{#each ../SelectedHomeBound}}
-              <div class="cb-table col-1-4">
-                {{> checkbox name=ReasonsForHomeBound IsChecked=IsChecked}}
-              </div>
-              {{/each}}
-            </div>
-
+           <table class="striped width-100 no-padding mt-10">
+            <col width="25%" />
+            <col width="25%" />
+            <col width="25%" />
+            <col width="25%" />
+            <tbody>
+                {{#splitArrayByNumber ../SelectedHomeBound 4}}
+                <tr>
+                  {{#each chunk}}
+                   <td  style="width: 25%;">
+                      <div class="cb">
+                        {{> checkbox name=ReasonsForHomeBound IsChecked=IsChecked}}
+                      </div>
+                    </td>
+                  {{/each}}
+                </tr>
+                {{/splitArrayByNumber}}
+            </tbody>
+          </table>
             <div class="mt-20">
               <strong class="text-underline">
                 Certificate of Homebound Status:
@@ -107,14 +128,25 @@
               </span>
             </div>
 
-            <div class="frow justify-start">
-              {{#each ../SelectedHomeBoundStatusOnFaceToFace}}
-              <div class="cb-table col-1-4">
-                {{> checkbox name=HomeboundDueTo IsChecked=IsChecked}}
-              </div>
-              {{/each}}
-            </div>
-            
+            <table class="striped width-100 no-padding mt-10">
+              <col width="25%" />
+              <col width="25%" />
+              <col width="25%" />
+              <col width="25%" />
+              <tbody>
+                {{#splitArrayByNumber ../SelectedHomeBoundStatusOnFaceToFace 4}}
+                <tr>
+                  {{#each chunk}}
+                   <td  style="width: 25%;">
+                    <div class="cb">
+                      {{> checkbox name=HomeboundDueTo IsChecked=IsChecked}}
+                    </div>
+                  </td>
+                  {{/each}}
+                </tr>
+                {{/splitArrayByNumber}}
+              </tbody>
+            </table>
 
             <div class="signatures mt-60 mb-10">
               <div class="frow provider justify-start mb-60">
@@ -123,19 +155,19 @@
                     <span> Provider Name: </span>
                   </div>
                   <div class="col-8-12">
-                    <span class="name text-underline px-30">Name</span>
+                    <span class="name text-underline px-30">{{@root.AppointmentInformation.SelectProvider}}</span>
                   </div>
                 </div>
                 <div class="signature col-6-12 bb">
                   Signature:
-                  <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+                  {{> signature name="provider"}}
                 </div>
                 <div class="frow date col-6-12 justify-start">
                   <div class="col-4-12">
                     <span> Date: </span>
                   </div>
                   <div class="col-8-12">
-                    <span class="name text-underline px-30">Date here</span>
+                     <span class="name text-underline px-30">{{@root.AppointmentInformation.SignatureDate}}</span>
                   </div>
                 </div>
               </div>
@@ -145,19 +177,19 @@
                     <span> Physician Name: </span>
                   </div>
                   <div class="col-8-12">
-                    <span class="name text-underline px-30">Name</span>
+                   <span class="name text-underline px-30">{{@root.SelectMD}}</span>
                   </div>
                 </div>
                 <div class="signature col-6-12 bb">
                   Signature:
-                  <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+                   {{> signature name="physician"}}
                 </div>
                 <div class="frow date col-6-12">
                   <div class="col-4-12">
                     <span> Date: </span>
                   </div>
                   <div class="col-8-12">
-                    <span class="name text-underline px-30">Date here</span>
+                   <span class="name text-underline px-30">{{@root.AppointmentInformation.PhysicianSignatureDate}}</span>
                   </div>
                 </div>
               </div>

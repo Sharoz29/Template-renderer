@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <td></td>
-            <td>sample name</td>
+            <td>sample name to be removed</td>
             <td>sample Speciality</td>
             <td colspan="3">sample reason</td>
           </tr>
@@ -366,10 +366,10 @@
             </td>
             <td>
               <div>PATIENT SIGNATURE</div>
-              <img class="signature-img" src="{{getSignatureUrl @root 'patient'}}" alt="patient_signatures">
+              {{> signature name="patient"}}
             </td>
             <td colspan="2"></td>
-            <td>{{DATE}}</td>
+            <td>{{@root.SelectedPatientData.SignatureDate}}</td>
           </tr>
 
           <tr>
@@ -448,9 +448,11 @@
           <tr>
             <td></td>
             <td>Physician SIGNATURE</td>
-            <td></td>
+            <td>
+               {{> signature name="physician"}}
+            </td>
             <td colspan="2"></td>
-            <td>DATE</td>
+            <td>DATE: {{@root.AppointmentInformation.PhysicianSignatureDate}}</td>
           </tr>
         </tbody>
       </table>
@@ -840,8 +842,6 @@
         </table>
       </div>
       {{/with}}
-
-
     </div>
   </div>
 </section>

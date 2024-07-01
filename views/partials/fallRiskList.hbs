@@ -22,140 +22,30 @@
                 <col width="16.666%" />
                 <col width="16.666%" />
                 <tbody>
+                    {{#each @root.SelectedFallRisk}}
                     <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">I have fallen in the past year.</td>
+                        <td>
+                            {{> checkbox name="Yes" IsChecked=(checker IsChecked "Yes")}}
+                        </td>
+                        <td>
+                            {{> checkbox name="No" IsChecked=(checker IsChecked "No")}}
+                        </td>
                         <td colspan="2">
-                            People who have fallen once are likely to fall again
+                            {{FallRiskOption}}
+                        </td>
+                        <td colspan="2">
+                            {{WhyItMatters}}
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">
-                            I use or have been advised to use a cane or walker to get
-                            around safely.
-                        </td>
-                        <td colspan="2">
-                            People who have been advised to use a cane or walker may
-                            already be more likely to fall.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">
-                            Sometimes I feel unsteady when I am walking.
-                        </td>
-                        <td colspan="2">
-                            Unsteadiness or needing support while walkingare signs or
-                            poor balance.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">
-                            I steady myself by holding onto furniture when walking at
-                            home.
-                        </td>
-                        <td colspan="2">This is also a sign of poor balance.</td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">I am worried about falling.</td>
-                        <td colspan="2">
-                            People who are worried about falling are more likely to
-                            fall.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">I often have to rush to the toilet.</td>
-                        <td colspan="2">
-                            Rushing to the bathroom, especially at night, increase your
-                            chance of falling.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">I have lost some feeling in my feet.</td>
-                        <td colspan="2">
-                            Numbness in your feet can cause stumbles and lead to falls.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">
-                            I need to push with my hands to stand up from a chair.
-                        </td>
-                        <td colspan="2">
-                            This is a sign or weak leg muscles, a major reason for
-                            falling.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">
-                            I take medicine that sometimes makes me feel light-headed or
-                            more tired than usual.
-                        </td>
-                        <td colspan="2">
-                            Side effects from medicines can sometimes increase your
-                            chance of falling.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">
-                            I take medicine to help me sleep or improve my mood.
-                        </td>
-                        <td colspan="2">
-                            These medicines can sometimes increase your chance of
-                            falling.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">I often feel sad or depressed.</td>
-                        <td colspan="2">
-                            Symptoms of depression, such as not feeling well or feeling
-                            slowed down, are linked to falls.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Yes</td>
-                        <td>No</td>
-                        <td colspan="2">
-                            I sometimes have troubles stepping up onto a curb.
-                        </td>
-                        <td colspan="2">This is also a sign or weak leg muscles.</td>
-                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
             <div class="frow text-center">
                 <div class="mt-20">
                     <span>Total</span>
-                    <span class="p-5 text-underline">..</span>
+                    <span class="p-5 text-underline">
+                        {{countOfOption true @root.SelectedFallRisk}}
+                    </span>
                     <span>
                         Add up the number of points for each “yes” answer. If you
                         scored 4 points or more, you may be at risk for falling.
@@ -175,16 +65,18 @@
             <div class="frow justify-start text-bold mt-50">
                 <div class="col-1-1">
                     <span>Signature</span>
-                    <span class="p-5 text-underline">.....signature.....</span>
+                    <span class="p-5 text-underline">
+                        {{> signature name="provider"}}
+                    </span>
                 </div>
             </div>
             <div class="fro justify-start text-bold">
                 <span>Name of Provider</span>
-                <span class="p-5 text-underline">.. name of provider ..</span>
+                <span class="p-5 text-underline">{{@root.AppointmentInformation.SelectProvider}}</span>
             </div>
             <div class="fro justify-start text-bold">
                 <span>Date:</span>
-                <span class="p-5 text-underline">../../....</span>
+                <span class="p-5 text-underline">{{@root.AppointmentInformation.SignatureDate}}</span>
             </div>
         </div>
     </div>

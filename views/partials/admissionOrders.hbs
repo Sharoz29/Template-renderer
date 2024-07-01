@@ -74,7 +74,7 @@
               <span>DIET</span>
             </td>
             <td colspan="5">
-              <div class="frow cbs justify-start">
+              <div class="frow cbs justify-start" style="gap: 10px;">
                 {{#each @root.SelectedPatientDiets}}
                 {{> checkbox IsChecked=IsChecked name=DietName }}
                 {{/each}}
@@ -87,7 +87,7 @@
             </td>
             <td colspan="5">
               <div class="frow cbs justify-start">
-                <div class="frow cbs justify-start">
+                <div class="frow cbs justify-start" style="gap: 10px;">
                 {{#each @root.SelectedPatientsDME}}
                 {{> checkbox IsChecked=IsChecked name=DMEName }}
                 {{/each}}
@@ -102,7 +102,7 @@
             </td>
             <td colspan="5">
               <div class="frow cbs justify-start">
-                <div class="frow cbs justify-start">
+                <div class="frow cbs justify-start" style="gap: 10px;">
                 {{#each @root.SelectedPatientSupplies}}
                 {{> checkbox IsChecked=IsChecked name=SuppliesName }}
                 {{/each}}
@@ -287,19 +287,19 @@
             <span> Provider Name: </span>
           </div>
           <div class="col-8-12">
-            <span class="name text-underline px-30">Name</span>
+            <span class="name text-underline px-30">{{@root.AppointmentInformation.SelectProvider}}</span>
           </div>
         </div>
         <div class="signature col-6-12 bb">
           Signature:
-          <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+           {{> signature name="provider"}}
         </div>
         <div class="frow date col-6-12 justify-start">
           <div class="col-4-12">
             <span> Date: </span>
           </div>
           <div class="col-8-12">
-            <span class="name text-underline px-30">Date here</span>
+            <span class="name text-underline px-30">{{@root.AppointmentInformation.SignatureDate}}</span>
           </div>
         </div>
       </div>
@@ -309,19 +309,19 @@
             <span> Physician Name: </span>
           </div>
           <div class="col-8-12">
-            <span class="name text-underline px-30">Name</span>
+            <span class="name text-underline px-30">{{@root.SelectMD}}</span>
           </div>
         </div>
         <div class="signature col-6-12 bb">
           Signature:
-          <!-- <img class="signature-img" src="./logo/ferroli.png" alt="psig" /> -->
+          {{> signature name="physician"}}
         </div>
         <div class="frow date col-6-12">
           <div class="col-4-12">
             <span> Date: </span>
           </div>
           <div class="col-8-12">
-            <span class="name text-underline px-30">Date here</span>
+            <span class="name text-underline px-30">{{@root.AppointmentInformation.PhysicianSignatureDate}}</span>
           </div>
         </div>
       </div>

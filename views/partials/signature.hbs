@@ -1,0 +1,6 @@
+{{#if (getSignatureUrl @root name)}}
+    <img class="signature-img" src="{{getSignatureUrl @root name}}" alt="{{name}}_signatures">
+    {{else}}
+    <span>Not signed yet by </span>
+    <span>{{name}}</span>
+{{/if}}

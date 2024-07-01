@@ -2,8 +2,10 @@
     <div class="container-padding width-100">
         <div class="content">
             <div class="container centered mb-20">
-                <h2 class="text-center m-auto">RECORDS RELEASE/AUTHORIZATION</h2>
+                 {{!-- {{> formTitle ..}} --}}
+                 <h2 class="text-center m-auto">RECORDS RELEASE/AUTHORIZATION</h2>
             </div>
+        {{#with RecordReleaseAuthorization}}
             <div class="text-center m-auto text-bold">RECORDS REQUESTED</div>
             <ul class="text-bold ml-50">
                 <li>The patient's significant medical history</li>
@@ -14,33 +16,33 @@
             <div class="frow justify-start">
                 <div class="col-1-2">
                     <span>Name of Patient:</span>
-                    <span class="p-5 text-underline">.....name.....</span>
+                    <span class="p-5 text-underline">{{../PatientData/pyFullName}}.</span>
                 </div>
                 <div class="col-1-2">
                     <span>Medicare No:</span>
-                    <span class="p-5 text-underline">..1231233..</span>
+                    <span class="p-5 text-underline">......, ......., ......</span>
                 </div>
             </div>
             <div class="frow justify-start">
                 <div class="col-1-2">
                     <span>Social Security No:</span>
-                    <span class="p-5 text-underline">..12123131313..</span>
+                    <span class="p-5 text-underline">{{../PatientData/pySSN}}.</span>
                 </div>
                 <div class="col-1-2">
                     <span>Date of Birth:</span>
-                    <span class="p-5 text-underline">../../....</span>
+                    <span class="p-5 text-underline">{{../PatientData/DateOfBirth}}</span>
                 </div>
                 <div class="col-1-1 text-bold">
                     <span>Address:</span>
-                    <span class="p-5 text-underline">......, ......., ......</span>
+                    <span class="p-5 text-underline">{{../PatientData/pyHomeAddress1}} {{../PatientData/pyHomeAddress2}}</span>
                 </div>
                 <div class="col-1-4 text-bold">
                     <span>City:</span>
-                    <span class="p-5 text-underline">...city...</span>
+                    <span class="p-5 text-underline">{{../PatientData/pyCity}}</span>
                 </div>
                 <div class="col-1-4 text-bold">
                     <span>State:</span>
-                    <span class="p-5 text-underline">...state...</span>
+                    <span class="p-5 text-underline">{{../PatientData/pyState}}</span>
                 </div>
                 <div class="col-1-4 text-bold">
                     <span>Zip:</span>
@@ -50,17 +52,17 @@
             <div class="frow justify-start mt-50">
                 <div class="col-1-2 text-bold">
                     <span>AUTHORIZATION SIGNATURE</span>
-                    <span class="p-20 text-underline">.....signature.....</span>
+                     {{> signature name="authorization"}}
                 </div>
                 <div class="col-1-2">
                     <span>DATE:</span>
-                    <span class="p-5 text-underline">../../....</span>
+                    <span class="p-5 text-underline">{{SignatureDate}}.</span>
                 </div>
             </div>
             <div class="frow justify-start mt-10 mb-5">
                 <div class="col-1-1">
                     <span>NAME OF SIGNATORY:</span>
-                    <span class="p-5 text-underline">...name..of..person..</span>
+                    <span class="p-5 text-underline">{{NameOfSignatory}}</span>
                 </div>
             </div>
             <div class="frow justify-start mb-5">
@@ -69,17 +71,17 @@
             <div class="frow justify-start">
                 <div class="col-1-1">
                     <span>Relationship to patient:</span>
-                    <span class="p-5 text-underline">.....relationship.....</span>
+                    <span class="p-5 text-underline">{{RelationshipToPatient}}</span>
                 </div>
             </div>
             <div class="frow justify-start">
                 <div class="col-1-2">
                     <span>Witness</span>
-                    <span class="p-5 text-underline">....witness....</span>
+                    {{> signature name="witness"}}
                 </div>
                 <div class="col-1-2">
                     <span>Date</span>
-                    <span class="p-5 text-underline">../../....</span>
+                    <span class="p-5 text-underline">{{WitnessDate}}</span>
                 </div>
             </div>
             <div class="frow justify-start mt-10">
@@ -88,5 +90,6 @@
                 </div>
             </div>
         </div>
+        {{/with}}
     </div>
 </section>

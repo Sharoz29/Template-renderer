@@ -87,17 +87,40 @@ export function formatDate(date) {
   return new Date(date).toLocaleDateString().replace(/\//g, "-");
 }
 
+export function countOfOption(boolOfIsChecked, context) {
+  let count = 0;
+  context.forEach((item) => {
+    if (
+      item.IsChecked === boolOfIsChecked ||
+      item.IsChecked === `${boolOfIsChecked}`
+    ) {
+      count++;
+    }
+  });
+  return count;
+}
+
 export function getSignatureUrl(context, person) {
   switch (person) {
     case "patient":
-      return context?.AdmissionOrders?.PatientsSignature || "";
+      return context?.AnnualWellnessForm?.PatientsSignature || "";
     case "physician":
-      return context?.AdmissionOrders?.PhysiciansSignature || "";
+      return context?.SignatureCapture3 || "";
     case "witness":
-      return context?.AdmissionOrders?.WitnessSignature || "";
+      return context?.RecordReleaseAuthorization?.Witness || "";
     case "provider":
-      return context?.AdmissionOrders?.ProviderSignature || "";
+      return context?.SignatureCapture2 || "";
+    case "authorization":
+      return context?.RecordReleaseAuthorization?.AuthorizationSignature || "";
   }
+}
+export function splitArrayByNumber(array, chunkSize, options) {
+  let result = "";
+  for (let i = 0; i < array.length; i += chunkSize) {
+    let chunk = array.slice(i, i + chunkSize);
+    result += options.fn({ chunk });
+  }
+  return result;
 }
 
 export const helpers = {
@@ -117,6 +140,8 @@ export const helpers = {
   formatDate,
   hostUrl,
   getSignatureUrl,
+  countOfOption,
+  splitArrayByNumber,
 };
 
 export const HBS = create({

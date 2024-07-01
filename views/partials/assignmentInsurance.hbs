@@ -10,7 +10,7 @@
           in applying for payment under TITLE XVII of the Social Security Act is
           correct and request on my behalf all authorized benefits. I hereby
           authorize and instruct my insurance carrier to make payment directly
-          to Remedial Patients Care, Inc. for benefits (payments) otherwise
+          to {{@root.AdmissionOrders.NameofHealthAgency}} for benefits (payments) otherwise
           payable to me. I agree to personally pay for any charge that are not
           covered by or collected from any insurance program including any
           deductibles and coinsurance amounts.
@@ -19,7 +19,7 @@
           I certify that all information given are correct and consent to the
           release of all records for payment of authorized benefits from
           Medical, Medicaid, or any other responsible payer be made in my behalf
-          to Remedial Patients Care, Inc.
+          to {{@root.AdmissionOrders.NameofHealthAgency}}.
         </p>
         <p>
           I understand that the Federal Patient Self -Determination Act of 1990
@@ -34,14 +34,12 @@
           <li>
             <div class="frow justify-start gutters">
               <span class="col-2-3">I have a Living Will declarations</span>
-              <div class="frow justify-start">
+              <div class="frow justify-start" style="gap:10px">
                 <div class="cb">
-                  <input type="checkbox" name="livingwill" id="livingwill" />
-                  <label for="livingwill">Yes</label>
+                  {{> checkbox name="Yes" IsChecked=(checker @root.AppointmentInformation.LivingWillDeclaration "Yes")}}
                 </div>
                 <div class="cb">
-                  <input type="checkbox" name="livingwill" id="livingwill" />
-                  <label for="livingwill">No</label>
+                   {{> checkbox name="No" IsChecked=(checker @root.AppointmentInformation.LivingWillDeclaration "No")}}
                 </div>
               </div>
             </div>
@@ -53,14 +51,12 @@
             <div class="frow justify-start gutters">
               <span class="col-2-3">I have a Durable Power of Attorney for
                 Health Care</span>
-              <div class="frow justify-start">
+              <div class="frow justify-start" style="gap:10px">
                 <div class="cb">
-                  <input type="checkbox" name="livingwill" id="livingwill" />
-                  <label for="livingwill">Yes</label>
+                  {{> checkbox name="Yes" IsChecked=(checker @root.AppointmentInformation.DurablePowerOfAttorney "Yes")}}
                 </div>
                 <div class="cb">
-                  <input type="checkbox" name="livingwill" id="livingwill" />
-                  <label for="livingwill">No</label>
+                   {{> checkbox name="No" IsChecked=(checker @root.AppointmentInformation.DurablePowerOfAttorney "No")}}
                 </div>
               </div>
             </div>
@@ -72,23 +68,41 @@
         <col width="50%">
         <tbody>
           <tr>
-            <td colspan="2">Name of Patient</td>
+            <td>
+              <span>
+                Name of patient: 
+              </span>
+              <span>
+                {{@root.SelectedPatientData.pyFullName}}
+              </span>
+              </td>
+            <td>
+              <span>
+                Date of Birth:
+              </span>
+              <span>
+                 {{@root.SelectedPatientData.DateOfBirth}}
+              </span>
+            </td>
           </tr>
           <tr>
-            <td>Name of Patient</td>
-            <td>Date of Birth</td>
-          </tr>
-          <tr>
-            <td colspan="2">Address</td>
+            <td colspan="2">
+              <span>
+                Address:
+              </span>
+              <span>
+                {{@root.SelectedPatientData.pyHomeAddress1}} {{@root.SelectedPatientData.pyHomeAddress2}}
+              </span>
+            </td>
           </tr>
           <tr>
             <td>
               <div class="frow justify-start">
                 <b class="col-1-1">Signature of Patient:</b>
-                <img class="signature-img" src="{{getSignatureUrl @root 'patient'}}" alt="patient_signatures">
+                {{> signature name="patient"}}
               </div>
             </td>
-            <td>Date:</td>
+            <td>Date: {{@root.SelectedPatientData.SignatureDate}}</td>
           </tr>
         </tbody>
       </table>
@@ -104,33 +118,127 @@
       <table class="striped width-100">
         <tbody>
           <tr>
-            <td colspan="6">Name of Legal Representative:</td>
+            <td colspan="6">
+              <span>
+                Name of Legal Representative: 
+              </span>
+              <span>
+                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}}
+              </span>
+            </td>
           </tr>
           <tr>
-            <td colspan="3">Relationship:</td>
-            <td colspan="3">Telephone:</td>
+            <td colspan="3">
+              <span>
+                Relationship: 
+              </span>
+              <span>
+                {{@root.AppointmentInformation.PatientData.LegalRepresentative.RelationshipToThePatient}}
+              </span>
+            </td>
+            <td colspan="3">
+              <span>
+                Telephone:
+              </span>
+              <span>
+                {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}} --}}
+                Not present in data
+              </span>
+            </td>
           </tr>
           <tr>
-            <td colspan="6">Address:</td>
+            <td colspan="6">
+              <span>
+                Address:
+              </span>
+              <span>
+                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyHomeAddress1}} {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyHomeAddress2}} 
+              </span>
+            </td>
           </tr>
           <tr>
-            <td>Unit:</td>
-            <td colspan="2">Street:</td>
-            <td>City:</td>
-            <td>State:</td>
-            <td>Zip:</td>
+            <td>
+              <span>
+                Unit:
+              </span>
+              <span>
+                {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}} --}}
+                Not present in data
+              </span>
+            </td>
+            <td colspan="2">
+              <span>
+                Street:
+              </span>
+              <span>
+                {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}} --}}
+                Not present in data
+              </span>
+            </td>
+            <td>
+               <span>
+                 City:
+              </span>
+              <span>
+                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyCity}}
+              </span>
+            </td>
+            <td>
+              <span>
+                State:
+              </span>
+              <span>
+                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyState}}
+              </span>
+            </td>
+            <td>
+              <span>
+                Zip:
+              </span>
+              <span>
+                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyPostalCode}}
+              </span>
+            </td>
           </tr>
           <tr>
             <td colspan="3">Signature of Legal Rep:</td>
             <td colspan="3">Date:</td>
           </tr>
           <tr>
-            <td colspan="3">Name of Witness:</td>
-            <td colspan="2">Sitnature:</td>
-            <td colspan="1">Date:</td>
+            <td colspan="3">
+              <span>
+                Name of Witness:
+              </span>
+               <span>
+                 {{@root.AppointmentInformation.PatientData.Witness.pyFullName}}
+                {{!-- Not present in data --}}
+              </span>
+            </td>
+            <td colspan="2">
+              <span>
+                Signature:
+              </span>
+             {{> signature name="witness"}}
+            </td>
+            <td colspan="1">
+              <span>
+                Date: 
+              </span>
+              <span>
+                 {{@root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}
+              </span>
+            </td>
           </tr>
           <tr>
-            <td colspan="6">Reason patient is unable to sign:</td>
+            <td colspan="6">
+              <span>
+                Reason patient is unable to sign:
+              </span>
+              <span>
+                 {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}} --}}
+                Not present in data
+              </span>
+              </td>
           </tr>
         </tbody>
       </table>
