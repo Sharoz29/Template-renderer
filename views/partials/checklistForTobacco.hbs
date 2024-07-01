@@ -24,32 +24,36 @@
                                 smoking. It's the single most important thing you can do
                                 to protect your health, and I can help.
                             </div>
-                            <div class="frow justify-start text-bold mt-10">
+                            <div class="frow justify-start text-bold mt-10 mb-10">
                                 ASSESS readiness to quit:
                             </div>
                             <div class="frow justify-start">
                                 <div class="col-1-2">
-                                    <div class="cb">
-                                        <label for="name">Patient is ready to quit</label>
+                                    <div class="cb frow justify-start" style="gap:5px">
+                                        <span class="cb">Patient is ready to quit: </span>
+                                        {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "No")}}
+                                        {{> checkbox name="No" IsChecked=(checker IsPatientReadyToQuit "No")}}
                                     </div>
                                 </div>
                                 <div class="col-1-2">
                                     <span>Target quit date:</span>
-                                    <span class="p-5 text-underline"> .. / .. / ....</span>
+                                    <span class="p-5 text-underline">{{TargetQuitDate}}</span>
                                 </div>
                             </div>
                             <div class="frow justify-start">
                                 <div class="col-1-2">
-                                    <div class="cb">
-                                        <label for="name">
-                                            Patient is thinking about quitting
-                                        </label>
+                                    <div class="cb frow justify-start" style="gap:3px">
+                                        <span class="cb">Patient is thinking about quitting: </span>
+                                        {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "Yes")}}
+                                        {{> checkbox name="No" IsChecked=(checker IsPatientThinkingAboutQuitting "No")}}
                                     </div>
                                 </div>
-                                <div class="col-1-2">
-                                    <div class="cb">
-                                        <label for="name">Brief counseling using 5 R's</label>
-                                    </div>
+                            </div>
+                            <div class="col-1-1">
+                                <div class="cb frow justify-start" style="gap:5px">
+                                    <span class="cb">Brief counseling using 5 R's: </span>
+                                    {{> checkbox name="Yes" IsChecked=(checker Is5RsCounselingRequired "Yes")}}
+                                    {{> checkbox name="No" IsChecked=(checker Is5RsCounselingRequired "No")}}
                                 </div>
                             </div>
                         </td>
@@ -58,7 +62,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <span>Name:</span>
+                                            <span class="p-5">Name:</span>
                                             <span class="p-5 text-underline">
                                                {{@root.SelectedPatientData.pyFullName}}
                                             </span>
@@ -66,7 +70,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span>DOB:</span>
+                                            <span class="p-5">DOB:</span>
                                             <span class="p-5 text-underline">
                                                 {{@root.SelectedPatientData.DateOfBirth}}
                                             </span>
@@ -74,8 +78,8 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span>Encounter Dates:</span>
-                                            <span class="p-5 text-underline">.. / .. / .....</span>
+                                            <span class="p-5">Encounter Dates:</span>
+                                            <span class="p-5 text-underline">{{@root.AppointmentInformation.EncounterDate}}.</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -83,16 +87,16 @@
                                             <div class="frow justify-start gutters">
                                                 <span>Visit #</span>
                                                 <div class="cb">
-                                                    <label for="name">1</label>
+                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.VisitCount "1") name="1" }}
                                                 </div>
                                                 <div class="cb">
-                                                    <label for="name">2</label>
+                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.VisitCount "2") name="2" }}
                                                 </div>
                                                 <div class="cb">
-                                                    <label for="name">3</label>
+                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.VisitCount "3") name="3" }}
                                                 </div>
                                                 <div class="cb">
-                                                    <label for="name">4</label>
+                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.VisitCount "4") name="4" }}
                                                 </div>
                                             </div>
                                         </td>
@@ -105,38 +109,42 @@
             </table>
             <div class="frow justify-start">
                 <div class="col-1-1">
-                    <span>Relevant Reasons:</span>
-                    <span class="p-5 text-underline">..... reasons .....</span>
+                    <span class="p-5">Relevant Reasons:</span>
+                    <span class="p-5 text-underline">{{RelevantReasons}}</span>
                 </div>
             </div>
             <div class="frow justify-start">
                 <div class="col-1-1">
-                    <span>Risks:</span>
-                    <span class="p-5 text-underline">..... risks .....</span>
+                    <span class="p-5">Risks:</span>
+                    <span class="p-5 text-underline">{{Risks}}</span>
                 </div>
             </div>
             <div class="frow justify-start">
                 <div class="col-1-1">
-                    <span>Rewards:</span>
-                    <span class="p-5 text-underline">..... rewards .....</span>
+                    <span class="p-5">Rewards:</span>
+                    <span class="p-5 text-underline">{{Rewards}}</span>
                 </div>
             </div>
             <div class="col-1-1">
-                <span>Quit smoking &lt;</span>
-                <span class="p-5 text-underline">.....</span>
+                <span class="p-5">Quit smoking &lt;</span>
+                <span class="p-5 text-underline">{{QuitSmokingYears}}</span>
                 <span>years ago</span>
             </div>
             <div class="col-1-1">
-                <span>Smoked for </span>
-                <span class="p-5 text-underline">.....</span>
+                <span class="p-5">Smoked for </span>
+                <span class="p-5 text-underline">{{SmokedForYears}}</span>
                 <span>years.</span>
             </div>
             <div class="frow justify-start gutters">
-                <div class="cb">
-                    <label for="name">Patient is not ready to quit</label>
+                <div class="cb frow" style="gap:5px">
+                    <span class="cb" style="padding-left: 5px;">Patient is not ready to quit</span>
+                     {{> checkbox name="Yes" IsChecked=(checker IsPatientNotReadyToQuit "Yes")}}
+                     {{> checkbox name="No" IsChecked=(checker IsPatientNotReadyToQuit "No")}}
                 </div>
-                <div class="cb">
-                    <label for="name">Repetition relapse</label>
+                <div class="cb frow" style="gap:5px;">
+                    <span class="cb" style="padding-left: 5px;">Repetition relapse</span>
+                     {{> checkbox name="Yes" IsChecked=(checker RepetitionRelapse "Yes")}}
+                     {{> checkbox name="No" IsChecked=(checker RepetitionRelapse "No")}}
                 </div>
             </div>
             <div class="frow justify-start text-bold mt-10">
@@ -147,19 +155,19 @@
                     <span>Smoking history:</span>
                 </div>
                 <div class="col-1-5">
-                    <span class="p-5 text-underline">.....</span>
+                    <span class="p-5 text-underline">{{CigarettesPerDay}}</span>
                     <span># of Cigarettes/Day</span>
                 </div>
                 <div class="col-1-5">
-                    <span class="p-5 text-underline">.....</span>
+                    <span class="p-5 text-underline">{{CigarettesPacksPerDay}}</span>
                     <span># of Packs/Day</span>
                 </div>
                 <div class="col-1-5">
-                    <span class="p-5 text-underline">.....</span>
+                    <span class="p-5 text-underline">{{SmokedForYears}}</span>
                     <span># of Years</span>
                 </div>
                 <div class="col-1-5">
-                    <span class="p-5 text-underline">.....</span>
+                    <span class="p-5 text-underline">{{NumberOfQuitAttempts}}</span>
                     <span># of Quit Attempts</span>
                 </div>
             </div>
@@ -168,15 +176,15 @@
                     <span>Household members:</span>
                 </div>
                 <div class="col-1-5">
-                    <span class="p-5 text-underline">.....</span>
+                    <span class="p-5 text-underline">{{NumberOfSmokersInFamily}}</span>
                     <span># of Smokers</span>
                 </div>
                 <div class="col-1-5">
-                    <span class="p-5 text-underline">.....</span>
+                    <span class="p-5 text-underline">{{NumberOfNonSmokersInFamily}}</span>
                     <span># of Non-smokers</span>
                 </div>
                 <div class="col-1-5">
-                    <span class="p-5 text-underline">.....</span>
+                    <span class="p-5 text-underline">{{NumberOfChildren}}</span>
                     <span># of Children</span>
                 </div>
             </div>
@@ -203,28 +211,35 @@
             </div>
                 
             <div class="frow justify-start gutters">
-                <span>Bupropion SR:</span>
-                <div class="cb">
-                    <label for="name">
-                        Tablets (Start 7 to 10 days before the target quit date.)
-                    </label>
+                <span class="cb">Bupropion SR:</span>
+                <div class="cb frow" style="gap:5px">
+                    <span>Tablets (Start 7 to 10 days before the target quit date.)</span>
+                    <div class="frow mt-5" style="gap:3px">
+                        {{> checkbox name="Yes" IsChecked=(checker BupropionSRTablets "Yes")}}
+                        {{> checkbox name="No" IsChecked=(checker BupropionSRTablets "No")}}
+                     </div>
                 </div>
             </div>
             <div class="frow justify-start mt-10">
                 <span class="text-bold">ARRANGE Follow-up:</span>
             </div>
             <div class="frow justify-start gutters">
-                <div class="cb">
-                    <label for="name">"I'll check back with you by
-                        <span class="p-5 text-underline">(.. / .. / ....) </span>
-                        <span>." (Set within the first week after the target
-                            quitdate)</span>
+                <div class="cb frow mt-5" style="gap:5px">
+                    <span class="cb">"I'll check back with you by."</span>
+                    <span class="p-5 cb text-underline">{{TargetQuitDate}} </span>
+                    <span class="cb">
+                        (Set within the first week after the target quitdate)
+                    </span>
+                     {{> checkbox name="Yes" IsChecked=(checker QuitSmokingCheckBack "Yes")}}
+                     {{> checkbox name="No" IsChecked=(checker QuitSmokingCheckBack "No")}}
                     </label>
                 </div>
             </div>
             <div class="frow justify-start gutters">
-                <div class="cb">
-                    <label for="name">"I'd like to give you some materials."</label>
+                <div class="cb frow" style="gap:5px">
+                    <span class="cb">"I'd like to give you some materials."</span>
+                     {{> checkbox name="Yes" IsChecked=(checker QuitSmokingMaterials "Yes")}}
+                     {{> checkbox name="No" IsChecked=(checker QuitSmokingMaterials "No")}}
                 </div>
             </div>
             <div class="frow justify-start text-bold mt-20">
