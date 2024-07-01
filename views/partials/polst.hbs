@@ -342,7 +342,7 @@
                           <td colspan="2">
                             <div class="physian-signature">
                               <span>Physician Signature:</span>
-                              <img class="signature-img" src="{{getSignatureUrl @root 'physician'}}" alt="physician_signatures">
+                               {{> signature name="physician"}}
                             </div>
                           </td>
                           <td>
@@ -389,7 +389,7 @@
                           <td colspan="2">
                             <div class="frow justify-start">
                               <span class="col-1-1">Signature:</span>
-                              <img class="signature-img" src="{{getSignatureUrl @root 'patient'}}" alt="patient_signatures">
+                              {{> signature name="patient"}}
                             </div>
                           </td>
                           <td>

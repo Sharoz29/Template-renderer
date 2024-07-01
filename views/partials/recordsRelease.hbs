@@ -52,7 +52,7 @@
             <div class="frow justify-start mt-50">
                 <div class="col-1-2 text-bold">
                     <span>AUTHORIZATION SIGNATURE</span>
-                     <img class="signature-img" src="{{getSignatureUrl @root 'authorization'}}" alt="authorization_signatures">
+                     {{> signature name="authorization"}}
                 </div>
                 <div class="col-1-2">
                     <span>DATE:</span>
@@ -77,7 +77,7 @@
             <div class="frow justify-start">
                 <div class="col-1-2">
                     <span>Witness</span>
-                   <img class="signature-img" src="{{getSignatureUrl @root 'witness'}}" alt="witness_signatures">
+                    {{> signature name="witness"}}
                 </div>
                 <div class="col-1-2">
                     <span>Date</span>

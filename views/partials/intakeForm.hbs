@@ -130,7 +130,7 @@
             <div class="frow justify-start mt-50">
                 <div class="col-1-2">
                     <span class="text-bold">PATIENT'S SIGNATURE: </span>
-                    <img class="signature-img" src="{{getSignatureUrl @root 'patient'}}" alt="patient_signatures">
+                    {{> signature name="patient"}}
                 </div>
                 <div class="col-1-2 frow" style="align-items: flex-end;">
                     <span class="p-5">DATE:</span>
@@ -148,7 +148,7 @@
             <div class="frow justify-start">
                 <div class="col-1-2">
                     <span>Witness:</span>
-                    <img class="signature-img" src="{{getSignatureUrl @root 'witness'}}" alt="witness_signatures">
+                    {{> signature name="witness"}}
                 </div>
                 <div class="col-1-2 frow" style="align-items: flex-end;">
                     <span class="p-5">Date:</span>
