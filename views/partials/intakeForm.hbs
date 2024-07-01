@@ -1,3 +1,4 @@
+{{#with SelectedPatientData}}
 <section class="frow" id="intake-form">
     <div class="container-padding width-100">
         <div class="content">
@@ -19,7 +20,7 @@
             <div class="frow justify-start mb-20">
                 <div class="col-1-2">
                     <span>Telephone No:</span>
-                    <span class="p-5 text-underline">...number...</span>
+                    <span class="p-5 text-underline">Not here</span>
                 </div>
                 <div class="col-1-2">
                     <span>Home Health/Hospice:</span>
@@ -34,32 +35,32 @@
             <div class="frow justify-start">
                 <div class="col-1-2">
                     <span>Name:</span>
-                    <span class="p-5 text-underline">... name ...</span>
+                    <span class="p-5 text-underline">{{pyFullName}}</span>
                 </div>
                 <div class="col-1-2">
                     <span>Date of Birth:</span>
-                    <span class="p-5 text-underline">.. / .. / ....</span>
+                    <span class="p-5 text-underline">{{DateOfBirth}}</span>
                 </div>
             </div>
             <div class="frow justify-start mb-10">
                 <div class="col-1-2">
                     <span>Address:</span>
-                    <span class="p-5 text-underline">... address ...</span>
+                    <span class="p-5 text-underline">{{pyHomeAddress1}} {{pyHomeAddress2}}</span>
                 </div>
                 <div class="col-1-2">
                     <span>Patient's Phone No:</span>
-                    <span class="p-5 text-underline">... number ...</span>
+                    <span class="p-5 text-underline">{{pyPhoneNumber}}</span>
                 </div>
             </div>
             <div class="frow justify-start">
                 <!-- <span> -->
                 <p>
                     I,
-                    <span class="p-5 text-underline">... sample data ...</span>
+                    <span class="p-5 text-underline">{{pyFullName}}</span>
                     here by give permission to
-                    <span class="text-underline">.. sample doctor .. </span>
+                    <span class="text-underline">{{@root.SelectMD}} </span>
                     (Authorized Medical Provider of
-                    <b>Remedial Patients Care, Inc.</b>) to perform all necessary
+                    <b>{{@root.AdmissionOrders.NameofHealthAgency}}</b>) to perform all necessary
                     assessment and treatment. I understand that I may refuse or
                     terminate services at any time. If needed or requested, any
                     concerns regarding that medical condition and treatment will be
@@ -68,7 +69,7 @@
                     are important to my treatment plan. I acknowledge that
                     <b>RECEIPT</b> of <b>Notice of Privacy (HIPAA Form)</b> and was
                     given opportunity to ask the questions and voice concerns. I
-                    give permission to <b>Remedial Patients Care, Inc</b> to use and
+                    give permission to <b>{{@root.AdmissionOrders.NameofHealthAgency}}</b> to use and
                     disclose Protective Health Information about me to carry out
                     treatment, payment, health care operations.
                 </p>
@@ -83,13 +84,13 @@
                     given opportunity to review notices, ask the questions and voice
                     concerns, set limitations / restrictions on the use of my health
                     information. I give permission to
-                    <b>Remedial Patients Care, Inc.</b> to use and disclose
+                    <b>{{@root.AdmissionOrders.NameofHealthAgency}}</b> to use and disclose
                     Protective Health Information about me to carry out treatment,
                     payment, health care operations, receive and release information
                     pertinent to my care.
                 </p>
                 <span>
-                    I authorize <b>Remedial Patients Care, Inc.</b> to photograph or
+                    I authorize <b>{{@root.AdmissionOrders.NameofHealthAgency}}</b> to photograph or
                     videotape appropriate body parts for necessary documentations
                     only.
                 </span>
@@ -109,53 +110,52 @@
             <div class="frow justify-start mt-10">
                 <div class="col-1-2">
                     <span>Discharge from Hospital:</span>
-                    <span class="p-5 text-underline"> .... sample ....</span>
+                    <span class="p-5 text-underline"> {{@root.AppointmentInformation.DischargeFromHospital}}</span>
                 </div>
                 <div class="col-1-2">
                     <span>Date of Discharge:</span>
-                    <span class="p-5 text-underline">.. / .. / ....</span>
+                    <span class="p-5 text-underline">{{@root.AppointmentInformation.DateOfDischarge}}</span>
                 </div>
             </div>
-            <div class="frow justify-start gutters">
-                <span>Patient is using: </span>
-                <div class="cb">
-                    <label for="patient-use">Cane</label>
-                </div>
-                <div class="cb">
-                    <label for="patient-use">Wheelchair</label>
-                </div>
-                <div class="cb">
-                    <label for="patient-use">Walker</label>
+            <div class="frow justify-start gutters mt-10">
+                <span class="cb mb-10">Patient is using: </span>
+                <div class="frow justify-start">
+                    {{#each @root.SelectedPatientsDME}}
+                        <div class="cb col-1-9 justify-start">
+                            {{> checkbox name=DMEName IsChecked=IsChecked}}
+                        </div>
+                    {{/each}}
                 </div>
             </div>
             <div class="frow justify-start mt-50">
                 <div class="col-1-2">
                     <span class="text-bold">PATIENT'S SIGNATURE: </span>
-                    <span class="p-10 text-underline"> ... signature ...</span>
+                    <img class="signature-img" src="{{getSignatureUrl @root 'patient'}}" alt="patient_signatures">
                 </div>
-                <div class="col-1-2">
-                    <span>DATE:</span>
-                    <span class="p-5 text-underline"> .. / .. / ....</span>
+                <div class="col-1-2 frow" style="align-items: flex-end;">
+                    <span class="p-5">DATE:</span>
+                    <span class="p-5 text-underline"> {{SignatureDate}}.</span>
                 </div>
             </div>
             <div class="frow justify-start">
                 <div class="col-1-1">
                     <span>Relationship to patient:</span>
                     <span class="p-5 text-underline">
-                        ... relationship to patient ...
+                       {{RelationshipToThePatient}}
                     </span>
                 </div>
             </div>
             <div class="frow justify-start">
                 <div class="col-1-2">
                     <span>Witness:</span>
-                    <span class="p-5 text-underline">... witness ...</span>
+                    <img class="signature-img" src="{{getSignatureUrl @root 'witness'}}" alt="witness_signatures">
                 </div>
-                <div class="col-1-2">
-                    <span>Date:</span>
-                    <span class="p-5 text-underline"> .. / .. / ....</span>
+                <div class="col-1-2 frow" style="align-items: flex-end;">
+                    <span class="p-5">Date:</span>
+                    <span class="p-5 text-underline"> {{@root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
+{{/with}}

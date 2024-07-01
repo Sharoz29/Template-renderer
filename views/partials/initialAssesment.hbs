@@ -707,34 +707,17 @@
           </td>
         </tr>
         <!-- loop here... -->
-        <!-- Need to reevaluate below logic to slice the array into 3-->
+        {{#splitArrayByNumber @root.SelectedPlanOnInitialAssesment 3}}
         <tr>
-        {{#each (columnSeperator 0 3 @root.SelectedPlanOnInitialAssesment)}}
+          {{#each chunk}}
           <td colspan="2">
             <div class="cb">
               {{> checkbox name=Plan IsChecked=IsChecked}}
             </div>
           </td>
-        {{/each}}
+          {{/each}}
         </tr>
-        <tr>
-        {{#each (columnSeperator 4 7 @root.SelectedPlanOnInitialAssesment)}}
-          <td colspan="2">
-            <div class="cb">
-              {{> checkbox name=Plan IsChecked=IsChecked}}
-            </div>
-          </td>
-        {{/each}}
-        </tr>
-        <tr>
-        {{#each (columnSeperator 8 9 @root.SelectedPlanOnInitialAssesment)}}
-          <td colspan="2">
-            <div class="cb">
-              {{> checkbox name=Plan IsChecked=IsChecked}}
-            </div>
-          </td>
-        {{/each}}
-        </tr>
+        {{/splitArrayByNumber}}
       </tbody>
     </table>
     <div class="signatures mt-60 mb-10">
