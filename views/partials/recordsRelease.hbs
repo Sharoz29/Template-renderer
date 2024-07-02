@@ -5,61 +5,118 @@
                  {{!-- {{> formTitle ..}} --}}
                  <h2 class="text-center m-auto">RECORDS RELEASE/AUTHORIZATION</h2>
             </div>
-        {{#with RecordReleaseAuthorization}}
-            <div class="text-center m-auto text-bold">RECORDS REQUESTED</div>
+        {{#with RecordReleaseAuthorization}}            
+            <div class="frow text-center mt-10 text-bold">
+                <span>... Company name ... </span>
+            </div>
+            <div class="from text-center">
+                <span>..... Company Address ....</span>            
+            </div>
+            <div class="frow text-bold">
+                <div class="col-1-2 text-right p-5">
+                    <span>TEL# </span>
+                    <span>... telephone number ...</span>
+                </div>
+                <div class="col-1-2 text-left p-5">
+                    <span>FAX# </span>
+                    <span>... fax number ...</span>
+                </div>
+            </div>
+            <div class="text-center m-auto text-bold mt-10">RECORDS REQUESTED</div>
             <ul class="text-bold ml-50">
                 <li>The patient's significant medical history</li>
                 <li>Current medical findings</li>
                 <li>Diagnosis (es)</li>
                 <li>Rehabilitation goals, if determined</li>
             </ul>
-            <div class="frow justify-start">
+            <table>
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+                <tr>
+                    <td colspan="2">
+                        <span>Name of Patient:</span>
+                        <span class="p-5 text-underline text-bold">{{../PatientData/pyFullName}}.</span>
+                    </td>
+                    <td colspan="2">
+                        <span>Medicare No:</span>
+                        <span class="p-5 text-underline text-bold">......, ......., ......</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span>Social Security No:</span>
+                        <span class="p-5 text-underline text-bold">{{../PatientData/pySSN}}.</span>
+                    </td>
+                    <td colspan="2">
+                        <span>Date of Birth:</span>
+                        <span class="p-5 text-underline text-bold">{{../PatientData/DateOfBirth}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <span>Address:</span>
+                        <span class="p-5 text-underline text-bold">{{../PatientData/pyHomeAddress1}} {{../PatientData/pyHomeAddress2}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>City:</span>
+                        <span class="p-5 text-underline text-bold">{{../PatientData/pyCity}}</span>
+                    </td>
+                    <td>
+                        <span>State:</span>
+                        <span class="p-5 text-underline text-bold">{{../PatientData/pyState}}</span>
+                    </td>
+                    <td colspan="2">
+                        <span>Zip:</span>
+                        <span class="p-5 text-underline text-bold">..zip..</span>
+                    </td>
+                </tr>
+            </table>
+
+            
+            <div class="frow justify-start mt-70 mb-20">
                 <div class="col-1-2">
-                    <span>Name of Patient:</span>
-                    <span class="p-5 text-underline">{{../PatientData/pyFullName}}.</span>
-                </div>
-                <div class="col-1-2">
-                    <span>Medicare No:</span>
-                    <span class="p-5 text-underline">......, ......., ......</span>
-                </div>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-2">
-                    <span>Social Security No:</span>
-                    <span class="p-5 text-underline">{{../PatientData/pySSN}}.</span>
-                </div>
-                <div class="col-1-2">
-                    <span>Date of Birth:</span>
-                    <span class="p-5 text-underline">{{../PatientData/DateOfBirth}}</span>
-                </div>
-                <div class="col-1-1 text-bold">
-                    <span>Address:</span>
-                    <span class="p-5 text-underline">{{../PatientData/pyHomeAddress1}} {{../PatientData/pyHomeAddress2}}</span>
-                </div>
-                <div class="col-1-4 text-bold">
-                    <span>City:</span>
-                    <span class="p-5 text-underline">{{../PatientData/pyCity}}</span>
-                </div>
-                <div class="col-1-4 text-bold">
-                    <span>State:</span>
-                    <span class="p-5 text-underline">{{../PatientData/pyState}}</span>
-                </div>
-                <div class="col-1-4 text-bold">
-                    <span>Zip:</span>
-                    <span class="p-5 text-underline">..zip..</span>
-                </div>
-            </div>
-            <div class="frow justify-start mt-50">
-                <div class="col-1-2 text-bold">
-                    <span>AUTHORIZATION SIGNATURE</span>
+                    <span class="text-bold">AUTHORIZATION SIGNATURE:</span>
                      {{> signature name="authorization"}}
                 </div>
-                <div class="col-1-2">
+                <div class="col-1-2 text-bold">
                     <span>DATE:</span>
-                    <span class="p-5 text-underline">{{SignatureDate}}.</span>
+                    <span class="p-5 text-underline">{{SignatureDate}}</span>
                 </div>
             </div>
-            <div class="frow justify-start mt-10 mb-5">
+
+
+            <table>
+                <col width="50%">
+                <col width="50%">
+                <tr>
+                    <td colspan="2">
+                        <span>NAME OF SIGNATORY:</span>
+                        <span class="p-5 text-underline">{{NameOfSignatory}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">(IF DIFFERENT FROM THE PATIENT)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Relationship to patient:</td>
+                    <td><span class="p-5 text-underline text-bold">{{RelationshipToPatient}}</span></td>
+                </tr>
+                <tr style="height: 80px">
+                    <td>
+                        <span>Witness:</span>
+                        {{> signature name="witness"}}
+                    </td>
+                    <td>
+                        <span>Date:</span>
+                        <span class="p-5 text-underline text-bold">{{WitnessDate}}</span>
+                    </td>
+                </tr>
+            </table>
+            {{!-- <div class="frow justify-start mt-10 mb-5">
                 <div class="col-1-1">
                     <span>NAME OF SIGNATORY:</span>
                     <span class="p-5 text-underline">{{NameOfSignatory}}</span>
@@ -85,10 +142,10 @@
                 </div>
             </div>
             <div class="frow justify-start mt-10">
-                <div class="col-1-1">
+                <div class="col-1-1 text-bold">
                     THIS RELEASE IS VALID FOR 6 MONTHS FROM THE DATE OF SIGNATURE.
                 </div>
-            </div>
+            </div> --}}
         </div>
         {{/with}}
     </div>

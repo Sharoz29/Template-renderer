@@ -4,10 +4,6 @@
       {{> formTitle }}
     </div>
     {{#with PrescribedDiagnosis}}
-    <div class="col-1-1 cb fc m-auto">
-      <input type="checkbox" name="tcare" id="tcare" />
-      <label for="tcare">Transitional Care</label>
-    </div>
     <div class="col-1-1 impressions py-10 bb stripes">
        {{#each ../PrescribedDiagnosis}}
       <div class="frow impression">
@@ -38,7 +34,7 @@
             Continue current medications and plan of care.
             Frail elderly, on medications requiring regular monitoring. Follow labs closely.
             Medications prescribed using electronic prescribing system.
-            I verify that a total of 60 minutes was spent on this encounter by the Nurse Practitioner directly.
+            I verify that a total of <strong> .. visit length ..</strong> minutes was spent on this encounter by the Nurse Practitioner directly.
             Follow-up visit mentioned in plan.
         </span>
       </p>
