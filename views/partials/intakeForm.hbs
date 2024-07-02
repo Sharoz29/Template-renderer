@@ -70,9 +70,9 @@
                     I,
                     <span class="p-5 text-underline">{{pyFullName}}</span>
                     here by give permission to
-                    <span class="text-underline">{{@root.SelectMD}} </span>
+                    <span class="text-underline">{{@root.AppointmentInformation.SelectProvider}} </span>
                     (Authorized Medical Provider of
-                    <b>{{@root.OfficeName}}</b>) to perform all necessary
+                    <b>{{@root.Office.OfficeName}}</b>) to perform all necessary
                     assessment and treatment. I understand that I may refuse or
                     terminate services at any time. If needed or requested, any
                     concerns regarding that medical condition and treatment will be
@@ -81,7 +81,7 @@
                     are important to my treatment plan. I acknowledge that
                     <b>RECEIPT</b> of <b>Notice of Privacy (HIPAA Form)</b> and was
                     given opportunity to ask the questions and voice concerns. I
-                    give permission to <b>{{@root.OfficeName}}</b> to use and
+                    give permission to <b>{{@root.Office.OfficeName}}</b> to use and
                     disclose Protective Health Information about me to carry out
                     treatment, payment, health care operations.
                 </p>
