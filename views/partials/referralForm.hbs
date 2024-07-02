@@ -4,16 +4,42 @@
           <div class="container centered mb-20">
             {{>formTitle ..}}
           </div>
+
           <div class="mds p-10 mb-10 mb-20 ba">
-            <div class="frow justify-center">
-                <span class="md-id">{{@root.SelectMD}}</span>
+            <div class="frow">
+              {{!-- {{#each doctors}} --}}
+              <div class="checkbox-container col-6-12">
+                <span class="md-id"><strong>{{@root.SelectMD}}</strong></span>
+              </div>
+              {{!-- {{/each}} --}}
+              <div class="md-id-container col-3-6">
+                <span class="md-id"><strong>MD ID: Comes here...</strong></span>
+              </div>
             </div>
+            <!-- <pega:forEach name="Doctors.pxResults">
+              <div class="md-name">
+                <div class="checkbox-container">
+
+                  <input type="checkbox" name="doctor-name"  <pega:when java=<% tools.getProperty("DoctorsValues.pxResults").
+                  contain("$THIS.pyDoctorName") %>>
+                  checked
+                  </pega:when> />
+                  <label for="doctor-name"
+                    ><pega:reference name="$THIS.pyDoctorName"
+                  /></label>
+                </div>
+                <div class="md-id-container">
+                  <span class="md-id"
+                    ><pega:reference name="$THIS.pyDoctorID"
+                  /></span>
+                </div></div
+            ></pega:forEach> -->
           </div>
           <div class="agency p-10 mb-10 mb-20 ba">
             <div class="frow">
               <div class="item col-6-6">
                 <span class="label">Name of Agency : </span>
-                <span class="value">{{@root.AdmissionOrders.NameofHealthAgency}}</span>
+                <span class="value text-bold">{{@root.AdmissionOrders.NameofHealthAgency}}</span>
               </div>
               <div class="item col-6-6">
                  <h3 class="label">Home Health Service </h3>
