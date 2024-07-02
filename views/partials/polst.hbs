@@ -311,7 +311,7 @@
                         <tr>
                           <td colspan="3" class="background-dgrey p-10">
                             <div class="fz-16">
-                              <b>Signature Physician:</b><br />
+                              <b>Signature Provider:</b><br />
                               <span>My signature below indicates to the best of
                                 my knowledge that these orders are consistent
                                 with the patient’s medical condition and
@@ -321,34 +321,34 @@
                         </tr>
                         <tr>
                           <td>
-                            <span class="name">Print Physician Name:</span>
-                            <span class="">{{@root.SelectMD}}</span>
+                            <span class="name">Print Provider Name:</span>
+                            <span class="">{{@root.AppointmentInformation.SelectProvider}}</span>
                           </td>
                           <td>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="">{{../POLST/Physician/pyPhoneNumber}}</span>
+                              <span class="">.. not present in data ..</span>
                             </div>
                           </td>
 
                           <td>
                             <div class="license">
                               <span>License #:</span>
-                              <span class="">{{../POLST/Physician/LicenseNumber}}</span>
+                              <span class="">.. Not present in data ..</span>
                             </div>
                           </td>
                         </tr>
                         <tr>
                           <td colspan="2">
                             <div class="physian-signature">
-                              <span>Physician Signature:</span>
-                               {{> signature name="physician"}}
+                              <span>Provider Signature:</span>
+                               {{> signature name="provider"}}
                             </div>
                           </td>
                           <td>
                             <div class="date">
                               <span>Date:</span>
-                              <span class="">{{@root.AppointmentInformation.PhysicianSignatureDate}}</span>
+                              <span class="">{{@root.AppointmentInformation.SignatureDate}}</span>
                             </div>
                           </td>
                         </tr>
