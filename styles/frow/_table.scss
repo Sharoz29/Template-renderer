@@ -13,8 +13,21 @@
     }
 
     &.no-padding {
-      tbody:first-child > tr > td {
+      tbody:first-of-type > tr > td {
         padding: 0;
+      }
+    }
+
+    &.no-x-padding {
+      tbody:first-of-type > tr > td {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    &.no-y-padding {
+      tbody:first-of-type > tr > td {
+        padding-top: 0;
+        padding-bottom: 0;
       }
     }
     &.striped {

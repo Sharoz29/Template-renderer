@@ -5,8 +5,9 @@ import puppeteer from "puppeteer";
 import path from "path";
 import { fileURLToPath } from "url";
 import FormData from "form-data";
-import { HBS } from "./helpers.js";
+import { HBS, helpers } from "./helpers.js";
 import { getCaseData } from "./pega.js";
+import fs from "fs";
 
 import { pegaBaseUrl as _pegaBaseUrl } from "./global.js";
 
@@ -19,16 +20,17 @@ const __dirname = path.dirname(__filename);
 export async function createPdfFromHtml(htmlContent, options = {}) {
   // Launch a new browser instance
   const browser = await puppeteer.launch({
+    headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
 
   // Set the content of the page
-  await page.setContent(htmlContent);
+  await page.setContent(htmlContent, { waitUntil: "networkidle0" });
   await page.addStyleTag({
     content: `
     @page {
-      margin: 0.5in 0.1in 0.5in 0.1in;
+      margin: 0.9in 0.1in 0.5in 0.1in;
     }
     body {
       margin: 0;
@@ -36,20 +38,34 @@ export async function createPdfFromHtml(htmlContent, options = {}) {
   `,
   });
   // Generate the PDF and save it to the specified path
-  const pdfBuffer = await page.pdf({
-    format: "A4",
-    scale: 0.7,
-    printBackground: true,
-    displayHeaderFooter: true,
-    preferCSSPageSize: true,
-    ...options,
-  });
+  try {
+    // await page.evaluateHandle("document.fonts.ready");
+    // const screenShotBuffer = await page.screenshot({
+    //   type: "jpeg",
+    //   quality: 100,
+    //   fullPage: true,
+    //   captureBeyondViewport: true,
+    //   path: "output.jpg",
+    // });
 
+    // fs.writeFileSync("output.jpg", screenShotBuffer);
+
+    const pdfBuffer = await page.pdf({
+      format: "A4",
+      scale: 0.8,
+      printBackground: true,
+      displayHeaderFooter: true,
+      preferCSSPageSize: true,
+      ...options,
+    });
+    await browser.close();
+    console.log("PDF created successfully");
+    return pdfBuffer;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
   // Close the browser instance
-  await browser.close();
-
-  console.log("PDF created successfully");
-  return pdfBuffer;
 }
 
 export function getDateString() {
@@ -127,9 +143,15 @@ export function getPDFBuffer(caseID, renderView) {
       pdfBuffer: await createPdfFromHtml(await renderView("home", data), {
         path: path.join(__dirname, "output.pdf"),
         printBackground: true,
+
         headerTemplate: await HBS.render(
           path.resolve(__dirname, "../views/header.hbs"),
-          data
+          {
+            ...data,
+            officeLogo: await helpers.imageToDataUrl(
+              "https://web.pega23.lowcodesol.co.uk/reports/assets/office_logo.jpeg"
+            ),
+          }
         ),
         footerTemplate: await HBS.render(
           path.resolve(__dirname, "../views", "footer.hbs"),

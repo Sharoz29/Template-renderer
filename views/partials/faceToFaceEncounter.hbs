@@ -74,7 +74,7 @@
                 home health care because
               </span>
             </div>
-           <table class="striped width-100 no-padding mt-10">
+           <table class="striped width-100 mt-10 no-padding">
             <col width="25%" />
             <col width="25%" />
             <col width="25%" />
@@ -83,7 +83,7 @@
               {{#splitArrayByNumber ../SelectedMedicalConditionsOnFaceToFace 4}}
               <tr>
                  {{#each chunk}}
-                 <td  style="width: 25%;">
+                 <td>
                     <div class="cb">
                       {{> checkbox name=HHSMedicalCondition IsChecked=IsChecked}}
                     </div>
