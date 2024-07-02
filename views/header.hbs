@@ -13,23 +13,23 @@
 
   <div style="flex: 1 1 33%; justify-self:center; text-align:center;">
     <div>
-      <b>Patient Name:</b>
-      <span>
-        {{SelectedPatientData.pyFullName}}
-        --
-        {{SelectedPatientData.PatAccountID}}
-      </span>
+      <b><span>
+          {{SelectedPatientData.pyFullName}}
+          --
+          {{SelectedPatientData.PatAccountID}}
+        </span>
+      </b>
     </div>
     <div>
-      <b>DOB:</b>
-      <span>
-        {{formatDate SelectedPatientData.pxCreateDateTime}}
-      </span>
+      DOB:
+      <b><span>
+          {{formatDate SelectedPatientData.pxCreateDateTime}}
+        </span></b>
     </div>
     <div>
       <span>
-        <b>Date of Service: </b>
-        {{formatDate SelectedPatientData.pxCommitDateTime}}
+        Date of Service:
+        <b>{{formatDate SelectedPatientData.pxCommitDateTime}}</b>
       </span>
     </div>
   </div>
