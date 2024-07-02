@@ -7,51 +7,63 @@
                     INTAKE FORM <br />(GENERAL CONSENT FOR TREATMENT)
                 </h2>
             </div>
-            <div class="frow justify-start">
-                <div class="col-1-2">
-                    <span>Referral form:</span>
-                    <span class="p-5 text-underline">...referral form...</span>
-                </div>
-                <div class="col-1-2">
-                    <span>Date:</span>
-                    <span class="p-5 text-underline">.. / .. / ....</span>
-                </div>
-            </div>
-            <div class="frow justify-start mb-20">
-                <div class="col-1-2">
-                    <span>Telephone No:</span>
-                    <span class="p-5 text-underline">Not here</span>
-                </div>
-                <div class="col-1-2">
-                    <span>Home Health/Hospice:</span>
-                    <span class="p-5 text-underline">
-                        ...home health/hospice...
-                    </span>
-                </div>
-            </div>
-            <div class="frow justify-start text-bold text-underline mb-20">
-                <span>PATIENT INFORMATION</span>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-2">
-                    <span>Name:</span>
-                    <span class="p-5 text-underline">{{pyFullName}}</span>
-                </div>
-                <div class="col-1-2">
-                    <span>Date of Birth:</span>
-                    <span class="p-5 text-underline">{{DateOfBirth}}</span>
-                </div>
-            </div>
-            <div class="frow justify-start mb-10">
-                <div class="col-1-2">
-                    <span>Address:</span>
-                    <span class="p-5 text-underline">{{pyHomeAddress1}} {{pyHomeAddress2}}</span>
-                </div>
-                <div class="col-1-2">
-                    <span>Patient's Phone No:</span>
-                    <span class="p-5 text-underline">{{pyPhoneNumber}}</span>
-                </div>
-            </div>
+
+            <table>
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+                <tr>
+                    <td colspan="2">
+                        <span>Referral form:</span>
+                        <span class="p-5 text-underline text-bold">...referral form...</span>
+                    </td>
+                               
+                    <td colspan="2">
+                        <span>Date:</span>
+                        <span class="p-5 text-underline text-bold">.. / .. / ....</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span>Telephone No:</span>
+                        <span class="p-5 text-underline text-bold">Not here</span>
+                    </td>
+                    <td colspan="2">
+                        <span>Home Health/Hospice:</span>
+                        <span class="p-5 text-underline text-bold">
+                            ...home health/hospice...
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <span class="text-bold">PATIENT INFORMATION</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span>Name:</span>
+                        <span class="p-5 text-underline text-bold">{{pyFullName}}</span>
+                    </td>
+                    <td colspan="2">
+                        <span>Date of Birth:</span>
+                        <span class="p-5 text-underline text-bold">{{DateOfBirth}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span>Address:</span>
+                        <span class="p-5 text-underline text-bold">{{pyHomeAddress1}} {{pyHomeAddress2}}</span>
+                    </td>
+                    <td colspan="2">
+                        <span>Patient's Phone No:</span>
+                        <span class="p-5 text-underline text-bold">{{pyPhoneNumber}}</span>
+                    </td>
+                </tr>
+            </table>
+            
+           
             <div class="frow justify-start">
                 <!-- <span> -->
                 <p>
@@ -104,29 +116,53 @@
                     <label for="consent">No</label>
                 </div>
             </div>
-            <div class="frow justify-start text-bold text-underline mt-10">
-                <span>REASON FOR REFERRAL</span>
-            </div>
-            <div class="frow justify-start mt-10">
-                <div class="col-1-2">
-                    <span>Discharge from Hospital:</span>
-                    <span class="p-5 text-underline"> {{@root.AppointmentInformation.DischargeFromHospital}}</span>
-                </div>
-                <div class="col-1-2">
-                    <span>Date of Discharge:</span>
-                    <span class="p-5 text-underline">{{@root.AppointmentInformation.DateOfDischarge}}</span>
-                </div>
-            </div>
-            <div class="frow justify-start gutters mt-10">
-                <span class="cb mb-10">Patient is using: </span>
-                <div class="frow justify-start">
-                    {{#each @root.SelectedPatientsDME}}
-                        <div class="cb col-1-9 justify-start">
-                            {{> checkbox name=DMEName IsChecked=IsChecked}}
+
+            <table>
+                <col width="50%">
+                <col width="50%">
+                <tr class="text-bold text-underline">
+                    <td colspan="2">REASON REFERRAL</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Discharge from Hospital:</span>
+                        <span class="p-5 text-underline text-bold"> 
+                            {{@root.AppointmentInformation.DischargeFromHospital}}
+                        </span>
+                    </td>
+                    <td>
+                        <span>Date of Discharge:</span>
+                        <span class="p-5 text-underline text-bold">
+                            {{@root.AppointmentInformation.DateOfDischarge}}
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <col width="16.66%">
+                <col width="16.66%">
+                <col width="16.66%">
+                <col width="16.66%">
+                <col width="16.66%">
+                <col width="16.66%">
+                <tr>
+                    <td>
+                        <div class="frow justify-start gutters mt-10">
+                            <span class="cb mb-10">Patient is using: </span>
+                    </td>
+                    <td colspan="5">
+                        <div class="frow justify-start">
+                            {{#each @root.SelectedPatientsDME}}
+                            <div class="cb col-1-5 justify-start">
+                                {{> checkbox name=DMEName IsChecked=IsChecked}}
+                            </div>
+                            {{/each}}                        
                         </div>
-                    {{/each}}
-                </div>
-            </div>
+                    </td>
+                </tr>
+            </table>
+            
+
             <div class="frow justify-start mt-50">
                 <div class="col-1-2">
                     <span class="text-bold">PATIENT'S SIGNATURE: </span>
