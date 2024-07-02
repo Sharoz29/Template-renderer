@@ -1925,6 +1925,10 @@ canvas:focus {
   font-weight: bold !important;
 }
 
+.text-grey {
+  color: #a2a2a2 !important;
+}
+
 .cad-forms table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -1940,8 +1944,18 @@ canvas:focus {
   text-align: left;
 }
 
-.cad-forms table.no-padding tbody:first-child > tr > td {
+.cad-forms table.no-padding tbody:first-of-type > tr > td {
   padding: 0;
+}
+
+.cad-forms table.no-x-padding tbody:first-of-type > tr > td {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.cad-forms table.no-y-padding tbody:first-of-type > tr > td {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .cad-forms table.striped th {
@@ -2009,7 +2023,7 @@ canvas:focus {
 .cad-forms .cb {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  padding: 1px;
 }
 
 .cad-forms .cb input[type="checkbox"] {

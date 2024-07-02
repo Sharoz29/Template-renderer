@@ -2,6 +2,7 @@ import { create } from "express-handlebars"; // "express-handlebars"
 import { hostUrl } from "./global.js";
 import * as path from "path";
 import { fileURLToPath } from "url";
+import axios from "axios";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -89,6 +90,7 @@ export function formatDate(date) {
 
 export function countOfOption(boolOfIsChecked, context) {
   let count = 0;
+  if (!Array.isArray(context) || context.length === 0) return 0;
   context.forEach((item) => {
     if (
       item.IsChecked === boolOfIsChecked ||
@@ -123,6 +125,17 @@ export function splitArrayByNumber(array, chunkSize, options) {
   return result;
 }
 
+export async function imageToDataUrl(url) {
+  return await axios
+    .get(url, { responseType: "arraybuffer" })
+    .then((response) => {
+      const contentType = response.headers["content-type"];
+      let body = "data:" + contentType + ";base64,";
+      body += Buffer.from(response.data).toString("base64");
+      return body;
+    });
+}
+
 export const helpers = {
   camelToSentence,
   formsToPrint,
@@ -142,6 +155,7 @@ export const helpers = {
   getSignatureUrl,
   countOfOption,
   splitArrayByNumber,
+  imageToDataUrl,
 };
 
 export const HBS = create({
@@ -151,3 +165,24 @@ export const HBS = create({
   // with the client-side of the app (see below).
   partialsDir: ["views/partials/"],
 });
+
+// import https from "https";
+
+// https
+//   .get(
+//     "https://web.pega23.lowcodesol.co.uk/reports/assets/polst.jpeg",
+//     (resp) => {
+//       resp.setEncoding("base64");
+//       let body = "data:" + resp.headers["content-type"] + ";base64,";
+//       resp.on("data", (data) => {
+//         body += data;
+//       });
+//       resp.on("end", () => {
+//         console.log(body);
+//         //return res.json({result: body, status: 'success'});
+//       });
+//     }
+//   )
+//   .on("error", (e) => {
+//     console.log(`Got error: ${e.message}`);
+//   });
