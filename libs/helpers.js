@@ -136,6 +136,24 @@ export async function imageToDataUrl(url) {
     });
 }
 
+export function getMedicalConditionsFromF2F(context, option) {
+  const medicalConditions = [];
+  const f2f = context?.SelectedMedicalConditionsOnFaceToFace;
+  const tm = context?.SelectedMedicalConditionsOnTelemedicine;
+
+  const isTrue = (mc) => mc.IsChecked === "true" || mc.IsChecked === true;
+
+  if (f2f?.length > 0 || tm?.length > 0) {
+    for (let i = 0; i < tm.length; i++) {
+      if (isTrue(f2f[i]) || isTrue(tm[i])) {
+        const medCon = isTrue(f2f[i]) ? f2f[i] : tm[i];
+        medicalConditions.push(medCon);
+      }
+    }
+  }
+  return medicalConditions;
+}
+
 export const helpers = {
   camelToSentence,
   formsToPrint,
@@ -156,6 +174,7 @@ export const helpers = {
   countOfOption,
   splitArrayByNumber,
   imageToDataUrl,
+  getMedicalConditionsFromF2F,
 };
 
 export const HBS = create({

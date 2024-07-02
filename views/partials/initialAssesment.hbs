@@ -703,7 +703,9 @@
         </tr>
         <tr>
           <td colspan="6">
-            <p>Diagnosis comes here...</p>
+            {{#each (getMedicalConditionsFromF2F @root)}}
+            <span class="pr-5">{{HHSMedicalCondition}},</span>
+            {{/each}}
           </td>
         </tr>
         <!-- PLAN -->
