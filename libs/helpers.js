@@ -108,7 +108,7 @@ export function countOfOption(boolOfIsChecked, context) {
 export function getSignatureUrl(context, person) {
   switch (person) {
     case "patient":
-      return context?.AnnualWellnessForm?.PatientsSignature || "";
+      return context?.PatientsSignature || "";
     case "physician":
       return context?.SignatureCapture3 || "";
     case "witness":
@@ -124,7 +124,7 @@ export function splitArrayByNumber(array, chunkSize, options) {
   let result = "";
   for (let i = 0; i < array?.length; i += chunkSize) {
     let chunk = array.slice(i, i + chunkSize);
-    result += options?.fn({ chunk });
+    result += options.fn({ chunk, $last: i + chunkSize >= array.length });
   }
   return result;
 }
@@ -138,6 +138,24 @@ export async function imageToDataUrl(url) {
       body += Buffer.from(response.data).toString("base64");
       return body;
     });
+}
+
+export function getMedicalConditionsFromF2F(context, option) {
+  const medicalConditions = [];
+  const f2f = context?.SelectedMedicalConditionsOnFaceToFace;
+  const tm = context?.SelectedMedicalConditionsOnTelemedicine;
+
+  const isTrue = (mc) => mc.IsChecked === "true" || mc.IsChecked === true;
+
+  if (f2f?.length > 0 || tm?.length > 0) {
+    for (let i = 0; i < tm.length; i++) {
+      if (isTrue(f2f[i]) || isTrue(tm[i])) {
+        const medCon = isTrue(f2f[i]) ? f2f[i] : tm[i];
+        medicalConditions.push(medCon);
+      }
+    }
+  }
+  return medicalConditions;
 }
 
 export const helpers = {
@@ -160,6 +178,7 @@ export const helpers = {
   countOfOption,
   splitArrayByNumber,
   imageToDataUrl,
+  getMedicalConditionsFromF2F,
 };
 
 export const HBS = create({

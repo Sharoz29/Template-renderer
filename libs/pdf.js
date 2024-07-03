@@ -52,7 +52,7 @@ export async function createPdfFromHtml(htmlContent, options = {}) {
 
     const pdfBuffer = await page.pdf({
       format: "A4",
-      scale: 0.8,
+      scale: 0.75,
       printBackground: true,
       displayHeaderFooter: true,
       preferCSSPageSize: true,
