@@ -106,7 +106,6 @@ export function countOfOption(boolOfIsChecked, context) {
 }
 
 export function getSignatureUrl(context, person) {
-  if (!Array.isArray(context) || context?.length === 0) return "";
   switch (person) {
     case "patient":
       return context?.AnnualWellnessForm?.PatientsSignature || "";
