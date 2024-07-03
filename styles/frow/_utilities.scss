@@ -252,6 +252,14 @@
   .text-grey {
     color: rgb(162, 162, 162) !important;
   }
+
+  /* no padding margin for all children */
+  .no-mpa {
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  }
   // Text overflow styles
   // -------------------------
   //   .text-ellipsis {

@@ -13,7 +13,7 @@ export function camelToSentence(str) {
   });
 }
 
-export function isTrue(value, options) {
+export function isTrue(value) {
   return value == true || value == "true";
 }
 
@@ -120,7 +120,7 @@ export function splitArrayByNumber(array, chunkSize, options) {
   let result = "";
   for (let i = 0; i < array.length; i += chunkSize) {
     let chunk = array.slice(i, i + chunkSize);
-    result += options.fn({ chunk });
+    result += options.fn({ chunk, $last: i + chunkSize >= array.length });
   }
   return result;
 }

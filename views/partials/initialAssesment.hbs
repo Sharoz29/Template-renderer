@@ -145,9 +145,19 @@
             <div class="frow cbs justify-start">
               <!-- Repeat Below for all Surgical Histories -->
               {{#each @root.SelectedPastMedicalHistory}}
-              <div class="cb col-1-6">
-                {{> checkbox IsChecked=IsChecked name=PASTMEDICALHISTORY }}
-              </div>
+                <div class="cb col-1-6">
+                  {{> checkbox IsChecked=IsChecked name=PASTMEDICALHISTORY }}
+                </div>
+                {{#if @last}}
+                  
+                  <div class="cb col-5-6 py-5">
+                    <div class="frow justify-start items-end no-mpa">
+                      {{> checkbox IsChecked=../OtherPMHistory name='Others: ' }}
+                      <span class="pl-5 text-bold">{{{../OtherPastMedicalHistory}}}</span>
+                    </div>
+                  </div>
+                  
+                {{/if}}
               {{/each}}
             </div>
           </td>
@@ -163,9 +173,19 @@
               <!-- Repeat Below for all Surgical Histories -->
 
               {{#each @root.SelectedPastSurgicalHistory}}
-              <div class="cb col-1-6">
-                {{> checkbox IsChecked=IsChecked name=PastSurgicalHistory }}
-              </div>
+                <div class="cb col-1-6">
+                  {{> checkbox IsChecked=IsChecked name=PastSurgicalHistory }}
+                </div>
+                {{#if @last}}
+                  
+                  <div class="cb col-5-6 py-5">
+                    <div class="frow justify-start items-end no-mpa">
+                      {{> checkbox IsChecked=../OtherPSHistory name='Others: ' }}
+                      <span class="pl-5 text-bold">{{{../OtherPastSurgicalHistory}}}</span>
+                    </div>
+                  </div>
+                  
+                {{/if}}
               {{/each}}
             </div>
           </td>
