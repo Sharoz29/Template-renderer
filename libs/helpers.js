@@ -13,11 +13,11 @@ export function camelToSentence(str) {
   });
 }
 
-export function isTrue(value, options) {
+export function isTrue(value) {
   return value == true || value == "true";
 }
 
-export function formsToPrint(allForms, form, options) {
+export function formsToPrint(allForms, form) {
   if (allForms.includes(form)) {
     return form;
   }
@@ -44,6 +44,7 @@ export function isSelected(lab, selectedLabs, options) {
 }
 
 export function findWithKey(array, key, value) {
+  if (!Array.isArray(array) || array?.length === 0) return;
   return array.find((obj) => obj[key] === value);
 }
 
@@ -52,7 +53,8 @@ export function copyTelemedecineToFaceToFace(
   teleMedicines,
   medicalConditions,
   homeBound,
-  certOfHomeBound
+  certOfHomeBound,
+  otherMedicalCondition
 ) {
   return {
     ...context,
@@ -60,6 +62,7 @@ export function copyTelemedecineToFaceToFace(
     SelectedMedicalConditionsOnFaceToFace: [...medicalConditions],
     SelectedHomeBound: [...homeBound],
     SelectedHomeBoundStatusOnFaceToFace: [...certOfHomeBound],
+    OtherMedicalConditionsOnFaceToFaceCheckbox: otherMedicalCondition,
   };
 }
 
@@ -90,7 +93,7 @@ export function formatDate(date) {
 
 export function countOfOption(boolOfIsChecked, context) {
   let count = 0;
-  if (!Array.isArray(context) || context.length === 0) return 0;
+  if (!Array.isArray(context) || context?.length === 0) return 0;
   context.forEach((item) => {
     if (
       item.IsChecked === boolOfIsChecked ||
@@ -117,12 +120,11 @@ export function getSignatureUrl(context, person) {
   }
 }
 export function splitArrayByNumber(array, chunkSize, options) {
-  if(!array || array?.length === 0) return [];
-
+  if (!Array.isArray(array) || array?.length === 0) return "";
   let result = "";
   for (let i = 0; i < array?.length; i += chunkSize) {
     let chunk = array.slice(i, i + chunkSize);
-    result += options.fn({ chunk });
+    result += options?.fn({ chunk });
   }
   return result;
 }

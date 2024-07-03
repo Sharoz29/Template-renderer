@@ -14,7 +14,7 @@
               </div>
               <div class="frow col-1-2 justify-start gutters">
                 <strong>Date of Service</strong>
-                <span><strong> Date here...</strong></span>
+                <span><strong>{{Date}}</strong></span>
               </div>
             </div>
 
@@ -46,7 +46,9 @@
             <div class="frow justify-start mt-10">
               <div class="col-1-1">
                 <span>Reason for Homebound:</span>
-                <span class="p-5 text-underline text-bold">Mention reasoning here...</span>
+                {{#each HomeBound}}
+                <span class="p-5 text-underline text-bold">{{ReasonsForHomeBound}}</span>
+                {{/each}}
             </div>
 
             <div class="mt-20">
@@ -89,8 +91,11 @@
                     </div>
                   </td>
                 {{/each}}
-              </tr>
               {{/splitArrayByNumber}}
+                <td>
+                  {{> checkbox name="Others" IsChecked=OtherMedicalConditionsOnFaceToFaceCheckbox}}
+                </td>
+              </tr>
               </tbody>
             </table>
             <div class="mt-20">
