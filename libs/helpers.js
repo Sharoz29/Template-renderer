@@ -51,18 +51,23 @@ export function findWithKey(array, key, value) {
 export function copyTelemedecineToFaceToFace(
   context,
   teleMedicines,
-  medicalConditions,
-  homeBound,
-  certOfHomeBound,
-  otherMedicalCondition
+  medicalConditions = [],
+  homeBound = [],
+  certOfHomeBound = []
 ) {
   return {
     ...context,
-    FaceToFace: { ...teleMedicines },
+    FaceToFace: {
+      ...teleMedicines,
+      OtherMedicalConditionsOnFaceToFaceCheckbox:
+        teleMedicines.OtherMedicalConditionsOnTelemedicineCheckbox,
+      OtherMedicalConditionsOnFaceToFaceTextbox:
+        teleMedicines.OtherMedicalConditionsOnTelemedicineTextbox,
+      ReasonForHomebound: teleMedicines.ReasonForHomeboundTelemedicine,
+    },
     SelectedMedicalConditionsOnFaceToFace: [...medicalConditions],
     SelectedHomeBound: [...homeBound],
     SelectedHomeBoundStatusOnFaceToFace: [...certOfHomeBound],
-    OtherMedicalConditionsOnFaceToFaceCheckbox: otherMedicalCondition,
   };
 }
 
