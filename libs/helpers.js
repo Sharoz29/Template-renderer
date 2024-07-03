@@ -52,7 +52,8 @@ export function copyTelemedecineToFaceToFace(
   teleMedicines,
   medicalConditions,
   homeBound,
-  certOfHomeBound
+  certOfHomeBound,
+  otherMedicalCondition
 ) {
   return {
     ...context,
@@ -60,6 +61,7 @@ export function copyTelemedecineToFaceToFace(
     SelectedMedicalConditionsOnFaceToFace: [...medicalConditions],
     SelectedHomeBound: [...homeBound],
     SelectedHomeBoundStatusOnFaceToFace: [...certOfHomeBound],
+    OtherMedicalConditionsOnFaceToFaceCheckbox: otherMedicalCondition,
   };
 }
 
