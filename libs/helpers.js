@@ -105,7 +105,7 @@ export function countOfOption(boolOfIsChecked, context) {
 export function getSignatureUrl(context, person) {
   switch (person) {
     case "patient":
-      return context?.AnnualWellnessForm?.PatientsSignature || "";
+      return context?.PatientsSignature || "";
     case "physician":
       return context?.SignatureCapture3 || "";
     case "witness":
