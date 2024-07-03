@@ -117,8 +117,10 @@ export function getSignatureUrl(context, person) {
   }
 }
 export function splitArrayByNumber(array, chunkSize, options) {
+  if(!array || array?.length === 0) return [];
+
   let result = "";
-  for (let i = 0; i < array.length; i += chunkSize) {
+  for (let i = 0; i < array?.length; i += chunkSize) {
     let chunk = array.slice(i, i + chunkSize);
     result += options.fn({ chunk });
   }
