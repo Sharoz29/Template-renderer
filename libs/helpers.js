@@ -108,6 +108,21 @@ export function countOfOption(boolOfIsChecked, context) {
   });
   return count;
 }
+function extractDatePart(dateString, type) {
+  if (dateString) {
+    const dateParts = dateString.split("-");
+
+    const typeMap = {
+      month: 0,
+      day: 1,
+      year: 2,
+    };
+
+    if (typeMap[type] !== undefined) {
+      return dateParts[typeMap[type]];
+    }
+  }
+}
 
 export function getSignatureUrl(context, person) {
   switch (person) {
@@ -184,6 +199,7 @@ export const helpers = {
   splitArrayByNumber,
   imageToDataUrl,
   getMedicalConditionsFromF2F,
+  extractDatePart,
 };
 
 export const HBS = create({
