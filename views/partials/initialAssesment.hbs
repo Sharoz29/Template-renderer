@@ -748,7 +748,41 @@
         {{/splitArrayByNumber}}
       </tbody>
     </table>
+
     <div class="signatures mt-20">
+      <div class="frow justify-start mt-30">
+        <div class="col-1-2">
+          Signature:
+          <span class="name text-underline px-30">{{> signature name="physician"}}</span>
+        </div>
+        <div class="col-1-2">
+          Signature:
+          <span class="name text-underline px-30">{{> signature name="provider"}}</span>
+        </div>
+      </div>
+      <div class="frow justify-start">
+        <div class="col-1-2">
+          Physician Name:
+          <span class="name text-underline px-30">{{@root.SelectMD}}</span>
+        </div>
+        <div class="col-1-2">
+          Provider Name:
+          <span class="name text-underline px-30">{{@root.AppointmentInformation.SelectProvider}}</span>
+        </div>
+      </div>      
+      <div class="frow justify-start ">
+        <div class="col-1-2">
+          Date:
+          <span class="name text-underline px-30">2022-20-20{{@root.AppointmentInformation.PhysicianSignatureDate}}</span>
+        </div>
+        <div class="col-1-2">
+          Date:
+          <span class="name text-underline px-30">{{@root.AppointmentInformation.SignatureDate}}</span>
+        </div>      
+      </div>
+    </div>
+
+    {{!-- <div class="signatures mt-20">
       <div class="frow provider justify-start items-end">
         <div class="col-1-2">
           <div class="frow title">
@@ -798,7 +832,7 @@
           {{> signature name="physician"}}
         </div>
       </div>
-    </div>
+    </div> --}}
   </div>
 </section>
 {{/with}}

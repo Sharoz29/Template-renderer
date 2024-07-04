@@ -152,11 +152,15 @@
                     </td>
                     <td colspan="5">
                         <div class="frow justify-start">
-                            {{#each @root.SelectedPatientsDME}}
                             <div class="cb col-1-5 justify-start">
-                                {{> checkbox name=DMEName IsChecked=IsChecked}}
-                            </div>
-                            {{/each}}                        
+                                {{> checkbox name='Cane' IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientIsUsing 'Cane') type="radio"}}
+                            </div>                  
+                            <div class="cb col-1-5 justify-start">
+                                {{> checkbox name='Wheelchair' IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientIsUsing 'Wheelchair') type="radio"}}
+                            </div>                  
+                            <div class="cb col-1-5 justify-start">
+                                {{> checkbox name='Walker' IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientIsUsing 'Walker') type="radio"}}
+                            </div>                  
                         </div>
                     </td>
                 </tr>

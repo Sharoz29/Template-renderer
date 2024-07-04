@@ -74,6 +74,10 @@ export function radioButtonChecker(option, name) {
   return option === name;
 }
 
+export function CheckOrRadio(type) {
+  return type === "radio" ? "radio" : "checkbox";
+}
+
 export function allergiesChecker(allergies) {
   return allergies === "No Known Allergies";
 }
@@ -169,6 +173,7 @@ export const helpers = {
   copyTelemedecineToFaceToFace,
   counter,
   radioButtonChecker,
+  CheckOrRadio,
   allergiesChecker,
   checker,
   dailyUseChecker,

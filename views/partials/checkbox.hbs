@@ -1,5 +1,5 @@
 <div class="cb">
-    <input type="checkbox" disabled  name="{{name}}" id="{{name}}" {{#if (isTrue IsChecked)}}checked{{/if}} />
+    <input type="{{CheckOrRadio type}}"  name="{{name}}" id="{{name}}" {{#if (isTrue IsChecked)}}checked{{/if}} />
   <label for="{{name}}" class="text-capitalize">
     {{name}}
   </label>
