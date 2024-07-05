@@ -12,11 +12,17 @@ RUN apt-get update && apt-get install -y libnss3 libnspr4 libatk1.0-0 libatk-bri
 WORKDIR /usr/src/app
 
 # Copy Package.json
-# COPY package*.json ./
+COPY package*.json ./
 
 ENV node_env=production
 # Install dependencies
-# RUN npm install
+RUN npm install pm2 -g
+ENV PM2_PUBLIC_KEY ur3z4mifggsqhhm
+ENV PM2_SECRET_KEY 1psvz0wwwi6clpr
+
+RUN npm install
+
+
 
 # Copy code
 COPY . .
@@ -26,6 +32,7 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to run the application
-CMD ["npm", "install"]
+# CMD ["npm", "install"]
+CMD ["pm2-runtime", "server.js"]
 
 

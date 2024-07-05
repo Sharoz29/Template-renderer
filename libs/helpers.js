@@ -60,10 +60,11 @@ export function copyTelemedecineToFaceToFace(
     FaceToFace: {
       ...teleMedicines,
       OtherMedicalConditionsOnFaceToFaceCheckbox:
-        teleMedicines.OtherMedicalConditionsOnTelemedicineCheckbox,
+        teleMedicines?.OtherMedicalConditionsOnTelemedicineCheckbox,
       OtherMedicalConditionsOnFaceToFaceTextbox:
-        teleMedicines.OtherMedicalConditionsOnTelemedicineTextbox,
-      ReasonForHomebound: teleMedicines.ReasonForHomeboundTelemedicine,
+        teleMedicines?.OtherMedicalConditionsOnTelemedicineTextbox,
+      ReasonForHomebound: teleMedicines?.ReasonForHomeboundTelemedicine,
+      isTM: true,
     },
     SelectedMedicalConditionsOnFaceToFace: [...medicalConditions],
     SelectedHomeBound: [...homeBound],
@@ -77,6 +78,12 @@ export function counter(index) {
 
 export function radioButtonChecker(option, name) {
   return option === name;
+}
+
+/** If context has Telemedicine as AppointmentType */
+
+export function F2FTMText(context) {
+  return context?.isTM ? "Telemedicine" : "Face to Face";
 }
 
 export function allergiesChecker(allergies) {
@@ -184,6 +191,7 @@ export const helpers = {
   splitArrayByNumber,
   imageToDataUrl,
   getMedicalConditionsFromF2F,
+  F2FTMText,
 };
 
 export const HBS = create({

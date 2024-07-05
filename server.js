@@ -6,12 +6,8 @@ import bodyParser from "body-parser";
 import * as path from "path";
 import { fileURLToPath } from "url";
 import { promisify } from "util";
-
-import {
-  createPdfFromHtml,
-  attachPdfToCase,
-  uploadPdfToPega,
-} from "./libs/pdf.js";
+import { coloredText } from "./libs/global.js";
+import { attachPdfToCase, uploadPdfToPega } from "./libs/pega.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -29,13 +25,20 @@ app.use("/reports", router);
 const renderView = promisify(app.render.bind(app));
 
 router.get("/attach-pdf/:id", async (req, res) => {
+  console.time(coloredText(req.params.id, "green") + " in");
   getPDFBuffer(req.params.id, renderView)
-    .then((data) => uploadPdfToPega(data.pdfBuffer, data.access_token))
+    .then((data) => uploadPdfToPega({ ...data, caseID: req.params.id }))
     .then(({ ID, access_token }) =>
-      attachPdfToCase(`LCS-CALLADOC-WORK ${req.params.id}`, ID, access_token)
+      attachPdfToCase(
+        `LCS-CALLADOC-WORK ${req.params.id}`,
+        ID,
+        access_token,
+        req.params.id
+      )
     )
     .then(async (response) => {
-      console.log("PDF uploaded successfully");
+      // console.log("PDF uploaded successfully");
+      console.timeEnd(coloredText(req.params.id, "green") + " in");
       res.send(
         await HBS.renderView(
           path.resolve(__dirname, "./views", "success.hbs"),
@@ -46,6 +49,7 @@ router.get("/attach-pdf/:id", async (req, res) => {
       );
     })
     .catch((error) => {
+      console.timeEnd(coloredText(req.params.id, "green") + " in");
       console.log("Has Error:", error.message);
       res.send(error);
       // res?.error(error.message);
@@ -53,13 +57,21 @@ router.get("/attach-pdf/:id", async (req, res) => {
 });
 
 router.get("/get-pdf/:id", async (req, res) => {
+  // console.group(
+  //   "GET PDF FOR " + coloredText("CASEID: " + req.params.id, "red")
+  // );
+  console.time(coloredText(req.params.id, "green") + " in");
   getPDFBuffer(req.params.id, renderView)
     .then(({ pdfBuffer }) => {
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
       res.send(pdfBuffer);
+      console.timeEnd(coloredText(req.params.id, "green") + " in");
+      // console.groupEnd();
     })
     .catch((error) => {
+      // console.groupEnd();
+      console.timeEnd(coloredText(req.params.id, "green") + " in");
       console.log("Has Error:", error.message);
       res.send(error);
       // res?.error(error.message);
@@ -67,9 +79,12 @@ router.get("/get-pdf/:id", async (req, res) => {
 });
 
 router.get("/get-html/:id", async (req, res) => {
+  console.time(coloredText(req.params.id, "green") + " in");
   try {
     res.render("home", await getCaseData(req.params.id));
+    console.timeEnd(coloredText(req.params.id, "green") + " in");
   } catch (error) {
+    console.timeEnd(coloredText(req.params.id, "green") + " in");
     console.log("Has Error:", error);
     res?.error("Error while rendering HTML", error);
   }
@@ -77,6 +92,7 @@ router.get("/get-html/:id", async (req, res) => {
 
 router.use(express.static("public"));
 
+console.clear();
 app.listen(3000, () => {
   console.log("express-handlebars example server listening on: 3000");
 });
