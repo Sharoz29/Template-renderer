@@ -78,17 +78,19 @@
           </td>
         </tr>
         <!-- Repeat this row -->
+        {{#each DrugFood}}
         <tr class="text-bold">
           <td colspan="1">
-            <span>...Name of the drug...</span>
+            <span>{{DrugFood}}</span>
           </td>
           <td colspan="2">
-            <span>...Type of Reaction...</span>
+            <span>{{Reaction}}</span>
           </td>
           <td colspan="3">
             <span>...Describe the nature of the reaction xyz...</span>
           </td>
         </tr>
+        {{/each}}
         <tr>
           <td colspan="2">
             <div class="cb">
@@ -748,7 +750,41 @@
         {{/splitArrayByNumber}}
       </tbody>
     </table>
+
     <div class="signatures mt-20">
+      <div class="frow justify-start mt-30">
+        <div class="col-1-2">
+          Signature:
+          <span class="name text-underline px-30">{{> signature name="physician"}}</span>
+        </div>
+        <div class="col-1-2">
+          Signature:
+          <span class="name text-underline px-30">{{> signature name="provider"}}</span>
+        </div>
+      </div>
+      <div class="frow justify-start">
+        <div class="col-1-2">
+          Physician Name:
+          <span class="name text-underline px-30">{{@root.SelectMD}}</span>
+        </div>
+        <div class="col-1-2">
+          Provider Name:
+          <span class="name text-underline px-30">{{@root.AppointmentInformation.SelectProvider}}</span>
+        </div>
+      </div>      
+      <div class="frow justify-start ">
+        <div class="col-1-2">
+          Date:
+          <span class="name text-underline px-30">2022-20-20{{@root.AppointmentInformation.PhysicianSignatureDate}}</span>
+        </div>
+        <div class="col-1-2">
+          Date:
+          <span class="name text-underline px-30">{{@root.AppointmentInformation.SignatureDate}}</span>
+        </div>      
+      </div>
+    </div>
+
+    {{!-- <div class="signatures mt-20">
       <div class="frow provider justify-start items-end">
         <div class="col-1-2">
           <div class="frow title">
@@ -798,7 +834,7 @@
           {{> signature name="physician"}}
         </div>
       </div>
-    </div>
+    </div> --}}
   </div>
 </section>
 {{/with}}

@@ -85,6 +85,9 @@ export function radioButtonChecker(option, name) {
 export function F2FTMText(context) {
   return context?.isTM ? "Telemedicine" : "Face to Face";
 }
+export function CheckOrRadio(type) {
+  return type === "radio" ? "radio" : "checkbox";
+}
 
 export function allergiesChecker(allergies) {
   return allergies === "No Known Allergies";
@@ -115,6 +118,21 @@ export function countOfOption(boolOfIsChecked, context) {
     }
   });
   return count;
+}
+function extractDatePart(dateString, type) {
+  if (dateString) {
+    const dateParts = dateString.split("-");
+
+    const typeMap = {
+      month: 0,
+      day: 1,
+      year: 2,
+    };
+
+    if (typeMap[type] !== undefined) {
+      return dateParts[typeMap[type]];
+    }
+  }
 }
 
 export function getSignatureUrl(context, person) {
@@ -181,6 +199,7 @@ export const helpers = {
   copyTelemedecineToFaceToFace,
   counter,
   radioButtonChecker,
+  CheckOrRadio,
   allergiesChecker,
   checker,
   dailyUseChecker,
@@ -191,7 +210,7 @@ export const helpers = {
   splitArrayByNumber,
   imageToDataUrl,
   getMedicalConditionsFromF2F,
-  F2FTMText,
+  extractDatePart,
 };
 
 export const HBS = create({

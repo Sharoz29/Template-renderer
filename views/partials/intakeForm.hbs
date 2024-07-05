@@ -110,10 +110,10 @@
             <div class="frow justify-start gutters text-bold">
                 <span>Photo/Video consent:</span>
                 <div class="cb">
-                    <label for="consent">Yes</label>
+                    {{> checkbox IsChecked=(checker @root.AppointmentInformation.PhotoVideoConsent "Yes") name="Yes" }}
                 </div>
                 <div class="cb">
-                    <label for="consent">No</label>
+                    {{> checkbox IsChecked=(checker @root.AppointmentInformation.PhotoVideoConsent "No") name="No" }}
                 </div>
             </div>
 
@@ -152,11 +152,15 @@
                     </td>
                     <td colspan="5">
                         <div class="frow justify-start">
-                            {{#each @root.SelectedPatientsDME}}
                             <div class="cb col-1-5 justify-start">
-                                {{> checkbox name=DMEName IsChecked=IsChecked}}
-                            </div>
-                            {{/each}}                        
+                                {{> checkbox name='Cane' IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientIsUsing 'Cane') type="radio"}}
+                            </div>                  
+                            <div class="cb col-1-5 justify-start">
+                                {{> checkbox name='Wheelchair' IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientIsUsing 'Wheelchair') type="radio"}}
+                            </div>                  
+                            <div class="cb col-1-5 justify-start">
+                                {{> checkbox name='Walker' IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientIsUsing 'Walker') type="radio"}}
+                            </div>                  
                         </div>
                     </td>
                 </tr>
@@ -170,7 +174,7 @@
                 </div>
                 <div class="col-1-2 frow" style="align-items: flex-end;">
                     <span class="p-5">DATE:</span>
-                    <span class="p-5 text-underline"> {{SignatureDate}}.</span>
+                    <span class="p-5 text-underline"> {{@root.AppointmentInformation.PatientsSignatureDate}}</span>
                 </div>
             </div>
             <div class="frow justify-start">
