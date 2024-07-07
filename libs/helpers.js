@@ -6,6 +6,11 @@ import axios from "axios";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const twoPointOption = [
+  "I use or have been advised to use a cane or walker to get around safely.",
+  "I have fallen in the past year.",
+];
+
 export function camelToSentence(str) {
   if (!str) return;
   return str.replace(/([A-Z])/g, " $1").replace(/^./, function (str) {
@@ -106,19 +111,31 @@ export function formatDate(date) {
   return new Date(date).toLocaleDateString().replace(/\//g, "-");
 }
 
-export function countOfOption(boolOfIsChecked, context) {
-  let count = 0;
-  if (!Array.isArray(context) || context?.length === 0) return 0;
-  context.forEach((item) => {
-    if (
-      item.IsChecked === boolOfIsChecked ||
-      item.IsChecked === `${boolOfIsChecked}`
-    ) {
-      count++;
-    }
-  });
-  return count;
+export function fallRiskMapper(array, options) {
+  const newObj = array.reduce(
+    (acc, item) => {
+      const { IsChecked, FallRiskOption, WhyItMatters } = item;
+      const isInTwoPoints = twoPointOption.includes(FallRiskOption);
+      const newItem = {
+        IsYes: IsChecked === "true",
+        IsNo: IsChecked === "false",
+        FallRiskOption: FallRiskOption,
+        WhyItMatters: WhyItMatters,
+        text: isInTwoPoints ? "Yes (2)" : "Yes (1)",
+        weight: isInTwoPoints ? 2 : 1,
+      };
+
+      return {
+        data: [...acc.data, newItem],
+        count: acc.count + (IsChecked === "true" ? newItem.weight : 0),
+      };
+    },
+    { count: 0, data: [] }
+  );
+
+  return options.fn(newObj);
 }
+
 function extractDatePart(dateString, type) {
   if (dateString) {
     const dateParts = dateString.split("-");
@@ -216,13 +233,13 @@ export const helpers = {
   formatDate,
   hostUrl,
   getSignatureUrl,
-  countOfOption,
   splitArrayByNumber,
   imageToDataUrl,
   getMedicalConditionsFromF2F,
   extractDatePart,
   F2FTMText,
   filterArr,
+  fallRiskMapper,
 };
 
 export const HBS = create({
