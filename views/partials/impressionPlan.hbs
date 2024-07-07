@@ -3,16 +3,15 @@
     <div class="container mb-20">
       {{> formTitle }}
     </div>
-    {{#with PrescribedDiagnosis}}
     <div class="col-1-1 impressions py-10 bb stripes">
-       {{#each ../PrescribedDiagnosis}}
+       {{#each PrescribedDiagnosis}}
       <div class="frow impression">
         <div class="col-2-12 title">
           <p><strong>{{Diagnosis}}</strong></p>
         </div>
         <div class="col-10-12 description">
           <p>
-           {{Prescription}}
+           {{{Prescription}}}
         </div>
       </div>
       {{/each}}
@@ -39,6 +38,5 @@
         </span>
       </p>
     </div>
-    {{/with}}
   </div>
 </section>

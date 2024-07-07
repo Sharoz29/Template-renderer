@@ -1,11 +1,11 @@
   
   {{#with FaceToFace}}
 
-  <section class="frow" id="face-to-face">
+  <section class="frow" id="{{F2FTMText .}}">
         <div class="container-padding width-100">
           <div class="content">
             <div class="container centered mb-20">
-               {{>formTitle ..}}
+               {{>formTitle ..}} Encounter
             </div>
             <div class="frow">
               <div class="frow col-1-2 justify-start gutters">
@@ -22,8 +22,8 @@
               <p>
                 I certify that this patient is under my care and that I, or an
                 allowed Nurse practitioner or Physician’s assistant working in
-                collaboration with me, had a face-to-face encounter that meets
-                physician face-to-face-encounter requirements with this patient
+                collaboration with me, had a {{F2FTMText .}} encounter that meets
+                physician {{F2FTMText .}}-encounter requirements with this patient
                 on:
               </p>
             </div>
@@ -50,7 +50,7 @@
 
             <div class="mt-20">
               <strong>
-                Clinical Summary of Findings from Face-to-Face Encounter in
+                Clinical Summary of Findings from {{F2FTMText .}} Encounter in
                 Support of Home Health Need:
               </strong>
               <br />
@@ -111,7 +111,7 @@
                 taxing effort, and for medical reasons or religious services, or
                 infrequently, or of short duration when for other reasons) due
                 to the following services that are medical necessary from home
-                health (Check allthat apply):
+                health (Check all that apply):
               </p>
             </div>
 
@@ -166,12 +166,14 @@
             </table>
             
             <div class="frow justify-start">
-              <p>
-                I <span class="p-5 text-underline text-bold">{{@root.AppointmentInformation.SelectProvider}}</span> conducted a visit utilizing end-to-end encrypted
-                software featuring 2-way audiovisual telecommunications in real time.
-                This type of visit was conducted at the request of patient <span class="p-5 text-underline text-bold">{{pyFullName}}</span>
-                and he/she consented to the visit during the scheduling of the visit as well as during the visit.</p>
-              <p>I certify that this patient is confined to his/her home and that he/she can benefit from Homehealth services.</p>
+              {{#if isTM}}
+                <p>
+                  I <span class="p-5 text-underline text-bold">{{@root.AppointmentInformation.SelectProvider}}</span> conducted a visit utilizing end-to-end encrypted
+                  software featuring 2-way audiovisual telecommunications in real time.
+                  This type of visit was conducted at the request of patient <span class="p-5 text-underline text-bold">{{@root.SelectedPatientData.pyFullName}}</span>
+                  and he/she consented to the visit during the scheduling of the visit as well as during the visit.</p>
+                <p>I certify that this patient is confined to his/her home and that he/she can benefit from Homehealth services.</p>
+              {{/if}}
             </div>
 
             <div class="signatures mt-60 mb-10">

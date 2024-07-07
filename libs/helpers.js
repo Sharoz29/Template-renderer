@@ -51,18 +51,24 @@ export function findWithKey(array, key, value) {
 export function copyTelemedecineToFaceToFace(
   context,
   teleMedicines,
-  medicalConditions,
-  homeBound,
-  certOfHomeBound,
-  otherMedicalCondition
+  medicalConditions = [],
+  homeBound = [],
+  certOfHomeBound = []
 ) {
   return {
     ...context,
-    FaceToFace: { ...teleMedicines },
+    FaceToFace: {
+      ...teleMedicines,
+      OtherMedicalConditionsOnFaceToFaceCheckbox:
+        teleMedicines?.OtherMedicalConditionsOnTelemedicineCheckbox,
+      OtherMedicalConditionsOnFaceToFaceTextbox:
+        teleMedicines?.OtherMedicalConditionsOnTelemedicineTextbox,
+      ReasonForHomebound: teleMedicines?.ReasonForHomeboundTelemedicine,
+      isTM: true,
+    },
     SelectedMedicalConditionsOnFaceToFace: [...medicalConditions],
     SelectedHomeBound: [...homeBound],
     SelectedHomeBoundStatusOnFaceToFace: [...certOfHomeBound],
-    OtherMedicalConditionsOnFaceToFaceCheckbox: otherMedicalCondition,
   };
 }
 
@@ -74,6 +80,11 @@ export function radioButtonChecker(option, name) {
   return option === name;
 }
 
+/** If context has Telemedicine as AppointmentType */
+
+export function F2FTMText(context) {
+  return context?.isTM ? "Telemedicine" : "Face to Face";
+}
 export function CheckOrRadio(type) {
   return type === "radio" ? "radio" : "checkbox";
 }
