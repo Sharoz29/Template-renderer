@@ -1,3 +1,5 @@
+
+{{#fallRiskMapper @root.SelectedFallRisk}}
 <section class="frow" id="fall-risk-list">
     <div class="container-padding width-100">
         <div class="content">
@@ -22,13 +24,14 @@
                 <col width="16.666%" />
                 <col width="16.666%" />
                 <tbody>
-                    {{#each @root.SelectedFallRisk}}
+                   
+                    {{#each data}}
                     <tr>
                         <td>
-                            {{> checkbox name="Yes (1)" IsChecked=(checker IsChecked "Yes")}}
+                            {{> checkbox name=text IsChecked=IsYes}}
                         </td>
                         <td>
-                            {{> checkbox name="No (0)" IsChecked=(checker IsChecked "No")}}
+                            {{> checkbox name="No (0)" IsChecked=IsNo}}
                         </td>
                         <td colspan="2">
                             {{FallRiskOption}}
@@ -44,7 +47,7 @@
                 <div class="mt-20">
                     <span>Total</span>
                     <span class="p-5 text-underline text-bold">
-                        {{countOfOption true @root.SelectedFallRisk}}
+                        {{count}}
                     </span>
                     <span>
                         Add up the number of points for each “yes” answer. If you
@@ -81,3 +84,4 @@
         </div>
     </div>
 </section>
+{{/fallRiskMapper}}
