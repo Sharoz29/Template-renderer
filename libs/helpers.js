@@ -211,6 +211,7 @@ export const helpers = {
   imageToDataUrl,
   getMedicalConditionsFromF2F,
   extractDatePart,
+  F2FTMText,
 };
 
 export const HBS = create({
