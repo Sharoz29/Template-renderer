@@ -25,10 +25,10 @@
                     {{#each @root.SelectedFallRisk}}
                     <tr>
                         <td>
-                            {{> checkbox name="Yes" IsChecked=(checker IsChecked "Yes")}}
+                            {{> checkbox name="Yes (1)" IsChecked=(checker IsChecked "Yes")}}
                         </td>
                         <td>
-                            {{> checkbox name="No" IsChecked=(checker IsChecked "No")}}
+                            {{> checkbox name="No (0)" IsChecked=(checker IsChecked "No")}}
                         </td>
                         <td colspan="2">
                             {{FallRiskOption}}
