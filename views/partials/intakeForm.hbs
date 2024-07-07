@@ -1,4 +1,4 @@
-{{#with SelectedPatientData}}
+{{#with PatientData}}
 <section class="frow" id="intake-form">
     <div class="container-padding width-100">
         <div class="content">
@@ -16,22 +16,22 @@
                 <tr>
                     <td colspan="2">
                         <span>Referral form:</span>
-                        <span class="p-5 text-underline text-bold">...referral form...</span>
+                        <span class="p-5 text-bold">...referral form...</span>
                     </td>
                                
                     <td colspan="2">
                         <span>Date:</span>
-                        <span class="p-5 text-underline text-bold">.. / .. / ....</span>
+                        <span class="p-5 text-bold">.. / .. / ....</span>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <span>Telephone No:</span>
-                        <span class="p-5 text-underline text-bold">Not here</span>
+                        <span class="p-5 text-bold">Not here</span>
                     </td>
                     <td colspan="2">
                         <span>Home Health/Hospice:</span>
-                        <span class="p-5 text-underline text-bold">
+                        <span class="p-5 text-bold">
                             ...home health/hospice...
                         </span>
                     </td>
@@ -44,21 +44,21 @@
                 <tr>
                     <td colspan="2">
                         <span>Name:</span>
-                        <span class="p-5 text-underline text-bold">{{pyFullName}}</span>
+                        <span class="p-5 text-bold">{{pyFullName}}</span>
                     </td>
                     <td colspan="2">
                         <span>Date of Birth:</span>
-                        <span class="p-5 text-underline text-bold">{{DateOfBirth}}</span>
+                        <span class="p-5 text-bold">{{DateOfBirth}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <span>Address:</span>
-                        <span class="p-5 text-underline text-bold">{{pyHomeAddress1}} {{pyHomeAddress2}}</span>
+                        <span class="p-5 text-bold">{{pyHomeAddress1}} {{pyHomeAddress2}}</span>
                     </td>
                     <td colspan="2">
                         <span>Patient's Phone No:</span>
-                        <span class="p-5 text-underline text-bold">{{pyPhoneNumber}}</span>
+                        <span class="p-5 text-bold">{{pyPhoneNumber}}</span>
                     </td>
                 </tr>
             </table>
@@ -68,9 +68,9 @@
                 <!-- <span> -->
                 <p>
                     I,
-                    <span class="p-5 text-underline">{{pyFullName}}</span>
+                    <span class="p-5 text-underline text-bold">{{pyFullName}}</span>,
                     here by give permission to
-                    <span class="text-underline">{{@root.AppointmentInformation.SelectProvider}} </span>
+                    <span class="text-underline text-bold">{{@root.AppointmentInformation.SelectProvider}} </span>
                     (Authorized Medical Provider of
                     <b>{{@root.Office.OfficeName}}</b>) to perform all necessary
                     assessment and treatment. I understand that I may refuse or
@@ -126,13 +126,13 @@
                 <tr>
                     <td>
                         <span>Discharge from Hospital:</span>
-                        <span class="p-5 text-underline text-bold"> 
+                        <span class="p-5 text-bold"> 
                             {{@root.AppointmentInformation.DischargeFromHospital}}
                         </span>
                     </td>
                     <td>
                         <span>Date of Discharge:</span>
-                        <span class="p-5 text-underline text-bold">
+                        <span class="p-5 text-bold">
                             {{@root.AppointmentInformation.DateOfDischarge}}
                         </span>
                     </td>
@@ -152,15 +152,11 @@
                     </td>
                     <td colspan="5">
                         <div class="frow justify-start">
-                            <div class="cb col-1-5 justify-start">
-                                {{> checkbox name='Cane' IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientIsUsing 'Cane') type="radio"}}
-                            </div>                  
-                            <div class="cb col-1-5 justify-start">
-                                {{> checkbox name='Wheelchair' IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientIsUsing 'Wheelchair') type="radio"}}
-                            </div>                  
-                            <div class="cb col-1-5 justify-start">
-                                {{> checkbox name='Walker' IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientIsUsing 'Walker') type="radio"}}
-                            </div>                  
+                            {{#filterArr @root.SelectedPatientsDME 'true'}}
+                                <div class="cb col-1-5 justify-start">
+                                    {{> checkbox IsChecked=IsChecked name=DMEName }}
+                                </div>
+                            {{/filterArr}}               
                         </div>
                     </td>
                 </tr>

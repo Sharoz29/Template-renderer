@@ -188,6 +188,16 @@ export function getMedicalConditionsFromF2F(context, option) {
   return medicalConditions;
 }
 
+export function filterArr(arr, criteria, options) {
+  let result = "";
+  if (!Array.isArray(arr) || arr?.length === 0) return [];
+  const filteredArr = arr.filter((item) => item.IsChecked === criteria);
+  filteredArr.forEach((item) => {
+    result += options.fn(item);
+  });
+  return result;
+}
+
 export const helpers = {
   camelToSentence,
   formsToPrint,
@@ -212,6 +222,7 @@ export const helpers = {
   getMedicalConditionsFromF2F,
   extractDatePart,
   F2FTMText,
+  filterArr,
 };
 
 export const HBS = create({

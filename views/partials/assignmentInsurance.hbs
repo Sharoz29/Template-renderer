@@ -102,7 +102,7 @@
                 {{> signature name="patient"}}
               </div>
             </td>
-            <td>Date: {{@root.SelectedPatientData.SignatureDate}}</td>
+            <td>Date: <b>{{@root.SelectedPatientData.SignatureDate}}</b></td>
           </tr>
         </tbody>
       </table>
@@ -234,7 +234,7 @@
               <span>
                 Reason patient is unable to sign:
               </span>
-              <span>
+              <span class="text-bold">
                  {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}} --}}
                 Not present in data
               </span>

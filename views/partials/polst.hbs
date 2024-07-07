@@ -47,12 +47,12 @@
                     <table>
                       <tbody>
                         <tr>
-                          <td>Patient Last Name: <span>
+                          <td>Patient Last Name: <span class="text-bold">
                             {{pyLastName}}
                           </span></td>
                           <td>
                             <span>Date Form Prepared:</span>
-                            <span>{{../DateFormPrepared}}</span>
+                            <span class="text-bold">{{../DateFormPrepared}}</span>
                           </td>
                         </tr>
                         <tr>
@@ -60,7 +60,7 @@
                             <span>
                               Patient First Name: 
                             </span>
-                            <span>
+                            <span class="text-bold">
                               {{pyFirstName}}
                             </span>
                           </td>
@@ -68,7 +68,7 @@
                             <span>
                               Patient Date of Birth:
                             </span>
-                            <span>
+                            <span class="text-bold">
                               {{DateOfBirth}}
                             </span>
                           </td>
@@ -78,7 +78,7 @@
                             <span>
                               Patient Middle Name:
                             </span>
-                            <span>
+                            <span class="text-bold">
                               {{pyMiddleName}}
                               </span>
                           </td>
@@ -86,7 +86,7 @@
                             <span>
                               Medical Record#
                             </span>
-                            <span>
+                            <span class="text-bold">
                               {{../MedicalRecordID}}
                             </span>
                           </td>
@@ -190,7 +190,7 @@
                       </div>
                     </div>
                   </div>
-                  <b>Additional Orders: <span class="p-5 text-underline"> ...first additional orders come here...</span></b></td>
+                  <b>Additional Orders: <span class="p-5 text-underline"> {{@root.AppointmentInformation.B_AdditionalOrders}}</span></b></td>
                 </tr>
               </tbody>
             </table>
@@ -229,7 +229,7 @@
                     </div>
                   </td>
                   <td class="va-top">
-                       <b>Additional Orders: <span class="p-5 text-underline"> ...second additional orders come here...</span></b>
+                       <b>Additional Orders: <span class="p-5 text-underline"> {{@root.AppointmentInformation.C_AdditionalOrders}}</span></b>
                   </td>
                 </tr>
               </tbody>
@@ -300,11 +300,11 @@
                             </div>
                             <div class="name">
                               <span>Name:</span>
-                              <span class="text-underline">{{../POLST/HealthcareAgentName}}</span>
+                              <span class="text-bold">{{../POLST/HealthcareAgentName}}</span>
                             </div>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="text-underline">{{../POLST/HealthcareAgentPhone}}</span>
+                              <span class="text-bold">{{../POLST/HealthcareAgentPhone}}</span>
                             </div>
                           </td>
                         </tr>
@@ -322,19 +322,19 @@
                         <tr>
                           <td>
                             <span class="name">Print Provider Name:</span>
-                            <span class="">{{@root.AppointmentInformation.SelectProvider}}</span>
+                            <span class="text-bold">{{@root.AppointmentInformation.SelectProvider}}</span>
                           </td>
                           <td>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="">.. not present in data ..</span>
+                              <span class="text-bold">.. not present in data ..</span>
                             </div>
                           </td>
 
                           <td>
                             <div class="license">
                               <span>License #:</span>
-                              <span class="">.. Not present in data ..</span>
+                              <span class="text-bold">.. Not present in data ..</span>
                             </div>
                           </td>
                         </tr>
@@ -348,7 +348,7 @@
                           <td>
                             <div class="date">
                               <span>Date:</span>
-                              <span class="">{{@root.AppointmentInformation.SignatureDate}}</span>
+                              <span class="text-bold">{{@root.AppointmentInformation.SignatureDate}}</span>
                             </div>
                           </td>
                         </tr>
@@ -375,13 +375,13 @@
                           <td colspan="2">
                             <div class="name">
                               <span>Print Name:</span>
-                              <span class="">{{pyFullName}}</span>
+                              <span class="text-bold">{{pyFullName}}</span>
                             </div>
                           </td>
                           <td>
                             <div class="relationship">
                               <span>Relationship (write self if patient):</span>
-                              <span class="">Relationship</span>
+                              <span class="text-bold">...Relationship...</span>
                             </div>
                           </td>
                         </tr>
@@ -395,7 +395,7 @@
                           <td>
                             <div class="date">
                               <span>Date:</span>
-                              <span class="">{{SignatureDate}}</span>
+                              <span class="text-bold">{{SignatureDate}}</span>
                             </div>
                           </td>
                         </tr>
@@ -403,13 +403,13 @@
                           <td>
                             <div class="address">
                               <span>Mailing Address (street/city/state/zip):</span>
-                              <span class="">{{pyHomeAddress1}} {{pyHomeAddress2}}</span>
+                              <span class="text-bold">{{pyHomeAddress1}} {{pyHomeAddress2}}</span>
                             </div>
                           </td>
                           <td>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="">{{pyPhoneNumber}}</span>
+                              <span class="text-bold">{{pyPhoneNumber}}</span>
                             </div>
                           </td>
                           <td>

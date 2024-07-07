@@ -176,53 +176,7 @@
               {{/if}}
             </div>
 
-            <div class="signatures mt-60 mb-10">
-              <div class="frow provider justify-start mb-60">
-                <div class="frow title col-6-12 justify-start">
-                  <div class="col-4-12">
-                    <span> Provider Name: </span>
-                  </div>
-                  <div class="col-8-12">
-                    <span class="name text-underline px-30">{{@root.AppointmentInformation.SelectProvider}}</span>
-                  </div>
-                </div>
-                <div class="signature col-6-12 bb">
-                  Signature:
-                  {{> signature name="provider"}}
-                </div>
-                <div class="frow date col-6-12 justify-start">
-                  <div class="col-4-12">
-                    <span> Date: </span>
-                  </div>
-                  <div class="col-8-12">
-                     <span class="name text-underline px-30">{{@root.AppointmentInformation.SignatureDate}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="frow medical-provider justify-start">
-                <div class="frow title col-6-12">
-                  <div class="col-4-12">
-                    <span> Physician Name: </span>
-                  </div>
-                  <div class="col-8-12">
-                   <span class="name text-underline px-30">{{@root.SelectMD}}</span>
-                  </div>
-                </div>
-                <div class="signature col-6-12 bb">
-                  Signature:
-                   {{> signature name="physician"}}
-                </div>
-                <div class="frow date col-6-12">
-                  <div class="col-4-12">
-                    <span> Date: </span>
-                  </div>
-                  <div class="col-8-12">
-                   <span class="name text-underline px-30">{{@root.AppointmentInformation.PhysicianSignatureDate}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+             {{> doubleSignatures}}
           </div>
         </div>
   </section>
