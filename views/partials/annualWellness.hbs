@@ -38,7 +38,7 @@
                 {{> checkbox name="No" IsChecked=(checker SpecialDiet "No")}}
               </div>
             </td>
-            <td>Description:</td>
+            <td>Description: {{Description_SpecilaDiet}}</td>
             <td>
               <div class="cb">
                 {{> checkbox name="Diabetic" IsChecked=Diabetic}}
@@ -369,7 +369,7 @@
               {{> signature name="patient"}}
             </td>
             <td colspan="2"></td>
-            <td>{{@root.SelectedPatientData.SignatureDate}}</td>
+            <td>{{@root.AppointmentInformation.PatientData.SignatureDate}}</td>
           </tr>
 
           <tr>
@@ -458,19 +458,6 @@
       </table>
 
 
-      {{!-- <div class="frow justify-start">
-        <div class="col-1-3">
-          <span>Preventive screening (frequency)</span>
-        </div>
-        <div class="col-1-3">
-          <span>Coverage</span>
-        </div>
-        <div class="col-1-3">
-          <span>Previously Screening If YES (When)</span>
-        </div>
-        <div class="frow justify-start">
-          <span>Screened Schedule (5-10 Years)</span>
-        </div> --}}
 
 
       <table class="striped width-100">

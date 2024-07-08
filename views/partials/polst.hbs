@@ -79,16 +79,8 @@
                               Patient Middle Name:
                             </span>
                             <span class="text-bold">
-                              {{pyMiddleName}}
+                              {{pyMiddleInitial}}
                               </span>
-                          </td>
-                          <td>
-                            <span>
-                              Medical Record#
-                            </span>
-                            <span class="text-bold">
-                              {{../MedicalRecordID}}
-                            </span>
                           </td>
                         </tr>
                       </tbody>
@@ -327,14 +319,14 @@
                           <td>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="text-bold">.. not present in data ..</span>
+                              <span class="text-bold">{{../POLST.Physician.pyPhoneNumber}}</span>
                             </div>
                           </td>
 
                           <td>
                             <div class="license">
                               <span>License #:</span>
-                              <span class="text-bold">.. Not present in data ..</span>
+                              <span class="text-bold">{{../POLST.Physician.LicenseNumber}}</span>
                             </div>
                           </td>
                         </tr>

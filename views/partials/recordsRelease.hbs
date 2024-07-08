@@ -2,7 +2,6 @@
     <div class="container-padding width-100">
         <div class="content">
             <div class="container centered mb-20">
-                 {{!-- {{> formTitle ..}} --}}
                  <h2 class="text-center m-auto">RECORDS RELEASE/AUTHORIZATION</h2>
             </div>
         {{#with RecordReleaseAuthorization}}            
@@ -37,7 +36,7 @@
                 <tr>
                     <td colspan="2">
                         <span>Name of Patient:</span>
-                        <span class="p-5 text-bold">{{../PatientData/pyFullName}}.</span>
+                        <span class="p-5 text-bold">{{../PatientData/pyFullName}}</span>
                     </td>
                     <td colspan="2">
                         <span>Medicare No:</span>
@@ -47,7 +46,7 @@
                 <tr>
                     <td colspan="2">
                         <span>Social Security No:</span>
-                        <span class="p-5 text-bold">{{../PatientData/pySSN}}.</span>
+                        <span class="p-5 text-bold">{{../PatientData/pySSN}}</span>
                     </td>
                     <td colspan="2">
                         <span>Date of Birth:</span>
@@ -102,8 +101,9 @@
                     <td colspan="2">(IF DIFFERENT FROM THE PATIENT)</td>
                 </tr>
                 <tr>
-                    <td colspan="2">Relationship to patient:</td>
-                    <td><span class="p-5 text-bold">{{RelationshipToPatient}}</span></td>
+                    <td colspan="2">Relationship to patient:
+                        <span class="p-5 text-bold">{{RelationshipToPatient}}</span>
+                    </td>
                 </tr>
                 <tr style="height: 80px">
                     <td>
@@ -116,36 +116,6 @@
                     </td>
                 </tr>
             </table>
-            {{!-- <div class="frow justify-start mt-10 mb-5">
-                <div class="col-1-1">
-                    <span>NAME OF SIGNATORY:</span>
-                    <span class="p-5 text-underline">{{NameOfSignatory}}</span>
-                </div>
-            </div>
-            <div class="frow justify-start mb-5">
-                <span>(IF DIFFERENT FROM PATIENT)</span>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-1">
-                    <span>Relationship to patient:</span>
-                    <span class="p-5 text-underline">{{RelationshipToPatient}}</span>
-                </div>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-2">
-                    <span>Witness</span>
-                    {{> signature name="witness"}}
-                </div>
-                <div class="col-1-2">
-                    <span>Date</span>
-                    <span class="p-5 text-underline">{{WitnessDate}}</span>
-                </div>
-            </div>
-            <div class="frow justify-start mt-10">
-                <div class="col-1-1 text-bold">
-                    THIS RELEASE IS VALID FOR 6 MONTHS FROM THE DATE OF SIGNATURE.
-                </div>
-            </div> --}}
         </div>
         {{/with}}
     </div>

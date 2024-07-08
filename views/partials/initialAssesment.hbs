@@ -67,27 +67,21 @@
           </td>
         </tr>
         <tr>
-          <td colspan="1">
+          <td colspan="3">
             <strong>Drug / Food</strong>
           </td>
-          <td colspan="2">
-            <strong>Reaction</strong>
-          </td>
           <td colspan="3">
-            <strong>Reaction Description</strong>
+            <strong>Reaction</strong>
           </td>
         </tr>
         <!-- Repeat this row -->
         {{#each DrugFood}}
         <tr class="text-bold">
-          <td colspan="1">
+          <td colspan="3">
             <span>{{DrugFood}}</span>
           </td>
-          <td colspan="2">
-            <span>{{Reaction}}</span>
-          </td>
           <td colspan="3">
-            <span>...Describe the nature of the reaction xyz...</span>
+            <span>{{Reaction}}</span>
           </td>
         </tr>
         {{/each}}
