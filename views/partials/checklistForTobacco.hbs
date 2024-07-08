@@ -72,7 +72,7 @@
                                         <td>
                                             <span>Name:</span>
                                             <span class="p-5 text-bold">
-                                               {{@root.SelectedPatientData.pyFullName}}
+                                               {{@root.AppointmentInformation.PatientData.pyFullName}}
                                             </span>
                                         </td>
                                     </tr>
@@ -80,7 +80,7 @@
                                         <td>
                                             <span>DOB:</span>
                                             <span class="p-5 text-bold">
-                                                {{@root.SelectedPatientData.DateOfBirth}}
+                                                {{@root.AppointmentInformation.PatientData.DateOfBirth}}
                                             </span>
                                         </td>
                                     </tr>
@@ -174,46 +174,6 @@
 
 
 
-            {{!-- <div class="frow justify-start">
-                <div class="col-1-1">
-                    <span class="p-5">Relevant Reasons:</span>
-                    <span class="p-5 text-underline">{{RelevantReasons}}</span>
-                </div>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-1">
-                    <span class="p-5">Risks:</span>
-                    <span class="p-5 text-underline">{{Risks}}</span>
-                </div>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-1">
-                    <span class="p-5">Rewards:</span>
-                    <span class="p-5 text-underline">{{Rewards}}</span>
-                </div>
-            </div>
-            <div class="col-1-1">
-                <span class="p-5">Quit smoking &lt;</span>
-                <span class="p-5 text-underline">{{QuitSmokingYears}}</span>
-                <span>years ago</span>
-            </div>
-            <div class="col-1-1">
-                <span class="p-5">Smoked for </span>
-                <span class="p-5 text-underline">{{SmokedForYears}}</span>
-                <span>years.</span>
-            </div>
-            <div class="frow justify-start gutters">
-                <div class="cb frow" style="gap:5px">
-                    <span class="cb" style="padding-left: 5px;">Patient is not ready to quit</span>
-                     {{> checkbox name="Yes" IsChecked=(checker IsPatientNotReadyToQuit "Yes")}}
-                     {{> checkbox name="No" IsChecked=(checker IsPatientNotReadyToQuit "No")}}
-                </div>
-                <div class="cb frow" style="gap:5px;">
-                    <span class="cb" style="padding-left: 5px;">Repetition relapse</span>
-                     {{> checkbox name="Yes" IsChecked=(checker RepetitionRelapse "Yes")}}
-                     {{> checkbox name="No" IsChecked=(checker RepetitionRelapse "No")}}
-                </div>
-            </div> --}}
 
 
             <table>
@@ -301,76 +261,6 @@
                     </td>
                 </tr>
             </table>
-            {{!-- <table>
-                <col width="50%">
-                <col width="50%">
-                <tr>
-                    <td><strong>ARRANGE Follow-up</strong></td>
-                    <td>
-                        <div class="frow justify-start gutters">
-                            <div class="cb">
-
-                            </div>
-
-                        </div>
-                    </td>
-                </tr>
-            </table> --}}
-
-
-
-
-            {{!-- <div class="frow justify-start text-bold mt-10">
-                <span>ASSIST smoker to quit:</span>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-5">
-                    <span>Smoking history:</span>
-                </div>
-                <div class="col-1-5">
-                    <span class="p-5 text-underline">{{CigarettesPerDay}}</span>
-                    <span># of Cigarettes/Day</span>
-                </div>
-                <div class="col-1-5">
-                    <span class="p-5 text-underline">{{CigarettesPacksPerDay}}</span>
-                    <span># of Packs/Day</span>
-                </div>
-                <div class="col-1-5">
-                    <span class="p-5 text-underline">{{SmokedForYears}}</span>
-                    <span># of Years</span>
-                </div>
-                <div class="col-1-5">
-                    <span class="p-5 text-underline">{{NumberOfQuitAttempts}}</span>
-                    <span># of Quit Attempts</span>
-                </div>
-            </div>
-            <div class="frow justify-start">
-                <div class="col-1-5">
-                    <span>Household members:</span>
-                </div>
-                <div class="col-1-5">
-                    <span class="p-5 text-underline">{{NumberOfSmokersInFamily}}</span>
-                    <span># of Smokers</span>
-                </div>
-                <div class="col-1-5">
-                    <span class="p-5 text-underline">{{NumberOfNonSmokersInFamily}}</span>
-                    <span># of Non-smokers</span>
-                </div>
-                <div class="col-1-5">
-                    <span class="p-5 text-underline">{{NumberOfChildren}}</span>
-                    <span># of Children</span>
-                </div>
-            </div> --}}
-            {{!-- <div class="frow justify-start gutters" style="margin-top: 15px;">
-                 <div class="frow col-1-1 justify-start">
-                    <strong class="col-1-7">SYMPTOMS:</strong>
-                 </div>
-                  {{#each @root.SelectedSmokingSymptoms}}
-                  <div class="cb col-1-7">
-                    {{> checkbox name=Symptoms IsChecked=IsChecked}}
-                  </div>
-                  {{/each}}
-            </div> --}}
 
             <table>
                 <col width="25%">
@@ -439,51 +329,6 @@
                 </tr>                
             </table>
 
-            {{!-- <div class="frow justify-start text-bold mb-10">MEDICATIONS:</div>
-            <div class="frow justify-start gutters">
-                <div class="col-1-6">
-                    <span>Nicotine replacement therapy:</span>
-                </div>
-                 {{#each @root.SelectedNicotineReplacement}}
-                  <div class="cb col-1-7">
-                    {{> checkbox name=NicotineReplacementTherapy IsChecked=IsChecked}}
-                  </div>
-                  {{/each}}
-            </div> --}}
-
-            {{!-- <div class="frow justify-start gutters">
-                <span class="cb">Bupropion SR:</span>
-                <div class="cb frow" style="gap:5px">
-                    <span>Tablets (Start 7 to 10 days before the target quit date.)</span>
-                    <div class="frow mt-5" style="gap:3px">
-                        {{> checkbox name="Yes" IsChecked=(checker BupropionSRTablets "Yes")}}
-                        {{> checkbox name="No" IsChecked=(checker BupropionSRTablets "No")}}
-                     </div>
-                </div>
-            </div> --}}
-
-            {{!-- <div class="frow justify-start mt-10">
-                <span class="text-bold">ARRANGE Follow-up:</span>
-            </div>
-            <div class="frow justify-start gutters">
-                <div class="cb frow mt-5" style="gap:5px">
-                    <span class="cb">"I'll check back with you by."</span>
-                    <span class="p-5 cb text-underline">{{TargetQuitDate}} </span>
-                    <span class="cb">
-                        (Set within the first week after the target quitdate)
-                    </span>
-                     {{> checkbox name="Yes" IsChecked=(checker QuitSmokingCheckBack "Yes")}}
-                     {{> checkbox name="No" IsChecked=(checker QuitSmokingCheckBack "No")}}
-                    </label>
-                </div>
-            </div>
-            <div class="frow justify-start gutters">
-                <div class="cb frow" style="gap:5px">
-                    <span class="cb">"I'd like to give you some materials."</span>
-                     {{> checkbox name="Yes" IsChecked=(checker QuitSmokingMaterials "Yes")}}
-                     {{> checkbox name="No" IsChecked=(checker QuitSmokingMaterials "No")}}
-                </div>
-            </div> --}}
             <div class="frow justify-start text-bold mt-50">
                 <div class="col-1-1">
                     <span>Signature</span>
