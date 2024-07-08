@@ -73,7 +73,7 @@
                 Name of Patient: 
               </span>
               <span class="text-bold">
-                {{@root.SelectedPatientData.pyFullName}}
+                {{@root.AppointmentInformation.PatientData.pyFullName}}
               </span>
               </td>
             <td>
@@ -81,7 +81,7 @@
                 Date of Birth:
               </span>
               <span class="text-bold">
-                 {{@root.SelectedPatientData.DateOfBirth}}
+                 {{@root.AppointmentInformation.PatientData.DateOfBirth}}
               </span>
             </td>
           </tr>
@@ -91,7 +91,7 @@
                 Address:
               </span>
               <span class="text-bold">
-                {{@root.SelectedPatientData.pyHomeAddress1}} {{@root.SelectedPatientData.pyHomeAddress2}}
+                {{@root.AppointmentInformation.PatientData.pyHomeAddress1}} {{@root.AppointmentInformation.PatientData.pyHomeAddress2}}
               </span>
             </td>
           </tr>
@@ -102,7 +102,7 @@
                 {{> signature name="patient"}}
               </div>
             </td>
-            <td>Date: <b>{{@root.SelectedPatientData.SignatureDate}}</b></td>
+            <td>Date: <b>{{@root.AppointmentInformation.PatientData.SignatureDate}}</b></td>
           </tr>
         </tbody>
       </table>
@@ -235,8 +235,7 @@
                 Reason patient is unable to sign:
               </span>
               <span class="text-bold">
-                 {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}} --}}
-                Not present in data
+                 {{@root.AppointmentInformation.PatientData.Witness.LegalRepresentative.SpecificDetails}}
               </span>
               </td>
           </tr>
