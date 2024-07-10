@@ -141,9 +141,9 @@ function extractDatePart(dateString, type) {
     const dateParts = dateString.split("-");
 
     const typeMap = {
-      month: 0,
-      day: 1,
-      year: 2,
+      month: 1,
+      day: 2,
+      year: 0,
     };
 
     if (typeMap[type] !== undefined) {
