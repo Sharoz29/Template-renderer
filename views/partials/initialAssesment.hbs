@@ -76,7 +76,7 @@
         </tr>
         <!-- Repeat this row -->
         {{#each DrugFood}}
-        <tr class="text-bold">
+        <tr>
           <td colspan="3">
             <span>{{DrugFood}}</span>
           </td>
@@ -86,17 +86,17 @@
         </tr>
         {{/each}}
         <tr>
-          <td colspan="2">
+          <td>
             <div class="cb">
                {{> checkbox IsChecked=Penicillin name="Penicillin" }}
             </div>
           </td>
-          <td colspan="2">
+          <td>
             <div class="cb">
                {{> checkbox IsChecked=Sulfa name="Sulfa" }}
             </div>
           </td>
-          <td colspan="2">
+          <td colspan="4">
             <div class="cb">
                {{> checkbox IsChecked=NOKNOWNALLERGIES name="NO KNOWN ALLERGIES" }}
             </div>
@@ -282,7 +282,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="text-bold">
+                <tr>
                   <td>{{HT}}</td>
                   <td>{{WT}}</td>
                   <td>{{TEMP}}</td>

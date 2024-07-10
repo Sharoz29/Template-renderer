@@ -14,22 +14,22 @@
   <div style="flex: 1 1 33%; justify-self:center; text-align:center;">
     <div>
       <b><span>
-          {{SelectedPatientData.pyFullName}}
+          {{PatientData.pyFullName}}
           --
-          {{SelectedPatientData.PatAccountID}}
+          {{PatientData.PatAccountID}}
         </span>
       </b>
     </div>
     <div>
       Date of Birth:
       <b><span>
-          {{formatDate SelectedPatientData.pxCreateDateTime}}
+          {{formatDate PatientData.pxCreateDateTime}}
         </span></b>
     </div>
     <div>
       <span>
         Date of Service:
-        <b>{{formatDate SelectedPatientData.pxCommitDateTime}}</b>
+        <b>{{formatDate PatientData.pxCommitDateTime}}</b>
       </span>
     </div>
   </div>
