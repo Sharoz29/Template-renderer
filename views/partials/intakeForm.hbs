@@ -15,25 +15,20 @@
                 <col width="25%">
                 <tr>
                     <td colspan="2">
-                        <span>Referral from:</span>
-                        <span class="p-5 text-bold">...referral from...</span>
-                    </td>
-                               
+                        <span>Home Health:</span>
+                        <span class="p-5 text-bold">
+                           {{@root.AppointmentInformation.ReferralHH}}
+                        </span>
+                    </td> 
                     <td colspan="2">
                         <span>Date:</span>
-                        <span class="p-5 text-bold">.. / .. / ....</span>
+                        <span class="p-5 text-bold">{{@root.FaceToFace.Date}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <span>Telephone No:</span>
                         <span class="p-5 text-bold">{{@root.Referral.OfficeNumber}}</span>
-                    </td>
-                    <td colspan="2">
-                        <span>Home Health/Hospice:</span>
-                        <span class="p-5 text-bold">
-                            ...home health/hospice...
-                        </span>
                     </td>
                 </tr>
                 <tr>
@@ -182,11 +177,15 @@
                 </div>
             </div>
             <div class="frow justify-start">
-                <div class="col-1-2">
-                    <span>Witness:</span>
+                <div class="col-1-3">
+                    <span>Name of Witness:</span>
+                    <span class="text-bold"> {{@root.AppointmentInformation.PatientData.Witness.pyFullName}}</span>
+                </div>
+                <div class="col-1-3">
+                    <span>Signature of Witness</span>
                     {{> signature name="witness"}}
                 </div>
-                <div class="col-1-2 frow" style="align-items: flex-end;">
+                <div class="col-1-3 frow" style="align-items: flex-end;">
                     <span class="p-5">Date:</span>
                     <span class="p-5 text-underline"> {{@root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}</span>
                 </div>
