@@ -112,6 +112,7 @@ export function formatDate(date) {
 }
 
 export function fallRiskMapper(array, options) {
+  if (!Array.isArray(array) || array?.length === 0) return "";
   const newObj = array.reduce(
     (acc, item) => {
       const { IsChecked, FallRiskOption, WhyItMatters } = item;

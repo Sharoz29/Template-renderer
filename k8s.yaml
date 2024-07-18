@@ -14,7 +14,7 @@ spec:
       containers:
         - name: lcs-reports
           imagePullPolicy: Always
-          image: ansaries/lcs-reports:1.0.23
+          image: ansaries/lcs-reports:1.0.24
           env:
             - name: CLIENTID
               value: "14965090564081136535"
