@@ -58,9 +58,13 @@
         </tr>
         <tr>
           <td colspan="6">
-            <h4>Chief Complaint</h4>
+            <h4>Chief Complaint:</h4>
           </td>
         </tr>
+        <tr>
+          <td colspan="6">{{ChiefComplaints}}</td>
+        </tr>
+        
         <tr>
           <td colspan="6">
             <h4 class="fc m-auto text-uppercase">Allergies</h4>
@@ -76,7 +80,7 @@
         </tr>
         <!-- Repeat this row -->
         {{#each DrugFood}}
-        <tr class="text-bold">
+        <tr>
           <td colspan="3">
             <span>{{DrugFood}}</span>
           </td>
@@ -86,17 +90,17 @@
         </tr>
         {{/each}}
         <tr>
-          <td colspan="2">
+          <td>
             <div class="cb">
                {{> checkbox IsChecked=Penicillin name="Penicillin" }}
             </div>
           </td>
-          <td colspan="2">
+          <td>
             <div class="cb">
                {{> checkbox IsChecked=Sulfa name="Sulfa" }}
             </div>
           </td>
-          <td colspan="2">
+          <td colspan="4">
             <div class="cb">
                {{> checkbox IsChecked=NOKNOWNALLERGIES name="NO KNOWN ALLERGIES" }}
             </div>
@@ -262,6 +266,8 @@
             </h4>
           </td>
         </tr>
+      </table>
+      <table>
         <tr>
           <td colspan="6">
             <table class="striped width-100 no-y-padding">
@@ -272,24 +278,80 @@
                   </th>
                 </tr>
                 <tr>
-                  <th>HT</th>
-                  <th>WT</th>
-                  <th>TEMP</th>
-                  <th>BP</th>
-                  <th>HR</th>
-                  <th>RR</th>
-                  <th>02 SAT</th>
+                  <th>
+                    <div class="text-center">
+                      HT
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      WT
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      TEMP
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      BP
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      HR
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      RR
+                    </div>
+                  </th>
+                  <th>
+                    <div class="text-center">
+                      02 SAT
+                    </div>
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="text-bold">
-                  <td>{{HT}}</td>
-                  <td>{{WT}}</td>
-                  <td>{{TEMP}}</td>
-                  <td>{{BP}}</td>
-                  <td>{{HR}}</td>
-                  <td>{{RR}}</td>
-                  <td>{{SAT}}</td>
+                <tr>
+                  <td>
+                    <div class="text-center">
+                      {{HT}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{WT}}
+                    </div>  
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{TEMP}}
+                    </div> 
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{BP}}
+                    </div> 
+                  </td>
+                  <td>
+                    <div class="text-center">
+                     {{HR}}
+                    </div> 
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{RR}}
+                    </div> 
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{SAT}}
+                    </div>   
+                  </td>
                 </tr>
               </tbody>
             </table>

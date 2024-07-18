@@ -66,7 +66,7 @@
                     </td>
                     <td>
                         <span>State:</span>
-                        <span class="p-5 text-underline text-bold">{{../PatientData/pyState}}</span>
+                        <span class="p-5 text-bold">{{../PatientData/pyState}}</span>
                     </td>
                     <td colspan="2">
                         <span>Zip:</span>
@@ -83,34 +83,39 @@
                 </div>
                 <div class="col-1-2 text-bold">
                     <span>DATE:</span>
-                    <span class="p-5 text-underline">{{SignatureDate}}</span>
+                    <span class="p-5">{{SignatureDate}}</span>
                 </div>
             </div>
 
 
             <table>
-                <col width="50%">
-                <col width="50%">
+                <col width="33%">
+                <col width="33%">
+                <col width="33%">
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         <span>NAME OF SIGNATORY:</span>
                         <span class="p-5 text-bold">{{NameOfSignatory}}</span>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">(IF DIFFERENT FROM THE PATIENT)</td>
+                    <td colspan="3">(IF DIFFERENT FROM THE PATIENT)</td>
                 </tr>
                 <tr>
-                    <td colspan="2">Relationship to patient:
+                    <td colspan="3">Relationship to patient:
                         <span class="p-5 text-bold">{{RelationshipToPatient}}</span>
                     </td>
                 </tr>
                 <tr style="height: 80px">
-                    <td>
-                        <span>Witness:</span>
+                    <td colspan="1">
+                        <span>Name of Witness:</span>
+                        <span class="text-bold"> {{@root.AppointmentInformation.PatientData.Witness.pyFullName}}</span>
+                    </td>
+                    <td colspan="1"> 
+                        <span>Signature of Witness:</span>
                         {{> signature name="witness"}}
                     </td>
-                    <td>
+                    <td colspan="1">
                         <span>Date:</span>
                         <span class="p-5 text-bold">{{WitnessDate}}</span>
                     </td>
