@@ -8,8 +8,8 @@
     "watch:scss": "node-sass -w styles/ -r --output-style expanded -o public/css/",
     "watch:server": "pm2 start server.js --watch  && pm2 monit",
     "build:docker": "docker build -t lcs-reports:latest .",
-    "tag:docker": "docker tag lcs-reports:latest ansaries/lcs-reports:1.0.21",
-    "push:docker": "docker push ansaries/lcs-reports:1.0.21",
+    "tag:docker": "docker tag lcs-reports:latest ansaries/lcs-reports:1.0.25",
+    "push:docker": "docker push ansaries/lcs-reports:1.0.25",
     "dockerize": "npm run build:docker && npm run tag:docker && npm run push:docker",
     "build:deploy": "npm run dockerize && kubectl apply -f ./k8s.yaml -n pega23",
     "deploy": "kubectl apply -f ./k8s.yaml -n pega23"
