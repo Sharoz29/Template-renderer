@@ -6,19 +6,19 @@
             </div>
         {{#with RecordReleaseAuthorization}}            
             <div class="frow text-center mt-10 text-bold">
-                <span>... Company name ... </span>
+                <span>{{@root.AppointmentInformation.Office.OfficeName}}</span>
             </div>
             <div class="from text-center">
-                <span>..... Company Address ....</span>            
+                <span>{{@root.AppointmentInformation.Office.Address}}</span>            
             </div>
             <div class="frow text-bold">
                 <div class="col-1-2 text-right p-5">
                     <span>TEL# </span>
-                    <span>... telephone number ...</span>
+                    <span>{{@root.AppointmentInformation.Office.TelephoneNumber}}</span>
                 </div>
                 <div class="col-1-2 text-left p-5">
                     <span>FAX# </span>
-                    <span>... fax number ...</span>
+                    <span>{{@root.AppointmentInformation.Office.Fax}}</span>
                 </div>
             </div>
             <div class="text-center m-auto text-bold mt-10">RECORDS REQUESTED</div>
@@ -40,7 +40,7 @@
                     </td>
                     <td colspan="2">
                         <span>Medicare No:</span>
-                        <span class="p-5 text-bold">......, ......., ......</span>
+                        <span class="p-5 text-bold">{{../PatientData.PatAccountID}}</span>
                     </td>
                 </tr>
                 <tr>

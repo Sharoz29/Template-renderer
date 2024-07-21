@@ -29,18 +29,18 @@
     <div>
       <span>
         Date of Service:
-        <b>{{@root.FaceToFace.Date}}</b>
+        <b>{{@root.AppointmentInformation.EffectiveDate}}</b>
       </span>
     </div>
   </div>
 
   <div style="flex: 1 1 33%; justify-self:flex-end; text-align:end;">
-    <div><b>{{OfficeName}}</b></div>
+    <div><b>{{@root.AppointmentInformation.Office.OfficeName}}</b></div>
     <div>
-      <b>Office Address Line 1, Comes Here...</b>
+      <b>{{@root.AppointmentInformation.Office.Address}}</b>
     </div>
     <div>
-      <b>Tel: 132 124 1222</b>
+      <b>{{@root.AppointmentInformation.Office.TelephoneNumber}}</b>
     </div>
   </div>
 

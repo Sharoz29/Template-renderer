@@ -244,10 +244,14 @@
                 </tr>
                 <tr>
                     <td colspan="7">
-                        <div class="cb">
+                        <div class="cb gutters">
                             Withdrawal Symptoms:
-                            <span class="p-10">Nausea</span>
-                            <span class="p-10">Vomiting</span>
+                            <span class="p-10">
+                                {{> checkbox name="Nausea" IsChecked=Nausea}}
+                            </span>
+                            <span class="p-10">
+                                {{> checkbox name="Vomiting" IsChecked=Vomiting}}
+                            </span>
                         </div>
                     </td>
                 </tr>
@@ -255,8 +259,12 @@
                     <td colspan="7">
                         <div class="cb gutters">
                             Mood:
-                            <span class="p-10">Anxiety</span>
-                            <span class="p-10">Depression</span>
+                            <span class="p-10">
+                                {{> checkbox name="Anxiety" IsChecked=Anxiety}}
+                            </span>
+                            <span class="p-10">
+                                {{> checkbox name="Depression" IsChecked=Depression}}
+                            </span>
                         </div>
                     </td>
                 </tr>
