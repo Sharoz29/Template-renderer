@@ -38,7 +38,7 @@
                 {{> checkbox name="No" IsChecked=(checker SpecialDiet "No")}}
               </div>
             </td>
-            <td>Description: {{Description_SpecilaDiet}}</td>
+            <td>Description: {{{Description_SpecilaDiet}}}</td>
             <td>
               <div class="cb">
                 {{> checkbox name="Diabetic" IsChecked=Diabetic}}
@@ -416,10 +416,10 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  <label for="name">YES</label>
+                  {{> checkbox name="Yes" IsChecked=(checker PhysicianStatement "Yes")}}
                 </div>
                 <div class="cb">
-                  <label for="name">NO</label>
+                  {{> checkbox name="No" IsChecked=(checker PhysicianStatement "No")}}
                 </div>
               </div>
             </td>
