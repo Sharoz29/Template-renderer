@@ -3,7 +3,24 @@
     <div class="container mb-20">
       {{> formTitle }}
     </div>
+    <p>
+      <strong>The patient has had these medical conditions at one or more time in the past:</strong>
+      {{#each @root.SelectedPastMedicalHistory}}
+                <span>{{PASTMEDICALHISTORY}}</span>,
+       {{/each}}
+    </p>
     <div class="col-1-1 impressions py-10 bb stripes">
+       <div class="frow impression">
+          <div class="col-5-12 title" style="padding-left: 5px;">
+            <p><strong>Medical Condition</strong></p>
+          </div>
+          <div class="col-7-12 title">
+            <p>
+              <strong>
+                Description
+              </strong>
+          </div>
+        </div>
        {{#filterArr SelectedMedicalConditionsOnFaceToFace 'true' }}
         <div class="frow impression">
           <div class="col-2-12 title">
