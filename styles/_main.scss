@@ -44,6 +44,14 @@
   }
   #referal-form {
   }
+  .margin-remover{
+    p{
+      margin: 0;
+    }
+    ul{
+      margin: 0;
+    }
+  }
 
   .cb {
     display: flex;

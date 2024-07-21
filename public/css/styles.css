@@ -2026,6 +2026,14 @@ canvas:focus {
   border: 1px solid #ddd;
 }
 
+.cad-forms .margin-remover p {
+  margin: 0;
+}
+
+.cad-forms .margin-remover ul {
+  margin: 0;
+}
+
 .cad-forms .cb {
   display: flex;
   align-items: center;
