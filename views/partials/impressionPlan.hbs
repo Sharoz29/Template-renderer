@@ -4,17 +4,17 @@
       {{> formTitle }}
     </div>
     <div class="col-1-1 impressions py-10 bb stripes">
-       {{#each PrescribedDiagnosis}}
-      <div class="frow impression">
-        <div class="col-2-12 title">
-          <p><strong>{{Diagnosis}}</strong></p>
+       {{#filterArr SelectedMedicalConditionsOnFaceToFace 'true' }}
+        <div class="frow impression">
+          <div class="col-2-12 title">
+            <p><strong>{{HHSMedicalCondition}}</strong></p>
+          </div>
+          <div class="col-10-12 description">
+            <p>
+            {{{Definition}}}
+          </div>
         </div>
-        <div class="col-10-12 description">
-          <p>
-           {{{Prescription}}}
-        </div>
-      </div>
-      {{/each}}
+      {{/filterArr}}
     </div>
     <div class="notes">
       <p>
