@@ -141,8 +141,7 @@
                 Telephone:
               </span>
               <span class="text-bold">
-                {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}} --}}
-                Not present in data
+                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyPhoneNumber}}                
               </span>
             </td>
           </tr>
@@ -157,12 +156,12 @@
             </td>
           </tr>
           <tr>
-            <td>
+            {{!-- <td>
               <span>
                 Unit:
               </span>
               <span class="text-bold">
-                {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}} --}}
+                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}}
                 Not present in data
               </span>
             </td>
@@ -171,11 +170,11 @@
                 Street:
               </span>
               <span class="text-bold">
-                {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}} --}}
+                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}}
                 Not present in data
               </span>
-            </td>
-            <td>
+            </td> --}}
+            <td colspan="3">
                <span>
                  City:
               </span>
@@ -191,7 +190,7 @@
                 {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyState}}
               </span>
             </td>
-            <td>
+            <td colspan="2">
               <span>
                 Zip:
               </span>

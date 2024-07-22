@@ -8,7 +8,7 @@
             <div class="frow text-center mt-10 text-bold">
                 <span>{{@root.AppointmentInformation.Office.OfficeName}}</span>
             </div>
-            <div class="from text-center">
+            <div class="from text-center text-bold">
                 <span>{{@root.AppointmentInformation.Office.Address}}</span>            
             </div>
             <div class="frow text-bold">
@@ -70,7 +70,7 @@
                     </td>
                     <td colspan="2">
                         <span>Zip:</span>
-                        <span class="p-5 text-bold">..zip..</span>
+                        <span class="p-5 text-bold">{{../PatientData/ZipCode}}</span>
                     </td>
                 </tr>
             </table>
@@ -103,7 +103,7 @@
                 </tr>
                 <tr>
                     <td colspan="3">Relationship to patient:
-                        <span class="p-5 text-bold">{{RelationshipToPatient}}</span>
+                        <span class="p-5 text-bold">{{@root.AppointmentInformation.PatientData.LegalRepresentative.RelationshipToThePatient}}</span>
                     </td>
                 </tr>
                 <tr style="height: 80px">
