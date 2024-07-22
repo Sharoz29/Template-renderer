@@ -17,7 +17,7 @@
                     <td colspan="2">
                         <span>Home Health:</span>
                         <span class="p-5 text-bold">
-                           {{@root.AppointmentInformation.ReferralHH}}
+                           {{@root.AppointmentInformation.Referral.HH}}
                         </span>
                     </td> 
                     <td colspan="2">
@@ -28,7 +28,7 @@
                 <tr>
                     <td colspan="2">
                         <span>Telephone No:</span>
-                        <span class="p-5 text-bold">{{@root.Referral.OfficeNumber}}</span>
+                        <span class="p-5 text-bold">{{@root.AppointmentInformation.Referral.OfficeNumber}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +67,7 @@
                     here by give permission to
                     <span class="text-underline text-bold">{{@root.AppointmentInformation.SelectProvider}} </span>
                     (Authorized Medical Provider of
-                    <b>{{@root.Office.OfficeName}}</b>) to perform all necessary
+                    <b>{{@root.AppointmentInformation.Office.OfficeName}}</b>) to perform all necessary
                     assessment and treatment. I understand that I may refuse or
                     terminate services at any time. If needed or requested, any
                     concerns regarding that medical condition and treatment will be
@@ -76,7 +76,7 @@
                     are important to my treatment plan. I acknowledge that
                     <b>RECEIPT</b> of <b>Notice of Privacy (HIPAA Form)</b> and was
                     given opportunity to ask the questions and voice concerns. I
-                    give permission to <b>{{@root.Office.OfficeName}}</b> to use and
+                    give permission to <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> to use and
                     disclose Protective Health Information about me to carry out
                     treatment, payment, health care operations.
                 </p>
@@ -91,13 +91,13 @@
                     given opportunity to review notices, ask the questions and voice
                     concerns, set limitations / restrictions on the use of my health
                     information. I give permission to
-                    <b>{{@root.OfficeName}}</b> to use and disclose
+                    <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> to use and disclose
                     Protective Health Information about me to carry out treatment,
                     payment, health care operations, receive and release information
                     pertinent to my care.
                 </p>
                 <span>
-                    I authorize <b>{{@root.OfficeName}}</b> to photograph or
+                    I authorize <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> to photograph or
                     videotape appropriate body parts for necessary documentations
                     only.
                 </span>
