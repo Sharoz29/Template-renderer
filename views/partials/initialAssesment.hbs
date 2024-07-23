@@ -206,21 +206,11 @@
                 <div class="cb col-1-6">
                    {{> checkbox IsChecked=(checker PatientUseTobacco "No") name="No" }}
                 </div>
-                <div class="cb col-1-6">
-                  {{#each TobaccoTHC}}
-                   {{> checkbox IsChecked=(dailyUseChecker TobaccoTHC "Daily") name="Daily" }}
-                   {{/each}}
-                </div>
-                <div class="cb col-1-6">
-                   {{#each TobaccoTHC}}
-                   {{> checkbox IsChecked=(dailyUseChecker TobaccoTHC "Socially") name="Socially" }}
-                   {{/each}}
-                </div>
-                <div class="cb col-1-6">
-                  {{#each TobaccoTHC}}
-                   {{> checkbox IsChecked=(dailyUseChecker TobaccoTHC "Occasionally") name="Occasionally" }}
-                   {{/each}}
-                </div>
+                {{#each @root.SelectedTobacco_THC}}
+                  <div class="cb col-1-6">
+                     {{> checkbox IsChecked=IsChecked name=TobaccoTHC }}
+                  </div>
+                {{/each}}
               </div>
 
               <div class="frow col-1-1 justify-start">
@@ -231,21 +221,11 @@
                 <div class="cb col-1-6">
                   {{> checkbox IsChecked=(checker PatientConsumeAlcohol "No") name="No" }}
                 </div>
-                <div class="cb col-1-6">
-                   {{#each ETOHAlcohol}}
-                   {{> checkbox IsChecked=(dailyUseChecker ETOHAlcohol "Daily") name="Daily" }}
-                   {{/each}}
-                </div>
-                <div class="cb col-1-6">
-                  {{#each ETOHAlcohol}}
-                   {{> checkbox IsChecked=(dailyUseChecker ETOHAlcohol "Socially") name="Socially" }}
-                   {{/each}}
-                </div>
-                <div class="cb col-1-6">
-                   {{#each ETOHAlcohol}}
-                   {{> checkbox IsChecked=(dailyUseChecker ETOHAlcohol "Occasionally") name="Occasionally" }}
-                   {{/each}}
-                </div>
+                {{#each @root.SelectedAlcoholConsumption}}
+                  <div class="cb col-1-6">
+                     {{> checkbox IsChecked=IsChecked name=ETOHAlcohol }}
+                  </div>
+                {{/each}}
               </div>
 
               <div class="frow col-1-1 justify-start">
@@ -435,7 +415,7 @@
                       {{/each}}
                       <div class="frow cbs justify-start" style="gap: 5px; align-items:center">
                         {{> checkbox IsChecked=OtherNeckBool name="Other" }} :
-                        <span class="margin-remover">{{{OtherNeck}}}</span>
+                        <span class="margin-remover">{{{OtherNeckAxillaBreasts}}}</span>
                       </div>
                     </div>
                   </td>
@@ -550,7 +530,7 @@
                       {{/each}}
                       <div class="frow cbs justify-start" style="gap: 5px; align-items:center">
                         {{> checkbox IsChecked=OtherCardioBool name="Other" }} :
-                        <span class="margin-remover">{{{OtherCardio}}}</span>
+                        <span class="margin-remover">{{{OtherCardiovascular}}}</span>
                       </div>
                     </div>
                   </td>
@@ -688,7 +668,7 @@
                       {{/each}}
                        <div class="frow cbs justify-start" style="gap: 5px; align-items:center">
                         {{> checkbox IsChecked=OtherLowerBool name="Other" }} :
-                        <span class="margin-remover">{{{OtherLower}}}</span>
+                        <span class="margin-remover">{{{OtherLowerExtremities}}}</span>
                       </div>
                     </div>
                   </td>
@@ -727,7 +707,7 @@
                   </td>
                   <td>
                     <div class="frow cbs justify-start">
-                      {{#each @root.SelectedRosNutrition}}
+                      {{#each @root.SelectedNutrition}}
                       <div class="cb col-1-4">
                         {{> checkbox IsChecked=IsChecked name=Nutrition }}
                       </div>
@@ -775,7 +755,7 @@
                     <div class="frow cbs justify-start">
                       {{#each @root.SelectedRosEndocrine}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Endocrine }}
+                         {{> checkbox IsChecked=IsChecked name=Endocrime }}
                       </div>
                       {{/each}}
                       <div class="frow cbs justify-start" style="gap: 5px; align-items:center">

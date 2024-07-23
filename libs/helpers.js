@@ -40,19 +40,16 @@ export function heading(context) {
     )}</h2>`
   );
 }
-
 export function isSelected(lab, selectedLabs, options) {
   if (selectedLabs.includes(lab)) {
     return options.fn(this);
   }
   return options.inverse(this);
 }
-
 export function findWithKey(array, key, value) {
   if (!Array.isArray(array) || array?.length === 0) return;
   return array.find((obj) => obj[key] === value);
 }
-
 export function copyTelemedecineToFaceToFace(
   context,
   teleMedicines,
@@ -76,11 +73,9 @@ export function copyTelemedecineToFaceToFace(
     SelectedHomeBoundStatusOnFaceToFace: [...certOfHomeBound],
   };
 }
-
 export function counter(index) {
   return index + 1;
 }
-
 export function radioButtonChecker(option, name) {
   return option === name;
 }
@@ -93,7 +88,6 @@ export function F2FTMText(context) {
 export function CheckOrRadio(type) {
   return type === "radio" ? "radio" : "checkbox";
 }
-
 export function allergiesChecker(allergies) {
   return allergies === "No Known Allergies";
 }
@@ -102,15 +96,10 @@ export function checker(use, name) {
     ? use === true || use === "true"
     : use === false || use === "false";
 }
-export function dailyUseChecker(frequency, name) {
-  return frequency === name;
-}
-
 export function formatDate(date) {
   // return date as mm-dd-yy-hh-mm
   return new Date(date).toLocaleDateString().replace(/\//g, "-");
 }
-
 export function fallRiskMapper(array, options) {
   if (!Array.isArray(array) || array?.length === 0) return "";
   const newObj = array.reduce(
@@ -230,7 +219,6 @@ export const helpers = {
   CheckOrRadio,
   allergiesChecker,
   checker,
-  dailyUseChecker,
   formatDate,
   hostUrl,
   getSignatureUrl,
