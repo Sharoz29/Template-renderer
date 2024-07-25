@@ -50,7 +50,7 @@
                     </td>
                     <td colspan="2">
                         <span>Date of Birth:</span>
-                        <span class="p-5 text-bold">{{../PatientData/DateOfBirth}}</span>
+                        <span class="p-5 text-bold">{{formatDate ../PatientData/DateOfBirth}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="col-1-2 text-bold">
                     <span>DATE:</span>
-                    <span class="p-5">{{SignatureDate}}</span>
+                    <span class="p-5">{{formatDate SignatureDate}}</span>
                 </div>
             </div>
 
@@ -117,7 +117,7 @@
                     </td>
                     <td colspan="1">
                         <span>Date:</span>
-                        <span class="p-5 text-bold">{{WitnessDate}}</span>
+                        <span class="p-5 text-bold">{{formatDate WitnessDate}}</span>
                     </td>
                 </tr>
             </table>

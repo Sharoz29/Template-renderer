@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-1-2">
                                     <span>Target quit date:</span>
-                                    <span class="p-5 text-underline">{{TargetQuitDate}}</span>
+                                    <span class="p-5 text-underline">{{formatDate TargetQuitDate}}</span>
                                 </div>
                             </div>                           
                             <div class="frow justify-start">
@@ -88,14 +88,14 @@
                                         <td>
                                             <span>DOB:</span>
                                             <span class="p-5 text-bold">
-                                                {{@root.AppointmentInformation.PatientData.DateOfBirth}}
+                                                {{formatDate @root.AppointmentInformation.PatientData.DateOfBirth}}
                                             </span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <span>Encounter Dates:</span>
-                                            <span class="p-5 text-bold">{{@root.AppointmentInformation.EncounterDate}}</span>
+                                            <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.EncounterDate}}.</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -332,7 +332,7 @@
                         <div class="frow justify-start">
                             <div class="cb gutters">
                                 "I'll check back with you by."
-                                <span class="p-5 cb text-underline">{{TargetQuitDate}} </span>
+                                <span class="p-5 cb text-underline">{{formatDate TargetQuitDate}} </span>
                                 <span class="cb">
                                 (Set within the first week after the target quitdate)
                                 </span>
@@ -373,7 +373,7 @@
             </div>
             <div class="fro justify-start text-bold">
                 <span>Date</span>
-                <span class="p-5 text-underline">{{@root.AppointmentInformation.SignatureDate}}</span>
+                <span class="p-5 text-underline">{{formatDate @root.AppointmentInformation.SignatureDate}}</span>
             </div>
         </div>
     </div>

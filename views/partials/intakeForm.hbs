@@ -22,7 +22,7 @@
                     </td> 
                     <td colspan="2">
                         <span>Date:</span>
-                        <span class="p-5 text-bold">{{@root.FaceToFace.Date}}</span>
+                        <span class="p-5 text-bold">{{formatDate @root.FaceToFace.Date}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -43,7 +43,7 @@
                     </td>
                     <td colspan="2">
                         <span>Date of Birth:</span>
-                        <span class="p-5 text-bold">{{DateOfBirth}}</span>
+                        <span class="p-5 text-bold">{{formatDate DateOfBirth}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -128,7 +128,7 @@
                     <td>
                         <span>Date of Discharge:</span>
                         <span class="p-5 text-bold">
-                            {{@root.AppointmentInformation.DateOfDischarge}}
+                            {{formatDate @root.AppointmentInformation.DateOfDischarge}}
                         </span>
                     </td>
                 </tr>
@@ -177,7 +177,7 @@
                     </td>
                     <td>
                         <span class="p-5">Date:</span>
-                        <span class="p-5 text-bold"> 07/22/2023{{@root.AppointmentInformation.PatientsSignatureDate}}</span>
+                        <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.PatientsSignatureDate}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -203,7 +203,7 @@
                     </td>
                     <td>
                         <span class="p-5">Date:</span>
-                        <span class="p-5 text-bold"> 09/08/2024{{@root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}</span>
+                        <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}</span>
                     </td>
                 </tr>
             </table>

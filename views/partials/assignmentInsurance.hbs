@@ -81,7 +81,7 @@
                 Date of Birth:
               </span>
               <span class="text-bold">
-                 {{@root.AppointmentInformation.PatientData.DateOfBirth}}
+                 {{formatDate @root.AppointmentInformation.PatientData.DateOfBirth}}
               </span>
             </td>
           </tr>
@@ -102,7 +102,7 @@
                 {{> signature name="patient"}}
               </div>
             </td>
-            <td>Date: <b>{{@root.AppointmentInformation.PatientData.SignatureDate}}</b></td>
+            <td>Date: <b>{{formatDate @root.AppointmentInformation.PatientData.SignatureDate}}</b></td>
           </tr>
         </tbody>
       </table>
@@ -224,7 +224,7 @@
                 Date: 
               </span>
               <span>
-                 {{@root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}
+                 {{formatDate @root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}
               </span>
             </td>
           </tr>
