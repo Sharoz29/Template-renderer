@@ -31,19 +31,27 @@
                                 <div class="col-1-2">
                                     <div class="cb frow justify-start gutters">
                                         <span>Patient is ready to quit:</span>
-                                        <span>
+                                        <div class="frow justify-start gutters">
+                                            <span>
+                                                {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "No")}}
+                                            </span>
+                                            <span>
+                                                {{> checkbox name="No" IsChecked=(checker IsPatientReadyToQuit "No")}}
+                                            </span>
+                                        </div>
+                                        {{!-- <span>
                                         {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "No")}}
                                         </span>
                                         <span>
                                         {{> checkbox name="No" IsChecked=(checker IsPatientReadyToQuit "No")}}
-                                        </span>
+                                        </span> --}}
                                     </div>
                                 </div>
                                 <div class="col-1-2">
                                     <span>Target quit date:</span>
                                     <span class="p-5 text-underline">{{TargetQuitDate}}</span>
                                 </div>
-                            </div>
+                            </div>                           
                             <div class="frow justify-start">
                                 <div class="col-1-1">
                                     <div class="cb frow justify-start gutters">
@@ -87,7 +95,7 @@
                                     <tr>
                                         <td>
                                             <span>Encounter Dates:</span>
-                                            <span class="p-5 text-bold">{{@root.AppointmentInformation.EncounterDate}}.</span>
+                                            <span class="p-5 text-bold">{{@root.AppointmentInformation.EncounterDate}}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -95,16 +103,16 @@
                                             <div class="frow justify-start gutters">
                                                 <span>Visit #</span>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.VisitCount "1") name="1" }}
+                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.ChecklistForTobacco.VisitCount "1") name="1" }}
                                                 </div>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.VisitCount "2") name="2" }}
+                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.ChecklistForTobacco.VisitCount "2") name="2" }}
                                                 </div>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.VisitCount "3") name="3" }}
+                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.ChecklistForTobacco.VisitCount "3") name="3" }}
                                                 </div>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.VisitCount "4") name="4" }}
+                                                     {{> checkbox IsChecked=(radioButtonChecker @root.AppointmentInformation.ChecklistForTobacco.VisitCount "4") name="4" }}
                                                 </div>
                                             </div>
                                         </td>
@@ -233,7 +241,7 @@
                 <tr>
                     <td colspan="7"><strong>SYMPTOMS</strong></td>
                 </tr>
-                <tr>
+                {{!-- <tr>
                     {{#each @root.SelectedSmokingSymptoms}}
                     <td>
                     <div class="cb col-1-7">
@@ -241,6 +249,15 @@
                     </div>
                     </td>
                     {{/each}}               
+                </tr> --}}
+                <tr>
+                    <td>{{> checkbox name="Abnormal Sputum" IsChecked=AbnormalSputum}}</td>
+                    <td>{{> checkbox name="Dyspnea" IsChecked=Dyspnea}}</td>
+                    <td>{{> checkbox name="Cough" IsChecked=Cough}}</td>
+                    <td>{{> checkbox name="Diminished Air Movement" IsChecked=DiminishedAirMovement}}</td>
+                    <td>{{> checkbox name="Hemoptysis" IsChecked=Hemoptysis}}</td>
+                    <td>{{> checkbox name="Wheeze" IsChecked=Wheeze}}</td>
+                    <td>{{> checkbox name="Asthma" IsChecked=Asthma}}</td>                    
                 </tr>
                 <tr>
                     <td colspan="7">
@@ -283,13 +300,18 @@
                 </tr>
                 <tr>
                     <td>Nicotine replacement therapy:</td>
-                    {{#each @root.SelectedNicotineReplacement}}
+                    {{!-- {{#each @root.SelectedNicotineReplacement}}
                     <td>
                     <div class="cb col-1-7">
                         {{> checkbox name=NicotineReplacementTherapy IsChecked=IsChecked}}
                     </div>
                     </td>
-                    {{/each}}
+                    {{/each}} --}}
+                    <td>{{> checkbox name="Nasal Spray" IsChecked=NasalSpray}}</td>
+                    <td>{{> checkbox name="Lozenge" IsChecked=Lozenge}}</td>
+                    <td>{{> checkbox name="Inhaler" IsChecked=Inhaler}}</td>
+                    <td>{{> checkbox name="Patch" IsChecked=Patch}}</td>
+                    <td>{{> checkbox name="Gum" IsChecked=Gum}}</td>                    
                 </tr>
                 <tr>
                     <td colspan="6">
