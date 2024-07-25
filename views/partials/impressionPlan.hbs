@@ -6,7 +6,7 @@
     <p>
       <strong>The patient has had these medical conditions at one or more time in the past:</strong>
       {{#each (getMedicalConditionsFromF2F @root)}}
-          <span class="pr-5">{{HHSMedicalCondition}},</span>
+          <span class="pr-5">{{PASTMEDICALHISTORY}},</span>
       {{/each}}
     </p>
     <div class="col-1-1 impressions py-10 bb stripes">
@@ -32,7 +32,7 @@
           </div>
         </div>
       {{/filterArr}}
-      {{#if @root.FaceToFace.OtherMedicalConditionsOnFaceToFaceCheckbox}}
+      {{#if (isTrue @root.FaceToFace.OtherMedicalConditionsOnFaceToFaceCheckbox)}}
         <div class="frow impression">
           <div class="col-2-12 title">
             <p>
