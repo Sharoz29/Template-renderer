@@ -179,15 +179,15 @@ export async function imageToDataUrl(url) {
 
 export function getMedicalConditionsFromF2F(context, option) {
   const medicalConditions = [];
-  const f2f = context?.SelectedMedicalConditionsOnFaceToFace;
-  const tm = context?.SelectedMedicalConditionsOnTelemedicine;
+  const pmh = context?.SelectedPastMedicalHistory;
 
   const isTrue = (mc) => mc.IsChecked === "true" || mc.IsChecked === true;
 
-  if (f2f?.length > 0 || tm?.length > 0) {
-    for (let i = 0; i < tm.length; i++) {
-      if (isTrue(f2f[i]) || isTrue(tm[i])) {
-        const medCon = isTrue(f2f[i]) ? f2f[i] : tm[i];
+  if (pmh?.length > 0) {
+    for (let i = 0; i < pmh.length; i++) {
+      if (isTrue(pmh[i])) {
+        const medCon = isTrue(pmh[i]) ? pmh[i] : "";
+        console.log(medCon);
         medicalConditions.push(medCon);
       }
     }
