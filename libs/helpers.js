@@ -97,8 +97,10 @@ export function checker(use, name) {
     : use === false || use === "false";
 }
 export function formatDate(date) {
-  // return date as mm-dd-yy-hh-mm
-  return new Date(date).toLocaleDateString().replace(/\//g, "-");
+  if (!!date) {
+    // return date as mm-dd-yy-hh-mm
+    return new Date(date).toLocaleDateString().replace(/\//g, "-");
+  }
 }
 export function fallRiskMapper(array, options) {
   if (!Array.isArray(array) || array?.length === 0) return "";
