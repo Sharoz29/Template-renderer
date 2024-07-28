@@ -12,7 +12,8 @@
     "push:docker": "docker push ansaries/lcs-reports:1.0.25",
     "dockerize": "npm run build:docker && npm run tag:docker && npm run push:docker",
     "build:deploy": "npm run dockerize && kubectl apply -f ./k8s.yaml -n pega23",
-    "deploy": "kubectl apply -f ./k8s.yaml -n pega23"
+    "deploy": "kubectl apply -f ./k8s.yaml -n pega23",
+    "node": "node server.js"
   },
   "author": "arslan.ansari@lowcodesol.com",
   "license": "ISC",

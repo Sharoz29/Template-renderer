@@ -183,13 +183,15 @@ export function getMedicalConditionsFromF2F(context, option) {
   const medicalConditions = [];
   const pmh = context?.SelectedPastMedicalHistory;
 
+  if(!pmh || !pmh?.length) return medicalConditions;
+
   const isTrue = (mc) => mc.IsChecked === "true" || mc.IsChecked === true;
 
   if (pmh?.length > 0) {
-    for (let i = 0; i < pmh.length; i++) {
+    for (let i = 0; i < pmh?.length; i++) {
       if (isTrue(pmh[i])) {
         const medCon = isTrue(pmh[i]) ? pmh[i] : "";
-        console.log(medCon);
+        // console.log(medCon);
         medicalConditions.push(medCon);
       }
     }
