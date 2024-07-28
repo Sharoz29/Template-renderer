@@ -241,7 +241,7 @@
                 <tr>
                     <td colspan="7"><strong>SYMPTOMS</strong></td>
                 </tr>
-                {{!-- <tr>
+                <tr>
                     {{#each @root.SelectedSmokingSymptoms}}
                     <td>
                     <div class="cb col-1-7">
@@ -249,8 +249,8 @@
                     </div>
                     </td>
                     {{/each}}               
-                </tr> --}}
-                <tr>
+                </tr>
+                {{!-- <tr>
                     <td>{{> checkbox name="Abnormal Sputum" IsChecked=AbnormalSputum}}</td>
                     <td>{{> checkbox name="Dyspnea" IsChecked=Dyspnea}}</td>
                     <td>{{> checkbox name="Cough" IsChecked=Cough}}</td>
@@ -258,7 +258,7 @@
                     <td>{{> checkbox name="Hemoptysis" IsChecked=Hemoptysis}}</td>
                     <td>{{> checkbox name="Wheeze" IsChecked=Wheeze}}</td>
                     <td>{{> checkbox name="Asthma" IsChecked=Asthma}}</td>                    
-                </tr>
+                </tr> --}}
                 <tr>
                     <td colspan="7">
                         <div class="cb gutters">
@@ -300,18 +300,18 @@
                 </tr>
                 <tr>
                     <td>Nicotine replacement therapy:</td>
-                    {{!-- {{#each @root.SelectedNicotineReplacement}}
+                    {{#each @root.SelectedNicotineReplacement}}
                     <td>
                     <div class="cb col-1-7">
-                        {{> checkbox name=NicotineReplacementTherapy IsChecked=IsChecked}}
+                        {{> checkbox name=NicotineRepTrp IsChecked=IsChecked}}
                     </div>
                     </td>
-                    {{/each}} --}}
-                    <td>{{> checkbox name="Nasal Spray" IsChecked=NasalSpray}}</td>
+                    {{/each}}
+                    {{!-- <td>{{> checkbox name="Nasal Spray" IsChecked=NasalSpray}}</td>
                     <td>{{> checkbox name="Lozenge" IsChecked=Lozenge}}</td>
                     <td>{{> checkbox name="Inhaler" IsChecked=Inhaler}}</td>
                     <td>{{> checkbox name="Patch" IsChecked=Patch}}</td>
-                    <td>{{> checkbox name="Gum" IsChecked=Gum}}</td>                    
+                    <td>{{> checkbox name="Gum" IsChecked=Gum}}</td>                     --}}
                 </tr>
                 <tr>
                     <td colspan="6">
