@@ -177,7 +177,7 @@
                     </td>
                     <td>
                         <span class="p-5">Date:</span>
-                        <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.PatientsSignatureDate}}</span>
+                        <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.PatientData.PatientSignatureDate}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -186,14 +186,14 @@
                     </td>
                     <td colspan="5">
                         <span class="p-5 text-bold">
-                            Self{{RelationshipToThePatient}}
+                            {{RelationshipToThePatient}}
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <span>Name of Witness:</span>                   
-                        <span class="text-bold">Witness Name{{@root.AppointmentInformation.PatientData.Witness.pyFullName}}</span>
+                        <span class="text-bold">{{@root.AppointmentInformation.PatientData.Witness.pyFullName}}</span>
                     </td>
                     <td>
                         <span class="text-right">Signature of Witness:</span>

@@ -33,7 +33,7 @@
                                         <span>Patient is ready to quit:</span>
                                         <div class="frow justify-start gutters">
                                             <span>
-                                                {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "No")}}
+                                                {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "Yes")}}
                                             </span>
                                             <span>
                                                 {{> checkbox name="No" IsChecked=(checker IsPatientReadyToQuit "No")}}
@@ -95,7 +95,7 @@
                                     <tr>
                                         <td>
                                             <span>Encounter Dates:</span>
-                                            <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.EncounterDate}}.</span>
+                                            <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.EncounterDate}}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -154,20 +154,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    {{!-- <td>
                         <div class="cb">
                             Patient is ready to quit
                             <span class="ml-10">
-                            {{> checkbox name="Yes" IsChecked=(checker IsPatientNotReadyToQuit "Yes")}}
+                            {{> checkbox name="No" IsChecked=(checker IsPatientNotReadyToQuit "Yes")}}
                             </span>
                             <span class="ml-10">
-                            {{> checkbox name="No" IsChecked=(checker IsPatientNotReadyToQuit "No")}}
+                            {{> checkbox name="Yes" IsChecked=(checker IsPatientNotReadyToQuit "No")}}
                             </span>
                             
                         </div>
-                    </td>
-                    <td>
-                        <div class="cb" style="padding-left: 5px;">
+                    </td> --}}
+                    <td colspan="2">
+                        <div class="cb">
                             Repetition relapse
                             <span class="ml-10">
                             {{> checkbox name="Yes" IsChecked=(checker RepetitionRelapse "Yes")}}
@@ -355,6 +355,7 @@
                                 </span>
                             </div>
                         </div>
+                            <div class="cb gutters">{{{QuitSmokingMaterialsDescription}}}</div>
                     </td>
                 </tr>                
             </table>
