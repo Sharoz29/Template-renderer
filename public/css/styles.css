@@ -2,7 +2,7 @@
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 80%;
-  font-family: system-ui, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -1950,16 +1950,16 @@ canvas:focus {
   text-align: left;
 }
 
-.cad-forms table.no-padding tbody:first-of-type > tr > td {
+.cad-forms table.no-padding tbody:first-of-type > tr > td, .cad-forms table.no-padding thead:first-of-type > tr > th {
   padding: 0;
 }
 
-.cad-forms table.no-x-padding tbody:first-of-type > tr > td {
+.cad-forms table.no-x-padding tbody:first-of-type > tr > td, .cad-forms table.no-x-padding thead:first-of-type > tr > th {
   padding-left: 0;
   padding-right: 0;
 }
 
-.cad-forms table.no-y-padding tbody:first-of-type > tr > td {
+.cad-forms table.no-y-padding tbody:first-of-type > tr > td, .cad-forms table.no-y-padding thead:first-of-type > tr > th {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -2004,6 +2004,8 @@ canvas:focus {
 
 .cad-forms .signature-img {
   width: 200px;
+  height: 100px;
+  object-fit: contain;
 }
 
 .cad-forms h2 {
@@ -2032,6 +2034,10 @@ canvas:focus {
 
 .cad-forms .margin-remover ul {
   margin: 0;
+}
+
+.cad-forms #initial-assesment .cb {
+  padding: 0 !important;
 }
 
 .cad-forms .cb {

@@ -24,6 +24,8 @@
 
   .signature-img {
     width: 200px;
+    height: 100px;
+    object-fit: contain;
   }
 
   h2 {
@@ -53,10 +55,17 @@
     }
   }
 
+  #initial-assesment{
+    .cb {
+      padding: 0 !important;
+    }
+  }
+
   .cb {
     display: flex;
     align-items: center;
     padding: 1px;
+
     input[type="checkbox"] {
       background-color: var(--form-background);
       margin: 0;

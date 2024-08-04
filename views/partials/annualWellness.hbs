@@ -7,9 +7,9 @@
       </div>
 
       <table class="striped width-100">
-        <col width="16.6%" />
-        <col width="16.6%" />
-        <col width="16.6%" />
+        <col width="14.8%" />
+        <col width="25%" />
+        <col width="10%" />
         <col width="16.6%" />
         <col width="16.6%" />
         <col width="16.6%" />
@@ -20,12 +20,12 @@
             <td>Speciality</td>
             <td colspan="3">Reason</td>
           </tr>
-          <tr>
+          {{!-- <tr>
             <td></td>
             <td>sample name to be removed</td>
             <td>sample Speciality</td>
             <td colspan="3">sample reason</td>
-          </tr>
+          </tr> --}}
           <tr>
             <td class="text-bold">
               <div class="frow justify-start gutters">
@@ -448,11 +448,10 @@
           <tr>
             <td></td>
             <td>Provider SIGNATURE</td>
-            <td>
+            <td colspan="2">
                {{> signature name="provider"}}
-            </td>
-            <td colspan="2"></td>
-            <td>DATE: {{formatDate @root.AppointmentInformation.SignatureDate}}</td>
+            </td>            
+            <td colspan="2">DATE: {{formatDate @root.AppointmentInformation.SignatureDate}}</td>
           </tr>
         </tbody>
       </table>
@@ -461,13 +460,13 @@
 
 
       <table class="striped width-100">
+        <col width="27.5%" />
+        <col width="27.5%" />
         <col width="20%" />
-        <col width="20%" />
-        <col width="20%" />
-        <col width="20%" />
-        <col width="20%" />
+        <col width="15%" />
+        <col width="10%" />
         <tbody>
-          <tr>
+          <tr class="pagebreakbefore">
             <td>
               <div class="frow justify-start">
                 <span>Preventive screening (frequency)</span>
@@ -495,7 +494,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate BoneMassMeasurements.PreviouslyScreeningDate}}</span>
               </div>
             </td>
@@ -531,7 +530,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate CardiovascularScreeningBloodTests.PreviouslyScreeningDate}}</span>
               </div>
             </td>
@@ -580,7 +579,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate ColorectalCancerScreeningFlexibleSigmoidoscopy.PreviouslyScreeningDate}}</span>
               </div>
             </td>
@@ -618,7 +617,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate DiabetesScreeningTests.PreviouslyScreeningDate}}</span>
               </div>
             </td>
@@ -656,7 +655,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate DiabetesSelfManagementTrainingDSMT.PreviouslyScreeningDate}}</span>
               </div>
             </td>
@@ -692,7 +691,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate GlaucomaScreening.PreviouslyScreeningDate}}</span>
               </div>
             </td>
@@ -725,7 +724,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate ProstateCancerScreening.PreviouslyScreeningDate}}</span>
               </div>
             </td>
@@ -758,7 +757,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate ScreeningPAPTestsAndPelvicExamination.PreviouslyScreeningDate}}</span>
               </div>
             </td>
@@ -787,7 +786,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate ScreeningMammography.PreviouslyScreeningDate}}</span>
               </div>
             </td>
@@ -827,7 +826,7 @@
             </td>
             <td>
               <div class="justify-start gutters" style="display:flex; flex-direction: row; gap:5px">
-                <span class="cb">Previously Screened On: </span>
+                <span class="cb">Previously Screened On: </span><br>
                 <span class="cb">{{formatDate Vaccines.PreviouslyScreeningDate}}</span>
               </div>
             </td>

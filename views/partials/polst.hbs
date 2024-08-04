@@ -182,7 +182,7 @@
                       </div>
                     </div>
                   </div>
-                  <b class="margin-remover">Additional Orders: <span class="p-5 text-bold"> {{{@root.AppointmentInformation.B_AdditionalOrders}}}</span></b></td>
+                  <div class="margin-remover text-bold ml-5">Additional Orders: <span> {{{@root.AppointmentInformation.B_AdditionalOrders}}}</span></div></td>
                 </tr>
               </tbody>
             </table>
@@ -306,7 +306,7 @@
                               <b>Signature Provider:</b><br />
                               <span>My signature below indicates to the best of
                                 my knowledge that these orders are consistent
-                                with the patient’s medical condition and
+                                with the patient's medical condition and
                                 preferences.</span>
                             </div>
                           </td>
@@ -373,21 +373,21 @@
                           <td>
                             <div class="relationship">
                               <span>Relationship (write self if patient):</span>
-                              <span class="text-bold">...Relationship...</span>
+                              <span class="text-bold">{{RelationshipToThePatient}}</span>
                             </div>
                           </td>
                         </tr>
                         <tr>
                           <td colspan="2">
                             <div class="frow justify-start">
-                              <span class="col-1-1">Signature:</span>
-                              {{> signature name="patient"}}
+                              <div class="col-1-2">Signature:</div>
+                              <div class="col-1-2">{{> signature name="patient"}}</div>
                             </div>
                           </td>
                           <td>
                             <div class="date">
                               <span>Date:</span>
-                              <span class="text-bold">{{formatDate SignatureDate}}</span>
+                              <span class="text-bold">{{formatDate @root.AppointmentInformation.PatientData.PatientSignatureDate}}</span>
                             </div>
                           </td>
                         </tr>
@@ -407,7 +407,7 @@
                           <td>
                             <div class="office-use-only">
                               <span>Office Use Only:</span>
-                              <span class="">Office Use Only</span>
+                              <span></span>
                             </div>
                           </td>
                         </tr>
