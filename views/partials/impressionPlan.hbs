@@ -4,7 +4,8 @@
       {{> formTitle }}
     </div>
     <p>
-      <strong>The patient has had these medical conditions at one or more time in the past:</strong>
+      <strong>The patient, {{@root.AppointmentInformation.PatientData.pyFullName}} {{calculateAge @root.AppointmentInformation.PatientData.DateOfBirth}} year old {{@root.AppointmentInformation.PatientData.Sex}}, has had the following medical conditions in the past:</strong>
+        
       {{#each (getMedicalConditionsFromF2F @root)}}
           <span class="pr-5">{{PASTMEDICALHISTORY}},</span>
       {{/each}}
