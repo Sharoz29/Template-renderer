@@ -86,9 +86,10 @@ export function getPDFBuffer(caseID, renderView) {
           path.resolve(__dirname, "../views/header.hbs"),
           {
             ...data,
-            officeLogo: await helpers.imageToDataUrl(
-              "https://web.pega23.lowcodesol.co.uk/reports/assets/office_logo.jpeg"
-            ),
+            // officeLogo: await helpers.imageToDataUrl(
+            //   "https://web.pega23.lowcodesol.co.uk/reports/assets/office_logo.jpeg"
+            // ),
+            officeLogo: `data:image/jpeg;base64,${data?.Office?.LogoAttachStream}`,
           }
         ),
         footerTemplate: await HBS.render(
