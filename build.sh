@@ -15,4 +15,5 @@ sed "s~lcs-reports:latest~lcs-reports:1.0.${tagVersion}~"  k8s.yaml > k8s_deploy
 
 kubectl apply -f ./k8s_deploy.yaml -n pega23
 
-docker rm image ansaries/lcs-reports:1.0.$tagVersion
+docker rmi ansaries/lcs-reports:1.0.$tagVersion
+docker image prune -f
