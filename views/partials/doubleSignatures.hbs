@@ -1,5 +1,5 @@
-<div class="signatures mt-20">
-      <div class="frow justify-start mt-30">
+<div class="signatures mt-10">
+      <div class="frow justify-start mt-10">
         <div class="col-1-2">
           Signature:
           <span class="name text-underline px-30">{{> signature name="physician"}}</span>
@@ -11,22 +11,23 @@
       </div>
       <div class="frow justify-start">
         <div class="col-1-2">
-          Physician Name:
-          <span class="name text-underline px-30">{{@root.SelectMD}}</span>
+          Under the supervision of <br>
+          and in collaboration with:          
+          <span class="name text-bold px-5">{{@root.SelectMD}}</span>
         </div>
         <div class="col-1-2">
-          Provider Name:
-          <span class="name text-underline px-30">{{@root.AppointmentInformation.SelectProvider}}</span>
+          <br>Provider Name:
+          <span class="name text-bold px-5">{{@root.AppointmentInformation.SelectProvider}}</span>
         </div>
       </div>      
       <div class="frow justify-start ">
         <div class="col-1-2">
           Date:
-          <span class="name text-underline px-30">{{formatDate @root.AppointmentInformation.PhysicianSignatureDate}}</span>
+          <span class="name px-5">{{formatDate @root.AppointmentInformation.PhysicianSignatureDate}}</span>
         </div>
         <div class="col-1-2">
           Date:
-          <span class="name text-underline px-30">{{formatDate @root.AppointmentInformation.SignatureDate}}</span>
+          <span class="name px-5">{{formatDate @root.AppointmentInformation.SignatureDate}}</span>
         </div>      
       </div>
     </div>
