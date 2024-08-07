@@ -22,10 +22,21 @@ export function isTrue(value) {
   return value == true || value == "true";
 }
 
-export function formsToPrint(allForms, form) {
-  if (allForms.includes(form)) {
+export function formsToPrint(allForms, form, context) {
+
+  if(form == 'teleMedicines' && context.InitialAssessmentForm.VisitType == 'Telemedicine') {
     return form;
   }
+  if(form == 'faceToFaceEncounter' && context.InitialAssessmentForm.VisitType == 'Home Visit') {
+    return form;
+  }
+
+
+  if (!['teleMedicines','faceToFaceEncounter'].includes(form) && allForms.includes(form)) {
+    return form;
+  }
+
+  
   return "";
 }
 
