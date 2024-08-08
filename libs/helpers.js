@@ -96,6 +96,18 @@ export function radioButtonChecker(option, name) {
 export function F2FTMText(context) {
   return context?.isTM ? "Telemedicine" : "Face to Face";
 }
+
+export function MapF2FTelemed(rootContext) {
+  const { FaceToFace, InitialAssessmentForm } = rootContext;
+  const { VisitType } = InitialAssessmentForm;
+  const isTM = VisitType === "Telemedicine";
+
+  return {
+    ...FaceToFace,
+    isTM,
+  }
+}
+
 export function CheckOrRadio(type) {
   return type === "radio" ? "radio" : "checkbox";
 }
@@ -244,7 +256,8 @@ export const helpers = {
   F2FTMText,
   filterArr,
   fallRiskMapper,
-  calculateAge
+  calculateAge,
+  MapF2FTelemed,
 };
 
 export const HBS = create({
