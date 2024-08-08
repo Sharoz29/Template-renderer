@@ -1,11 +1,19 @@
   
-  {{#with FaceToFace}}
+  {{#with (MapF2FTelemed .)}}
 
   <section class="frow" id="{{F2FTMText .}}">
         <div class="container-padding width-100">
           <div class="content">
             <div class="container centered mb-20">
-               {{>formTitle ..}} 
+              
+               <div class="frow">
+                <h2 class="m-auto">
+                  {{F2FTMText .}} Encounter
+                </h2>
+              </div>
+              
+
+
             </div>
             <div class="frow">
               <div class="frow col-1-2 justify-start gutters">
