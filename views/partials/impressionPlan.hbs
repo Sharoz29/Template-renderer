@@ -34,16 +34,17 @@
         </div>
       {{/filterArr}} --}}
       
+      <div>
       {{#if CustomizeMedicalConditionsOnFACETOFACE}}
       {{{CustomizeMedicalConditionsOnFACETOFACE}}}
       {{else if CustomizeMedicalConditions}}
       {{{CustomizeMedicalConditions}}}      
       {{/if}}
-      
+      </div>
       
 
       {{!-- {{{CustomizeMedicalConditionsOnFACETOFACE}}} --}}
-      {{#if SelectedMedicalConditionsOnFaceToFace}}
+      {{!-- {{#if SelectedMedicalConditionsOnFaceToFace}}
         {{#with SelectedMedicalConditionsOnFaceToFace as |conditions|}}
           {{#filterArr conditions 'true'}}
             <div class="frow impression">
@@ -87,7 +88,7 @@
           </div>
         </div>
       {{/if}}
-    </div>
+    </div> --}}
     <div class="notes">
       <p>
         <span>Advanced Care Planning: Advanced care planning with patient, time
