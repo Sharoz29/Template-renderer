@@ -1,19 +1,19 @@
 <div class="signatures mt-10">
       <div class="frow justify-start mt-10">
-        <div class="col-1-2">
+        <div class="col-1-2 frow row-start">          
           Signature:
-          <span class="name text-underline px-30">{{> signature name="physician"}}</span>
+          <span class="name text-underline px-30">{{> signature name="physician"}}</span>          
         </div>
-        <div class="col-1-2">
+        <div class="col-1-2 frow row-start">          
           Signature:
-          <span class="name text-underline px-30">{{> signature name="provider"}}</span>
+          <span class="name text-underline px-30">{{> signature name="provider"}}</span>          
         </div>
       </div>
-      <div class="frow justify-start">
+      <div class="cb">
         <div class="col-1-2">
           Under the supervision of <br>
-          and in collaboration with:          
-          <span class="name text-bold px-5">{{@root.SelectMD}}</span>
+          and in collaboration with          
+          <span class="name px-5">: <b>Mr. MD{{@root.SelectMD}}</b></span>
         </div>
         <div class="col-1-2">
           <br>Provider Name:

@@ -74,7 +74,7 @@
               <span>DIET</span>
             </td>
             <td colspan="5">
-              <div class="frow cbs justify-start" style="gap: 10px;">
+              <div class="frow cb justify-start" style="gap: 10px;">
                 {{#each @root.SelectedPatientDiets}}
                 {{> checkbox IsChecked=IsChecked name=DietName }}
                 {{/each}}
@@ -86,8 +86,8 @@
               <span>DME</span>
             </td>
             <td colspan="5">
-              <div class="frow cbs justify-start">
-                <div class="frow cbs justify-start" style="gap: 10px;">
+              <div class="frow cb justify-start">
+                <div class="frow cb justify-start" style="gap: 10px;">
                 {{#each @root.SelectedPatientsDME}}
                 {{> checkbox IsChecked=IsChecked name=DMEName }}
                 {{/each}}
@@ -101,8 +101,8 @@
               <span>SUPPLIES</span>
             </td>
             <td colspan="5">
-              <div class="frow cbs justify-start">
-                <div class="frow cbs justify-start" style="gap: 10px;">
+              <div class="frow cb justify-start">
+                <div class="frow cb justify-start" style="gap: 10px;">
                 {{#each @root.SelectedPatientSupplies}}
                 {{> checkbox IsChecked=IsChecked name=SuppliesName }}
                 {{/each}}
@@ -262,7 +262,7 @@
           </tr>
           <tr>
             <td colspan="6">
-              <div class="frow cbs justify-start">
+              <div class="frow cb justify-start">
                 {{#each @root.SelectedPatientsLabDx}}
                   <div class="cb-table col-1-3">
                     {{> checkbox IsChecked=IsChecked name=LabDxName }}
