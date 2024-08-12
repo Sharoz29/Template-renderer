@@ -51,10 +51,10 @@
             <div class="frow justify-start">
               Location patient is accessed:
               <div class="cb ml-10">
-              {{> checkbox IsChecked=Homevisit name="Home Visit" }}
+              {{> checkbox name="Home Visit" IsChecked=(radioButtonChecker LocationPatientIsAssessed "Home")}}              
               </div>
               <div class="cb ml-10">
-               {{> checkbox IsChecked=CracklesLoc name="Boarding Care" }}
+              {{> checkbox name="Boarding Care" IsChecked=(radioButtonChecker LocationPatientIsAssessed "")}}
               </div>
             </div>
           </td>
@@ -200,44 +200,54 @@
         </tr>
         <tr>
           <td colspan="6">
-            <div class="frow justify-start">
-              <div class="frow col-1-1 justify-start">
-                <strong class="col-1-6">Tobacco / THC</strong>
-                <div class="cb col-1-6">
-                  {{> checkbox IsChecked=(checker PatientUseTobacco "Yes") name="Yes" }}
+            
+            {{!-- <div class="frow justify-start"> --}}
+            <div class="frow justify-start gutters">
+              {{!-- <strong>Tobacco / THC</strong> --}}
+              {{!-- <div class="cb col-1-6"> --}}              
+              <strong class="col-1-6">{{> checkbox IsChecked=(isTrue PatientUseTobacco) name="Tobacco / THC"}}</strong>
+              {{!-- </div> --}}
+              {{!-- <div class="cb col-1-6">
+                  {{> checkbox IsChecked=(checker PatientUseTobacco "No") name="No" }}
+              </div> --}}
+              {{#each @root.SelectedTobacco_THC}}
+              <div class="col-1-6">
+                <div class="cb">
+                  {{> checkbox IsChecked=IsChecked name=TobaccoTHC }}
                 </div>
-                <div class="cb col-1-6">
-                   {{> checkbox IsChecked=(checker PatientUseTobacco "No") name="No" }}
-                </div>
-                {{#each @root.SelectedTobacco_THC}}
-                  <div class="cb col-1-6">
-                     {{> checkbox IsChecked=IsChecked name=TobaccoTHC }}
-                  </div>
-                {{/each}}
               </div>
+              {{/each}}
+            
+            </div>
+            {{!-- </div> --}}
 
-              <div class="frow col-1-1 justify-start">
-                <strong class="col-1-6">ETOH/Alcohol</strong>
-                <div class="cb col-1-6">
-                  {{> checkbox IsChecked=(checker PatientConsumeAlcohol "Yes") name="Yes" }}
-                </div>
-                <div class="cb col-1-6">
+            <div class="frow justify-start gutters">
+              {{!-- <strong class="col-1-6">ETOH/Alcohol</strong> --}}
+              {{!-- <div class="cb col-1-6"> --}}
+              
+              <strong class="col-1-6">{{> checkbox IsChecked=(isTrue PatientConsumeAlcohol) name="ETOH/Alcohol" }}</strong>
+                {{!-- </div> --}}
+                {{!-- <div class="cb col-1-6">
                   {{> checkbox IsChecked=(checker PatientConsumeAlcohol "No") name="No" }}
+                </div> --}}
+              {{#each @root.SelectedAlcoholConsumption}}
+              <div class="col-1-6">
+                <div class="cb">
+                  {{> checkbox IsChecked=IsChecked name=ETOHAlcohol }}
                 </div>
-                {{#each @root.SelectedAlcoholConsumption}}
-                  <div class="cb col-1-6">
-                     {{> checkbox IsChecked=IsChecked name=ETOHAlcohol }}
-                  </div>
-                {{/each}}
               </div>
+              {{/each}}              
+            </div>
 
-              <div class="frow col-1-1 justify-start">
-                <strong class="col-1-6">Drugs</strong>
-                  {{#each @root.SelectedDrugsOnSocialHistory}}
-                  <div class="cb col-1-6">
-                    {{> checkbox name=Drugs IsChecked=IsChecked}}
-                  </div>
-                  {{/each}}
+            <div class="frow justify-start gutters">
+              <strong class="col-1-6">Drugs</strong>
+              {{#each @root.SelectedDrugsOnSocialHistory}}
+              <div class="col-1-6">
+                <div class="cb">
+                  {{> checkbox name=Drugs IsChecked=IsChecked}}
+                </div>
+              </div>
+                {{/each}}
               </div>
             </div>
           </td>

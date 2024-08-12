@@ -8,10 +8,10 @@
                 </h2>
             </div>
             <table class="width-100">
-                <col width="25%" />
-                <col width="25%" />
-                <col width="25%" />
-                <col width="25%" />
+                <col width="30%" />
+                <col width="30%" />
+                <col width="20%" />
+                <col width="20%" />
 
                 <tbody>
                     <tr>
@@ -29,22 +29,8 @@
                             </div>
                             <div class="frow justify-start">
                                 <div class="col-1-2">
-                                    <div class="cb frow justify-start gutters">
-                                        <span>Patient is ready to quit:</span>
-                                        <div class="frow justify-start gutters">
-                                            <span>
-                                                {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "Yes")}}
-                                            </span>
-                                            <span>
-                                                {{> checkbox name="No" IsChecked=(checker IsPatientReadyToQuit "No")}}
-                                            </span>
-                                        </div>
-                                        {{!-- <span>
-                                        {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "No")}}
-                                        </span>
-                                        <span>
-                                        {{> checkbox name="No" IsChecked=(checker IsPatientReadyToQuit "No")}}
-                                        </span> --}}
+                                    <div class="cb gutters">                                                                                
+                                        {{> checkbox IsChecked=(isTrue IsPatientReadyToQuit) name="" }}Patient is ready to quit                                                                            
                                     </div>
                                 </div>
                                 <div class="col-1-2">
@@ -53,25 +39,22 @@
                                 </div>
                             </div>                           
                             <div class="frow justify-start">
-                                <div class="col-1-1">
-                                    <div class="cb frow justify-start gutters">
-                                        <span>Patient is thinking about quitting: </span>
-                                        {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "Yes")}}
-                                        {{> checkbox name="No" IsChecked=(checker IsPatientThinkingAboutQuitting "No")}}
+                                <div class="col-1-2">
+                                    <div class="cb gutters">
+                                        {{!-- <span>Patient is thinking about quitting: </span> --}}
+                                        {{!-- {{> checkbox name="Yes" IsChecked=(checker IsPatientReadyToQuit "Yes")}} --}}
+                                        {{> checkbox IsChecked=(isTrue IsPatientThinkingAboutQuitting) name=""}}Patient is thinking about quitting
+                                    </div>
+                                </div>
+                            {{!-- </div> --}}
+                            {{!-- <div class="frow justify-start">                                     --}}
+                                <div class="col-1-2">
+                                    <div class="cb gutters">                                    
+                                        {{> checkbox IsChecked=(isTrue Is5RsCounselingRequired) name=""}}Brief counseling using 5 R's
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1-1">
-                                <div class="cb frow justify-start gutters">
-                                    <span>Brief counseling using 5 R's: </span>
-                                    <span>
-                                    {{> checkbox name="Yes" IsChecked=(checker Is5RsCounselingRequired "Yes")}}
-                                    </span>
-                                    <span>
-                                    {{> checkbox name="No" IsChecked=(checker Is5RsCounselingRequired "No")}}
-                                    </span>
-                                </div>
-                            </div>
+                            {{!-- </div> --}}
                         </td>
                         <td colspan="2">
                             <table>
@@ -154,27 +137,18 @@
                     </td>
                 </tr>
                 <tr>
-                    {{!-- <td>
-                        <div class="cb">
-                            Patient is ready to quit
-                            <span class="ml-10">
-                            {{> checkbox name="No" IsChecked=(checker IsPatientNotReadyToQuit "Yes")}}
-                            </span>
-                            <span class="ml-10">
-                            {{> checkbox name="Yes" IsChecked=(checker IsPatientNotReadyToQuit "No")}}
-                            </span>
-                            
-                        </div>
-                    </td> --}}
-                    <td colspan="2">
-                        <div class="cb">
-                            Repetition relapse
-                            <span class="ml-10">
-                            {{> checkbox name="Yes" IsChecked=(checker RepetitionRelapse "Yes")}}
-                            </span>
-                            <span class="ml-10">
-                            {{> checkbox name="No" IsChecked=(checker RepetitionRelapse "No")}}
-                            </span>
+                    <td colspan="4">
+                        <div class="frow justify-start">
+                            <div class="col-1-4">
+                                <div class="cb">                                                        
+                                    {{> checkbox IsChecked=(isTrue IsPatientNotReadyToQuit) name=""}}Patient is not ready to quit
+                                </div>
+                            </div>
+                            <div class="col-1-4">
+                                <div class="cb">
+                                    {{> checkbox IsChecked=(isTrue RepetitionRelapse) name=""}}Repetition relapse
+                                </div>
+                            </div>
                         </div>
                     </td>
                 </tr>
@@ -316,13 +290,14 @@
                 <tr>
                     <td colspan="6">
                         <div class="cb gutters">
-                            Bupropion SR: Tablets (Start 7 to 10 days before the target quit date.)
-                            <span class="p-5">
+                            Bupropion SR: <span class="ml-5">{{> checkbox IsChecked=(isTrue BupropionSRTablets) name="Tablets" }}</span>
+                            (Start 7 to 10 days before the target quit date.)
+                            {{!-- <span class="p-5">
                             {{> checkbox name="Yes" IsChecked=(checker BupropionSRTablets "Yes")}}
                             </span>
                             <span class="p-5">
                             {{> checkbox name="No" IsChecked=(checker BupropionSRTablets "No")}}
-                            </span>
+                            </span> --}}
                         </div>
                     </td>
                 </tr>
@@ -331,31 +306,32 @@
                         <strong>ARRANGE Follow-up</strong>
                         <div class="frow justify-start">
                             <div class="cb gutters">
-                                "I'll check back with you by 
+                                {{!-- "I'll check back with you by 
                                 <span class="p-5 cb text-bold">{{formatDate QuitSmokingCheckBackDate}}." </span>
                                 <span class="cb">
                                 (Set within the first week after the target quitdate)
                                 </span>
-                                <span class="p-5">
-                                {{> checkbox name="Yes" IsChecked=(checker QuitSmokingCheckBack "Yes")}}
-                                </span>
-                                <span class="p-5">
-                                {{> checkbox name="No" IsChecked=(checker QuitSmokingCheckBack "No")}}
-                                </span>
+                                <span class="p-5"> --}}
+                                {{> checkbox IsChecked=(isTrue QuitSmokingCheckBack) name=""}}I'll check back with you by
+                                <span class="ml-5 text-underline"> {{formatDate QuitSmokingCheckBackDate}}.</span>
+                                <span class="ml-5">(Set within the first week after the target quitdate)</span>
                             </div>
                         </div>
                         <div class="frow justify-start">
                             <div class="cb gutters">
-                                "I'd like to give you some materials."
-                                <span class="p-5">
+                                {{> checkbox IsChecked=(isTrue QuitSmokingMaterials) name=""}}"I'd like to give you some materials."
+                                {{!-- <span class="ml-10 text-bold">{{{QuitSmokingMaterialsDescription}}}</span>                                 --}}
+                                {{!-- <span class="p-5">
                                 {{> checkbox name="Yes" IsChecked=(checker QuitSmokingMaterials "Yes")}}
                                 </span>
                                 <span class="p-5">
                                 {{> checkbox name="No" IsChecked=(checker QuitSmokingMaterials "No")}}
-                                </span>
+                                </span> --}}
                             </div>
                         </div>
-                        <div class="ml-5 text-bold">{{{QuitSmokingMaterialsDescription}}}</div>
+                        <div class="frow justify-start ml-30 text-bold margin-remover">
+                            {{{QuitSmokingMaterialsDescription}}}
+                        </div>
                     </td>
                 </tr>                
             </table>

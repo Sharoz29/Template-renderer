@@ -66,7 +66,7 @@
                     </td>
                     <td>
                         <span>State:</span>
-                        <span class="p-5 text-bold">{{../PatientData/pyState}}</span>
+                        <span class="p-5 text-bold">{{../PatientData/SelectState}}</span>
                     </td>
                     <td colspan="2">
                         <span>Zip:</span>
@@ -77,11 +77,11 @@
 
             
             <div class="frow justify-start mt-70 mb-20">
-                <div class="col-1-2">
+                <div class="col-1-2 frow row-start">
                     <span class="text-bold">AUTHORIZATION SIGNATURE:</span>
-                     {{> signature name="authorization"}}
+                     {{> signature name="patient"}}
                 </div>
-                <div class="col-1-2 text-bold">
+                <div class="col-1-2 frow row-start">
                     <span>DATE:</span>
                     <span class="p-5">{{formatDate SignatureDate}}</span>
                 </div>

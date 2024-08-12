@@ -32,24 +32,22 @@
           <tr>
             <td colspan="2">
               <div class="frow justify-start gutters">
-                <span>REVIEWED FOR CONTRAINDICATIONS:</span>
+                
                   <div class="cb">
-                    {{> checkbox name="Yes" IsChecked=(checker ReviewedForContrainedications "Yes")}}
+                    {{!-- {{> checkbox name="Yes" IsChecked=(checker ReviewedForContrainedications "")}} --}}
+                    {{> checkbox IsChecked=(isTrue ReviewedForInteractions) name="REVIEWED FOR CONTRAINDICATIONS" }}
                   </div>
-                  <div class="cb">
+                  {{!-- <div class="cb">
                     {{> checkbox name="No" IsChecked=(checker ReviewedForContrainedications "No")}}
-                  </div>              
+                  </div>               --}}
               </div>
             </td>
             <td colspan="2">
               <div class="frow justify-start gutters">
-                <span>REVIEWED FOR INTERACTIONS:</span>
+                {{!-- <span>REVIEWED FOR INTERACTIONS:</span> --}}
                 <div class="cb">
-                  {{> checkbox name="Yes" IsChecked=(checker ReviewedForInteractions "Yes")}}
-                </div>
-                <div class="cb">
-                  {{> checkbox name="No" IsChecked=(checker ReviewedForInteractions "No")}}
-                </div>
+                  {{> checkbox IsChecked=(isTrue ReviewedForInteractions) name="REVIEWED FOR INTERACTIONS" }}                  
+                </div>                
               </div>
             </td>
           </tr>

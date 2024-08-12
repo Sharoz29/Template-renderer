@@ -26,6 +26,7 @@ export const mockContext = {
     },
   ],
   allForms: [
+    "labOrders",
     "referralForm",
     "admissionOrders",
     "impressionPlan",
@@ -42,6 +43,7 @@ export const mockContext = {
     "fallRiskList",
   ],
   selectedForms: [
+    "labOrders",
     "referralForm",
     "admissionOrders",
     "impressionPlan",
