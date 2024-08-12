@@ -1,7 +1,13 @@
- {{#each allForms}}
+{{#if (equalityChecker type "lab")}}
+  {{#each allForms}}
+      {{#if (formsToPrint @root.labOrders . @root)}}
+        {{> (formsToPrint @root.labOrders . @root) (addToObject @root 'currentForm' .)}}
+      {{/if}}
+  {{/each}}
+{{else}}
+  {{#each allForms}}
     {{#if (formsToPrint @root.selectedForms . @root)}}
-      
-        {{> (formsToPrint @root.selectedForms . @root) (addToObject @root 'currentForm' .)}}
-      
+      {{> (formsToPrint @root.selectedForms . @root) (addToObject @root 'currentForm' .)}}
     {{/if}}
   {{/each}}
+{{/if}}

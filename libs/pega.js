@@ -46,11 +46,18 @@ export async function getCaseData(caseID) {
   }
 }
 
-export async function uploadPdfToPega({ pdfBuffer, access_token, caseID }) {
+export async function uploadPdfToPega({
+  pdfBuffer,
+  access_token,
+  caseID,
+  fileName,
+}) {
   try {
     const form = new FormData();
     form.append("file", pdfBuffer, {
-      filename: `cad-report-${getDateString()}.pdf`,
+      filename: fileName
+        ? `${fileName}-${getDateString()}.pdf`
+        : `cad-report-${getDateString()}.pdf`,
       contentType: "application/pdf",
     }); // append the pdf buffer to the form data
     console.timeLog(
@@ -85,7 +92,8 @@ export async function attachPdfToCase(
   caseName,
   attachmentID,
   pegaAuthToken,
-  caseID
+  caseID,
+  fileName
 ) {
   if (!caseName) throw new Error("Case ID is required for attachment");
 
@@ -97,7 +105,9 @@ export async function attachPdfToCase(
     attachmentFieldName: "pyAttachmentPage",
     category: "FILE",
     delete: true,
-    name: `${caseID}-report-${getDateString()}.pdf`,
+    name: fileName
+      ? `${fileName}-${getDateString()}.pdf`
+      : `${caseID}-report-${getDateString()}.pdf`,
     pyPurpose: "out class pega developers",
     type: "FILE",
     ID: attachmentID,

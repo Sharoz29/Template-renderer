@@ -37,12 +37,10 @@
             <div class="frow justify-start gutters">
               <span>Sex:</span>
               <div class="cb ml-10">
-              {{> checkbox name="M" IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientData.Sex "Male")}}
-                {{!-- {{> checkbox IsChecked=(radioButtonChecker Sex "M") name="M" }} --}}
+              {{> checkbox name="M" IsChecked=(equalityChecker @root.AppointmentInformation.PatientData.Sex "Male")}}
               </div>
               <div class="cb ml-10">
-              {{> checkbox name="F" IsChecked=(radioButtonChecker @root.AppointmentInformation.PatientData.Sex "Female")}}
-                {{!-- {{> checkbox IsChecked=(radioButtonChecker Sex "F") name="F" }} --}}
+              {{> checkbox name="F" IsChecked=(equalityChecker @root.AppointmentInformation.PatientData.Sex "Female")}}
               </div>
             </div>
           </td>
@@ -51,10 +49,10 @@
             <div class="frow justify-start">
               Location patient is accessed:
               <div class="cb ml-10">
-              {{> checkbox name="Home Visit" IsChecked=(radioButtonChecker LocationPatientIsAssessed "Home")}}              
+              {{> checkbox name="Home Visit" IsChecked=(equalityChecker LocationPatientIsAssessed "Home")}}              
               </div>
               <div class="cb ml-10">
-              {{> checkbox name="Boarding Care" IsChecked=(radioButtonChecker LocationPatientIsAssessed "")}}
+              {{> checkbox name="Boarding Care" IsChecked=(equalityChecker LocationPatientIsAssessed "")}}
               </div>
             </div>
           </td>
