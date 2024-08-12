@@ -58,17 +58,17 @@
             <td class="text-bold">Cognitive Impairment</td>
             <td>
               <div class="cb">
-                 {{> checkbox name="None" IsChecked=(radioButtonChecker CognitiveImpairment "None")}}
+                 {{> checkbox name="None" IsChecked=(equalityChecker CognitiveImpairment "None")}}
               </div>
             </td>
             <td>
               <div class="cb">
-                 {{> checkbox name="Dementia" IsChecked=(radioButtonChecker CognitiveImpairment "Dimentia")}}
+                 {{> checkbox name="Dementia" IsChecked=(equalityChecker CognitiveImpairment "Dimentia")}}
               </div>
             </td>
             <td colspan="3">
               <div class="cb">
-                 {{> checkbox name="Mild Memory Loss" IsChecked=(radioButtonChecker CognitiveImpairment "Mild Memory Loss")}}
+                 {{> checkbox name="Mild Memory Loss" IsChecked=(equalityChecker CognitiveImpairment "Mild Memory Loss")}}
               </div>
             </td>
           </tr>

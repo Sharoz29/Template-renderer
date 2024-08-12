@@ -70,31 +70,27 @@ export async function createPdfFromHtml(htmlContent, options = {}) {
   // Close the browser instance
 }
 
-export function getPDFBuffer(caseID, renderView) {
+export function getPDFBuffer(caseID, renderView, type) {
   return getCaseData(caseID).then(async (data) => {
     console.timeLog(
       coloredText(caseID, "green") + " in",
       " --> Before Rendering and Creation of PDF"
     );
+    const viewData = { ...data, type };
     return {
       access_token: data.access_token,
-      pdfBuffer: await createPdfFromHtml(await renderView("home", data), {
-        // path: path.join(__dirname, "output.pdf"),
+      pdfBuffer: await createPdfFromHtml(await renderView("home", viewData), {
         printBackground: true,
-
         headerTemplate: await HBS.render(
           path.resolve(__dirname, "../views/header.hbs"),
           {
-            ...data,
-            // officeLogo: await helpers.imageToDataUrl(
-            //   "https://web.pega23.lowcodesol.co.uk/reports/assets/office_logo.jpeg"
-            // ),
+            ...viewData,
             officeLogo: `data:image/jpeg;base64,${data?.Office?.LogoAttachStream}`,
           }
         ),
         footerTemplate: await HBS.render(
           path.resolve(__dirname, "../views", "footer.hbs"),
-          data
+          viewData
         ),
       }).then((data) => {
         console.timeLog(

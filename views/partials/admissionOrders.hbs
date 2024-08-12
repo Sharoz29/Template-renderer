@@ -48,7 +48,7 @@
         </div>
       </div>
       <table class="striped width-100">
-        <col width="16.6%">
+        <col width="17.0%">
         <col width="16.6%">
         <col width="16.6%">
         <col width="16.6%">
@@ -78,6 +78,10 @@
                 {{#each @root.SelectedPatientDiets}}
                 {{> checkbox IsChecked=IsChecked name=DietName }}
                 {{/each}}
+                <span class="cb">
+                  {{> checkbox IsChecked=OtherDietBool name='Others:' }}
+                  <span class="text-bold p-5 margin-remover">{{{OtherDietTextbox}}}</span>
+                </span>
               </div>
             </td>
           </tr>
@@ -88,9 +92,14 @@
             <td colspan="5">
               <div class="frow cb justify-start">
                 <div class="frow cb justify-start" style="gap: 10px;">
-                {{#each @root.SelectedPatientsDME}}
-                {{> checkbox IsChecked=IsChecked name=DMEName }}
-                {{/each}}
+                  {{#each @root.SelectedPatientsDME}}
+                  {{> checkbox IsChecked=IsChecked name=DMEName }}
+                  {{/each}}
+                  <span class="cb">
+                    {{> checkbox IsChecked=OtherDMEBool name='Others:' }}
+                    <span class="text-bold p-5 margin-remover">{{{OtherDMETextbox}}}</span>
+                  </span>
+                </div>
               </div>
               </div>
             </td>
@@ -103,10 +112,14 @@
             <td colspan="5">
               <div class="frow cb justify-start">
                 <div class="frow cb justify-start" style="gap: 10px;">
-                {{#each @root.SelectedPatientSupplies}}
-                {{> checkbox IsChecked=IsChecked name=SuppliesName }}
-                {{/each}}
-              </div>
+                  {{#each @root.SelectedPatientSupplies}}
+                  {{> checkbox IsChecked=IsChecked name=SuppliesName }}
+                  {{/each}}
+                  <span class="cb">
+                    {{> checkbox IsChecked=OtherSuppliesBool name='Others:' }}
+                    <span class="text-bold p-5 margin-remover">{{{OtherSuppliesTextbox}}}</span>
+                  </span>
+                </div>
               </div>
             </td>
           </tr>
@@ -262,15 +275,32 @@
           </tr>
           <tr>
             <td colspan="6">
-              <div class="frow cb justify-start">
+              <div class="frow justify-start">
                 {{#each @root.SelectedPatientsLabDx}}
                   <div class="cb-table col-1-3">
-                    {{> checkbox IsChecked=IsChecked name=LabDxName }}
+                  {{> checkbox IsChecked=IsChecked name=LabDxName }}
                   </div>
+                  {{!-- {{#if @last}} --}}
                 {{/each}}
+
+                  <div class="cb-table col-3-3">
+                    {{> checkbox IsChecked=OtherLabDXBool name='Others: '}}
+                    <span class="pl-5 text-bold">{{{OtherLabDXTextbox}}}</span>
+                    {{!-- </div> --}}
+                  </div>                  
+                  {{!-- {{/if}} --}}
+                
               </div>
             </td>
           </tr>
+          {{!-- <tr>
+            <td colspan="2">
+              <div class="frow justify-start items-end no-mpa">
+                {{> checkbox IsChecked=OtherLabDXBool name='Others: ' }}
+                <span class="pl-5 text-bold">{{{OtherLabDXTextbox}}}</span>
+              </div>
+            </td>
+          </tr> --}}
           
         </tbody>
       </table>

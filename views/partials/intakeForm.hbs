@@ -73,12 +73,16 @@
                     concerns regarding that medical condition and treatment will be
                     referred to other care provider. I understand that I can discuss
                     any religious or spiritual, cultural and other preferences that
-                    are important to my treatment plan. I acknowledge that
+                    are important to my treatment plan. I acknowledge the Notice of Privacy Practices 
+                    (HIPAA Form). I give <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> 
+                    permission to use and disclose my Protected Health Information (PHI) to carry out 
+                    treatment, payment, and healthcare operations only.
+                    {{!-- I acknowledge that
                     <b>RECEIPT</b> of <b>Notice of Privacy (HIPAA Form)</b> and was
                     given opportunity to ask the questions and voice concerns. I
                     give permission to <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> to use and
                     disclose Protective Health Information about me to carry out
-                    treatment, payment, health care operations.
+                    treatment, payment, health care operations. --}}
                 </p>
                 <!-- </span> -->
             </div>
@@ -87,29 +91,33 @@
             </div>
             <div class="frow justify-start fz-18">
                 <p>
-                    I acknowledge the <b>Receipt of Privacy Practices</b> and was
+                    I acknowledge the Privacy Practices and was given the opportunity to ask questions, 
+                    voice concerns, and set limitations/restrictions on the use of my health information. 
+                    I give <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> permission to use and 
+                    disclose my Protected Health Information (PHI) to carry out treatment, payment, and 
+                    healthcare operations, and to receive and release information pertinent to my care.
+                    {{!-- I acknowledge the <b>Receipt of Privacy Practices</b> and was
                     given opportunity to review notices, ask the questions and voice
                     concerns, set limitations / restrictions on the use of my health
                     information. I give permission to
                     <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> to use and disclose
                     Protective Health Information about me to carry out treatment,
                     payment, health care operations, receive and release information
-                    pertinent to my care.
+                    pertinent to my care. --}}
                 </p>
                 <span>
                     I authorize <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> to photograph or
-                    videotape appropriate body parts for necessary documentations
-                    only.
+                    videotape appropriate body parts for necessary documentations only.
                 </span>
             </div>
             <div class="frow justify-start gutters text-bold fz-18 mt-10 mb-10">
-                <span>Photo/Video consent:</span>
+                {{!-- <span>Photo/Video consent:</span> --}}
                 <div class="cb">
-                    {{> checkbox IsChecked=(checker @root.AppointmentInformation.PhotoVideoConsent "Yes") name="Yes" }}
+                    {{> checkbox IsChecked=(isTrue @root.AppointmentInformation.PhotoVideoConsent) name="Photo/Video consent" }}
                 </div>
-                <div class="cb">
+                {{!-- <div class="cb">
                     {{> checkbox IsChecked=(checker @root.AppointmentInformation.PhotoVideoConsent "No") name="No" }}
-                </div>
+                </div> --}}
             </div>
 
             <table class="fz-18">
@@ -179,7 +187,7 @@
                     </td>
                     <td colspan="1">
                         <span class="p-5">Date:</span>
-                        <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.PatientData.PatientSignatureDate}}</span>
+                        <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.PatientsSignatureDate}}</span>
                     </td>
                 </tr>
                 <tr>
