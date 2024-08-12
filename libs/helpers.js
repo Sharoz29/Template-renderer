@@ -23,20 +23,26 @@ export function isTrue(value) {
 }
 
 export function formsToPrint(allForms, form, context) {
-
-  if(form == 'teleMedicines' && context.InitialAssessmentForm.VisitType == 'Telemedicine') {
+  if (
+    form == "teleMedicines" &&
+    context.InitialAssessmentForm.VisitType == "Telemedicine"
+  ) {
     return form;
   }
-  if(form == 'faceToFaceEncounter' && context.InitialAssessmentForm.VisitType == 'Home Visit') {
+  if (
+    form == "faceToFaceEncounter" &&
+    context.InitialAssessmentForm.VisitType == "Home Visit"
+  ) {
     return form;
   }
 
-
-  if (!['teleMedicines','faceToFaceEncounter'].includes(form) && allForms.includes(form)) {
+  if (
+    !["teleMedicines", "faceToFaceEncounter"].includes(form) &&
+    allForms.includes(form)
+  ) {
     return form;
   }
 
-  
   return "";
 }
 
@@ -87,8 +93,8 @@ export function copyTelemedecineToFaceToFace(
 export function counter(index) {
   return index + 1;
 }
-export function radioButtonChecker(option, name) {
-  return option === name;
+export function equalityChecker(a, b) {
+  return a === b;
 }
 
 /** If context has Telemedicine as AppointmentType */
@@ -105,7 +111,7 @@ export function MapF2FTelemed(rootContext) {
   return {
     ...FaceToFace,
     isTM,
-  }
+  };
 }
 
 export function CheckOrRadio(type) {
@@ -206,7 +212,7 @@ export function getMedicalConditionsFromF2F(context, option) {
   const medicalConditions = [];
   const pmh = context?.SelectedPastMedicalHistory;
 
-  if(!pmh || !pmh?.length) return medicalConditions;
+  if (!pmh || !pmh?.length) return medicalConditions;
 
   const isTrue = (mc) => mc.IsChecked === "true" || mc.IsChecked === true;
 
@@ -242,7 +248,7 @@ export const helpers = {
   isTrue,
   copyTelemedecineToFaceToFace,
   counter,
-  radioButtonChecker,
+  equalityChecker,
   CheckOrRadio,
   allergiesChecker,
   checker,
@@ -274,7 +280,10 @@ export function calculateAge(dob) {
   const today = new Date();
   let age = today.getFullYear() - birthDate.getFullYear();
   const monthDifference = today.getMonth() - birthDate.getMonth();
-  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+  if (
+    monthDifference < 0 ||
+    (monthDifference === 0 && today.getDate() < birthDate.getDate())
+  ) {
     age--;
   }
   return age;

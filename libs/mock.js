@@ -59,6 +59,7 @@ export const mockContext = {
     "recordsRelease",
     "intakeForm",
   ],
+  labOrders: ["labOrders"],
   labReferences: [
     "CBC",
     "BMP",

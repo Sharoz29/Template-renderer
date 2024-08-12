@@ -26,14 +26,60 @@ const renderView = promisify(app.render.bind(app));
 
 router.get("/attach-pdf/:id", async (req, res) => {
   console.time(coloredText(req.params.id, "green") + " in");
-  getPDFBuffer(req.params.id, renderView)
-    .then((data) => uploadPdfToPega({ ...data, caseID: req.params.id }))
+  getPDFBuffer(req.params.id, renderView, "pdf")
+    .then((data) =>
+      uploadPdfToPega({
+        ...data,
+        caseID: req.params.id,
+        fileName: req?.query?.fileName,
+      })
+    )
     .then(({ ID, access_token }) =>
       attachPdfToCase(
         `LCS-CALLADOC-WORK ${req.params.id}`,
         ID,
         access_token,
-        req.params.id
+        req.params.id,
+        req?.query?.fileName
+      )
+    )
+    .then(async (response) => {
+      // console.log("PDF uploaded successfully");
+      console.timeEnd(coloredText(req.params.id, "green") + " in");
+      res.send(
+        await HBS.renderView(
+          path.resolve(__dirname, "./views", "success.hbs"),
+          {
+            caseID: `${req.params.id}`,
+          }
+        )
+      );
+    })
+    .catch((error) => {
+      console.timeEnd(coloredText(req.params.id, "green") + " in");
+      console.log("Has Error:", error.message);
+      res.send(error);
+      // res?.error(error.message);
+    });
+});
+
+router.get("/attach-lab/:id", async (req, res) => {
+  console.time(coloredText(req.params.id, "green") + "in");
+  getPDFBuffer(req.params.id, renderView, "lab")
+    .then((data) =>
+      uploadPdfToPega({
+        ...data,
+        caseID: req.params.id,
+        fileName: req?.query?.fileName,
+      })
+    )
+    .then(({ ID, access_token }) =>
+      attachPdfToCase(
+        `LCS-CALLADOC-WORK ${req.params.id}`,
+        ID,
+        access_token,
+        req.params.id,
+        req?.query?.fileName
       )
     )
     .then(async (response) => {
@@ -61,7 +107,7 @@ router.get("/get-pdf/:id", async (req, res) => {
   //   "GET PDF FOR " + coloredText("CASEID: " + req.params.id, "red")
   // );
   console.time(coloredText(req.params.id, "green") + " in");
-  getPDFBuffer(req.params.id, renderView)
+  getPDFBuffer(req.params.id, renderView, "pdf")
     .then(({ pdfBuffer }) => {
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
@@ -75,6 +121,21 @@ router.get("/get-pdf/:id", async (req, res) => {
       console.log("Has Error:", error.message);
       res.send(error);
       // res?.error(error.message);
+    });
+});
+router.get("/get-lab/:id", async (req, res) => {
+  console.time(coloredText(req.params.id, "green") + "in");
+  getPDFBuffer(req.params.id, renderView, "lab")
+    .then(({ pdfBuffer }) => {
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
+      res.send(pdfBuffer);
+      console.timeEnd(coloredText(req.params.id, "green") + " in");
+    })
+    .catch((error) => {
+      console.timeEnd(coloredText(req.params.id, "green") + " in");
+      console.log("Has Error:", error.message);
+      res.send(error);
     });
 });
 
