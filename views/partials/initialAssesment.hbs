@@ -52,7 +52,7 @@
               {{> checkbox name="Home Visit" IsChecked=(equalityChecker LocationPatientIsAssessed "Home")}}              
               </div>
               <div class="cb ml-10">
-              {{> checkbox name="Boarding Care" IsChecked=(equalityChecker LocationPatientIsAssessed "")}}
+              {{> checkbox name="Boarding Care" IsChecked=(equalityChecker LocationPatientIsAssessed "Boarding Care")}}
               </div>
             </div>
           </td>
@@ -123,6 +123,11 @@
                  {{> checkbox IsChecked=IsChecked name=PatientFunctionalLimitation }}
               </div>
               {{/each}}
+              <div class="col-3-3 cb">
+                {{> checkbox IsChecked=OtherFunctionalLimitationBool name='Others: '}}
+                <span class="pl-5 text-bold">{{{OtherFunctionalLimitationTextbox}}}</span>                
+              </div>
+
             </div>
           </td>
           <td colspan="3">
@@ -133,6 +138,10 @@
                   {{> checkbox IsChecked=IsChecked name=ActivitiesPermited }}
               </div>
               {{/each}}
+              <div class="col-3-3 cb">
+                {{> checkbox IsChecked=OtherActivitiesPermittedBool name='Others: '}}
+                <span class="pl-5 text-bold">{{{OtherActivitiesPermittedTextbox}}}</span>
+              </div>
             </div>
           </td>
         </tr>

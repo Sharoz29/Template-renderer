@@ -468,11 +468,11 @@ canvas:focus {
 }
 
 .frow .col-1-3 {
-  width: 33%;
+  width: 33.333%;
 }
 
 .frow .col-2-3 {
-  width: 66%;
+  width: 66.666%;
 }
 
 .frow .col-3-3 {

@@ -205,24 +205,34 @@
 
 
             <table>
+                {{!-- <col width="14.28%">
                 <col width="14.28%">
                 <col width="14.28%">
                 <col width="14.28%">
                 <col width="14.28%">
                 <col width="14.28%">
-                <col width="14.28%">
-                <col width="14.28%">
+                <col width="14.28%"> --}}
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+                
                 <tr>
-                    <td colspan="7"><strong>SYMPTOMS</strong></td>
+                    <td colspan="4"><strong>SYMPTOMS</strong></td>
                 </tr>
                 <tr>
-                    {{#each @root.SelectedSmokingSymptoms}}
-                    <td>
-                    <div class="cb col-1-7">
-                        {{> checkbox name=Symptoms IsChecked=IsChecked}}
-                    </div>
-                    </td>
-                    {{/each}}               
+                    <td colspan="4">
+                        <div class="frow cb justify-start">
+                            {{#each @root.SelectedSmokingSymptoms}}
+                            <div class="col-1-4 cb">
+                                {{> checkbox name=Symptoms IsChecked=IsChecked}}
+                            </div>
+                            {{/each}}                               
+                            <div class="col-1-4 cb">
+                                {{> checkbox IsChecked=OtherSymptomsBool name='Others: '}}
+                                <span class="pl-5 text-bold">{{{OtherSymptomsTextbox}}}</span>
+                            </div>
+                        </div>                    
                 </tr>
                 {{!-- <tr>
                     <td>{{> checkbox name="Abnormal Sputum" IsChecked=AbnormalSputum}}</td>
@@ -234,7 +244,7 @@
                     <td>{{> checkbox name="Asthma" IsChecked=Asthma}}</td>                    
                 </tr> --}}
                 <tr>
-                    <td colspan="7">
+                    <td colspan="4">
                         <div class="cb gutters">
                             Withdrawal Symptoms:
                             <span class="p-10">
@@ -247,7 +257,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="7">
+                    <td colspan="4">
                         <div class="cb gutters">
                             Mood:
                             <span class="p-10">
@@ -262,25 +272,33 @@
             </table>
 
             <table>
-                <col width="25%">
-                <col width="15%">
-                <col width="15%">
-                <col width="15%">
-                <col width="15%">
-                <col width="15%">
+                <col width="20%">
+                <col width="12%">
+                <col width="12%">
+                <col width="12%">
+                <col width="12%">
+                <col width="12%">
+                <col width="20%">
                 
                 <tr>
-                    <td colspan="6"><strong>MEDICATIONS</strong></td>
+                    <td colspan="7"><strong>MEDICATIONS</strong></td>
                 </tr>
                 <tr>
+                    
                     <td>Nicotine replacement therapy:</td>
                     {{#each @root.SelectedNicotineReplacement}}
                     <td>
-                    <div class="cb col-1-7">
-                        {{> checkbox name=NicotineRepTrp IsChecked=IsChecked}}
-                    </div>
-                    </td>
+                        <div class="col-1-7 cb">
+                            {{> checkbox name=NicotineRepTrp IsChecked=IsChecked}}
+                        </div>
                     {{/each}}
+                    </td>
+                    <td>
+                        <div class="col-1-7 cb">
+                            {{> checkbox IsChecked=OtherNRPBool name='Others: '}}
+                            <span class="pl-5 text-bold">{{{OtherNRPTextbox}}}</span>                            
+                        </div>
+                    </td>
                     {{!-- <td>{{> checkbox name="Nasal Spray" IsChecked=NasalSpray}}</td>
                     <td>{{> checkbox name="Lozenge" IsChecked=Lozenge}}</td>
                     <td>{{> checkbox name="Inhaler" IsChecked=Inhaler}}</td>
@@ -288,7 +306,7 @@
                     <td>{{> checkbox name="Gum" IsChecked=Gum}}</td>                     --}}
                 </tr>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <div class="cb gutters">
                             Bupropion SR: <span class="ml-5">{{> checkbox IsChecked=(isTrue BupropionSRTablets) name="Tablets" }}</span>
                             (Start 7 to 10 days before the target quit date.)
@@ -302,7 +320,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <strong>ARRANGE Follow-up</strong>
                         <div class="frow justify-start">
                             <div class="cb gutters">

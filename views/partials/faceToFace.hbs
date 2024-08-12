@@ -140,6 +140,14 @@
                   {{/each}}
                 </tr>
                 {{/splitArrayByNumber}}
+                <tr>
+                  <td colspan="4">
+                    <div class="cb">
+                      {{> checkbox IsChecked=OtherHomeboundBool name='Others: '}}
+                      <span class="pl-5 text-bold">{{{OtherHomeboundTextbox}}}</span>
+                    </div>
+                  </td>
+                </tr>
             </tbody>
           </table>
             <div class="mt-20">
@@ -168,8 +176,14 @@
                     </div>
                   </td>
                   {{/each}}
-                </tr>
                 {{/splitArrayByNumber}}
+                  <td>
+                    <div class="cb">
+                      {{> checkbox IsChecked=OtherHomeboundStatusBool name='Others: '}}
+                      <span class="pl-5 text-bold">{{{OtherHomeboundStatusTextbox}}}</span>
+                    </div>
+                  </td>
+                </tr>
               </tbody>
             </table>
             

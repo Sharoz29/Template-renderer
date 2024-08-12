@@ -81,9 +81,14 @@
                 </div>
                 {{#each @root.SelectedLabsOnReferal}}
                   <div class="item col-3-6 mt-5 mb-5 fz-18" style="width: 50%">
-                   {{> checkbox name=LabTypes IsChecked=IsChecked}}
+                    {{> checkbox name=LabTypes IsChecked=IsChecked}}
                   </div>
-                {{/each}}
+                {{/each}}                  
+                  <div class="cb fz-18">
+                    {{> checkbox IsChecked=OtherLabsBool name='Others:' }} 
+                    <span class="text-bold p-5 margin-remover">{{{OtherLabsTextbox}}}</span>                    
+                  </div>
+                </div>
 
               </div>
             </div>
