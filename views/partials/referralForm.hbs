@@ -1,103 +1,102 @@
 {{#with ReferralForm}}
 <section class="frow" id="referal-form">
-        <div class="container-padding width-100">
-          <div class="container centered mb-20">
-            {{>formTitle ..}}
-          </div>
+  <div class="container-padding width-100">
+    <div class="container centered mb-20">
+      {{>formTitle ..}}
+    </div>
 
-          <div class="mds p-10 mb-10 mb-20 ba">
-            <div class="frow">
-              {{!-- {{#each doctors}} --}}
-              <div class="checkbox-container col-6-12">
-                <span class="md-id fz-18"><strong>{{@root.SelectMD}}</strong></span>
-              </div>
-              {{!-- {{/each}} --}}
-              <div class="md-id-container col-3-6 fz-18">
-                <span class="md-id"><strong>MD ID: Comes here...</strong></span>
-              </div>
-            </div>
-            <!-- <pega:forEach name="Doctors.pxResults">
-              <div class="md-name">
-                <div class="checkbox-container">
-
-                  <input type="checkbox" name="doctor-name"  <pega:when java=<% tools.getProperty("DoctorsValues.pxResults").
-                  contain("$THIS.pyDoctorName") %>>
-                  checked
-                  </pega:when> />
-                  <label for="doctor-name"
-                    ><pega:reference name="$THIS.pyDoctorName"
-                  /></label>
-                </div>
-                <div class="md-id-container">
-                  <span class="md-id"
-                    ><pega:reference name="$THIS.pyDoctorID"
-                  /></span>
-                </div></div
-            ></pega:forEach> -->
-          </div>
-          <div class="agency p-10 mb-10 mb-20 ba">
-            <div class="frow">
-              <div class="item col-6-6 mt-10 fz-18">
-                <span class="label">Name of Agency : </span>
-                <span class="value text-bold">{{@root.AppointmentInformation.Referral.HH}}</span>
-              </div>
-              <div class="item col-6-6 mt-30 fz-20">
-                 <h3 class="label">Home Health Service </h3>
-              </div>
-              <div class="item col-6-6 mt-5 fz-18">
-                {{> checkbox name="For Skill Nursing Services" IsChecked=ForSkillNursingServices}}
-              </div>
-              <div class="item col-6-6 mt-5 fz-18">
-                {{> checkbox name="For Physical Therapy Treatment" IsChecked=ForPhysicalTherapyTreatment}}
-                
-              </div>
-              <div class="item col-6-6 mt-5 fz-18">
-                {{> checkbox name="For Occupational Therapy" IsChecked=ForOccupationalTherapy}}
-              </div>
-              <div class="item col-6-6"></div>
-              <div class="item col-6-6 mt-30 fz-20">
-                <h3 class="label">Treatment</h3>
-              </div>
-              <div class="item col-6-6 mt-5 fz-18">
-                {{> checkbox name="Pain Management" IsChecked=PainManagement}}
-              </div>
-              <div class="item col-6-6 mt-5 fz-18">
-                {{> checkbox name="Psychiatry" IsChecked=Psychiatry}}
-              </div>
-              <div class="item col-6-6 mt-5 fz-18">
-                {{> checkbox name="Neurology" IsChecked=Neurology}}
-              </div>
-              <div class="item col-6-6 mt-5 mb-10 fz-18">
-                {{> checkbox name="Wound Care Specialist" IsChecked=WoundCareSpecialist}}
-              </div>
-            </div>
-          </div>
-          <div class="labs p-10 mb-10 ba">
-            <div class="lab-info">
-              <div class="frow justify-start">
-                <div class="item col-6-6 mb-10 fz-18">
-                  <span class="label">Lab(s) </span>
-                  <span class="value">_________</span>
-                </div>
-                {{#each @root.SelectedLabsOnReferal}}
-                  <div class="item col-3-6 mt-5 mb-5 fz-18" style="width: 50%">
-                    {{> checkbox name=LabTypes IsChecked=IsChecked}}
-                  </div>
-                {{/each}}                  
-                  <div class="cb fz-18">
-                    {{> checkbox IsChecked=OtherLabsBool name='Others:' }} 
-                    <span class="text-bold p-5 margin-remover">{{{OtherLabsTextbox}}}</span>                    
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="mt-50">{{> doubleSignatures}}</div>
-           
-          <div class="frow justify-center text-bold mt-70 fz-20">
-            This form expires in 60 days from the date dated above
-          </div> 
+    <div class="mds p-10 mb-10 mb-20 ba">
+      <div class="frow">
+        {{!-- {{#each doctors}} --}}
+        <div class="checkbox-container col-6-12">
+          <span class="md-id fz-18"><strong>{{@root.SelectMD}}</strong></span>
         </div>
+        {{!-- {{/each}} --}}
+        <div class="md-id-container col-3-6 fz-18">
+          <span class="md-id"><strong>MD ID:</strong></span>
+        </div>
+      </div>
+      <!-- <pega:forEach name="Doctors.pxResults">
+        <div class="md-name">
+          <div class="checkbox-container">
+
+            <input type="checkbox" name="doctor-name"  <pega:when java=<% tools.getProperty("DoctorsValues.pxResults").
+            contain("$THIS.pyDoctorName") %>>
+            checked
+            </pega:when> />
+            <label for="doctor-name"
+              ><pega:reference name="$THIS.pyDoctorName"
+            /></label>
+          </div>
+          <div class="md-id-container">
+            <span class="md-id"
+              ><pega:reference name="$THIS.pyDoctorID"
+            /></span>
+          </div></div
+      ></pega:forEach> -->
+    </div>
+    <div class="agency p-10 mb-10 mb-20 ba">
+      <div class="frow">
+        <div class="item col-6-6 mt-10 fz-18">
+          <span class="label">Name of Agency : </span>
+          <span class="value text-bold">{{@root.AppointmentInformation.Referral.HH}}</span>
+        </div>
+        <div class="item col-6-6 mt-30 fz-20">
+            <h3 class="label">Home Health Service </h3>
+        </div>
+        <div class="item col-6-6 mt-5 fz-18">
+          {{> checkbox name="For Skill Nursing Services" IsChecked=ForSkillNursingServices}}
+        </div>
+        <div class="item col-6-6 mt-5 fz-18">
+          {{> checkbox name="For Physical Therapy Treatment" IsChecked=ForPhysicalTherapyTreatment}}
+          
+        </div>
+        <div class="item col-6-6 mt-5 fz-18">
+          {{> checkbox name="For Occupational Therapy" IsChecked=ForOccupationalTherapy}}
+        </div>
+        <div class="item col-6-6"></div>
+        <div class="item col-6-6 mt-30 fz-20">
+          <h3 class="label">Treatment</h3>
+        </div>
+        <div class="item col-6-6 mt-5 fz-18">
+          {{> checkbox name="Pain Management" IsChecked=PainManagement}}
+        </div>
+        <div class="item col-6-6 mt-5 fz-18">
+          {{> checkbox name="Psychiatry" IsChecked=Psychiatry}}
+        </div>
+        <div class="item col-6-6 mt-5 fz-18">
+          {{> checkbox name="Neurology" IsChecked=Neurology}}
+        </div>
+        <div class="item col-6-6 mt-5 mb-10 fz-18">
+          {{> checkbox name="Wound Care Specialist" IsChecked=WoundCareSpecialist}}
+        </div>
+      </div>
+    </div>
+    <div class="labs p-10 mb-10 ba">
+      <div class="lab-info">
+        <div class="frow justify-start">
+          <div class="item col-6-6 mb-10 fz-18">
+            <span class="label">Lab(s) </span>
+            <span class="value">_________</span>
+          </div>
+          {{#each @root.SelectedLabsOnReferal}}
+            <div class="item col-3-6 mt-5 mb-5 fz-18" style="width: 50%">
+              {{> checkbox name=LabTypes IsChecked=IsChecked}}
+            </div>
+          {{/each}}                  
+            <div class="cb fz-18">
+              {{> checkbox IsChecked=OtherLabsBool name='Others:' }} 
+              <span class="text-bold p-5 margin-remover">{{{OtherLabsTextbox}}}</span>                    
+            </div>
+          </div>
+
+        </div>
+      </div>
+    
+    <div class="mt-50">{{> doubleSignatures}}</div>      
+    <div class="frow justify-center text-bold mt-70 fz-20">
+      This form expires in 60 days from the date dated above
+    </div> 
+  </div>
 </section>
 {{/with}}

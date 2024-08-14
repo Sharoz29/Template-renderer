@@ -86,16 +86,16 @@
                                             <div class="frow justify-start gutters">
                                                 <span>Visit #</span>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.ChecklistForTobacco.VisitCount "1") name="1" }}
+                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "1") name="1" }}
                                                 </div>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.ChecklistForTobacco.VisitCount "2") name="2" }}
+                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "2") name="2" }}
                                                 </div>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.ChecklistForTobacco.VisitCount "3") name="3" }}
+                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "3") name="3" }}
                                                 </div>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.ChecklistForTobacco.VisitCount "4") name="4" }}
+                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "4") name="4" }}
                                                 </div>
                                             </div>
                                         </td>
@@ -347,7 +347,7 @@
                                 </span> --}}
                             </div>
                         </div>
-                        <div class="frow justify-start ml-30 text-bold margin-remover">
+                        <div class="frow justify-start ml-30 text-bold margin-remover text-underline">
                             {{{QuitSmokingMaterialsDescription}}}
                         </div>
                     </td>
