@@ -29,7 +29,7 @@
           <tr>
             <td class="text-bold">              
               Special Diet
-              <div class="frow justify-start">
+              <div class="frow justify-start gutters">
                 <span class="cb">
                   {{> checkbox name="Yes" IsChecked=(checker SpecialDiet "Yes")}}
                 </span>
@@ -376,8 +376,8 @@
               </div>
             </td>            
             <td>
-              <b>DATE:</b>
-              <div>{{@root.AppointmentInformation.PatientData.SignatureDate}}</div>
+              <b>DATE:
+              <span>{{formatDate @root.AppointmentInformation.PatientsSignatureDate}}</span></b>
           </tr>
 
           <tr>
@@ -457,14 +457,14 @@
             <td></td>
             <td></td>            
             <td colspan="3">
-              <div class="frow row-start text-bold">
+              <div class="frow row-start text-bold">                
                 PROVIDER SIGNATURE:
                 <span class="px-10">{{> signature name="provider"}}</span>
               </div>
             </td>            
             <td>
-              <b>DATE:</b>
-              <div>{{formatDate @root.AppointmentInformation.SignatureDate}}</div>
+              <b>DATE:
+              <span>{{formatDate @root.AppointmentInformation.SignatureDate}}</span></b>
             </td>
           </tr>
         </tbody>
