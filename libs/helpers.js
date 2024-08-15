@@ -19,7 +19,11 @@ export function camelToSentence(str) {
 }
 
 export function isTrue(value) {
-  return value == true || value == "true";
+  return value == true || value == "true" || value == "Yes";
+}
+
+export function isFalse(value) {
+  return value == false || value == "false" || value == "No"
 }
 
 export function formsToPrint(allForms, form, context) {
@@ -238,6 +242,7 @@ export function filterArr(arr, criteria, options) {
   return result;
 }
 
+
 export const helpers = {
   camelToSentence,
   formsToPrint,
@@ -246,6 +251,7 @@ export const helpers = {
   isSelected,
   findWithKey,
   isTrue,
+  isFalse,
   copyTelemedecineToFaceToFace,
   counter,
   equalityChecker,
@@ -263,7 +269,7 @@ export const helpers = {
   filterArr,
   fallRiskMapper,
   calculateAge,
-  MapF2FTelemed,
+  MapF2FTelemed,  
 };
 
 export const HBS = create({

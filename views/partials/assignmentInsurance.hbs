@@ -98,15 +98,18 @@
           <tr>
             <td>
               <div class="frow justify-start">
-                <b class="col-1-1">Signature of Patient:</b>
-                {{> signature name="patient"}}
+                <div class="frow row-start text-bold">Signature of Patient:
+                  <span class="px-10">{{> signature name="patient"}}</span>
+                </div>
+                {{!-- <b class="col-1-1">Signature of Patient:</b>
+                {{> signature name="patient"}} --}}
               </div>
             </td>
-            <td>Date: <b>{{formatDate @root.AppointmentInformation.PatientData.SignatureDate}}</b></td>
+            <td>Date: <b>{{formatDate PatientsSignatureDate}}</b></td>
           </tr>
         </tbody>
       </table>
-      <div class="legal-rep">
+      <div class="legal-rep mt-30">
         <h3>LEGAL REPRESENTATIVE (IF PATIENT IS UNABLE TO SIGN)</h3>
         <p>
           Consent of Legal Guardian, Patient Advocate or Nearest Relative if
@@ -116,6 +119,12 @@
         </p>
       </div>
       <table class="striped width-100">
+        <col width="16.6%">
+        <col width="16.6%">
+        <col width="16.6%">
+        <col width="16.6%">
+        <col width="16.6%">
+        <col width="17%">
         <tbody>
           <tr>
             <td colspan="6">
@@ -174,7 +183,7 @@
                 Not present in data
               </span>
             </td> --}}
-            <td colspan="3">
+            <td colspan="2">
                <span>
                  City:
               </span>
@@ -182,7 +191,7 @@
                 {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyCity}}
               </span>
             </td>
-            <td>
+            <td colspan="2">
               <span>
                 State:
               </span>
@@ -200,8 +209,8 @@
             </td>
           </tr>
           <tr>
-            <td colspan="3">Signature of Legal Rep:</td>
-            <td colspan="3">Date:</td>
+            <td colspan="4">Signature of Legal Rep:</td>
+            <td colspan="2">Date:<strong></strong></td>
           </tr>
           <tr>
             <td colspan="3">
@@ -214,16 +223,16 @@
               </span>
             </td>
             <td colspan="2">
-              <span>
-                Signature:
-              </span>
-             {{> signature name="witness"}}
+              <div class="frow row-start">
+                SIGNATURE:
+                <span class="px-10">{{> signature name="witness"}}</span>
+              </div>              
             </td>
             <td colspan="1">
               <span>
                 Date: 
               </span>
-              <span>
+              <span class="text-bold">
                  {{formatDate @root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}
               </span>
             </td>

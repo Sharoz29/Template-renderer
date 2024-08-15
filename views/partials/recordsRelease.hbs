@@ -89,9 +89,9 @@
 
 
             <table>
-                <col width="33%">
-                <col width="33%">
-                <col width="33%">
+                <col width="35%">
+                <col width="40%">
+                <col width="25%">
                 <tr>
                     <td colspan="3">
                         <span>NAME OF SIGNATORY:</span>
@@ -107,15 +107,19 @@
                     </td>
                 </tr>
                 <tr style="height: 80px">
-                    <td colspan="1">
+                    <td>
                         <span>Name of Witness:</span>
                         <span class="text-bold"> {{@root.AppointmentInformation.PatientData.Witness.pyFullName}}</span>
                     </td>
-                    <td colspan="1"> 
-                        <span>Signature of Witness:</span>
-                        {{> signature name="witness"}}
+                    <td> 
+                        <div class="frow row-start">
+                            Signature of Witness:
+                            <span class="px-10">{{> signature name="witness"}}</span>
+                        </div>
+                        {{!-- <span>Signature of Witness:</span>
+                        {{> signature name="witness"}} --}}
                     </td>
-                    <td colspan="1">
+                    <td>
                         <span>Date:</span>
                         <span class="p-5 text-bold">{{formatDate WitnessDate}}</span>
                     </td>

@@ -112,7 +112,7 @@
             <h4 class="fc m-auto">Functional Limitations</h4>
           </td>
           <td colspan="3">
-            <h4 class="fc m-auto">Activities Permited</h4>
+            <h4 class="fc m-auto">Activities Permitted</h4>
           </td>
         </tr>
         <tr>
@@ -125,7 +125,7 @@
               {{/each}}
               <div class="col-3-3 cb">
                 {{> checkbox IsChecked=OtherFunctionalLimitationBool name='Others: '}}
-                <span class="pl-5 text-bold">{{{OtherFunctionalLimitationTextbox}}}</span>                
+                <span class="pl-5 text-bold margin-remover">{{{OtherFunctionalLimitationTextbox}}}</span>                
               </div>
 
             </div>
@@ -140,7 +140,7 @@
               {{/each}}
               <div class="col-3-3 cb">
                 {{> checkbox IsChecked=OtherActivitiesPermittedBool name='Others: '}}
-                <span class="pl-5 text-bold">{{{OtherActivitiesPermittedTextbox}}}</span>
+                <span class="pl-5 text-bold margin-remover">{{{OtherActivitiesPermittedTextbox}}}</span>
               </div>
             </div>
           </td>
@@ -160,7 +160,7 @@
                 </div>
                 {{#if @last}}
                   
-                  <div class="cb col-5-6 py-5">
+                  <div class="cb col-4-6 py-5">
                     <div class="frow justify-start items-end no-mpa">
                       {{> checkbox IsChecked=../OtherPMHistory name='Others: ' }}
                       <span class="pl-5 text-bold">{{{../OtherPastMedicalHistory}}}</span>

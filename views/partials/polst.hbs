@@ -253,31 +253,35 @@
                       <col width="25%" />
                       <tbody>
                         <tr>
-                          <td>Discussed with:</td>
-                          <td>
-                            <div class="cb">
-                               {{> checkbox name="Patient (Patient Has Capacity)" IsChecked=../POLST/PatientHasCapacity}}
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cb">
-                               {{> checkbox name="Legally Recognized Decisionmaker" IsChecked=../POLST/LegallyRecognizedDecisionmaker}}
-                            </div>
+                          <td colspan="4">
+                            <div class="frow justify-start">
+                              Discussed with:                            
+                              {{!-- </td> --}}
+                              {{!-- <td colspan="4"> --}}
+                              <span class="cb pl-20">
+                                {{> checkbox name="Patient (Patient Has Capacity)" IsChecked=../POLST/PatientHasCapacity}}
+                              </span>
+                              
+                              <span class="cb pl-20">
+                                  {{> checkbox name="Legally Recognized Decisionmaker" IsChecked=../POLST/LegallyRecognizedDecisionmaker}}
+                              </span>
+                            </div>                            
                           </td>
                         </tr>
                         <tr>
                           <td>
                             <div class="frow justify-start">
                               <div class="cb">
-                               {{> checkbox name="Advance Directive Dated" IsChecked=../POLST/AdvanceDirectiveDated}}
-                                </label>
+                               {{> checkbox name="Advance Directive Dated:" IsChecked=../POLST/AdvanceDirectiveDated}}
+                                
+                              
+                              <span class="date px-5 text-bold text-underline">{{../POLST/AdvanceDirectiveDate}}</span>
+                              , available and reviewed <span class="fz-20 pl-10">&#8594;</span>
                               </div>
-                              <div class="date px-5 text-underline">Date comes here</div>
-                              <div>,available and reviewed -&gt; </div>
                             </div>
                             <div class="cb">
                                {{> checkbox name="Advance Directive Not Available" IsChecked=../POLST/AdvanceDirectiveNotAvailable}}
-                              </label>
+                              
                             </div>
 
                             <div class="cb">

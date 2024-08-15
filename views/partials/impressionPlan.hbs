@@ -10,18 +10,23 @@
           <span class="pr-5">{{PASTMEDICALHISTORY}},</span>
       {{/each}}
     </p>
+    
     <div class="col-1-1 impressions py-10 bb stripes">
-       <div class="frow justify-start">
-          <div class="title">
-            <h3><p>Medical Conditions</p></h3>
-          </div>
-          {{!-- <div class="col-7-12 title">
-            <p>
-              <strong>
-                Description
-              </strong>
-          </div> --}}
+      <div class="frow justify-start">
+        <div class="title">
+          <h3 class="mt-20 mb-20">Medical Conditions</h3>          
         </div>
+      </div>
+      <div>
+        {{!-- {{#if CustomizeMedicalConditionsOnFACETOFACE}} --}}
+        {{{CustomizeMedicalConditionsOnFACETOFACE}}}
+        {{!-- {{else if CustomizeMedicalConditions}} --}}
+        {{!-- {{{CustomizeMedicalConditions}}}       --}}
+        {{!-- {{/if}} --}}
+        {{{@root.FaceToFace.OtherMedicalConditionsOnFaceToFaceTextbox}}}
+      </div>      
+    </div>
+    
        {{!-- {{#filterArr SelectedMedicalConditionsOnFaceToFace 'true' }}
         <div class="frow impression">
           <div class="col-2-12 title">
@@ -34,13 +39,6 @@
         </div>
       {{/filterArr}} --}}
       
-      <div>
-      {{#if CustomizeMedicalConditionsOnFACETOFACE}}
-      {{{CustomizeMedicalConditionsOnFACETOFACE}}}
-      {{else if CustomizeMedicalConditions}}
-      {{{CustomizeMedicalConditions}}}      
-      {{/if}}
-      </div>
       
 
       {{!-- {{{CustomizeMedicalConditionsOnFACETOFACE}}} --}}
@@ -88,7 +86,8 @@
           </div>
         </div>
       {{/if}}
-    </div> --}}
+       --}}
+    
     <div class="notes">
       <p>
         <span>Advanced Care Planning: Advanced care planning with patient, time
@@ -111,5 +110,5 @@
         </span>
       </p>
     </div>
-  </div>
+  </div>   
 </section>
