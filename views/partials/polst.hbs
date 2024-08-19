@@ -318,19 +318,19 @@
                         <tr>
                           <td>
                             <span class="name">Print Provider Name:</span>
-                            <span class="text-bold">{{@root.AppointmentInformation.SelectProvider}}</span>
+                            <span class="text-bold">{{@root.SelectedOperatorNP.pyUserName}}</span>
                           </td>
                           <td>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="text-bold">{{../POLST.Physician.pyPhoneNumber}}</span>
+                              <span class="text-bold">{{@root.AppointmentInformation.Office.TelephoneNumber}}</span>
                             </div>
                           </td>
 
                           <td>
                             <div class="license">
                               <span>License #:</span>
-                              <span class="text-bold">{{../POLST.Physician.LicenseNumber}}</span>
+                              <span class="text-bold">{{@root.SelectedOperatorNP.LicenseNumber}}</span>
                             </div>
                           </td>
                         </tr>

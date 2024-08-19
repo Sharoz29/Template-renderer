@@ -182,11 +182,13 @@ export function getSignatureUrl(context, person) {
     case "patient":
       return context?.PatientsSignature || "";
     case "physician":
-      return context?.SignatureCapture3 || "";
+      return context?.SelectedOperator?.MDSignature || context?.SignatureCapture3 || "";
+      // return context?.SignatureCapture3 || "";
     case "witness":
       return context?.RecordReleaseAuthorization?.Witness || "";
     case "provider":
-      return context?.SignatureCapture2 || "";
+      return context?.SelectedOperatorNP?.NPSignature || context?.SignatureCapture2 || "";
+      // return context?.SignatureCapture2 || "";
     case "authorization":
       return context?.RecordReleaseAuthorization?.AuthorizationSignature || "";
   }
@@ -242,6 +244,16 @@ export function filterArr(arr, criteria, options) {
   return result;
 }
 
+export function isActivityPermitted(activities, activityName) {
+    if (activities && Array.isArray(activities)) {
+        const activity = activities.find(activity => activity.ActivitiesPermited === activityName);
+        if (activity && activity.IsChecked === "true") {
+            return 'true';
+        }
+    }
+    return 'false';
+}
+
 
 export const helpers = {
   camelToSentence,
@@ -269,7 +281,8 @@ export const helpers = {
   filterArr,
   fallRiskMapper,
   calculateAge,
-  MapF2FTelemed,  
+  MapF2FTelemed,
+  isActivityPermitted
 };
 
 export const HBS = create({

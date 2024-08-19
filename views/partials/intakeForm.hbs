@@ -65,7 +65,7 @@
                     I,
                     <span class="p-5 text-underline text-bold">{{pyFullName}}</span>,
                     here by give permission to
-                    <span class="text-underline text-bold">{{@root.AppointmentInformation.SelectProvider}} </span>
+                    <span class="text-underline text-bold">{{@root.SelectedOperatorNP.pyUserName}} </span>
                     (Authorized Medical Provider of
                     <b>{{@root.AppointmentInformation.Office.OfficeName}}</b>) to perform all necessary
                     assessment and treatment. I understand that I may refuse or
@@ -155,15 +155,21 @@
                         </div>
                     </td>
                     <td colspan="5">
-                        <div class="frow justify-start gutters">                                                                                    
-                            <div class="cb">                                
-                                {{> checkbox IsChecked=(equalityChecker @root.SelectedActivitiesPermitted.ActivitiesPermited "Cane") name="Cane" }}                                
-                            </div>
+
+                        
+
+                        <div class="frow justify-start gutters">                            
+                            <div class="cb">
+                                {{> checkbox name="Cane" IsChecked=(isActivityPermitted @root.SelectedActivitiesPermitted "Cane")}}
+                                {{!-- {{> checkbox name="Cane" IsChecked=(checker @root.SelectedActivitiesPermitted.ActivitiesPermited.Cane)}}                                                                 --}}
+                            </div>                            
                             <div class="cb ml-10">
-                                {{> checkbox IsChecked=(equalityChecker @root.SelectedActivitiesPermitted.ActivitiesPermited "Walker") name="Walker" }}                                
+                                {{> checkbox name="Walker" IsChecked=(isActivityPermitted @root.SelectedActivitiesPermitted "Walker")}}
+                                {{!-- {{> checkbox IsChecked=(equalityChecker @root.SelectedActivitiesPermitted.ActivitiesPermited "Walker") name="Walker" }}                                 --}}
                             </div>
                             <div class="cb">
-                                {{> checkbox IsChecked=(equalityChecker @root.SelectedActivitiesPermitted.ActivitiesPermited "Wheelchair") name="Wheelchair" }}
+                                {{> checkbox name="Wheelchair" IsChecked=(isActivityPermitted @root.SelectedActivitiesPermitted "Wheelchair")}}
+                                {{!-- {{> checkbox IsChecked=(equalityChecker @root.SelectedActivitiesPermitted.ActivitiesPermited "Wheelchair") name="Wheelchair" }} --}}
                             </div>
                         </div>
                            

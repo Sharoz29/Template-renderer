@@ -17,14 +17,19 @@
           <h3 class="mt-20 mb-20">Medical Conditions</h3>          
         </div>
       </div>
-      <div>
+      <div class="margin-remover">
         {{!-- {{#if CustomizeMedicalConditionsOnFACETOFACE}} --}}
         {{{CustomizeMedicalConditionsOnFACETOFACE}}}
         {{!-- {{else if CustomizeMedicalConditions}} --}}
         {{!-- {{{CustomizeMedicalConditions}}}       --}}
         {{!-- {{/if}} --}}
+        {{#if (isTrue @root.FaceToFace.OtherMedicalConditionsOnFaceToFaceCheckbox)}}
+        <div class="mt-15">
+          <b>Other Medical Conditions</b>
         {{{@root.FaceToFace.OtherMedicalConditionsOnFaceToFaceTextbox}}}
-      </div>      
+        </div>
+      </div>
+        {{/if}}
     </div>
     
        {{!-- {{#filterArr SelectedMedicalConditionsOnFaceToFace 'true' }}

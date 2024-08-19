@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-1-2">
                                     <span>Target quit date:</span>
-                                    <span class="p-5 text-underline">{{formatDate TargetQuitDate}}</span>
+                                    <span class="p-5">{{formatDate TargetQuitDate}}</span>
                                 </div>
                             </div>                           
                             <div class="frow justify-start">
@@ -62,7 +62,7 @@
                                     <tr>
                                         <td>
                                             <span>Name:</span>
-                                            <span class="p-5 text-bold">
+                                            <span class="px-5 text-bold">
                                                {{@root.AppointmentInformation.PatientData.pyFullName}}
                                             </span>
                                         </td>
@@ -70,7 +70,7 @@
                                     <tr>
                                         <td>
                                             <span>DOB:</span>
-                                            <span class="p-5 text-bold">
+                                            <span class="px-5 text-bold">
                                                 {{formatDate @root.AppointmentInformation.PatientData.DateOfBirth}}
                                             </span>
                                         </td>
@@ -78,25 +78,27 @@
                                     <tr>
                                         <td>
                                             <span>Encounter Dates:</span>
-                                            <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.EncounterDate}}</span>
+                                            <span class="px-5 text-bold">{{formatDate @root.AppointmentInformation.EncounterDate}}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="frow justify-start gutters">
-                                                <span>Visit #</span>
-                                                <div class="cb">
-                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "1") name="1" }}
+                                            <span>Visit #:</span>
+                                            <span class="px-5 text-bold">
+                                                {{@root.AppointmentInformation.VisitCount}}
+                                            </span>                                                
+                                                    {{!-- {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount @root.AppointmentInformation.VisitCount) name=@root.AppointmentInformation.VisitCount}} --}}
+                                                    {{!-- {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "1") name="1" }}
                                                 </div>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "2") name="2" }}
+                                                    {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "2") name="2" }}
                                                 </div>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "3") name="3" }}
+                                                    {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "3") name="3" }}
                                                 </div>
                                                 <div class="cb">
-                                                     {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "4") name="4" }}
-                                                </div>
+                                                    {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "4") name="4" }} --}}
+                                                {{!-- </span> --}}
                                             </div>
                                         </td>
                                     </tr>
@@ -357,7 +359,7 @@
             <div class="frow justify-start mt-100">
                 <div class="col-1-3 frow items-end text-center text-bold">                                        
                     <div>
-                        {{@root.AppointmentInformation.SelectProvider}}
+                        {{@root.SelectedOperatorNP.pyUserName}}
                         <div class="bt mt-10 pt-10">Name of Provider</div>
                     </div>                    
                 </div>              

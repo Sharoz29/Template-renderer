@@ -13,11 +13,13 @@
         <div class="col-1-2">
           Under the supervision of <br>
           and in collaboration with          
-          <span class="name px-5">: <b>{{@root.SelectMD}}</b></span>
+          {{!-- <span class="name px-5">: <b>{{@root.SelectMD}}</b></span> --}}
+          <span class="name px-5">: <b>{{@root.SelectedOperator.pyUserName}}</b></span>
         </div>
         <div class="col-1-2">
           <br>Provider Name:
-          <span class="name text-bold px-5">{{@root.AppointmentInformation.SelectProvider}}</span>
+          {{!-- <span class="name text-bold px-5">{{@root.AppointmentInformation.SelectProvider}}</span> --}}
+          <span class="name text-bold px-5">{{@root.SelectedOperatorNP.pyUserName}}</span>
         </div>
       </div>      
       <div class="frow justify-start ">
