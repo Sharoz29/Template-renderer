@@ -9,11 +9,11 @@
       <div class="frow">
         {{!-- {{#each doctors}} --}}
         <div class="checkbox-container col-6-12">
-          <span class="md-id fz-18"><strong>{{@root.SelectMD}}</strong></span>
+          <span class="md-id fz-18"><strong>{{@root.SelectedOperator.pyUserName}}</strong></span>
         </div>
         {{!-- {{/each}} --}}
         <div class="md-id-container col-3-6 fz-18">
-          <span class="md-id"><strong>MD ID:</strong></span>
+          <span class="md-id"><strong>NPI ID: {{@root.SelectedOperator.LicenseNumber}}</strong></span>
         </div>
       </div>
       <!-- <pega:forEach name="Doctors.pxResults">

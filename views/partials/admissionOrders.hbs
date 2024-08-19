@@ -140,7 +140,9 @@
               <div class="frow justify-start">
                 <div class="frow col-6-6 justify-start gutters">
                   <span>Name of Health Agency:</span>
+                  {{#if (isTrue HomeHealthDueTo)}}
                   <span><strong>{{@root.AppointmentInformation.Referral.HH}}</strong></span>
+                  {{/if}}
                 </div>
               </div>
             </td>

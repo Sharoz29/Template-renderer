@@ -107,10 +107,11 @@ router.get("/get-pdf/:id", async (req, res) => {
   //   "GET PDF FOR " + coloredText("CASEID: " + req.params.id, "red")
   // );
   console.time(coloredText(req.params.id, "green") + " in");
+  console.log('Query:', req?.query)
   getPDFBuffer(req.params.id, renderView, "pdf")
     .then(({ pdfBuffer }) => {
       res.setHeader("Content-Type", "application/pdf");
-      res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
+      res.setHeader("Content-Disposition", `attachment; filename=${req.query.fileName || 'output'}-${req.params.id}.pdf`);
       res.send(pdfBuffer);
       console.timeEnd(coloredText(req.params.id, "green") + " in");
       // console.groupEnd();

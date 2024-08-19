@@ -217,6 +217,7 @@
               {{!-- <div class="cb col-1-6">
                   {{> checkbox IsChecked=(checker PatientUseTobacco "No") name="No" }}
               </div> --}}
+              {{#if (isTrue PatientUseTobacco)}}
               {{#each @root.SelectedTobacco_THC}}
               <div class="col-1-6">
                 <div class="cb">
@@ -224,6 +225,7 @@
                 </div>
               </div>
               {{/each}}
+              {{/if}}
             
             </div>
             {{!-- </div> --}}
@@ -237,6 +239,7 @@
                 {{!-- <div class="cb col-1-6">
                   {{> checkbox IsChecked=(checker PatientConsumeAlcohol "No") name="No" }}
                 </div> --}}
+                {{#if (isTrue PatientConsumeAlcohol)}}
               {{#each @root.SelectedAlcoholConsumption}}
               <div class="col-1-6">
                 <div class="cb">
@@ -244,6 +247,7 @@
                 </div>
               </div>
               {{/each}}              
+              {{/if}}
             </div>
 
             <div class="frow justify-start gutters">
@@ -890,6 +894,7 @@
           {{/each}}
         </tr>
         {{/splitArrayByNumber}}
+        
       </tbody>
     </table>
 
