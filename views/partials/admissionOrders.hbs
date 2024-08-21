@@ -199,10 +199,12 @@
                 <div class="col-2.5-6 cb">
                     {{> checkbox IsChecked=Surgery name="Surgery" }}
                 </div>
-                <div class="col-3.5-6" style="margin-left: 15px;">
-                  <span>Procedure:</span>
-                  <span>{{Procedure}}</span>
+                {{#if (isTrue Surgery)}}
+                <div class="cb">
+                  Procedure:
+                  <span class="px-5">{{Procedure}}</span>
                 </div>
+                {{/if}}
               </div>
             </td>
             <td colspan="5">
