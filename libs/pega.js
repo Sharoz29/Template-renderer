@@ -56,8 +56,8 @@ export async function uploadPdfToPega({
     const form = new FormData();
     form.append("file", pdfBuffer, {
       filename: fileName
-        ? `${fileName}-${getDateString()}.pdf`
-        : `cad-report-${getDateString()}.pdf`,
+        ? `${fileName}${getDateString()}.pdf`
+        : `cad-report${getDateString()}.pdf`,
       contentType: "application/pdf",
     }); // append the pdf buffer to the form data
     console.timeLog(
@@ -106,8 +106,8 @@ export async function attachPdfToCase(
     category: "FILE",
     delete: true,
     name: fileName
-      ? `${fileName}-${getDateString()}.pdf`
-      : `${caseID}-report-${getDateString()}.pdf`,
+      ? `${fileName}${getDateString()}.pdf`
+      : `${caseID}report${getDateString()}.pdf`,
     pyPurpose: "out class pega developers",
     type: "FILE",
     ID: attachmentID,

@@ -14,22 +14,26 @@
     <div class="col-1-1 impressions py-10 bb stripes">
       <div class="frow justify-start">
         <div class="title">
-          <h3 class="mt-20 mb-20">Medical Conditions</h3>          
+          <h3 class="mt-10 mb-10">Medical Conditions</h3>          
         </div>
       </div>
-      <div class="margin-remover">
+      <div class="margin-remover pt-5">
         {{!-- {{#if CustomizeMedicalConditionsOnFACETOFACE}} --}}
         {{{CustomizeMedicalConditionsOnFACETOFACE}}}
         {{!-- {{else if CustomizeMedicalConditions}} --}}
         {{!-- {{{CustomizeMedicalConditions}}}       --}}
         {{!-- {{/if}} --}}
-        {{#if (isTrue @root.FaceToFace.OtherMedicalConditionsOnFaceToFaceCheckbox)}}
+        {{!-- {{#if (isTrue @root.FaceToFace.OtherMedicalConditionsOnFaceToFaceCheckbox)}}
         <div class="mt-15">
           <b>Other Medical Conditions</b>
         {{{@root.FaceToFace.OtherMedicalConditionsOnFaceToFaceTextbox}}}
-        </div>
+        </div> --}}
+        {{!-- {{/if}} --}}
       </div>
-        {{/if}}
+      <div class="frow justify-start mt-10">
+        <h3 class="mt-10 mb-10">Notes</h3>
+      </div>
+      <div class="margin-remover pt-5">{{{Notes}}}</div>
     </div>
     
        {{!-- {{#filterArr SelectedMedicalConditionsOnFaceToFace 'true' }}
