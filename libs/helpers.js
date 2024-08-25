@@ -182,15 +182,15 @@ export function getSignatureUrl(context, person) {
     case "patient":
       return context?.PatientsSignature || "";
     case "physician":
-      return context?.SelectedOperator?.MDSignature || context?.SignatureCapture3 || "";
+      return context?.OperatorDataMD?.MDSignature || context?.SignatureCapture3 || "";
       // return context?.SignatureCapture3 || "";
     case "witness":
       return context?.RecordReleaseAuthorization?.Witness || "";
     case "provider":
-      return context?.SelectedOperatorNP?.NPSignature || context?.SignatureCapture2 || "";
+      return context?.OperatorData?.NPSignature || context?.SignatureCapture2 || "";
       // return context?.SignatureCapture2 || "";
-    case "authorization":
-      return context?.RecordReleaseAuthorization?.AuthorizationSignature || "";
+    // case "authorization":
+    //   return context?.RecordReleaseAuthorization?.AuthorizationSignature || "";
   }
 }
 export function splitArrayByNumber(array, chunkSize, options) {
