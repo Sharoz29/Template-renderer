@@ -21,8 +21,8 @@
                 <span><strong>{{@root.AppointmentInformation.Referral.HH}}</strong></span>
               </div>
               <div class="frow col-1-2 justify-start gutters">
-                <strong>Date of Service</strong>
-                <span><strong>{{{formatDate @root.AppointmentInformation.EffectiveDate}}}</strong></span>
+                <strong>Date of Service:</strong>
+                <span><strong>{{{formatDate @root.AppointmentInformation.DateOfService}}}</strong></span>
               </div>
             </div>
 
@@ -39,15 +39,15 @@
             <div class="frow justify-start">
               <div class="frow col-1-3 justify-start gutters">
                 <strong>Month</strong>
-                <span>{{extractDatePart @root.AppointmentInformation.EffectiveDate "month"}}</span>
+                <span>{{extractDatePart @root.AppointmentInformation.DateOfService "month"}}</span>
               </div>
               <div class="frow col-1-3 justify-start gutters">
                 <strong>Day</strong>
-                <span>{{extractDatePart @root.AppointmentInformation.EffectiveDate "day"}}</span>
+                <span>{{extractDatePart @root.AppointmentInformation.DateOfService "day"}}</span>
               </div>
               <div class="frow col-1-3 justify-start gutters">
                 <strong>Year</strong>
-                <span>{{extractDatePart @root.AppointmentInformation.EffectiveDate "year"}}</span>
+                <span>{{extractDatePart @root.AppointmentInformation.DateOfService "year"}}</span>
               </div>
             </div>
 
@@ -190,9 +190,9 @@
             <div class="frow justify-start">
               {{#if isTM}}
                 <p>
-                  I <span class="p-5 text-underline text-bold">{{@root.AppointmentInformation.SelectProvider}}</span> conducted a visit utilizing end-to-end encrypted
+                  I,<span class="p-5 text-underline text-bold">{{@root.AppointmentInformation.OperatorData.pyUserName}}</span>, conducted a visit utilizing end-to-end encrypted
                   software featuring 2-way audiovisual telecommunications in real time.
-                  This type of visit was conducted at the request of patient <span class="p-5 text-underline text-bold">{{@root.AppointmentInformation.PatientData.pyFullName}}</span>
+                  This type of visit was conducted at the request of patient, <span class="p-5 text-underline text-bold">{{@root.AppointmentInformation.PatientData.pyFullName}}</span>,
                   and he/she consented to the visit during the scheduling of the visit as well as during the visit.</p>
                 <p>I certify that this patient is confined to his/her home and that he/she can benefit from Homehealth services.</p>
               {{/if}}

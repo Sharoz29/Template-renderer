@@ -4,7 +4,7 @@
     <div class="container centered mb-20">
       {{> formTitle ..}}
     </div>
-    <table class="striped width-100 no-y-padding">
+    <table class="width-100 no-y-padding">
       <col width="16.666%" />
       <col width="16.666%" />
       <col width="16.666%" />
@@ -20,7 +20,7 @@
             </div>
           </td>
           {{!-- style="display: flex; flex-direction: row; width: 100%; align-items: flex-start; justify-content: flex-start;" --}}
-          <td colspan="1">
+          <td>
             <div class="frow justify-start" >
               <div class="cb">
                  {{> checkbox IsChecked=FollowUpVisit name="Follow Up Visit" }}
@@ -29,11 +29,11 @@
               <div class="cb">
                 {{> checkbox IsChecked=RecertVisit name="Recert Visit" }}
               </div>
-              </div>
+              
             </div>
           </td>
 
-          <td colspan="1">
+          <td>
             <div class="frow justify-start gutters">
               <span>Sex:</span>
               <div class="cb ml-10">
@@ -49,10 +49,10 @@
             <div class="frow justify-start">
               Location patient is accessed:
               <div class="cb ml-10">
-              {{> checkbox name="Home Visit" IsChecked=(equalityChecker LocationPatientIsAssessed "Home")}}              
+                {{> checkbox name="Home Visit" IsChecked=(equalityChecker LocationPatientIsAssessed "Home")}}              
               </div>
               <div class="cb ml-10">
-              {{> checkbox name="Boarding Care" IsChecked=(equalityChecker LocationPatientIsAssessed "Boarding Care")}}
+                {{> checkbox name="Boarding Care" IsChecked=(equalityChecker LocationPatientIsAssessed "Boarding Care")}}
               </div>
             </div>
           </td>
@@ -63,10 +63,22 @@
           </td>
         </tr>
         <tr>
-          <td colspan="6">{{ChiefComplaints}}</td>
+          <td colspan="6"> {{ChiefComplaints}}</td>
         </tr>
+      </tbody>
+    </table>
+
+    <table class="width-100 no-y-padding">
+      <col width="16.666%" />
+      <col width="16.666%" />
+      <col width="16.666%" />
+      <col width="16.666%" />
+      <col width="16.666%" />
+      <col width="16.666%" />
+
+      <tbody>  
         
-        <tr>
+        <tr class="bg-shaded">
           <td colspan="6">
             <h4 class="fc m-auto text-uppercase">Allergies</h4>
           </td>
@@ -107,7 +119,7 @@
             </div>
           </td>
         </tr>
-        <tr>
+        <tr class="bg-shaded">
           <td colspan="3">
             <h4 class="fc m-auto">Functional Limitations</h4>
           </td>
@@ -145,7 +157,7 @@
             </div>
           </td>
         </tr>
-        <tr>
+        <tr class="bg-shaded">
           <td colspan="6">
             <h4 class="fc m-auto">PAST MEDICAL HISTORY</h4>
           </td>
@@ -172,7 +184,7 @@
             </div>
           </td>
         </tr>
-        <tr>
+        <tr class="bg-shaded">
           <td colspan="6">
             <h4 class="fc m-auto">PAST SURGICAL HISTORY</h4>
           </td>
@@ -200,7 +212,7 @@
             </div>
           </td>
         </tr>
-        <tr>
+        <tr class="bg-shaded">
           <td colspan="6">
             <h4 class="fc m-auto">Social History</h4>
           </td>
@@ -258,12 +270,11 @@
                   {{> checkbox name=Drugs IsChecked=IsChecked}}
                 </div>
               </div>
-                {{/each}}
-              </div>
+              {{/each}}              
             </div>
           </td>
         </tr>
-        <tr>
+        <tr class="bg-shaded">
           <td colspan="6">
             <h4 class="fc m-auto">
               REVIEW OF SYSTEM / PHYSICAL EXAMINATION
@@ -276,9 +287,9 @@
       <tbody>
         <tr>
           <td colspan="6">
-            <table class="striped width-100 no-y-padding">
+            <table class="width-100 no-y-padding">
               <thead>
-                <tr>
+                <tr class="bg-shaded">
                   <th colspan="7">
                     <div class="fc m-auto">VITALS</div>
                   </th>
@@ -864,7 +875,7 @@
             </table>
           </td>
         </tr>
-        <tr>
+        <tr class="bg-shaded">
           <td colspan="6">
             <h4 class="fc m-auto">ASSESSMENT/DIAGNOSIS</h4>
           </td>
@@ -877,7 +888,7 @@
           </td>
         </tr>
         <!-- PLAN -->
-        <tr>
+        <tr class="bg-shaded">
           <td colspan="6">
             <h4 class="fc m-auto">PLAN</h4>
           </td>
@@ -892,8 +903,14 @@
             </div>
           </td>
           {{/each}}
-        </tr>
         {{/splitArrayByNumber}}
+          <td>
+            <div class="cb">{{> checkbox name="Follow up in" IsChecked=FollowUpIn}}
+              <span class="px-5">{{FollowUpWeeks}} With PCP</span>
+              <span></span>
+            </div>
+          </td>
+        </tr>
         
       </tbody>
     </table>

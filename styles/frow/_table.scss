@@ -4,6 +4,9 @@
     border-spacing: 0;
     width: 100%;
     border: 1px solid #ddd;
+    tr.bg-shaded {      
+        background-color: #f2f2f2;
+      }
     th,
     td {
       border: 1px solid #ddd;
@@ -34,6 +37,8 @@
       th {
         background-color: #f2f2f2;
       }
+
+      
       tr:nth-child(even) {
         background-color: #f2f2f2;
       }

@@ -1942,6 +1942,10 @@ canvas:focus {
   border: 1px solid #ddd;
 }
 
+.cad-forms table tr.bg-shaded {
+  background-color: #f2f2f2;
+}
+
 .cad-forms table th,
 .cad-forms table td {
   border: 1px solid #ddd;
