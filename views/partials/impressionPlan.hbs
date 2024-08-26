@@ -12,28 +12,37 @@
     </p>
     
     <div class="col-1-1 bb stripes">
-      {{!-- <div class="frow justify-start"> --}}
-      <div class="frow justify-start pt-10 pb-10">
-        <h3>Medical Conditions</h3>
+      <div class="frow justify-start">
+        {{!-- 
+        <div class="frow justify-start pt-10 pb-10">
+          <h3>Medical Conditions</h3>
+        </div>
+         --}}
+        <div class="title">
+          <h3 class="mt-10 mb-10">Medical Conditions</h3>          
+        </div>
       </div>
-              {{!-- <div class="title">
-                <h3 class="mt-10 mb-10">Medical Conditions</h3>          
-              </div>
-            </div>
-            <div class="margin-remover pt-5">        
-              {{{CustomizeMedicalConditionsOnFACETOFACE}}}        
-            </div>
-            <div class="frow justify-start mt-10">
-              <h3 class="mt-10 mb-10">Notes</h3>
-            </div>
-            <div class="margin-remover pt-5">{{{Notes}}}</div> --}}
 
-      {{#each SelectedMedicalConditionsOnFaceToFaceChecked}}
       <div>
-        <div class="text-bold pt-5">{{HHSMedicalCondition}}</div>
-        <div class="mb-10">{{Definition}}</div>        
-      </div>      
-      {{/each}}
+        <div class="margin-remover pt-5">        
+          {{{CustomizeMedicalConditionsOnFACETOFACE}}}        
+        </div>
+      </div>
+      <div>
+        <div class="frow justify-start mt-10">
+          <h3 class="mt-10 mb-10">Notes</h3>
+        </div>
+      </div>
+      <div>
+        <div class="margin-remover mt-5 mb-10">{{{Notes}}}</div>
+      </div>
+
+        {{!-- {{#each SelectedMedicalConditionsOnFaceToFaceChecked}}
+        <div>
+          <div class="text-bold pt-5">{{HHSMedicalCondition}}</div>
+          <div class="mb-10">{{Definition}}</div>        
+        </div>      
+        {{/each}} --}}
       
     </div>
     
@@ -98,7 +107,7 @@
       {{/if}}
        --}}
     
-    <div class="notes">
+    <div>
       <p>
         <span>Advanced Care Planning: Advanced care planning with patient, time
           spent
