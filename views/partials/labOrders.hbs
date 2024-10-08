@@ -1,21 +1,144 @@
-<section class="frow" id="assignment-insurance">
-    <div class="container-padding width-100">
-        <div class="content">
-            <div class="border-all m-100" style="border: 2px solid">
-                <hr class="mt-0 mb-0 ml-10 mr-10">
-                <div class="justify-start fz-20 text-bold m-10 mt-0" style="background-color: #e7e7e7">
-                    <div>PATIENT NAME:</div>
-                    <div>DATE OF BIRTH:</div>
-                    <div>ADDRESS:</div>
-                    <div>PHONE NO:</div>
-                    <div>HOME HEALTH:</div>
-                </div>
+<section class="frow" id="qa-lab-orders">
+  <div class="container-padding width-100">
+    <div class="content">
+      <div class="ml-100 mr-100 mt-50" style="border: 2px solid black;">
 
-                <div class="frow justify-start mt-100" style="width: 150px">                    
-                    <img src="{{hostUrl}}/reports/assets/Rx_symbol.jpeg" alt="prescription symbol" />                   
-                </div>
-                
-            </div>
+        <div
+          class="justify-start fz-20 text-bold m-10"
+          style="background-color: #e7e7e7"
+        >
+          <div class="p-5 pt-10">PATIENT NAME:
+            <span class="px-5">{{PatientData.pyFullName}}</span></div>
+          <div class="p-5">DATE OF BIRTH:
+            <span class="px-5">{{formatDate
+                PatientData.DateOfBirth
+              }}</span></div>
+          <div class="p-5">ADDRESS:
+            <span
+              class="px-5"
+            >{{@root.AppointmentInformation.PatientData.pyHomeAddress1}}
+              {{@root.AppointmentInformation.PatientData.pyHomeAddress2}}</span></div>
+          <div class="p-5">PHONE NO:
+            <span
+              class="px-5"
+            >{{@root.AppointmentInformation.PatientData.pyPhoneNumber}}</span></div>
+          <div class="p-5 pb-10">HOME HEALTH:
+            <span
+              class="px-5"
+            >{{@root.AppointmentInformation.Referral.HH}}</span></div>
         </div>
+
+        <div class="frow justify-start">
+          <div class="col-1-5 pt-40">
+            <div>
+              <img
+                src="{{hostUrl}}/reports/assets/Rx_symbol.jpeg"
+                alt="prescription symbol"
+                style="height:200px; width:160px"
+              />
+            </div>
+          </div>
+          {{! <div class="col-4-5 pt-100 mt-50 fz-18"> }}
+          <div class="col-4-5 fz-20">
+
+            {{! <div class="ml-50"> }}
+
+            {{!-- <div class="frow pt-100">
+              {{#each
+                (getCheckedItems SelectedQALabDx "LabsDiagnostics")
+                as |diagnostic|
+              }}
+                <div class="col-1-2 p-5">
+                  {{diagnostic}}.
+
+                </div>
+              {{/each}}
+            </div> --}}
+
+            <table>
+              <tbody>
+
+                {{#splitArrayByNumber
+                  (getCheckedItems SelectedQALabDx "LabsDiagnostics") 2
+                }}
+                  <tr>
+                    {{#each chunk}}
+                      <td>
+                        <div
+                          class="frow justify-start fz-20 text-bold"
+                        >{{this}}</div></td>
+                    {{/each}}
+                  </tr>
+                {{/splitArrayByNumber}}
+              </tbody>
+            </table>
+
+            {{! </div> }}
+
+          </div>
+        </div>
+        <div class="frow justify-start mb-100 mt-50 fz-20">
+          <div class="col-1-6"></div>
+          <div class="col-5-6">
+            <strong>Dx:</strong>
+            {{#each (getDiagnosisAndICD SelectedQADiagnosis) as |diagnosis|}}
+
+              <span>{{diagnosis}},</span>
+
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="frow justify-start fz-20 px-20 mb-10 text-bold">
+          <div class="col-1-2">
+            {{@root.AppointmentInformation.OperatorData.pyUserName}}
+          </div>
+          <div class="col-1-2">
+            NPI:
+            {{@root.AppointmentInformation.OperatorData.NPIID}}
+          </div>
+        </div>
+
+        <hr style="width: 97%" />
+
+        <div class="frow justify-start fz-20 px-20 mb-10">
+          <div class="col-1-2">
+            Nurse Practitioner Name:
+          </div>
+          <div class="col-1-2">
+            Date:
+            <span class="px-5">
+              {{formatDate @root.AppointmentInformation.DateOfService}}
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-50 mb-50"></div>
+
+        <div class="frow justify-start fz-20 px-20 mb-10">
+          <div class="col-1-2 text-bold">
+            {{@root.AppointmentInformation.OperatorDataMD.pyUserName}}
+          </div>
+          <div class="col-1-2 text-bold">
+            {{@root.AppointmentInformation.OperatorData.NPIID}}
+          </div>
+        </div>
+
+        <hr style="width: 97%" />
+
+        <div class="frow justify-start fz-20 px-20 mb-100">
+          <div class="col-1-2">
+            Supervising Physician Name:
+          </div>
+          <div class="col-1-2">
+            Date:
+            <span class="px-5">
+              {{formatDate @root.AppointmentInformation.DateOfService}}
+            </span>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </div>
 </section>

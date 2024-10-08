@@ -19,11 +19,15 @@
         </div>
          --}}
         <div class="title">
-          <h3 class="mt-10 mb-10">Medical Conditions</h3>          
+          <h3 class="bg-shaded mt-10 mb-10">Medical Conditions</h3>          
         </div>
       </div>
+      
 
-      <div>
+
+
+      
+      {{!-- <div>
         <div class="margin-remover pt-5">        
           {{{CustomizeMedicalConditionsOnFACETOFACE}}}        
         </div>
@@ -35,15 +39,41 @@
       </div>
       <div>
         <div class="margin-remover mt-5 mb-10">{{{Notes}}}</div>
-      </div>
+      </div> --}}
 
-        {{!-- {{#each SelectedMedicalConditionsOnFaceToFaceChecked}}
+
+
+
+      <div class="frow justify-start">
+        {{#each SelectedMedicalConditionsOnFaceToFaceChecked}}
         <div>
           <div class="text-bold pt-5">{{HHSMedicalCondition}}</div>
           <div class="mb-10">{{Definition}}</div>        
         </div>      
-        {{/each}} --}}
-      
+        {{/each}}
+      </div>
+      {{#if (isTrue FaceToFace.OtherMedicalConditionsOnFaceToFaceCheckbox)}}
+      <div class="frow justify-start text-bold p-5 px-10 mb-10">        
+        Other Medical Conditions        
+      </div>      
+      <div class="frow justify-start margin-remover mt-5 mb-10">        
+        {{{FaceToFace.OtherMedicalConditionsOnFaceToFaceTextbox}}}        
+      </div>
+      {{/if}}
+      <div class="frow justify-start text-bold p-5 px-10 mb-10">                          
+        Notes        
+      </div>      
+      <div class="frow justify-start margin-remover mt-5 mb-20">        
+        {{{Notes}}}        
+      </div>
+      {{#if PreviousCaseData.CompleteMedicalNotes}}
+      <div class="frow justify-start text-bold p-5 px-10 mb-10">        
+        Previous Notes from Case-{{pyID}} (Date of Service: {{formatDate PreviousCaseData.AppointmentInformation.DateOfService}}, NP Name: {{PreviousCaseData.NPName}})        
+      </div>      
+      <div class="frow justify-start margin-remover mt-5 mb-20">        
+        {{{PreviousCaseData.CompleteMedicalNotes}}}
+      </div>
+      {{/if}}
     </div>
     
        {{!-- {{#filterArr SelectedMedicalConditionsOnFaceToFace 'true' }}

@@ -254,6 +254,22 @@ export function isActivityPermitted(activities, activityName) {
     return 'false';
 }
 
+export function getCheckedItems(arr, valueProp) {
+  if (!Array.isArray(arr) || arr.length === 0) return [];  
+  const checkedItems = arr
+    .filter(item => item.IsChecked === "true")
+    .map(item => item[valueProp] || "");
+
+  return checkedItems;
+}
+
+export function getDiagnosisAndICD(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return [];  
+  // Filter checked items and map to "Diagnosis ICD"
+  return arr
+    .filter(item => item.IsChecked === "true")
+    .map(item => `${item.Diagnosis} ${item.ICD}`);
+}
 
 export const helpers = {
   camelToSentence,
@@ -282,7 +298,9 @@ export const helpers = {
   fallRiskMapper,
   calculateAge,
   MapF2FTelemed,
-  isActivityPermitted
+  isActivityPermitted,
+  getCheckedItems,
+  getDiagnosisAndICD,
 };
 
 export const HBS = create({
