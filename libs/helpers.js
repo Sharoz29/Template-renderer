@@ -41,8 +41,8 @@ export function formsToPrint(allForms, form, context) {
   }
 
   if (
-    !["teleMedicines", "faceToFaceEncounter"].includes(form) &&
-    allForms.includes(form)
+    !["teleMedicines", "faceToFaceEncounter"]?.includes(form) &&
+    allForms?.includes(form)
   ) {
     return form;
   }
@@ -62,7 +62,7 @@ export function heading(context) {
   );
 }
 export function isSelected(lab, selectedLabs, options) {
-  if (selectedLabs.includes(lab)) {
+  if (selectedLabs?.includes(lab)) {
     return options.fn(this);
   }
   return options.inverse(this);
@@ -140,7 +140,7 @@ export function fallRiskMapper(array, options) {
   const newObj = array.reduce(
     (acc, item) => {
       const { IsChecked, FallRiskOption, WhyItMatters } = item;
-      const isInTwoPoints = twoPointOption.includes(FallRiskOption);
+      const isInTwoPoints = twoPointOption?.includes(FallRiskOption);
       const newItem = {
         IsYes: IsChecked === "true",
         IsNo: IsChecked === "false",
