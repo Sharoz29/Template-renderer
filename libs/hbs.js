@@ -6,11 +6,9 @@ import FormData from "form-data";
 import fs from "fs";
 import { handlebars, HBS, helpers } from "./libs/helpers.js";
 
-
-function _setupHBS(){
+function _setupHBS() {
   // Setup Native HBS to use helpers and partial templates folders and all
   handlebars.registerHelper(helpers);
   handlebars.registerPartials(path.resolve(__dirname, "./views/partials"));
-  handlebars.
-
+  // handlebars.
 }
