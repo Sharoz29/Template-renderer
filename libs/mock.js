@@ -26,8 +26,7 @@ export const mockContext = {
     },
   ],
   allForms: [
-    // "cms1500",
-    "labOrders",
+    // "cms1500",    
     "referralForm",
     "admissionOrders",
     "impressionPlan",
@@ -42,10 +41,14 @@ export const mockContext = {
     "recordsRelease",
     "checklistForTobacco",
     "fallRiskList",
+    "labOrders_Labs", 
+    "labOrders_Dx",    
+    "labOrders_DME", 
+    "labOrders_Supplies", 
+    "labOrders_ReferTo"
   ],
   selectedForms: [
-    // "cms1500",
-    // "labOrders",
+    // "cms1500",    
     "referralForm",
     "admissionOrders",
     "impressionPlan",
@@ -61,7 +64,7 @@ export const mockContext = {
     "recordsRelease",
     "intakeForm",
   ],
-  labOrders: ["labOrders"],
+  labOrders: ["labOrders_Labs", "labOrders_Dx", "labOrders_DME", "labOrders_Supplies", "labOrders_ReferTo"],
   labReferences: [
     "CBC",
     "BMP",

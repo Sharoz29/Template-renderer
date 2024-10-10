@@ -59,12 +59,15 @@
         </tr>
         <tr>
           <td colspan="6">
-            <h4>Chief Complaint:</h4>
+            <div class="p-10 pl-0">
+            <span class="text-bold">Chief Complaint:</span>
+            <span class="p-5">what is the complaint chief{{ChiefComplaints}}</span>
+            </div>
           </td>
         </tr>
-        <tr>
-          <td colspan="6"> {{ChiefComplaints}}</td>
-        </tr>
+        {{!-- <tr>
+          <td colspan="6">{{ChiefComplaints}}&nbsp</td>
+        </tr> --}}
       </tbody>
     </table>
 
@@ -92,7 +95,8 @@
           </td>
         </tr>
         <!-- Repeat this row -->
-        {{#each DrugFood}}
+        {{#if DrugFood}}
+        {{#each DrugFood}}        
         <tr>
           <td colspan="3">
             <span>{{DrugFood}}</span>
@@ -102,6 +106,16 @@
           </td>
         </tr>
         {{/each}}
+        {{else}}
+        <tr>
+          <td colspan="3">
+            <span>&nbsp</span>
+          </td>
+          <td colspan="3">
+            <span>&nbsp</span>
+          </td>
+        </tr>
+        {{/if}}
         <tr>
           <td>
             <div class="cb">
@@ -336,37 +350,37 @@
                 <tr>
                   <td>
                     <div class="text-center">
-                      {{HT}}
+                      &nbsp{{HT}}&nbsp
                     </div>
                   </td>
                   <td>
                     <div class="text-center">
-                      {{WT}}
+                      &nbsp{{WT}}&nbsp
                     </div>  
                   </td>
                   <td>
                     <div class="text-center">
-                      {{TEMP}}
+                      &nbsp{{TEMP}}&nbsp
                     </div> 
                   </td>
                   <td>
                     <div class="text-center">
-                      {{BP}}
+                      &nbsp{{BP}}&nbsp
                     </div> 
                   </td>
                   <td>
                     <div class="text-center">
-                     {{HR}}
+                     &nbsp{{HR}}&nbsp
                     </div> 
                   </td>
                   <td>
                     <div class="text-center">
-                      {{RR}}
+                      &nbsp{{RR}}&nbsp
                     </div> 
                   </td>
                   <td>
                     <div class="text-center">
-                      {{SAT}}
+                      &nbsp{{SAT}}&nbsp
                     </div>   
                   </td>
                 </tr>
@@ -884,7 +898,7 @@
           <td colspan="6">
             {{#each (getMedicalConditionsFromF2F @root)}}
             <span class="pr-5">{{PASTMEDICALHISTORY}},</span>
-            {{/each}}
+            {{/each}}&nbsp
           </td>
         </tr>
         <!-- PLAN -->
