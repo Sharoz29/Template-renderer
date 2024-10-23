@@ -93,6 +93,7 @@
               </tr>
             </thead>
             <tbody>
+              {{#if PrescribedMedicines}}
               {{#each PrescribedMedicines}}
               <tr>
                 <td>{{MedicineNameList}}</td>
@@ -103,6 +104,16 @@
                 <td>{{Refills}}</td>
               </tr>
               {{/each}}
+              {{else}}
+              <tr>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+              </tr>
+              {{/if}}
             </tbody>
           </table>
 

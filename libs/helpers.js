@@ -23,7 +23,7 @@ export function isTrue(value) {
 }
 
 export function isFalse(value) {
-  return value == false || value == "false" || value == "No"
+  return value == false || value == "false" || value == "No";
 }
 
 export function formsToPrint(allForms, form, context) {
@@ -41,8 +41,8 @@ export function formsToPrint(allForms, form, context) {
   }
 
   if (
-    !["teleMedicines", "faceToFaceEncounter"].includes(form) &&
-    allForms.includes(form)
+    !["teleMedicines", "faceToFaceEncounter"]?.includes(form) &&
+    allForms?.includes(form)
   ) {
     return form;
   }
@@ -62,7 +62,7 @@ export function heading(context) {
   );
 }
 export function isSelected(lab, selectedLabs, options) {
-  if (selectedLabs.includes(lab)) {
+  if (selectedLabs?.includes(lab)) {
     return options.fn(this);
   }
   return options.inverse(this);
@@ -140,7 +140,7 @@ export function fallRiskMapper(array, options) {
   const newObj = array.reduce(
     (acc, item) => {
       const { IsChecked, FallRiskOption, WhyItMatters } = item;
-      const isInTwoPoints = twoPointOption.includes(FallRiskOption);
+      const isInTwoPoints = twoPointOption?.includes(FallRiskOption);
       const newItem = {
         IsYes: IsChecked === "true",
         IsNo: IsChecked === "false",
@@ -182,13 +182,17 @@ export function getSignatureUrl(context, person) {
     case "patient":
       return context?.PatientsSignature || "";
     case "physician":
-      return context?.OperatorDataMD?.MDSignature || context?.SignatureCapture3 || "";
-      // return context?.SignatureCapture3 || "";
+      return (
+        context?.OperatorDataMD?.MDSignature || context?.SignatureCapture3 || ""
+      );
+    // return context?.SignatureCapture3 || "";
     case "witness":
       return context?.RecordReleaseAuthorization?.Witness || "";
     case "provider":
-      return context?.OperatorData?.NPSignature || context?.SignatureCapture2 || "";
-      // return context?.SignatureCapture2 || "";
+      return (
+        context?.OperatorData?.NPSignature || context?.SignatureCapture2 || ""
+      );
+    // return context?.SignatureCapture2 || "";
     // case "authorization":
     //   return context?.RecordReleaseAuthorization?.AuthorizationSignature || "";
   }
@@ -245,15 +249,33 @@ export function filterArr(arr, criteria, options) {
 }
 
 export function isActivityPermitted(activities, activityName) {
-    if (activities && Array.isArray(activities)) {
-        const activity = activities.find(activity => activity.ActivitiesPermited === activityName);
-        if (activity && activity.IsChecked === "true") {
-            return 'true';
-        }
+  if (activities && Array.isArray(activities)) {
+    const activity = activities.find(
+      (activity) => activity.ActivitiesPermited === activityName
+    );
+    if (activity && activity.IsChecked === "true") {
+      return "true";
     }
-    return 'false';
+  }
+  return "false";
 }
 
+export function getCheckedItems(arr, valueProp) {
+  if (!Array.isArray(arr) || arr.length === 0) return [];
+  const checkedItems = arr
+    .filter((item) => item.IsChecked === "true")
+    .map((item) => item[valueProp] || "");
+
+  return checkedItems;
+}
+
+export function getDiagnosisAndICD(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return [];
+  // Filter checked items and map to "Diagnosis ICD"
+  return arr
+    .filter((item) => item.IsChecked === "true")
+    .map((item) => `${item.Diagnosis} ${item.ICD}`);
+}
 
 export const helpers = {
   camelToSentence,
@@ -282,7 +304,9 @@ export const helpers = {
   fallRiskMapper,
   calculateAge,
   MapF2FTelemed,
-  isActivityPermitted
+  isActivityPermitted,
+  getCheckedItems,
+  getDiagnosisAndICD,
 };
 
 export const HBS = create({

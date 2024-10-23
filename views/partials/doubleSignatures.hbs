@@ -2,9 +2,11 @@
       <div class="frow justify-start mt-10">
         <div class="col-1-2 frow row-start">          
           Signature:
-          <span class="name text-underline px-30">{{> signature name="physician"}}</span>          
+          {{#if @root.AppointmentInformation.PhysicianSignatureDate}}
+          <span class="name text-underline px-30">{{> signature name="physician"}}</span>
+          {{/if}}
         </div>
-        <div class="col-1-2 frow row-start">          
+        <div class="col-1-2 frow row-start">
           Signature:
           <span class="name text-underline px-30">{{> signature name="provider"}}</span>          
         </div>

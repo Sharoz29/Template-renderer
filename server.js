@@ -103,14 +103,16 @@ router.get("/attach-lab/:id", async (req, res) => {
 });
 
 router.get("/get-pdf/:id/:fileName", async (req, res) => {
-  // console.group(
-  //   "GET PDF FOR " + coloredText("CASEID: " + req.params.id, "red")
-  // );
   console.time(coloredText(req.params.id, "green") + " in");
   getPDFBuffer(req.params.id, renderView, "pdf")
     .then(({ pdfBuffer }) => {
       res.setHeader("Content-Type", "application/pdf");
-      res.setHeader("Content-Disposition", `attachment; filename=${req.params.fileName || 'output'}-${req.params.id}.pdf`);
+      res.setHeader(
+        "Content-Disposition",
+        `attachment; filename=${req.params.fileName || "output"}-${
+          req.params.id
+        }.pdf`
+      );
       res.send(pdfBuffer);
       console.timeEnd(coloredText(req.params.id, "green") + " in");
       // console.groupEnd();
