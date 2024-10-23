@@ -44,7 +44,7 @@ function isTokenExpired(createdAt, expiresIn) {
 export async function getToken() {
   // read the access token from the file
   try {
-    const tokenData = global.tokenData;
+    const tokenData = global?.tokenData;
     if (
       tokenData &&
       !isTokenExpired(tokenData.createdAt, tokenData.expires_in)
