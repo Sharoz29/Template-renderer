@@ -21,7 +21,7 @@ spec:
             - name: CLIENTSECRET
               value: "5038AA181BD81B18D9E6113E7668A9FD"
             - name: BASEURL
-              value: https://pega-web-batch.pega23.svc.cluster.local
+              value: https://pega-dev-web-batch.pega24.svc.cluster.local
             - name: NODE_ENV
               value: production
           # envFrom:
@@ -56,8 +56,8 @@ metadata:
   annotations:
     cert-manager.io/issuer: letsencrypt-prod
     kubernetes.io/tls-acme: "true"
-    meta.helm.sh/release-name: pega23
-    meta.helm.sh/release-namespace: pega23
+    meta.helm.sh/release-name: pega24
+    meta.helm.sh/release-namespace: pega24
     nginx.ingress.kubernetes.io/proxy-body-size: 2048m
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "6000"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"
@@ -65,11 +65,11 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/use-regex: "true"
   name: lcs-reports
-  namespace: pega23
+  namespace: pega24
 spec:
   ingressClassName: nginx
   rules:
-    - host: web.pega23.lowcodesol.co.uk
+    - host: web.pega24.lowcodesol.co.uk
       http:
         paths:
           - backend:
@@ -82,5 +82,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - web.pega23.lowcodesol.co.uk
+        - web.pega24.lowcodesol.co.uk
       secretName: pega-ss
