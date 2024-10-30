@@ -8,7 +8,6 @@ import { HBS, helpers } from "./helpers.js";
 import { getCaseData } from "./pega.js";
 import { coloredText } from "./global.js";
 
-import { pegaBaseUrl as _pegaBaseUrl } from "./global.js";
 
 // Get the current file's directory
 const __filename = fileURLToPath(import.meta.url);
@@ -79,14 +78,15 @@ export function getPDFBuffer(caseID, renderView, type) {
     const viewData = { ...data, type };
     return {
       access_token: data.access_token,
-      pdfBuffer: await createPdfFromHtml(await renderView("home", viewData), {
+      pdfBuffer: await createPdfFromHtml(await renderView("home", {...viewData }), {
         printBackground: true,
+        layout: 'main',
         headerTemplate: await HBS.render(
           path.resolve(__dirname, "../views/header.hbs"),
           {
             ...viewData,
             officeLogo: `data:image/jpeg;base64,${data?.Office?.LogoAttachStream}`,
-          }
+          },
         ),
         footerTemplate: await HBS.render(
           path.resolve(__dirname, "../views", "footer.hbs"),

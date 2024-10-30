@@ -1,9 +1,9 @@
+
 // export const pegaBaseUrl = "https://web.pega23.lowcodesol.co.uk";
-export const pegaBaseUrl = "https://web.pega23.lowcodesol.co.uk";
-export function hostUrl(server) {
-  return process.env.node_env === "production" || server === "web"
-    ? pegaBaseUrl
-    : "http://localhost:3000";
+export const pegaBaseUrl =
+  process.env.INGRESSURL;
+export function hostUrl(type) {
+  return type === 'pdf' ? 'http://localhost:3000' : pegaBaseUrl;
 }
 
 /**

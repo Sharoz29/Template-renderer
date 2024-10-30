@@ -144,7 +144,7 @@ router.get("/get-lab/:id", async (req, res) => {
 router.get("/get-html/:id", async (req, res) => {
   console.time(coloredText(req.params.id, "green") + " in");
   try {
-    res.render("home", await getCaseData(req.params.id));
+    res.render("home", {...await getCaseData(req.params.id), type: null});
     console.timeEnd(coloredText(req.params.id, "green") + " in");
   } catch (error) {
     console.timeEnd(coloredText(req.params.id, "green") + " in");

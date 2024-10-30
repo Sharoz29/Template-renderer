@@ -1,4 +1,4 @@
-import { axios } from "./axios.js";
+import { axios, defaultConfig } from "./axios.js";
 import { getToken } from "./oauth.js";
 import { mockContext } from "./mock.js";
 import { coloredText } from "./global.js";
@@ -12,8 +12,9 @@ export async function getCaseData(caseID) {
       coloredText(caseID, "green") + " in",
       " --> Before Getting Case Data"
     );
+
     const response = await axios.get(
-      `/prweb/api/v1/cases/LCS-CALLADOC-WORK ${caseID}`,
+      `${process.env.BASEURL}/prweb/api/v1/cases/LCS-CALLADOC-WORK ${caseID}`,
       {
         headers: {
           Authorization: `Bearer ${access_token}`,
@@ -40,7 +41,7 @@ export async function getCaseData(caseID) {
     };
     // res.send(response.data);
   } catch (error) {
-    console.log("Has Error:", error.message);
+    console.log("Has Error Getting Case Data:", error);
     global.tokenData = null;
     // res?.error(error.message);
   }
@@ -65,7 +66,7 @@ export async function uploadPdfToPega({
       " --> Before Uploading To Pega"
     );
     const uploadResponse = await axios.post(
-      `/prweb/api/application/v2/attachments/upload`,
+      `${process.env.BASEURL}/prweb/api/application/v2/attachments/upload`,
       form,
       {
         headers: {
@@ -115,7 +116,7 @@ export async function attachPdfToCase(
 
   try {
     const attachmentResponse = await axios.post(
-      `/prweb/api/application/v2/cases/${caseName}/attachments`,
+      `${process.env.BASEURL}/prweb/api/application/v2/cases/${caseName}/attachments`,
       {
         attachments: [{ ...attachment }],
       },

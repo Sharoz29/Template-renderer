@@ -10,7 +10,9 @@ const httpsAgent = new https.Agent({
   // passphrase: "YYY",
 });
 
-export const axios = _axios.default.create({
+export const defaultConfig = {
   httpsAgent,
-  baseURL: process.env.BASEURL || "https://web.pega23.lowcodesol.co.uk",
-});
+  baseURL: process.env.BASEURL,
+}
+
+export const axios = _axios.default.create(defaultConfig);

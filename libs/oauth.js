@@ -1,14 +1,12 @@
-import { axios } from "./axios.js";
+import { axios, defaultConfig } from "./axios.js";
 import dotenv from "dotenv";
 import fs from "fs";
 
 dotenv.config();
 
-import { pegaBaseUrl } from "./global.js";
-// const pegaBaseUrl = "https://web.pega23.lowcodesol.co.uk";
 
 // URL to get the token
-const url = `${pegaBaseUrl}/prweb/PRRestService/oauth2/v1/token`;
+const url = `${process.env.BASEURL}/prweb/PRRestService/oauth2/v1/token`;
 
 // Your client credentials
 const client_id = process.env.CLIENTID;
@@ -49,7 +47,7 @@ export async function getToken() {
       tokenData &&
       !isTokenExpired(tokenData.createdAt, tokenData.expires_in)
     ) {
-      return tokenData.access_token;
+      return tokenData?.access_token;
     } else {
       console.log("Token is expired");
     }
@@ -57,19 +55,21 @@ export async function getToken() {
     console.error("Failed to read access token from file:");
   }
 
+  console.log("URL: ", url);
+
   return await axios
     .post(url, data, {
+      ...defaultConfig,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     })
     .then((response) => {
       // Handle success
-      const tokenData = response.data;
+      const tokenData = response?.data || {};
       global.tokenData = { ...tokenData, createdAt: new Date() };
 
-      // console.log("Got access token:", tokenData.access_token);
-      const access_token = tokenData.access_token;
+      const access_token = tokenData?.access_token;
 
       // Write Access Token to a file
       // fs.writeFileSync(

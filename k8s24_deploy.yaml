@@ -14,7 +14,7 @@ spec:
       containers:
         - name: lcs-reports
           imagePullPolicy: Always
-          image: ansaries/lcs-reports:1.0.45
+          image: ansaries/lcs-reports:1.0.51
           env:
             - name: CLIENTID
               value: "14965090564081136535"
@@ -22,6 +22,8 @@ spec:
               value: "5038AA181BD81B18D9E6113E7668A9FD"
             - name: BASEURL
               value: https://pega-dev-web-batch.pega24.svc.cluster.local
+            - name: INGRESSURL
+              value: "https://web.pega24.lowcodesol.co.uk"
             - name: NODE_ENV
               value: production
           # envFrom:
@@ -29,8 +31,8 @@ spec:
           #       name: lcs-reports
           resources:
             requests:
-              memory: 2Gi
-              cpu: 1200m
+              memory: 1Gi
+              cpu: 500m
             limits:
               memory: 6Gi
               cpu: 2

@@ -22,6 +22,8 @@ spec:
               value: "5038AA181BD81B18D9E6113E7668A9FD"
             - name: BASEURL
               value: https://pega-web-batch.pega23.svc.cluster.local
+            - name: INGRESSURL
+              value: "https://web.pega23.lowcodesol.co.uk"
             - name: NODE_ENV
               value: production
           # envFrom:
@@ -29,8 +31,8 @@ spec:
           #       name: lcs-reports
           resources:
             requests:
-              memory: 2Gi
-              cpu: 1200m
+              memory: 1Gi
+              cpu: 500m
             limits:
               memory: 6Gi
               cpu: 2
