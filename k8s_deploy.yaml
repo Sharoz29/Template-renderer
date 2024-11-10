@@ -19,7 +19,7 @@ spec:
             - name: CLIENTID
               value: "14965090564081136535"
             - name: CLIENTSECRET
-              value: "5038AA181BD81B18D9E6113E7668A9FD"
+              value: "A6292B0D9EC5C2F6F0D0488012F718E1"
             - name: BASEURL
               value: https://pega-web-batch.pega23.svc.cluster.local
             - name: INGRESSURL
