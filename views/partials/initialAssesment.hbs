@@ -14,22 +14,27 @@
 
       <tbody>
         <tr>
-          <td colspan="1">
-            <div class="cb">
-                {{> checkbox IsChecked=InitialVisit name="Initial Visit" }}
-            </div>
-          </td>
+          <td colspan="2">
+            <div class="frow text-center">
+              <div class="col-1-3">
+              {{!-- <div class="cb"> --}}
+                  {{> checkbox IsChecked=InitialVisit name="Initial Visit" }}
+              {{!-- </div> --}}
+              </div>
+          {{!-- </td> --}}
           {{!-- style="display: flex; flex-direction: row; width: 100%; align-items: flex-start; justify-content: flex-start;" --}}
-          <td>
-            <div class="frow justify-start" >
-              <div class="cb">
-                 {{> checkbox IsChecked=FollowUpVisit name="Follow Up Visit" }}
+          {{!-- <td> --}}
+            {{!-- <div class="frow justify-start" > --}}
+              <div class="col-1-3">
+                {{!-- <div class="cb"> --}}
+                  {{> checkbox IsChecked=FollowUpVisit name="Follow Up Visit" }}
+                {{!-- </div> --}}
               </div>
-              
-              <div class="cb">
-                {{> checkbox IsChecked=RecertVisit name="Recert Visit" }}
+              <div class="col-1-3">
+                {{!-- <div class="cb"> --}}
+                  {{> checkbox IsChecked=RecertVisit name="Recert Visit" }}
+                {{!-- </div> --}}
               </div>
-              
             </div>
           </td>
 
@@ -61,7 +66,7 @@
           <td colspan="6">
             <div class="p-10 pl-0">
             <span class="text-bold">Chief Complaint:</span>
-            <span class="p-5">what is the complaint chief{{ChiefComplaints}}</span>
+            <span class="p-5">{{ChiefComplaints}}</span>
             </div>
           </td>
         </tr>
@@ -145,32 +150,88 @@
           <td colspan="3">
             <div class="frow cb justify-start">
               {{#each @root.SelectedFunctionalLimitations}}
-              <div class="col-1-3 cb">
+              <div class="col-1-3">
                  {{> checkbox IsChecked=IsChecked name=PatientFunctionalLimitation }}
               </div>
               {{/each}}
-              <div class="col-3-3 cb">
-                {{> checkbox IsChecked=OtherFunctionalLimitationBool name='Others: '}}
-                <span class="pl-5 text-bold margin-remover">{{{OtherFunctionalLimitationTextbox}}}</span>                
+              <div class="col-1-3">
+                <div class="frow justify-start margin-remover">
+                  <span>{{> checkbox IsChecked=OtherFunctionalLimitationBool name='Others: '}}</span>
+                  <span class="pl-5 text-bold margin-remover">{{{OtherFunctionalLimitationTextbox}}}</span>                
+                </div>
               </div>
-
+              <div class="col-1-3">
+                {{> checkbox IsChecked=PatientIsFullyContinent name="Patient is fully continent"}}
+              </div>
+              {{#if (isTrue PatientHasIncontinenceBool)}}
+              <div class="col-1-3">
+                {{> checkbox IsChecked=PatientHasIncontinenceBool name="Patient has incontinence: "}}
+              </div>
+              <div class="col-1-3">
+                {{> checkbox IsChecked=true name=PatientHasIncontinence}}
+              </div>
+              {{/if}}              
+              {{!-- <div class="frow justify-start"> --}}
+              {{!-- </div> --}}
             </div>
           </td>
           <td colspan="3">
             <div class="frow cb justify-start">
               <!-- Repeat Below for all list of activities permited -->
               {{#each @root.SelectedActivitiesPermitted}}
-              <div class="cb col-1-3">
+              <div class="col-1-3">
                   {{> checkbox IsChecked=IsChecked name=ActivitiesPermited }}
               </div>
               {{/each}}
-              <div class="col-3-3 cb">
+              <div class="col-1-3">
+                {{> checkbox IsChecked=PatientIsIndependentInAllADLs   name="Independent in all ADLs" }}
+              </div>
+              <div class="col-1-3">
+                {{> checkbox IsChecked=PatientNeedsHelpWithADLs name="Needs help with ADLs" }}
+              </div>
+              {{!-- <div class="col-1-3"></div> --}}
+              <div class="frow margin-remover">
                 {{> checkbox IsChecked=OtherActivitiesPermittedBool name='Others: '}}
-                <span class="pl-5 text-bold margin-remover">{{{OtherActivitiesPermittedTextbox}}}</span>
+                <span class="pl-5 text-bold">{{{OtherActivitiesPermittedTextbox}}}</span>
               </div>
             </div>
           </td>
         </tr>
+        {{#if (isTrue PatientNeedsHelpWithADLs)}}
+        <tr class="bg-shaded">
+          <td colspan="6">
+            <h4>Patient needs help with:</h4>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <div class="frow justify-start cb fz-15">
+              <div class="col-1-8">
+                Basic ADLs  
+              </div>
+              {{#each @root.SelectedBasicADLs}}
+              <div class="col-1-8">
+                {{> checkbox IsChecked=IsChecked name=BasicADLs}}                
+              </div>
+              {{/each}}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <div class="frow justify-start fz-15">
+              <div class="col-1-6">
+                Instrumental ADLs
+              </div>
+              {{#each @root.SelectedInstrumentalADLs}}
+              <div class="col-1-6">
+                {{> checkbox IsChecked=IsChecked name=InstrumentalADLs}}
+              </div>
+              {{/each}}
+            </div>
+          </td>
+        </tr>
+        {{/if}}
         <tr class="bg-shaded">
           <td colspan="6">
             <h4 class="fc m-auto">PAST MEDICAL HISTORY</h4>
@@ -857,9 +918,29 @@
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
                         {{> checkbox IsChecked=OtherNeurologicalBool name="Other" }} :
-                        <span class="margin-remover">{{{OtherNeurological}}}</span>
+                        <span class="margin-remover">there are some other neurological issues that can be mentioned here{{{OtherNeurological}}}</span>
                       </div>
                     </div>
+                    {{!-- <div class="frow justify-start">
+                      <div class="frow justify-start col-1-5">
+                      {{> checkbox IsChecked=PatientHasDifficultiesWithBool name="Difficulties with:"}}
+                      </div>
+                      {{#each @root.SelectedPatientDifficulties}}
+                      <div class="col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=PatientHasDifficultiesWithList}}
+                      </div>
+                      {{/each}}
+                    </div>
+                    <div class="frow justify-start cb">
+                      <div class="frow justify-start col-1-5">
+                      {{> checkbox IsChecked=PatientHasDiagnosedWithBool name="Diagnosed with:"}}
+                      </div>
+                      {{#each @root.SelectedPatientDiagnosedWith}}
+                      <div class="col-1-6">
+                        {{> checkbox IsChecked=IsChecked name=PatientHasBeenDiagnosedWithList}}
+                      </div>
+                      {{/each}}
+                    </div> --}}
                   </td>
                 </tr>
                 <tr>
