@@ -266,7 +266,7 @@ export function getCheckedItems(arr, valueProp) {
     .filter((item) => item.IsChecked === "true")
     .map((item) => item[valueProp] || "");
 
-  return checkedItems;
+  return checkedItems.map(item => " " + item).join(",");
 }
 
 export function getDiagnosisAndICD(arr) {

@@ -3,13 +3,59 @@
     <div class="container mb-20">
       {{> formTitle }}
     </div>
-    <p>
-      <strong>The patient, {{@root.AppointmentInformation.PatientData.pyFullName}} {{calculateAge @root.AppointmentInformation.PatientData.DateOfBirth}} year old {{@root.AppointmentInformation.PatientData.Sex}}, has had the following medical conditions in the past:</strong>
+    <div class="mb-10">
+      The patient, <strong>{{@root.AppointmentInformation.PatientData.pyFullName}} {{calculateAge @root.AppointmentInformation.PatientData.DateOfBirth}} year old {{@root.AppointmentInformation.PatientData.Sex}}</strong>, has had the following medical conditions in the past:
         
-      {{#each (getMedicalConditionsFromF2F @root)}}
+      <strong>{{#each (getMedicalConditionsFromF2F @root)}}
           <span class="pr-5">{{PASTMEDICALHISTORY}},</span>
       {{/each}}
-    </p>
+      </strong>
+    </div>
+    
+    <div class="frow justify-start mb-10">
+      {{!-- {{#if 
+        (isTrue InitialAssessmentForm.PatientIsFullyContinent)}}<strong class="mr-5">Patient is fully continent.</strong>
+      {{else}} 
+        (isTrue InitialAssessmentForm.PatientHasIncontinenceBool) Patient has incontinence:<strong class="ml-5 mr-5">{{InitialAssessmentForm.PatientHasIncontinence}}.</strong>
+      {{/if}}
+      {{#if 
+        (isTrue InitialAssessmentForm.PatientIsIndependentInAllADLs)}} <strong class="mr-5">Patient is independent in all ADLs.</strong>
+      {{else}} 
+        (isTrue InitialAssessmentForm.PatientNeedsHelpWithADLs) Patient needs help with:
+        {{#if (getCheckedItems SelectedBasicADLs "BasicADLs")}}
+          <strong class="ml-5">Basic ADLs: {{getCheckedItems SelectedBasicADLs "BasicADLs"}}.</strong>
+        {{/if}}
+        {{#if (getCheckedItems SelectedInstrumentalADLs "InstrumentalADLs")}}
+          <strong class="ml-5">Instrmental ADLs: {{getCheckedItems SelectedInstrumentalADLs "InstrumentalADLs"}}</strong>
+        {{/if}}
+      {{/if}} --}}
+      {{#if (isTrue InitialAssessmentForm.PatientIsFullyContinent)}}
+        <strong class="mr-5">Patient is fully continent.</strong>
+      {{else}}
+        {{#if (isTrue InitialAssessmentForm.PatientHasIncontinenceBool)}}
+          Patient has incontinence: <strong class="ml-5 mr-5">{{InitialAssessmentForm.PatientHasIncontinence}}.</strong>
+        {{/if}}
+      {{/if}}
+
+      {{#if (isTrue InitialAssessmentForm.PatientIsIndependentInAllADLs)}}
+        <strong class="mr-5">Patient is independent in all ADLs.</strong>
+      {{else}}
+        {{#if (isTrue InitialAssessmentForm.PatientNeedsHelpWithADLs)}}
+          Patient needs help with:
+          {{#if (getCheckedItems SelectedBasicADLs "BasicADLs")}}
+            <strong class="ml-5">Basic ADLs: {{getCheckedItems SelectedBasicADLs "BasicADLs"}}.</strong>
+          {{/if}}
+          {{#if (getCheckedItems SelectedInstrumentalADLs "InstrumentalADLs")}}
+            <strong class="ml-5">Instrumental ADLs: {{getCheckedItems SelectedInstrumentalADLs "InstrumentalADLs"}}.</strong>
+          {{/if}}
+          {{#unless (getCheckedItems SelectedBasicADLs "BasicADLs")}}
+            {{#unless (getCheckedItems SelectedInstrumentalADLs "InstrumentalADLs")}}
+              <span class="ml-5">None</span>
+            {{/unless}}
+          {{/unless}}
+        {{/if}}
+      {{/if}}
+    </div>
     
     <div class="col-1-1 bb stripes">
       <div class="frow justify-start">
