@@ -2049,7 +2049,8 @@ canvas:focus {
 }
 
 #initial-assesment table  tr  td, #initial-assesment > table, #initial-assesment >table >tbody >tr {
-  padding: 0 !important;
+  padding-top: 0  !important;
+  padding-bottom: 0 !important;
 }
 
 /* .no-p{

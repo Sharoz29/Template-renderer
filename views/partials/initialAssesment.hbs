@@ -13,9 +13,9 @@
       <col width="16.666%" />
 
       <tbody>
-        <tr class="no-p">
-          <td colspan="2" class="no-p">
-            <div class="frow text-center cb">
+        <tr>
+          <td colspan="2">
+            <div class="frow text-center cb fz-15">
               <div class="col-1-3">
               {{!-- <div class="cb"> --}}
                   {{> checkbox IsChecked=InitialVisit name="Initial Visit" }}
@@ -51,7 +51,7 @@
           </td>
 
           <td colspan="3">
-            <div class="frow justify-start">
+            <div class="frow justify-start ml-5">
               Location patient is accessed:
               <div class="cb ml-10">
                 {{> checkbox name="Home Visit" IsChecked=(equalityChecker LocationPatientIsAssessed "Home")}}              
@@ -205,7 +205,7 @@
         </tr>
         <tr>
           <td colspan="6">
-            <div class="frow justify-start cb fz-15">
+            <div class="frow justify-start fz-15">
               <div class="col-1-8">
                 Basic ADLs  
               </div>
