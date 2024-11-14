@@ -4,7 +4,7 @@
     <div class="container centered mb-20">
       {{> formTitle ..}}
     </div>
-    <table class="width-100 no-y-padding">
+    <table class="width-100 no-y-padding no-p">
       <col width="16.666%" />
       <col width="16.666%" />
       <col width="16.666%" />
@@ -13,9 +13,9 @@
       <col width="16.666%" />
 
       <tbody>
-        <tr>
-          <td colspan="2">
-            <div class="frow text-center">
+        <tr class="no-p">
+          <td colspan="2" class="no-p">
+            <div class="frow text-center cb">
               <div class="col-1-3">
               {{!-- <div class="cb"> --}}
                   {{> checkbox IsChecked=InitialVisit name="Initial Visit" }}

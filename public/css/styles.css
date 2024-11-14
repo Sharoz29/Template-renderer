@@ -2,7 +2,8 @@
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 80%;
-  font-family: system-ui, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: system-ui, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+ "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -1649,6 +1650,9 @@ canvas:focus {
   font-size: 14px !important;
 }
 
+.fz-15 {
+  font-size: 15px !important;
+}
 .fz-16 {
   font-size: 16px !important;
 }
@@ -2043,6 +2047,14 @@ canvas:focus {
 .cad-forms #initial-assesment .cb {
   padding: 0 !important;
 }
+
+#initial-assesment table  tr  td, #initial-assesment > table, #initial-assesment >table >tbody >tr {
+  padding: 0 !important;
+}
+
+/* .no-p{
+  padding: 0 !important;
+} */
 
 .cad-forms .cb {
   display: flex;
