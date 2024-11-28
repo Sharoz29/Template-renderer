@@ -8,7 +8,6 @@ import { HBS, helpers } from "./helpers.js";
 import { getCaseData } from "./pega.js";
 import { coloredText } from "./global.js";
 
-
 // Get the current file's directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -78,21 +77,24 @@ export function getPDFBuffer(caseID, renderView, type) {
     const viewData = { ...data, type };
     return {
       access_token: data.access_token,
-      pdfBuffer: await createPdfFromHtml(await renderView("home", {...viewData }), {
-        printBackground: true,
-        layout: 'main',
-        headerTemplate: await HBS.render(
-          path.resolve(__dirname, "../views/header.hbs"),
-          {
-            ...viewData,
-            officeLogo: `data:image/jpeg;base64,${data?.Office?.LogoAttachStream}`,
-          },
-        ),
-        footerTemplate: await HBS.render(
-          path.resolve(__dirname, "../views", "footer.hbs"),
-          viewData
-        ),
-      }).then((data) => {
+      pdfBuffer: await createPdfFromHtml(
+        await renderView("home", { ...viewData }),
+        {
+          printBackground: true,
+          layout: "main",
+          headerTemplate: await HBS.render(
+            path.resolve(__dirname, "../views/header.hbs"),
+            {
+              ...viewData,
+              officeLogo: `data:image/jpeg;base64,${data?.Office?.LogoAttachStream}`,
+            }
+          ),
+          footerTemplate: await HBS.render(
+            path.resolve(__dirname, "../views", "footer.hbs"),
+            viewData
+          ),
+        }
+      ).then((data) => {
         console.timeLog(
           coloredText(caseID, "green") + " in",
           " --> After Rendering and Creation of PDF pm"
@@ -101,4 +103,71 @@ export function getPDFBuffer(caseID, renderView, type) {
       }),
     };
   });
+}
+
+export async function getCombinedPDFBuffer(renderView, data, selectedForms) {
+  const caseID = data.ID;
+  console.timeLog(
+    coloredText(caseID, "green") + " in",
+    " --> Before Rendering and Creation of PDF"
+  );
+
+  const context = {
+    allForms: selectedForms,
+    selectedForms: selectedForms,
+    labOrders: [
+      "labOrders_Labs",
+      "labOrders_Dx",
+      "labOrders_DME",
+      "labOrders_Supplies",
+      "labOrders_ReferTo",
+    ],
+    labReferences: [
+      "CBC",
+      "BMP",
+      "CMP",
+      "CMP1",
+      "CMP2",
+      "CMP3",
+      "CMP4",
+      "CMP5",
+      "CMP6",
+    ],
+    selectedLabs: ["CBC", "BMP", "CMP", "CMP1"],
+  };
+  const { AppointmentInformation } = data.content;
+
+  const processedData = {
+    ...context,
+    ...AppointmentInformation,
+    ...data.content,
+  };
+
+  const viewData = { ...processedData, type: "pdf" };
+  return {
+    pdfBuffer: await createPdfFromHtml(
+      await renderView("home", { ...viewData }),
+      {
+        printBackground: true,
+        layout: "main",
+        headerTemplate: await HBS.render(
+          path.resolve(__dirname, "../views/header.hbs"),
+          {
+            ...viewData,
+            officeLogo: `data:image/jpeg;base64,${processedData?.Office?.LogoAttachStream}`,
+          }
+        ),
+        footerTemplate: await HBS.render(
+          path.resolve(__dirname, "../views", "footer.hbs"),
+          viewData
+        ),
+      }
+    ).then((data) => {
+      console.timeLog(
+        coloredText(caseID, "green") + " in",
+        " --> After Rendering and Creation of PDF pm"
+      );
+      return data;
+    }),
+  };
 }

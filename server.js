@@ -1,7 +1,7 @@
 import express, { request } from "express";
 import { HBS } from "./libs/helpers.js";
 import { getCaseData } from "./libs/pega.js";
-import { getPDFBuffer } from "./libs/pdf.js";
+import { getPDFBuffer, getCombinedPDFBuffer } from "./libs/pdf.js";
 import bodyParser from "body-parser";
 import * as path from "path";
 import { fileURLToPath } from "url";
@@ -13,6 +13,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const router = express.Router();
+app.use(express.json({ limit: "50mb" }));
+app.use(bodyParser.json());
 // Create `ExpressHandlebars` instance with a default layout.
 
 // Register `hbs` as our view engine using its bound `engine()` function.
@@ -98,7 +100,6 @@ router.get("/attach-lab/:id", async (req, res) => {
       console.timeEnd(coloredText(req.params.id, "green") + " in");
       console.log("Has Error:", error.message);
       res.send(error);
-      // res?.error(error.message);
     });
 });
 
@@ -141,10 +142,37 @@ router.get("/get-lab/:id", async (req, res) => {
     });
 });
 
+router.post("/get-selected-forms", async (req, res) => {
+  const caseInfo = req.body.case;
+  const selectedForms = req.body.selectedForms;
+
+  return await getCombinedPDFBuffer(renderView, caseInfo, selectedForms)
+    .then(({ pdfBuffer }) => {
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader(
+        "Content-Disposition",
+        `attachment; filename=${req.body.fileName || "output"}-${
+          req.body.case.ID.split(" ")[1]
+        }.pdf`
+      );
+      res.send(pdfBuffer);
+      console.timeEnd(
+        coloredText(req.body.case.ID.split(" ")[1], "green") + " in"
+      );
+    })
+    .catch((error) => {
+      console.timeEnd(
+        coloredText(req.body.case.ID.split(" ")[1], "green") + " in"
+      );
+      console.log("Has Error:", error.message);
+      res.send(error);
+    });
+});
+
 router.get("/get-html/:id", async (req, res) => {
   console.time(coloredText(req.params.id, "green") + " in");
   try {
-    res.render("home", {...await getCaseData(req.params.id), type: null});
+    res.render("home", { ...(await getCaseData(req.params.id)), type: null });
     console.timeEnd(coloredText(req.params.id, "green") + " in");
   } catch (error) {
     console.timeEnd(coloredText(req.params.id, "green") + " in");
@@ -159,11 +187,3 @@ console.clear();
 app.listen(3000, () => {
   console.log("express-handlebars example server listening on: 3000");
 });
-
-// HBS.render("footer", {
-//   title: "My Footer",
-// }).then((template) => console.log("Footer:", template));
-
-// HBS.render(path.resolve(__dirname, "./views", "header.hbs"), {
-//   title: "My Header",
-// }).then((template) => console.log("Header:", template));
