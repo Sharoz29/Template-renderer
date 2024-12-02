@@ -4,12 +4,11 @@
       {{> formTitle }}
     </div>
     <div class="mb-10">
-      The patient, <strong>{{@root.AppointmentInformation.PatientData.pyFullName}} {{calculateAge @root.AppointmentInformation.PatientData.DateOfBirth}} year old {{@root.AppointmentInformation.PatientData.Sex}}</strong>, has had the following medical conditions in the past:
-        
-      <strong>{{#each (getMedicalConditionsFromF2F @root)}}
+        {{stringToHTML @root 'The patient, <strong>{{@root.AppointmentInformation.PatientData.pyFullName}} {{calculateAge @root.AppointmentInformation.PatientData.DateOfBirth}} year old {{@root.AppointmentInformation.PatientData.Sex}}</strong>, has had the following medical conditions in the past:'}}
+      {{stringToHTML @root '<strong>{{#each (getMedicalConditionsFromF2F @root)}}
           <span class="pr-5">{{PASTMEDICALHISTORY}},</span>
       {{/each}}
-      </strong>
+      </strong>'}}
     </div>
     
     <div class="frow justify-start mb-10">
@@ -30,10 +29,10 @@
         {{/if}}
       {{/if}} --}}
       {{#if (isTrue InitialAssessmentForm.PatientIsFullyContinent)}}
-        <strong class="mr-5">Patient is fully continent.</strong>
+        {{stringToHTML @root '<strong class="mr-5">Patient is fully continent.</strong>'}}
       {{else}}
         {{#if (isTrue InitialAssessmentForm.PatientHasIncontinenceBool)}}
-          Patient has incontinence: <strong class="ml-5 mr-5">{{InitialAssessmentForm.PatientHasIncontinence}}.</strong>
+          {{stringToHTML @root 'Patient has incontinence: <strong class="ml-5 mr-5">{{InitialAssessmentForm.PatientHasIncontinence}}.</strong>'}}
         {{/if}}
       {{/if}}
 
@@ -114,7 +113,7 @@
       </div>
       {{#if PreviousCaseData.CompleteMedicalNotes}}
       <div class="frow justify-start text-bold p-5 px-10 mb-10">        
-        Previous Notes from Case-{{pyID}} (Date of Service: {{formatDate PreviousCaseData.AppointmentInformation.DateOfService}}, NP Name: {{PreviousCaseData.NPName}})        
+        {{stringToHTML @root 'Previous Notes from Case-{{pyID}} (Date of Service: {{formatDate PreviousCaseData.AppointmentInformation.DateOfService}}, NP Name: {{PreviousCaseData.NPName}})'}}        
       </div>      
       <div class="frow justify-start margin-remover mt-5 mb-20">        
         {{{PreviousCaseData.CompleteMedicalNotes}}}
@@ -184,7 +183,7 @@
        --}}
     
     <div>
-      <p>
+     {{stringToHTML @root ' <p>
         <span>Advanced Care Planning: Advanced care planning with patient, time
           spent
           <strong>15</strong>
@@ -192,17 +191,17 @@
           and hospitalization. Reviewed risks of cardiac resuscitation including
           rib fracture. Reviewed prolong life expectancy and benefit to
           aggressive care and treatment.</span>
-      </p>
+      </p>'}}
       <h3>Orders: AS ATTACHED</h3>
       <h4>Discussion Notes:</h4>
       <p>
-        <span>Current condition, medication regimen, plan of care as above discussed.
+       {{stringToHTML @root '<span>Current condition, medication regimen, plan of care as above discussed.
             Continue current medications and plan of care.
             Frail elderly, on medications requiring regular monitoring. Follow labs closely.
             Medications prescribed using electronic prescribing system.
             I verify that a total of <strong>{{@root.AppointmentInformation.VisitLength}}</strong> was spent on this encounter by the Nurse Practitioner directly.
             Follow-up visit mentioned in plan.
-        </span>
+        </span>'}}
       </p>
     </div>
   </div>   

@@ -61,6 +61,21 @@ export function heading(context) {
     )}</h2>`
   );
 }
+export function calculateAge(dob) {
+  if (!dob) return "";
+  const birthDate = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDifference = today.getMonth() - birthDate.getMonth();
+  if (
+    monthDifference < 0 ||
+    (monthDifference === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+  return age;
+}
+
 export function isSelected(lab, selectedLabs, options) {
   if (selectedLabs?.includes(lab)) {
     return options.fn(this);
@@ -307,6 +322,7 @@ export const helpers = {
   isActivityPermitted,
   getCheckedItems,
   getDiagnosisAndICD,
+  stringToHTML,
 };
 
 export const HBS = create({
@@ -316,20 +332,9 @@ export const HBS = create({
   // with the client-side of the app (see below).
   partialsDir: ["views/partials/"],
 });
-
-export function calculateAge(dob) {
-  if (!dob) return "";
-  const birthDate = new Date(dob);
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDifference = today.getMonth() - birthDate.getMonth();
-  if (
-    monthDifference < 0 ||
-    (monthDifference === 0 && today.getDate() < birthDate.getDate())
-  ) {
-    age--;
-  }
-  return age;
+export function stringToHTML(context, string) {
+  const template = HBS.handlebars.compile(string);
+  return new HBS.handlebars.SafeString(template({ ...context, ...helpers }));
 }
 
 // import https from "https";
