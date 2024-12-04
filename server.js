@@ -148,14 +148,20 @@ router.post("/get-selected-forms", async (req, res) => {
 
   return await getCombinedPDFBuffer(renderView, caseInfo, selectedForms)
     .then(({ pdfBuffer }) => {
-      res.setHeader("Content-Type", "application/pdf");
+      const pdfBase64 = pdfBuffer.toString("base64");
       res.setHeader(
         "Content-Disposition",
         `attachment; filename=${req.body.fileName || "output"}-${
           req.body.case.ID.split(" ")[1]
         }.pdf`
       );
-      res.send(pdfBuffer);
+      res.json({
+        fileName: `${req.body.fileName || "output"}-${
+          req.body.case.ID.split(" ")[1]
+        }.pdf`,
+        pdf: pdfBase64,
+      });
+
       console.timeEnd(
         coloredText(req.body.case.ID.split(" ")[1], "green") + " in"
       );
