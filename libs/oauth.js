@@ -4,7 +4,6 @@ import fs from "fs";
 
 dotenv.config();
 
-
 // URL to get the token
 const url = `${process.env.BASEURL}/prweb/PRRestService/oauth2/v1/token`;
 
@@ -56,6 +55,25 @@ export async function getToken() {
   }
 
   console.log("URL: ", url);
+
+  return await axios
+    .post(
+      "https://calladocfw-rra3n9-prod.pegalaunchpad.com/dx/uas/oauth/token",
+      data,
+      {
+        ...defaultConfig,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    )
+    .then((response) => {
+      const tokenData = response?.data || {};
+      global.tokenData = { ...tokenData, createdAt: new Date() };
+      const access_token = tokenData?.access_token;
+      // console.log(tokenData);
+      return access_token;
+    });
 
   return await axios
     .post(url, data, {

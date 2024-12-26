@@ -14,9 +14,11 @@ export async function getCaseData(caseID) {
     );
 
     const response = await axios.get(
-      `${process.env.BASEURL}/prweb/api/v1/cases/LCS-CALLADOC-WORK ${caseID}`,
+      // `${process.env.BASEURL}/prweb/api/v1/cases/LCS-CALLADOC-WORK ${caseID}`,
+      `https://calladocfw-rra3n9-prod.pegalaunchpad.com/dx/api/application/v2/data_views/PatientCheckupLookup/${caseID}`,
       {
         headers: {
+          Cookie: `PEGA-SESSION-COOKIE=${access_token}`,
           Authorization: `Bearer ${access_token}`,
           Accept: "application/json",
         },
