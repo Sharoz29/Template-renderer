@@ -1,4 +1,4 @@
-{{#with AdmissionOrders}}
+{{#with MedicalRecord}}
 <section class="frow" id="admission-orders">
   <div class="container-padding width-100">
     <div class="container mb-20">
@@ -27,16 +27,16 @@
           </tr>
         </thead>
         <tbody>
-          {{#if MedicineDoseAdvised}}
-           {{#each MedicineDoseAdvised}}
+          {{#if MEDICATIONSAO}}
+           {{#each MEDICATIONSAO}}
           <tr>
             <td>{{counter @index}}</td>
             <td>{{formatDate Date}}</td>
-            <td>{{MedicineNameList}}</td>
-            <td>{{Dose}}</td>
-            <td>{{Route}}</td>
-            <td>{{Frequency}}</td>
-            <td>{{Purpose}}</td>
+            <td>{{MedicineList}}</td>
+            <td>{{DOSE}}</td>
+            <td>{{ROUTE}}</td>
+            <td>{{FREQUENCY}}</td>
+            <td>{{PURPOSE}}</td>
           </tr>
           {{/each}}
           {{else}}
@@ -152,7 +152,7 @@
               <div class="frow justify-start">
                 <div class="frow col-6-6 justify-start gutters">                  
                   {{#if (isTrue HomeHealthDueTo)}}
-                  <span><strong>{{HomeHealthDueToTextbox}}</strong></span>
+                  <span><strong>{{reasonForHomeHealth}}</strong></span>
                   {{/if}}
                 </div>
               </div>
@@ -176,7 +176,7 @@
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span class="text-bold">{{CardiologyLocation}}</span>
+                  <span class="text-bold">{{CardiologyLocation.Address}}</span>
                 </div>
               </div>
             </td>
@@ -199,7 +199,7 @@
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span class="text-bold">{{WoundCareLocation}}</span>
+                  <span class="text-bold">{{WoundCareLocation.Address}}</span>
                 </div>
               </div>
             </td>
@@ -230,7 +230,7 @@
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span class="text-bold">{{SurgeryLocation}}</span>
+                  <span class="text-bold">{{SurgeryLocation.Address}}</span>
                 </div>
               </div>
             </td>
@@ -245,7 +245,7 @@
               <div class="frow justify-start">
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Name:</span>
-                  <span class="text-bold">{{PainSpecialisName}}</span>
+                  <span class="text-bold">{{PainSpecialistName}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Tel:</span>
@@ -253,7 +253,7 @@
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span class="text-bold">{{PainSpecialistLocation}}</span>
+                  <span class="text-bold">{{PainSpecialistLocation.Address}}</span>
                 </div>
               </div>
             </td>
@@ -261,22 +261,22 @@
           <tr>
             <td>
               <div class="cb">
-                 {{> checkbox IsChecked=Orthopaedic name="Orthopaedic" }}
+                 {{> checkbox IsChecked=Orthopedic name="Orthopaedic" }}
               </div>
             </td>
             <td colspan="5">
               <div class="frow justify-start">
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Name:</span>
-                  <span class="text-bold">{{OrthopaedicName}}</span>
+                  <span class="text-bold">{{OrthopedicName  }}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Tel:</span>
-                  <span class="text-bold">{{OrthopaedicTel}}</span>
+                  <span class="text-bold">{{OrthopedicTel}}</span>
                 </div>
                 <div class="frow col-2-6 justify-start gutters">
                   <span>Location:</span>
-                  <span class="text-bold">{{OrthopaedicLocation}}</span>
+                  <span class="text-bold">{{OrthopedicLocation.Address}}</span>
                 </div>
               </div>
             </td>

@@ -1,4 +1,4 @@
-{{#with RecordReleaseAuthorization}}            
+{{#with AppointmentDetails}}            
 <section class="frow" id="records-release-authorization">
     <div class="container-padding width-100">
         <div class="content">
@@ -36,7 +36,7 @@
                 <tr>
                     <td colspan="2">
                         <span>Name of Patient:</span>
-                        <span class="p-5 text-bold">{{../PatientData/pyFullName}}</span>
+                        <span class="p-5 text-bold">{{../PatientDataEmbed.PatientFullName}}</span>
                     </td>
                     <td colspan="2">
                         <span>Medicare No:</span>
@@ -50,13 +50,13 @@
                     </td>
                     <td colspan="2">
                         <span>Date of Birth:</span>
-                        <span class="p-5 text-bold">{{formatDate ../PatientData/DateOfBirth}}</span>
+                        <span class="p-5 text-bold">{{formatDate ../PatientDataEmbed.DateOfBirth}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4">
                         <span>Address:</span>
-                        <span class="p-5 text-bold">{{../PatientData/pyHomeAddress1}} {{../PatientData/pyHomeAddress2}}</span>
+                        <span class="p-5 text-bold">{{../PatientData/pyHomeAddress1}} {{../PatientDataEmbed.HomeAddress}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -109,7 +109,7 @@
                 <tr style="height: 80px">
                     <td>
                         <span>Name of Witness:</span>
-                        <span class="text-bold"> {{@root.AppointmentInformation.PatientData.Witness.pyFullName}}</span>
+                        <span class="text-bold"> {{NameOfWitness}}</span>
                     </td>
                     <td> 
                         <div class="frow row-start">
@@ -121,7 +121,7 @@
                     </td>
                     <td>
                         <span>Date:</span>
-                        <span class="p-5 text-bold">{{formatDate WitnessDate}}</span>
+                        <span class="p-5 text-bold">{{formatDate WitnessSignatureDate}}</span>
                     </td>
                 </tr>
             </table>

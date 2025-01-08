@@ -1,4 +1,4 @@
-{{#with PatientData}}
+{{#with  PatientDataEmbed}}
 <section class="frow" id="intake-form">
     <div class="container-padding width-100">
         <div class="content">
@@ -17,18 +17,18 @@
                     <td colspan="2">
                         <span>Home Health:</span>
                         <span class="p-5 text-bold">
-                           {{@root.AppointmentInformation.Referral.HH}}
+                           {{@root.ReferralAgencyEmbed.ReferralAgencyName}}
                         </span>
                     </td> 
                     <td colspan="2">
                         <span>Date:</span>
-                        <span class="p-5 text-bold">{{formatDate @root.FaceToFace.Date}}</span>
+                        <span class="p-5 text-bold">{{formatDate @root.AppointmentDetails.DateOfService}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <span>Telephone No:</span>
-                        <span class="p-5 text-bold">{{@root.AppointmentInformation.Referral.OfficeNumber}}</span>
+                        <span class="p-5 text-bold">{{@root.ReferralAgencyEmbed.ReferralAgencyContact}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                 <tr>
                     <td colspan="2">
                         <span>Name:</span>
-                        <span class="p-5 text-bold">{{pyFullName}}</span>
+                        <span class="p-5 text-bold">{{PatientFullName}}</span>
                     </td>
                     <td colspan="2">
                         <span>Date of Birth:</span>
@@ -49,11 +49,11 @@
                 <tr>
                     <td colspan="2">
                         <span>Address:</span>
-                        <span class="p-5 text-bold">{{pyHomeAddress1}} {{pyHomeAddress2}}</span>
+                        <span class="p-5 text-bold">{{HomeAddress}} {{pyHomeAddress2}}</span>
                     </td>
                     <td colspan="2">
                         <span>Patient's Phone No:</span>
-                        <span class="p-5 text-bold">{{pyPhoneNumber}}</span>
+                        <span class="p-5 text-bold">{{CellPhone}}</span>
                     </td>
                 </tr>
             </table>
@@ -62,21 +62,7 @@
             <div class="frow justify-start fz-18">
                 <!-- <span> -->
                 <p>
-                    I,
-                    <span class="p-5 text-underline text-bold">{{pyFullName}}</span>,
-                    here by give permission to
-                    <span class="text-underline text-bold">{{@root.AppointmentInformation.OperatorData.pyUserName}} </span>
-                    (Authorized Medical Provider of
-                    <b>{{@root.AppointmentInformation.Office.OfficeName}}</b>) to perform all necessary
-                    assessment and treatment. I understand that I may refuse or
-                    terminate services at any time. If needed or requested, any
-                    concerns regarding that medical condition and treatment will be
-                    referred to other care provider. I understand that I can discuss
-                    any religious or spiritual, cultural and other preferences that
-                    are important to my treatment plan. I acknowledge the Notice of Privacy Practices 
-                    (HIPAA Form). I give <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> 
-                    permission to use and disclose my Protected Health Information (PHI) to carry out 
-                    treatment, payment, and healthcare operations only.
+         {{@root.PatientConsent}}
                     {{!-- I acknowledge that
                     <b>RECEIPT</b> of <b>Notice of Privacy (HIPAA Form)</b> and was
                     given opportunity to ask the questions and voice concerns. I
@@ -91,11 +77,7 @@
             </div>
             <div class="frow justify-start fz-18">
                 <p>
-                    I acknowledge the Privacy Practices and was given the opportunity to ask questions, 
-                    voice concerns, and set limitations/restrictions on the use of my health information. 
-                    I give <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> permission to use and 
-                    disclose my Protected Health Information (PHI) to carry out treatment, payment, and 
-                    healthcare operations, and to receive and release information pertinent to my care.
+     {{@root.ACKNOWLEDGEMENTOFPRIVACYPRACTICES}}
                     {{!-- I acknowledge the <b>Receipt of Privacy Practices</b> and was
                     given opportunity to review notices, ask the questions and voice
                     concerns, set limitations / restrictions on the use of my health
@@ -105,10 +87,10 @@
                     payment, health care operations, receive and release information
                     pertinent to my care. --}}
                 </p>
-                <span>
+                {{!-- <span>
                     I authorize <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> to photograph or
                     videotape appropriate body parts for necessary documentations only.
-                </span>
+                </span> --}}
             </div>
             <div class="frow justify-start gutters text-bold fz-18 mt-10 mb-10">
                 {{!-- <span>Photo/Video consent:</span> --}}
@@ -130,13 +112,13 @@
                     <td>
                         <span>Discharge from Hospital:</span>
                         <span class="p-5 text-bold"> 
-                            {{@root.AppointmentInformation.DischargeFromHospital}}
+                            {{@root.AppointmentDetails.DischargeFromHospital}}
                         </span>
                     </td>
                     <td>
                         <span>Date of Discharge:</span>
                         <span class="p-5 text-bold">
-                            {{formatDate @root.AppointmentInformation.DateOfDischarge}}
+                            {{formatDate @root.AppointmentDetails.DateOfDischarge}}
                         </span>
                     </td>
                 </tr>
@@ -204,7 +186,7 @@
                     </td>
                     <td colspan="1">
                         <span class="p-5">Date:</span>
-                        <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.PatientsSignatureDate}}</span>
+                        <span class="p-5 text-bold">{{formatDate @root.AppointmentDetails.PatientSignatureDate}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -213,14 +195,14 @@
                     </td>
                     <td colspan="5">
                         <span class="p-5 text-bold">
-                            {{RelationshipToThePatient}}
+                            {{@root.AppointmentDetails.RelationshipToPatient}}
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <span>Name of Witness:</span>                   
-                        <span class="text-bold">{{@root.AppointmentInformation.PatientData.Witness.pyFullName}}</span>
+                        <span class="text-bold">{{@root.AppointmentDetails.NameOfWitness}}</span>
                     </td>                    
                     <td colspan="3">
                         <div  class="frow row-start">Signature of Witness:
@@ -228,7 +210,7 @@
                     </td>
                     <td colspan="1">
                         <span class="p-5">Date:</span>
-                        <span class="p-5 text-bold">{{formatDate @root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}</span>
+                        <span class="p-5 text-bold">{{formatDate @root.AppointmentDetails.WitnessSignatureDate}}</span>
                     </td>
                 </tr>
             </table>

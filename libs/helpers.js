@@ -21,7 +21,16 @@ export function camelToSentence(str) {
 export function isTrue(value) {
   return value == true || value == "true" || value == "Yes";
 }
+export function mapCheckedItems(allItems, checkedItems) {
 
+  const checkedIDs = checkedItems?.map((item) => item.ID);
+
+  // Map through allItems and add IsChecked based on the comparison
+  return allItems?.map((item) => ({
+    ...item,
+    IsChecked: checkedIDs?.includes(item.ID),
+  }));
+};
 export function isFalse(value) {
   return value == false || value == "false" || value == "No";
 }
@@ -29,13 +38,13 @@ export function isFalse(value) {
 export function formsToPrint(allForms, form, context) {
   if (
     form == "teleMedicines" &&
-    context.InitialAssessmentForm.VisitType == "Telemedicine"
+    context.AppointmentDetails.TypeOfVisit == "Telemedicine"
   ) {
     return form;
   }
   if (
     form == "faceToFaceEncounter" &&
-    context.InitialAssessmentForm.VisitType == "Home Visit"
+    context.AppointmentDetails.TypeOfVisit == "Face to Face"
   ) {
     return form;
   }
@@ -123,9 +132,9 @@ export function F2FTMText(context) {
 }
 
 export function MapF2FTelemed(rootContext) {
-  const { FaceToFace, InitialAssessmentForm } = rootContext;
-  const { VisitType } = InitialAssessmentForm;
-  const isTM = VisitType === "Telemedicine";
+  const { FaceToFace, AppointmentDetails } = rootContext;
+  const { TypeOfVisit } = AppointmentDetails;
+  const isTM = TypeOfVisit === "Telemedicine";
 
   return {
     ...FaceToFace,
@@ -139,10 +148,16 @@ export function CheckOrRadio(type) {
 export function allergiesChecker(allergies) {
   return allergies === "No Known Allergies";
 }
+
 export function checker(use, name) {
-  return name === "Yes"
-    ? use === true || use === "true"
-    : use === false || use === "false";
+
+  use = String(use).toLowerCase(); 
+  if (name === "Yes") {
+    return use === "yes" || use === "true";
+  } else if (name === "No") {
+    return use === "no" || use === "false";
+  }
+  return false; 
 }
 export function formatDate(date) {
   if (!!date) {
@@ -323,6 +338,7 @@ export const helpers = {
   getCheckedItems,
   getDiagnosisAndICD,
   stringToHTML,
+  mapCheckedItems
 };
 
 export const HBS = create({

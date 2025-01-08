@@ -1,4 +1,4 @@
-{{#with ChecklistForTobacco}}
+{{#with AppointmentDetails}}
 <section class="frow" id="checklist-for-tobacco">
     <div class="container-padding width-100">
         <div class="content">
@@ -50,7 +50,7 @@
                             {{!-- <div class="frow justify-start">                                     --}}
                                 <div class="col-1-2">
                                     <div class="cb gutters">                                    
-                                        {{> checkbox IsChecked=(isTrue Is5RsCounselingRequired) name=""}}Brief counseling using 5 R's
+                                        {{> checkbox IsChecked=(isTrue BriefCounselingUsing5Rs) name=""}}Brief counseling using 5 R's
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                         <td>
                                             <span>Name:</span>
                                             <span class="px-5 text-bold">
-                                               {{@root.AppointmentInformation.PatientData.pyFullName}}
+                                               {{@root.PatientDataEmbed.PatientFullName}}
                                             </span>
                                         </td>
                                     </tr>
@@ -71,21 +71,21 @@
                                         <td>
                                             <span>DOB:</span>
                                             <span class="px-5 text-bold">
-                                                {{formatDate @root.AppointmentInformation.PatientData.DateOfBirth}}
+                                                {{formatDate @root.PatientDataEmbed.DateOfBirth}}
                                             </span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <span>Encounter Dates:</span>
-                                            <span class="px-5 text-bold">{{formatDate @root.AppointmentInformation.EncounterDate}}</span>
+                                            <span class="px-5 text-bold">{{formatDate @root.AppointmentDetails.EncounterDates}}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <span>Visit #:</span>
                                             <span class="px-5 text-bold">
-                                                {{@root.AppointmentInformation.VisitCount}}
+                                                {{@root.AppointmentDetails.Visit}}
                                             </span>                                                
                                                     {{!-- {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount @root.AppointmentInformation.VisitCount) name=@root.AppointmentInformation.VisitCount}} --}}
                                                     {{!-- {{> checkbox IsChecked=(equalityChecker @root.AppointmentInformation.VisitCount "1") name="1" }}
@@ -134,7 +134,7 @@
                 <tr>
                     <td colspan="2">
                         <span>Quit smoking &lt;</span>
-                        <span class="p-5 text-bold">{{QuitSmokingYears}}</span>
+                        <span class="p-5 text-bold">{{QuitSmokingYearsAgo}}</span>
                         <span>years ago</span>
                     </td>
                 </tr>
@@ -143,7 +143,7 @@
                         <div class="frow justify-start">
                             <div class="col-1-4">
                                 <div class="cb">                                                        
-                                    {{> checkbox IsChecked=(isTrue IsPatientNotReadyToQuit) name=""}}Patient is not ready to quit
+                                    {{> checkbox IsChecked=(isTrue PatientIsNotReadyToQuit  ) name=""}}Patient is not ready to quit
                                 </div>
                             </div>
                             <div class="col-1-4">
@@ -172,34 +172,34 @@
                 <tr>
                     <td>Smoking history:</td>
                     <td>
-                        <span class="text-bold">{{CigarettesPerDay}}</span>
+                        <span class="text-bold">{{ofCigarettesDay}}</span>
                         <span># of Cigarettes/Day</span>
                     </td>
                     <td>
-                        <span class="text-bold">{{CigarettesPacksPerDay}}</span>
+                        <span class="text-bold">{{ofPacksDay}}</span>
                         <span># of Packs/Day</span>
                     </td>
                     <td>
-                        <span class="text-bold">{{SmokedForYears}}</span>
+                        <span class="text-bold">{{ofYears}}</span>
                         <span># of Years</span>
                     </td>
                     <td>
-                        <span class="text-bold">{{NumberOfQuitAttempts}}</span>
+                        <span class="text-bold">{{ofQuitAttempts}}</span>
                         <span># of Quit Attempts</span>
                     </td>
                 </tr>
                 <tr>
                     <td>Household members:</td>
                     <td>
-                        <span class="text-bold">{{NumberOfSmokersInFamily}}</span>
+                        <span class="text-bold">{{ofSmokers}}</span>
                         <span># of Smokers</span>
                     </td>
                     <td>
-                        <span class="text-bold">{{NumberOfNonSmokersInFamily}}</span>
+                        <span class="text-bold">{{ofNonsmokers}}</span>
                         <span># of Non-smokers</span>
                     </td>
                     <td colspan="2">
-                        <span class="text-bold">{{NumberOfChildren}}</span>
+                        <span class="text-bold">{{ofChildren}}</span>
                         <span># of Children</span>
                     </td>
                 </tr>                
@@ -250,10 +250,10 @@
                         <div class="cb gutters">
                             Withdrawal Symptoms:
                             <span class="p-10">
-                                {{> checkbox name="Nausea" IsChecked=Nausea}}
+                                {{> checkbox name="Nausea" IsChecked=@root.MedicalRecord.Nausea}}
                             </span>
                             <span class="p-10">
-                                {{> checkbox name="Vomiting" IsChecked=Vomiting}}
+                                {{> checkbox name="Vomiting" IsChecked=@root.MedicalRecord.Vomiting}}
                             </span>
                         </div>
                     </td>
@@ -263,10 +263,10 @@
                         <div class="cb gutters">
                             Mood:
                             <span class="p-10">
-                                {{> checkbox name="Anxiety" IsChecked=Anxiety}}
+                                {{> checkbox name="Anxiety" IsChecked=@root.MedicalRecord.Anxiety}}
                             </span>
                             <span class="p-10">
-                                {{> checkbox name="Depression" IsChecked=Depression}}
+                                {{> checkbox name="Depression" IsChecked=@root.MedicalRecord.Depression}}
                             </span>
                         </div>
                     </td>
@@ -310,7 +310,7 @@
                 <tr>
                     <td colspan="7">
                         <div class="cb gutters">
-                            Bupropion SR: <span class="ml-5">{{> checkbox IsChecked=(isTrue BupropionSRTablets) name="Tablets" }}</span>
+                            Bupropion SR: <span class="ml-5">{{> checkbox IsChecked=(isTrue @root.MedicalRecord.BupropionSRTablets) name="Tablets" }}</span>
                             (Start 7 to 10 days before the target quit date.)
                             {{!-- <span class="p-5">
                             {{> checkbox name="Yes" IsChecked=(checker BupropionSRTablets "Yes")}}

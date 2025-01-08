@@ -13,20 +13,22 @@ export async function getCaseData(caseID) {
       " --> Before Getting Case Data"
     );
 
-    const response = await axios.get(
+    const response = await axios.post(
       // `${process.env.BASEURL}/prweb/api/v1/cases/LCS-CALLADOC-WORK ${caseID}`,
-      `https://calladocfw-rra3n9-prod.pegalaunchpad.com/dx/api/application/v2/data_views/PatientCheckupLookup/${caseID}`,
+      `https://calladocfw-rra3n9-prod.pegalaunchpad.com/dx/api/application/v2/data_views/PatientCheckupLookup`,
+      {
+        "dataViewParameters": {"ID":caseID}
+      },
       {
         headers: {
           Cookie: `PEGA-SESSION-COOKIE=${access_token}`,
           Authorization: `Bearer ${access_token}`,
           Accept: "application/json",
         },
+        
       }
     );
-    const data = response.data;
-
-    const { AppointmentInformation } = data.content;
+    const data = response?.data?.data?.[0] ?? {};
 
     // console.timeEnd(
     //   "Got Data for Case: " + coloredText(caseID, "green") + " in"
@@ -37,8 +39,7 @@ export async function getCaseData(caseID) {
     );
     return {
       ...mockContext,
-      ...AppointmentInformation,
-      ...data.content,
+      ...data,
       access_token,
     };
     // res.send(response.data);

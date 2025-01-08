@@ -6,16 +6,9 @@
       </div>
       <div class="text">
         <p>
-          Medicare Certification: I certify that the information provided by me
-          in applying for payment under TITLE XVII of the Social Security Act is
-          correct and request on my behalf all authorized benefits. I hereby
-          authorize and instruct my insurance carrier to make payment directly
-          to <b>{{@root.AppointmentInformation.Office.OfficeName}}</b> for benefits (payments) otherwise
-          payable to me. I agree to personally pay for any charge that are not
-          covered by or collected from any insurance program including any
-          deductibles and coinsurance amounts.
+      {{ @root.AppointmentParagraph}}
         </p>
-        <p>
+        {{!-- <p>
           I certify that all information given are correct and consent to the
           release of all records for payment of authorized benefits from
           Medical, Medicaid, or any other responsible payer be made in my behalf
@@ -27,7 +20,7 @@
           for myself. I understand that I may guess express my wishes in a
           document called an Advance Directives so that my wishes may be known
           when I am unable to speak for myself.
-        </p>
+        </p> --}}
       </div>
       <div class="declarations">
         <ol>
@@ -36,10 +29,10 @@
               <span class="col-2-3">I have a Living Will declarations</span>
               <div class="frow justify-start" style="gap:10px">
                 <div class="cb">
-                  {{> checkbox name="Yes" IsChecked=(checker @root.AppointmentInformation.LivingWillDeclaration "Yes")}}
+                  {{> checkbox name="Yes" IsChecked=(checker @root.AppointmentDetails.LivingWill "Yes")}}
                 </div>
                 <div class="cb">
-                   {{> checkbox name="No" IsChecked=(checker @root.AppointmentInformation.LivingWillDeclaration "No")}}
+                   {{> checkbox name="No" IsChecked=(checker @root.AppointmentDetails.LivingWill   "No")}}
                 </div>
               </div>
             </div>
@@ -53,10 +46,10 @@
                 Health Care</span>
               <div class="frow justify-start" style="gap:10px">
                 <div class="cb">
-                  {{> checkbox name="Yes" IsChecked=(checker @root.AppointmentInformation.DurablePowerOfAttorney "Yes")}}
+                  {{> checkbox name="Yes" IsChecked=(checker @root.AppointmentDetails.DurablePower "Yes")}}
                 </div>
                 <div class="cb">
-                   {{> checkbox name="No" IsChecked=(checker @root.AppointmentInformation.DurablePowerOfAttorney "No")}}
+                   {{> checkbox name="No" IsChecked=(checker @root.AppointmentDetails.DurablePower "No")}}
                 </div>
               </div>
             </div>
@@ -73,7 +66,7 @@
                 Name of Patient: 
               </span>
               <span class="text-bold">
-                {{@root.AppointmentInformation.PatientData.pyFullName}}
+                {{@root.PatientDataEmbed.PatientFullName}}
               </span>
               </td>
             <td>
@@ -81,7 +74,7 @@
                 Date of Birth:
               </span>
               <span class="text-bold">
-                 {{formatDate @root.AppointmentInformation.PatientData.DateOfBirth}}
+                 {{formatDate @root.PatientDataEmbed.DateOfBirth}}
               </span>
             </td>
           </tr>
@@ -91,7 +84,7 @@
                 Address:
               </span>
               <span class="text-bold">
-                {{@root.AppointmentInformation.PatientData.pyHomeAddress1}} {{@root.AppointmentInformation.PatientData.pyHomeAddress2}}
+                {{@root.PatientDataEmbed.HomeAddress}} {{@root.AppointmentInformation.PatientData.pyHomeAddress2}}
               </span>
             </td>
           </tr>
@@ -105,17 +98,15 @@
                 {{> signature name="patient"}} --}}
               </div>
             </td>
-            <td>Date: <b>{{formatDate PatientsSignatureDate}}</b></td>
+            <td>Date: <b>{{formatDate  @root.AppointmentDetails.PatientSignatureDate}}</b></td>
           </tr>
         </tbody>
       </table>
       <div class="legal-rep mt-30">
         <h3>LEGAL REPRESENTATIVE (IF PATIENT IS UNABLE TO SIGN)</h3>
         <p>
-          Consent of Legal Guardian, Patient Advocate or Nearest Relative if
-          patient is unable to sign<br />
-          Consent of Caregiver if patient is unable to sign (Must have Power of
-          Attorney)
+  
+          {{ @root.LEGALREPRESENTATIVEIFPATIENTISUNABLETOSIGN}}
         </p>
       </div>
       <table class="striped width-100">
@@ -142,7 +133,7 @@
                 Relationship: 
               </span>
               <span class="text-bold">
-                {{@root.AppointmentInformation.PatientData.LegalRepresentative.RelationshipToThePatient}}
+                {{@root.AppointmentDetails.RelationshipToPatient}}
               </span>
             </td>
             <td colspan="3">
@@ -150,7 +141,7 @@
                 Telephone:
               </span>
               <span class="text-bold">
-                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyPhoneNumber}}                
+                {{@root.AppointmentDetails.RelationshipToPatient}}                
               </span>
             </td>
           </tr>
@@ -218,7 +209,7 @@
                 Name of Witness:
               </span>
                <span class="text-bold">
-                 {{@root.AppointmentInformation.PatientData.Witness.pyFullName}}
+                 {{@root.AppointmentDetails.NameOfWitness}}
                 {{!-- Not present in data --}}
               </span>
             </td>
@@ -233,7 +224,7 @@
                 Date: 
               </span>
               <span class="text-bold">
-                 {{formatDate @root.AppointmentInformation.RecordReleaseAuthorization.WitnessDate}}
+                 {{formatDate @root.AppointmentDetails.WitnessSignatureDate}}
               </span>
             </td>
           </tr>

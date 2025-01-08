@@ -1,4 +1,4 @@
-{{#with MedicalReconciliation}}
+{{#with MedicalRecord}}
 <section class="frow" id="medication-recon">
   <div class="container-padding width-100">
     <div class="content">
@@ -16,7 +16,7 @@
           <tr>
             <td colspan="4">
               <span>Phone:</span>
-              <span class="p-5 text-bold">{{@root.AppointmentInformation.PatientData.pyPhoneNumber}}</span>
+              <span class="p-5 text-bold">{{@root.PatientDataEmbed.CellPhone}}</span>
             </td>            
           </tr>
           <tr>            
@@ -35,7 +35,7 @@
                 
                   <div class="cb">
                     {{!-- {{> checkbox name="Yes" IsChecked=(checker ReviewedForContrainedications "")}} --}}
-                    {{> checkbox IsChecked=(isTrue ReviewedForInteractions) name="REVIEWED FOR CONTRAINDICATIONS" }}
+                    {{> checkbox IsChecked=(isTrue REVIEWEDFORCONTRAINDICATIONS) name="REVIEWED FOR CONTRAINDICATIONS" }}
                   </div>
                   {{!-- <div class="cb">
                     {{> checkbox name="No" IsChecked=(checker ReviewedForContrainedications "No")}}
@@ -46,7 +46,7 @@
               <div class="frow justify-start gutters">
                 {{!-- <span>REVIEWED FOR INTERACTIONS:</span> --}}
                 <div class="cb">
-                  {{> checkbox IsChecked=(isTrue ReviewedForInteractions) name="REVIEWED FOR INTERACTIONS" }}                  
+                  {{> checkbox IsChecked=(isTrue REVIEWEDFORINTERACTIONS) name="REVIEWED FOR INTERACTIONS" }}                  
                 </div>                
               </div>
             </td>
@@ -56,7 +56,7 @@
               <span>PHARMACY NAME:</span>
             </td>              
             <td colspan="3">
-              <span class="p-l text-bold">{{PharmacyName}}</span>
+              <span class="p-l text-bold">{{PHARMACYNAME}}</span>
             </td>
           </tr>
           <tr>
@@ -65,7 +65,7 @@
               
             </td>
             <td colspan="3">
-              <span class="p-l text-bold">{{PharmacyAddress}}</span>
+              <span class="p-l text-bold">{{PHARMACYADDRESS}}</span>
             </td>
           </tr>
           <tr>
@@ -74,7 +74,7 @@
               
             </td>
             <td colspan="3">
-              <span class="p-l text-bold">{{PharmacyPhone}}</span>
+              <span class="p-l text-bold">{{PHARMACYPHONE}}</span>
             </td>
           </tr>
         </table>
@@ -93,15 +93,15 @@
               </tr>
             </thead>
             <tbody>
-              {{#if PrescribedMedicines}}
-              {{#each PrescribedMedicines}}
+              {{#if MEDICATIONSMR}}
+              {{#each MEDICATIONSMR}}
               <tr>
-                <td>{{MedicineNameList}}</td>
-                <td>{{Dose}}</td>
-                <td>{{Route}}</td>
-                <td>{{Frequency}}</td>
-                <td>{{Purpose}}</td>
-                <td>{{Refills}}</td>
+                <td>{{MedicineList}}</td>
+                <td>{{DOSE}}</td>
+                <td>{{ROUTE}}</td>
+                <td>{{FREQUENCY}}</td>
+                <td>{{PURPOSE}}</td>
+                <td>{{REFILLS}}</td>
               </tr>
               {{/each}}
               {{else}}

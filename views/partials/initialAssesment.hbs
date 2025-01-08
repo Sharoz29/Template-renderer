@@ -1,4 +1,4 @@
-{{#with InitialAssessmentForm}}
+{{#with MedicalRecord}}
 <section class="frow" id="initial-assesment">
   <div class="container-padding width-100">
     <div class="container centered mb-20">
@@ -42,10 +42,10 @@
             <div class="frow justify-start gutters">
               <span>Sex:</span>
               <div class="cb ml-10">
-              {{> checkbox name="M" IsChecked=(equalityChecker @root.AppointmentInformation.PatientData.Sex "Male")}}
+              {{> checkbox name="M" IsChecked=(equalityChecker @root.AppointmentDetails.Male "Male")}}
               </div>
               <div class="cb ml-10">
-              {{> checkbox name="F" IsChecked=(equalityChecker @root.AppointmentInformation.PatientData.Sex "Female")}}
+              {{> checkbox name="F" IsChecked=(equalityChecker @root.AppointmentDetails.Female "Female")}}
               </div>
             </div>
           </td>
@@ -54,10 +54,10 @@
             <div class="frow justify-start ml-5">
               Location patient is accessed:
               <div class="cb ml-10">
-                {{> checkbox name="Home Visit" IsChecked=(equalityChecker LocationPatientIsAssessed "Home")}}              
+                {{> checkbox name="Home Visit" IsChecked= HomeVisit }}              
               </div>
               <div class="cb ml-10">
-                {{> checkbox name="Boarding Care" IsChecked=(equalityChecker LocationPatientIsAssessed "Boarding Care")}}
+                {{> checkbox name="Boarding Care" IsChecked=(equalityChecker BoardingCare "Boarding Care")}}
               </div>
             </div>
           </td>
@@ -149,9 +149,9 @@
         <tr>
           <td colspan="3">
             <div class="frow cb justify-start">
-              {{#each @root.SelectedFunctionalLimitations}}
+            {{#each (mapCheckedItems FunctionalLimitationsEmbed FunctionalLimitations)}}
               <div class="col-1-3">
-                 {{> checkbox IsChecked=IsChecked name=PatientFunctionalLimitation }}
+                 {{> checkbox IsChecked=IsChecked name=Name }}
               </div>
               {{/each}}
               <div class="col-1-3">
@@ -178,9 +178,9 @@
           <td colspan="3">
             <div class="frow cb justify-start">
               <!-- Repeat Below for all list of activities permited -->
-              {{#each @root.SelectedActivitiesPermitted}}
+              {{#each (mapCheckedItems ActivitiesPermittedEmbed ActivitiesPermitted)}}
               <div class="col-1-3">
-                  {{> checkbox IsChecked=IsChecked name=ActivitiesPermited }}
+                  {{> checkbox IsChecked=IsChecked name=Name }}
               </div>
               {{/each}}
               <div class="col-1-3">
@@ -241,9 +241,9 @@
           <td colspan="6">
             <div class="frow cb justify-start">
               <!-- Repeat Below for all Surgical Histories -->
-              {{#each @root.SelectedPastMedicalHistory}}
+              {{#each (mapCheckedItems PastMedicalHistoryEmbed PastMedicalHistory)}}
                 <div class="cb col-1-6">
-                  {{> checkbox IsChecked=IsChecked name=PASTMEDICALHISTORY }}
+                  {{> checkbox IsChecked=IsChecked name=Name }}
                 </div>
                 {{#if @last}}
                   
@@ -269,9 +269,9 @@
             <div class="frow cb justify-start">
               <!-- Repeat Below for all Surgical Histories -->
 
-              {{#each @root.SelectedPastSurgicalHistory}}
+              {{#each (mapCheckedItems PastSurgicalHistoryEmbed PastSurgicalHistory)}}
                 <div class="cb col-1-6">
-                  {{> checkbox IsChecked=IsChecked name=PastSurgicalHistory }}
+                  {{> checkbox IsChecked=IsChecked name=Name }}
                 </div>
                 {{#if @last}}
                   
@@ -305,10 +305,10 @@
                   {{> checkbox IsChecked=(checker PatientUseTobacco "No") name="No" }}
               </div> --}}
               {{#if (isTrue PatientUseTobacco)}}
-              {{#each @root.SelectedTobacco_THC}}
+              {{#each (mapCheckedItems TobaccoTHCEmbed  SocialHistoryTobaccoTHC)}}
               <div class="col-1-6">
                 <div class="cb">
-                  {{> checkbox IsChecked=IsChecked name=TobaccoTHC }}
+                  {{> checkbox IsChecked=IsChecked name=Name }}
                 </div>
               </div>
               {{/each}}
@@ -327,10 +327,10 @@
                   {{> checkbox IsChecked=(checker PatientConsumeAlcohol "No") name="No" }}
                 </div> --}}
                 {{#if (isTrue PatientConsumeAlcohol)}}
-              {{#each @root.SelectedAlcoholConsumption}}
+              {{#each (mapCheckedItems ETOHAlcoholEmbed  SocialHistoryETOHAlcohol)}}
               <div class="col-1-6">
                 <div class="cb">
-                  {{> checkbox IsChecked=IsChecked name=ETOHAlcohol }}
+                  {{> checkbox IsChecked=IsChecked name=Name }}
                 </div>
               </div>
               {{/each}}              
@@ -339,10 +339,10 @@
 
             <div class="frow justify-start gutters">
               <strong class="col-1-6">Drugs</strong>
-              {{#each @root.SelectedDrugsOnSocialHistory}}
+              {{#each (mapCheckedItems DrugsEmbed  Drugs)}}
               <div class="col-1-6">
                 <div class="cb">
-                  {{> checkbox name=Drugs IsChecked=IsChecked}}
+                  {{> checkbox name=Name IsChecked=IsChecked}}
                 </div>
               </div>
               {{/each}}              
@@ -474,9 +474,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosGeneral}}
+                      {{#each (mapCheckedItems GeneralEmbed  General)}}
                       <div class="cb col-1-4">
-                        {{> checkbox IsChecked=IsChecked name=General }}
+                        {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -497,9 +497,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosHead}}
+                      {{#each (mapCheckedItems HeadEmbed  Head)}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Head }}
+                         {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -520,9 +520,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosNeckAxilliaBreasts}}
+                      {{#each (mapCheckedItems NeckAxillaBreastsEmbed  NeckAxillaBreasts)}}
                       <div class="cb col-1-4">
-                        {{> checkbox IsChecked=IsChecked name=NeckAxillaBreasts }}
+                        {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -543,9 +543,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosEyes}}
+                      {{#each (mapCheckedItems EyedEmbed  Eyes)}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Eyes }}
+                         {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -566,9 +566,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosEars}}
+                      {{#each (mapCheckedItems EarsEmbed  Ears)}}
                       <div class="cb col-1-4">
-                        {{> checkbox IsChecked=IsChecked name=Ears }}
+                        {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                        <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -589,9 +589,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                        {{#each @root.SelectedRosNose}}
+                        {{#each (mapCheckedItems NoseEmbed  Nose)}}
                         <div class="cb col-1-4">
-                          {{> checkbox IsChecked=IsChecked name=Nose }}
+                          {{> checkbox IsChecked=IsChecked name=Name }}
                         </div>
                         {{/each}}
                          <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -612,9 +612,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosMouth}}
+                      {{#each (mapCheckedItems MouthEmbed  Mouth)}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Mouth }}
+                         {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                        <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -635,9 +635,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosCardiovascular}}
+                      {{#each (mapCheckedItems CardiovascularEmbed  Cardiovascular)}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Cardiovascular }}
+                         {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -658,9 +658,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedPulmonary}}
+                      {{#each (mapCheckedItems PulmonaryEmbed  Pulmonary)}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Pulmonary }}
+                         {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -681,9 +681,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosAbdomen}}
+                      {{#each (mapCheckedItems AbdomenEmbed  Abdomen)}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Abdomen }}
+                         {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -704,9 +704,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosGenitourinary}}
+                      {{#each (mapCheckedItems GenitourinaryEmbed  Genitourinary)}}
                       <div class="cb col-1-4">
-                       {{> checkbox IsChecked=IsChecked name=Genitourinary }}
+                       {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                        <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -727,9 +727,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosRectal}}
+                      {{#each (mapCheckedItems RectalEmbed  Rectal)}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Rectal }}
+                         {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                        <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -750,9 +750,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosUpperExtremities}}
+                      {{#each (mapCheckedItems UpperExtremitiesEmbed  UpperExtremities)}}
                       <div class="cb col-1-4">
-                        {{> checkbox IsChecked=IsChecked name=UpperExtremities }}
+                        {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                        <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -773,9 +773,9 @@
                   </td>
                   <td>
                     <div class="frow cb  justify-start">
-                      {{#each @root.SelectedLowerExtremities}}
+                      {{#each (mapCheckedItems LowerExtremitiesEmbed  LowerExtremities)}}
                       <div class="cb col-1-4">
-                       {{> checkbox IsChecked=IsChecked name=LowerExtremities }}
+                       {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                        <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -796,9 +796,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedSkin}}
+                      {{#each (mapCheckedItems SkinEmbed  Skin)}}
                       <div class="cb col-1-4">
-                        {{> checkbox IsChecked=IsChecked name=Skin }}
+                        {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -819,9 +819,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedNutrition}}
+                      {{#each (mapCheckedItems NutritionEmbed  Nutrition)}}
                       <div class="cb col-1-4">
-                        {{> checkbox IsChecked=IsChecked name=Nutrition }}
+                        {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -842,9 +842,9 @@
                   </td>
                   <td>
                     <div class="frow cb  justify-start">
-                      {{#each @root.SelectedRosMuscleSkeletal}}
+                      {{#each (mapCheckedItems MUSCLESKELETALEmbed  MuscleSkeletel)}}
                       <div class="cb col-1-4">
-                        {{> checkbox IsChecked=IsChecked name=MuscleSketetal }}
+                        {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -865,9 +865,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosEndocrine}}
+                      {{#each (mapCheckedItems EndocrineEmbed  Endocrinen)}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Endocrime }}
+                         {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -888,9 +888,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosPelvic}}
+                      {{#each (mapCheckedItems PelvicEmbed  Pelvic)}}
                       <div class="cb col-1-4">
-                        {{> checkbox IsChecked=IsChecked name=Pelvic }}
+                        {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -911,9 +911,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosNeurological}}
+                      {{#each (mapCheckedItems NeurologicalEmbed  Neurological)}}
                       <div class="cb col-1-4">
-                         {{> checkbox IsChecked=IsChecked name=Neurological }}
+                         {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -954,9 +954,9 @@
                   </td>
                   <td>
                     <div class="frow cb justify-start">
-                      {{#each @root.SelectedRosMental}}
+                      {{#each (mapCheckedItems MentalEmbed  Mental)}}
                       <div class="cb col-1-4">
-                        {{> checkbox IsChecked=IsChecked name=Mental }}
+                        {{> checkbox IsChecked=IsChecked name=Name }}
                       </div>
                       {{/each}}
                       <div class="frow cb justify-start" style="gap: 5px; align-items:center">
@@ -989,12 +989,12 @@
           </td>
         </tr>
         <!-- loop here... -->
-        {{#splitArrayByNumber @root.SelectedPlanOnInitialAssesment 3}}
+        {{#splitArrayByNumber (mapCheckedItems PLANEmbed Plan) 3}}
         <tr>
           {{#each chunk}}
           <td colspan="2">
             <div class="cb">
-              {{> checkbox name=Plan IsChecked=IsChecked}}
+              {{> checkbox name=Name IsChecked=IsChecked}}
             </div>
           </td>
           {{/each}}
