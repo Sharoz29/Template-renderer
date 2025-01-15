@@ -21,7 +21,7 @@
         <div class="col-1-2">
           <br>Provider Name:
           {{!-- <span class="name text-bold px-5">{{@root.AppointmentInformation.SelectProvider}}</span> --}}
-          <span class="name text-bold px-5">{{@root.AppointmentInformation.OperatorData.pyUserName}}</span>
+          <span class="name text-bold px-5">{{@root.NursePractitionerEmbed.UserName}}</span>
         </div>
       </div>      
       <div class="frow justify-start">
@@ -31,7 +31,7 @@
         </div>
         <div class="col-1-2">
           Date:
-          <span class="name px-5 text-bold">{{formatDate @root.AppointmentInformation.SignatureDate}}</span>
+          <span class="name px-5 text-bold">{{formatDate @root.AppointmentDetails.DateNPRF}}</span>
         </div>      
       </div>
     </div>

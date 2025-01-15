@@ -40,7 +40,7 @@
             </td>
             <td>
               <div class="frow justify-start margin-remover">
-              Description:<span class="px-5">{{{Description_SpecilaDiet}}}</span>
+              Description:<span class="px-5">{{{Description2}}}</span>
               </div>
             </td>
             <td>
@@ -107,10 +107,10 @@
             <td>
               {{!-- <div class="frow justify-start gutters"> --}}
                 <div class="cb">
-                  {{> checkbox name="Yes" IsChecked=(checker LittleOrNoPleasureInDoingThingsOverTheLast2Weeks "Yes")}}
+                  {{> checkbox name="Yes" IsChecked=(checker LittleOrNoPleasureInDoingThingOverTheLast2Weeks "Yes")}} 
                 </div>
                 <div class="cb">
-                  {{> checkbox name="No" IsChecked=(checker LittleOrNoPleasureInDoingThingsOverTheLast2Weeks "No")}}
+                  {{> checkbox name="No" IsChecked=(checker LittleOrNoPleasureInDoingThingOverTheLast2Weeks "No")}} 
                 </div>
               {{!-- </div> --}}
             </td>
@@ -667,7 +667,7 @@
             <td>
               <div class="frow justify-start gutters">
                 <div class="cb">
-                  {{> checkbox name="NEEDS" IsChecked=DiabetesSelfManagementTrainingDSMT.ScreeningRequired}}
+                  {{> checkbox name="NEEDS" IsChecked=DSMTNEEDS}}
                 </div>
               </div>
             </td>

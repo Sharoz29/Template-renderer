@@ -95,7 +95,7 @@
             <div class="frow justify-start gutters text-bold fz-18 mt-10 mb-10">
                 {{!-- <span>Photo/Video consent:</span> --}}
                 <div class="cb">
-                    {{> checkbox IsChecked=(isTrue @root.AppointmentInformation.PhotoVideoConsent) name="Photo/Video consent" }}
+                    {{> checkbox IsChecked=(isTrue @root.AppointmentDetails.PhotoVideoConsent) name="Photo/Video consent" }}
                 </div>
                 {{!-- <div class="cb">
                     {{> checkbox IsChecked=(checker @root.AppointmentInformation.PhotoVideoConsent "No") name="No" }}
@@ -142,15 +142,16 @@
 
                         <div class="frow justify-start gutters">                            
                             <div class="cb">
-                                {{> checkbox name="Cane" IsChecked=(isActivityPermitted @root.SelectedActivitiesPermitted "Cane")}}
+                                {{> checkbox name="Cane" IsChecked=(isActivityPermitted (mapCheckedItems @root.MedicalRecord.ActivitiesPermittedEmbed @root.MedicalRecord.ActivitiesPermitted) "Cane")}}
+                                
                                 {{!-- {{> checkbox name="Cane" IsChecked=(checker @root.SelectedActivitiesPermitted.ActivitiesPermited.Cane)}}                                                                 --}}
                             </div>                            
                             <div class="cb ml-10">
-                                {{> checkbox name="Walker" IsChecked=(isActivityPermitted @root.SelectedActivitiesPermitted "Walker")}}
+                                {{> checkbox name="Walker" IsChecked=(isActivityPermitted (mapCheckedItems @root.MedicalRecord.ActivitiesPermittedEmbed @root.MedicalRecord.ActivitiesPermitted) "Walker")}}
                                 {{!-- {{> checkbox IsChecked=(equalityChecker @root.SelectedActivitiesPermitted.ActivitiesPermited "Walker") name="Walker" }}                                 --}}
                             </div>
                             <div class="cb">
-                                {{> checkbox name="Wheelchair" IsChecked=(isActivityPermitted @root.SelectedActivitiesPermitted "Wheelchair")}}
+                                {{> checkbox name="Wheelchair" IsChecked=(isActivityPermitted (mapCheckedItems @root.MedicalRecord.ActivitiesPermittedEmbed @root.MedicalRecord.ActivitiesPermitted) "Wheelchair")}}
                                 {{!-- {{> checkbox IsChecked=(equalityChecker @root.SelectedActivitiesPermitted.ActivitiesPermited "Wheelchair") name="Wheelchair" }} --}}
                             </div>
                         </div>

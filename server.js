@@ -143,7 +143,7 @@ router.get("/get-lab/:id", async (req, res) => {
 });
 
 router.post("/get-selected-forms", async (req, res) => {
-  const caseInfo = req.body.case;
+  const caseInfo =req.body.case.data[0];
   const selectedForms = req.body.selectedForms;
 
   return await getCombinedPDFBuffer(renderView, caseInfo, selectedForms)
@@ -152,24 +152,23 @@ router.post("/get-selected-forms", async (req, res) => {
       res.setHeader(
         "Content-Disposition",
         `attachment; filename=${req.body.fileName || "output"}-${
-          req.body.case.ID.split(" ")[1]
+          caseInfo.ID
         }.pdf`
       );
       res.json({
         fileName: `${req.body.fileName || "output"}-${
-          req.body.case.ID.split(" ")[1]
+          caseInfo.ID
         }.pdf`,
-        pdf: pdfBase64,
+        pdf:pdfBase64,
       });
 
       console.timeEnd(
-        coloredText(req.body.case.ID.split(" ")[1], "green") + " in"
+        coloredText(caseInfo.ID)
       );
     })
     .catch((error) => {
       console.timeEnd(
-        coloredText(req.body.case.ID.split(" ")[1], "green") + " in"
-      );
+        coloredText(caseInfo.ID))
       console.log("Has Error:", error.message);
       res.send(error);
     });

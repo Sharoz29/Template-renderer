@@ -31,7 +31,7 @@
            {{#each MEDICATIONSAO}}
           <tr>
             <td>{{counter @index}}</td>
-            <td>{{formatDate Date}}</td>
+            <td>{{formatDate DateMedicine}}</td>
             <td>{{MedicineList}}</td>
             <td>{{DOSE}}</td>
             <td>{{ROUTE}}</td>
@@ -87,8 +87,8 @@
             </td>
             <td colspan="5">
               <div class="frow cb justify-start" style="gap: 10px;">
-                {{#each @root.SelectedPatientDiets}}
-                {{> checkbox IsChecked=IsChecked name=DietName }}
+                {{#each (mapCheckedItems DietEmbed Diet)}}
+                {{> checkbox IsChecked=IsChecked name=Name }}
                 {{/each}}
                 <span class="cb">
                   {{> checkbox IsChecked=OtherDietBool name='Others:' }}
@@ -104,8 +104,8 @@
             <td colspan="5">
               <div class="frow cb justify-start">
                 <div class="frow cb justify-start" style="gap: 10px;">
-                  {{#each @root.SelectedPatientsDME}}
-                  {{> checkbox IsChecked=IsChecked name=DMEName }}
+                  {{#each  (mapCheckedItems DMEEmbed DME)}}
+                  {{> checkbox IsChecked=IsChecked name=Name }}
                   {{/each}}
                   <span class="cb">
                     {{> checkbox IsChecked=OtherDMEBool name='Others:' }}
@@ -124,8 +124,8 @@
             <td colspan="5">
               <div class="frow cb justify-start">
                 <div class="frow cb justify-start" style="gap: 10px;">
-                  {{#each @root.SelectedPatientSupplies}}
-                  {{> checkbox IsChecked=IsChecked name=SuppliesName }}
+                  {{#each  (mapCheckedItems SuppliesEmbed Supplies)}}
+                  {{> checkbox IsChecked=IsChecked name=Name }}
                   {{/each}}
                   <span class="cb">
                     {{> checkbox IsChecked=OtherSuppliesBool name='Others:' }}

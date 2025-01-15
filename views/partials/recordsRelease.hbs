@@ -6,19 +6,19 @@
                  <h2 class="text-center m-auto">RECORDS RELEASE/AUTHORIZATION</h2>
             </div>
             <div class="frow text-center mt-10 text-bold">
-                <span>{{@root.AppointmentInformation.Office.OfficeName}}</span>
+                <span>{{OfficeName}}</span>
             </div>
             <div class="from text-center text-bold">
-                <span>{{@root.AppointmentInformation.Office.Address}}</span>            
+                <span>{{Address}}</span>            
             </div>
             <div class="frow text-bold">
                 <div class="col-1-2 text-right p-5">
                     <span>TEL# </span>
-                    <span>{{@root.AppointmentInformation.Office.TelephoneNumber}}</span>
+                    <span>{{TelephoneNumber}}</span>
                 </div>
                 <div class="col-1-2 text-left p-5">
                     <span>FAX# </span>
-                    <span>{{@root.AppointmentInformation.Office.Fax}}</span>
+                    <span>{{Fax}}</span>
                 </div>
             </div>
             <div class="text-center m-auto text-bold mt-10">RECORDS REQUESTED</div>
@@ -46,7 +46,7 @@
                 <tr>
                     <td colspan="2">
                         <span>Social Security No:</span>
-                        <span class="p-5 text-bold">{{../PatientData/pySSN}}</span>
+                        <span class="p-5 text-bold">{{../PatientDataEmbed.SSN}}</span>
                     </td>
                     <td colspan="2">
                         <span>Date of Birth:</span>
@@ -62,15 +62,15 @@
                 <tr>
                     <td>
                         <span>City:</span>
-                        <span class="p-5 text-bold">{{../PatientData/pyCity}}</span>
+                        <span class="p-5 text-bold">{{../PatientDataEmbed.City}}</span>
                     </td>
                     <td>
                         <span>State:</span>
-                        <span class="p-5 text-bold">{{../PatientData/SelectState}}</span>
+                        <span class="p-5 text-bold">{{../PatientDataEmbed.SelectState}}</span>
                     </td>
                     <td colspan="2">
                         <span>Zip:</span>
-                        <span class="p-5 text-bold">{{../PatientData/ZipCode}}</span>
+                        <span class="p-5 text-bold">{{../PatientDataEmbed.ZipCode}}</span>
                     </td>
                 </tr>
             </table>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="col-1-2 frow row-start">
                     <span>DATE:</span>
-                    <span class="p-10 text-bold">{{formatDate @root.AppointmentInformation.PatientsSignatureDate}}</span>
+                    <span class="p-10 text-bold">{{formatDate PatientSignatureDate}}</span>
                 </div>
             </div>
 

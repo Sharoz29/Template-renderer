@@ -1,5 +1,5 @@
 
-{{#fallRiskMapper @root.SelectedFallRisk}}
+{{#fallRiskMapper (mapCheckedItems @root.MedicalRecord.FallRiskEmbed @root.MedicalRecord.FallRisk)}}
 <section class="frow" id="fall-risk-list">
     <div class="container-padding width-100">
         <div class="content">
@@ -84,7 +84,7 @@
             <div class="frow justify-start mt-100">
                 <div class="col-1-3 frow items-end text-center text-bold">
                     <div>
-                        {{@root.AppointmentInformation.OperatorData.pyUserName}}
+                        {{@root.NursePractitionerEmbed.UserName}}
                         <div class="bt mt-10 pt-10">Name of Provider</div>
                     </div>
                 </div>

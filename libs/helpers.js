@@ -7,8 +7,8 @@ import axios from "axios";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const twoPointOption = [
-  "I use or have been advised to use a cane or walker to get around safely.",
-  "I have fallen in the past year.",
+    "I use or have been advised to use a cane or walker to get around safely",
+  "I have fallen in the past year",
 ];
 
 export function camelToSentence(str) {
@@ -128,7 +128,12 @@ export function equalityChecker(a, b) {
 /** If context has Telemedicine as AppointmentType */
 
 export function F2FTMText(context) {
-  return context?.isTM ? "Telemedicine" : "Face to Face";
+  if (!context || !context.AppointmentDetails) {
+    return "Face to Face"; 
+  }
+  return context.AppointmentDetails.TypeOfVisit === "Telemedicine" 
+  ? "Telemedicine" 
+  : "Face to Face";                                                
 }
 
 export function MapF2FTelemed(rootContext) {
@@ -160,29 +165,30 @@ export function checker(use, name) {
   return false; 
 }
 export function formatDate(date) {
-  if (!!date) {
-    // return date as mm-dd-yy-hh-mm
-    return new Date(date).toLocaleDateString().replace(/\//g, "-");
+  if (date) {
+    const [year, month, day] = date.split("-"); 
+    return `${Number(month)}-${Number(day)}-${year}`; // Return in mm-dd-yyyy format
   }
+
 }
 export function fallRiskMapper(array, options) {
   if (!Array.isArray(array) || array?.length === 0) return "";
   const newObj = array.reduce(
     (acc, item) => {
-      const { IsChecked, FallRiskOption, WhyItMatters } = item;
-      const isInTwoPoints = twoPointOption?.includes(FallRiskOption);
+      const { IsChecked, Name, Value } = item;
+      const isInTwoPoints = twoPointOption?.includes(Name);
       const newItem = {
-        IsYes: IsChecked === "true",
-        IsNo: IsChecked === "false",
-        FallRiskOption: FallRiskOption,
-        WhyItMatters: WhyItMatters,
+        IsYes: IsChecked === true,
+        IsNo: IsChecked === false,
+        FallRiskOption: Name,
+        WhyItMatters: Value,
         text: isInTwoPoints ? "Yes (2)" : "Yes (1)",
         weight: isInTwoPoints ? 2 : 1,
       };
 
       return {
         data: [...acc.data, newItem],
-        count: acc.count + (IsChecked === "true" ? newItem.weight : 0),
+        count: acc.count + (IsChecked === true ? newItem.weight : 0),
       };
     },
     { count: 0, data: [] }
@@ -250,7 +256,9 @@ export async function imageToDataUrl(url) {
 
 export function getMedicalConditionsFromF2F(context, option) {
   const medicalConditions = [];
-  const pmh = context?.SelectedPastMedicalHistory;
+  const MedicalRecord=context.MedicalRecord;
+ const SelectedPastMedicalHistory=mapCheckedItems(MedicalRecord?.PastMedicalHistoryEmbed,MedicalRecord?.PastMedicalHistory2);
+  const pmh = SelectedPastMedicalHistory;
 
   if (!pmh || !pmh?.length) return medicalConditions;
 
@@ -280,10 +288,10 @@ export function filterArr(arr, criteria, options) {
 
 export function isActivityPermitted(activities, activityName) {
   if (activities && Array.isArray(activities)) {
-    const activity = activities.find(
-      (activity) => activity.ActivitiesPermited === activityName
+    const activity = activities?.find(
+      (activity) => activity.Name === activityName
     );
-    if (activity && activity.IsChecked === "true") {
+    if (activity && activity.IsChecked === true) {
       return "true";
     }
   }

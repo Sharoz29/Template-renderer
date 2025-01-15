@@ -1,4 +1,4 @@
-{{#with AppointmentDetails}}
+{{#with PatientDataEmbed}}
 <section class="frow" id="polst">
   <div class="container-padding width-100">
     <table class="width-10">
@@ -49,18 +49,18 @@
                         <tr>
                           <td>Patient Last Name: 
                             <div class="text-bold">
-                            {{pyLastName}}
+                            {{LastName}}
                             </div></td>
                           <td>
                             Date Form Prepared:
-                            <div class="text-bold">{{formatDate ../DateFormPrepared}}</div>
+                            <div class="text-bold">{{formatDate @root.DateFormPrepared}}</div>
                           </td>
                         </tr>
                         <tr>
                           <td>                            
                             Patient First Name:                             
                             <div class="text-bold">
-                              {{pyFirstName}}
+                              {{FirstName}}
                             </div>
                           </td>
                           <td>                            
@@ -74,7 +74,7 @@
                           <td>                            
                             Patient Middle Name:                            
                             <div class="text-bold">
-                              {{pyMiddleInitial}}
+                              {{MiddleName}}
                               </div>
                           </td>
                         </tr>
@@ -110,11 +110,12 @@
                 <tr>
                   <div class="p-5">
                     <div class="cb">
-                      {{> checkbox name="Attempt Resuscitation/CPR" IsChecked=../POLST/AttemptResuscitationCPR}}
+                      {{> checkbox name="Attempt Resuscitation/CPR" IsChecked=(equalityChecker @root.MedicalRecord.ACheckOneFirst true )}}
+                            
                       <span class="cb" style="padding-left: 10px;">(Selecting CPR in Section A requires selecting Full Treatment in Section B)</span>
                     </div>
                     <div class="cb">
-                      {{> checkbox name="Do Not Attempt Resuscitation/DNR" IsChecked=../POLST/DoNotAttemptResuscitationDNR}}
+                      {{> checkbox name="Do Not Attempt Resuscitation/" IsChecked=(equalityChecker @root.MedicalRecord.ACheckOneSecond true)}}
                       <span class="cb" style="padding-left: 10px;">(Allow Natural Death)</span>
                     </div>
                   </div>
@@ -142,7 +143,7 @@
                   <td> <div class="p-5">
                     <div>
                       <div class="frow justify-start">
-                        {{> checkbox name="Full Treatment" IsChecked=../POLST/FullTreatment}}
+                        {{> checkbox name="Full Treatment" IsChecked= @root.MedicalRecord.BCheckOneFirst}}
                         <strong class="cb">– primary goal of prolonging life by all medically effective means.</strong>
                       </div>
                       <span class="cb pl-25">
@@ -150,24 +151,25 @@
                       </span>
                     </div>
                     <div class="pl-25">
-                      {{> checkbox name="Trial Period Of Full Treatment" IsChecked=../POLST/TrialPeriodOfFullTreatment}}
+                      {{> checkbox name="Trial Period Of Full Treatment" IsChecked= @root.MedicalRecord.BCheckOneSecond}}
                     </div>
                     <div>
                       <div class="frow justify-start">
-                          {{> checkbox name="Selective Treatment" IsChecked=../POLST/SelectiveTreatment}}
+                          {{> checkbox name="Selective Treatment" IsChecked= @root.MedicalRecord.BCheckOneThird}}
                           <strong class="cb">– goal of treating medical conditions while avoiding burdensome measures.</strong>
                       </div>
                       <span class="cb pl-25">
                        In addition to treatment described in Comfort-Focused Treatment, use medical treatment, IV antibiotics, and IV fluids as indicated. Do not intubate. May use non-invasive positive airway pressure. Generally, avoid intensive care.
                       </span>
+                      </div>
                     </div>
                     <div class="frow justify-start pl-25">
-                      {{> checkbox name="Request Transfer To Hospital" IsChecked=../POLST/RequestTransferToHospitalOnly}}
+                      {{> checkbox name="Request Transfer To Hospital" IsChecked=@root.MedicalRecord.BCheckOneFourth}}
                       <strong style="padding-left: 3px;"> only if comfort needs cannot be met in current location.</strong>
                     </div>
                     <div>
                       <div class="frow justify-start">
-                        {{> checkbox name="Comfort-Focused Treatment" IsChecked=../POLST/ComfortFocusedTreatment}}
+                        {{> checkbox name="Comfort-Focused Treatment" IsChecked=@root.MedicalRecord.BCheckOneFifth}}
                         <strong class="cb">– primary goal of maximizing comfort.</strong>
                       </div>
                       <div class="cb pl-25">
@@ -177,7 +179,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="margin-remover text-bold ml-5">Additional Orders: <span> {{{@root.AppointmentInformation.B_AdditionalOrders}}}</span></div></td>
+                  <div class="margin-remover text-bold ml-5">Additional Orders: <span> {{{@root.MedicalRecord.MedicalInterventionAdditionalOrders}}}</span></div></td>
                 </tr>
               </tbody>
             </table>
@@ -204,19 +206,19 @@
                   <td>
                     <div class="p-5">
                       <div class="cb">
-                       {{> checkbox name="Long-term Artificial Nutrition" IsChecked=../POLST/LongtermartificialNutrition}}
+                       {{> checkbox name="Long-term Artificial Nutrition" IsChecked= @root.MedicalRecord.CCheckOneFirst}}
                        <span class="cb">, including feeding tubes</span>
                       </div>
                       <div class="cb">
-                       {{> checkbox name="Trial Period Of Artificial Nutrition" IsChecked=../POLST/TrialPeriodOfArtificialNutrition}}
+                       {{> checkbox name="Trial Period Of Artificial Nutrition" IsChecked=@root.MedicalRecord.CCheckOneSecond}}
                       </div>
                       <div class="cb">
-                       {{> checkbox name="No Artificial Means Of Nutrition" IsChecked=../POLST/NoArtificialMeansOfNutrition}}
+                       {{> checkbox name="No Artificial Means Of Nutrition" IsChecked= @root.MedicalRecord.CCheckOneThird}}
                       </div>
                     </div>
                   </td>
                   <td class="va-top">
-                       <b class="margin-remover">Additional Orders: <span class="p-5 text-bold"> {{{@root.AppointmentInformation.C_AdditionalOrders}}}</span></b>
+                       <b class="margin-remover">Additional Orders: <span class="p-5 text-bold"> {{{@root.MedicalRecord.NutritionAdditionalOrders}}}</span></b>
                   </td>
                 </tr>
               </tbody>
@@ -254,11 +256,11 @@
                               {{!-- </td> --}}
                               {{!-- <td colspan="4"> --}}
                               <span class="cb pl-20">
-                                {{> checkbox name="Patient (Patient Has Capacity)" IsChecked=../POLST/PatientHasCapacity}}
+                                {{> checkbox name="Patient (Patient Has Capacity)"  IsChecked=(equalityChecker @root.MedicalRecord.DCheckOneFirst true )}}
                               </span>
                               
                               <span class="cb pl-20">
-                                  {{> checkbox name="Legally Recognized Decisionmaker" IsChecked=../POLST/LegallyRecognizedDecisionmaker}}
+                                  {{> checkbox name="Legally Recognized Decisionmaker" IsChecked=(equalityChecker @root.MedicalRecord.DCheckOneSecond true)}}
                               </span>
                             </div>                            
                           </td>
@@ -268,18 +270,18 @@
                             <div class="frow justify-start">
                               <div class="col-1-3">
                                 <div class="cb">
-                                {{> checkbox name="Advance Directive Dated:" IsChecked=../POLST/AdvanceDirectiveDated}}
-                                <span class="date px-5 text-bold text-underline">{{../POLST/AdvanceDirectiveDate}}</span>                              
+                                {{> checkbox name="Advance Directive Dated:" IsChecked=@root.AppointmentDetails.AdvanceDirectiveDated}}
+                                <span class="date px-5 text-bold text-underline">{{ formatDate @root.AppointmentDetails.AdvanceDirectiveDate}}</span>                              
                                 </div>
                               </div>
                               <div class="col-1-3">
                                 <div class="cb">
-                                  {{> checkbox name="Advance Directive Not Available" IsChecked=../POLST/AdvanceDirectiveNotAvailable}}                                  
+                                  {{> checkbox name="Advance Directive Not Available" IsChecked=@root.AppointmentDetails.AdvanceDirectiveNotAvailable}}                                  
                                 </div>
                               </div>
                               <div class="col-1-3">
                                 <div class="cb">
-                                  {{> checkbox name="No Advance Directive" IsChecked=../POLST/NoAdvanceDirective}}
+                                  {{> checkbox name="No Advance Directive" IsChecked=@root.AppointmentDetails.NoAdvanceDirective}}
                                   </label>
                               </div>
                             </div>
@@ -313,19 +315,19 @@
                         <tr>
                           <td>
                             <span class="name">Print Provider Name:</span>
-                            <span class="text-bold">{{@root.AppointmentInformation.OperatorData.pyUserName}}</span>
+                            <span class="text-bold">{{@root.NursePractitionerEmbed.UserName}}</span>
                           </td>
                           <td>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="text-bold">{{@root.AppointmentInformation.Office.TelephoneNumber}}</span>
+                              <span class="text-bold">{{@root.NursePractitionerEmbed.Contact}}</span>
                             </div>
                           </td>
 
                           <td>
                             <div class="license">
                               <span>License #:</span>
-                              <span class="text-bold">{{@root.AppointmentInformation.OperatorData.LicenseNumber}}</span>
+                              <span class="text-bold">{{@root.NursePractitionerEmbed.LicenseNumber}}</span>
                             </div>
                           </td>
                         </tr>
@@ -339,7 +341,7 @@
                           <td>
                             <div class="date">
                               <span>Date:</span>
-                              <span class="text-bold">{{formatDate @root.AppointmentInformation.SignatureDate}}</span>
+                              <span class="text-bold">{{formatDate @root.AppointmentDetails.DateNPRF}}</span>
                             </div>
                           </td>
                         </tr>
@@ -366,13 +368,14 @@
                           <td colspan="2">
                             <div class="name">
                               <span>Print Name:</span>
-                              <span class="text-bold">{{pyFullName}}</span>
+                              <span class="text-bold">{{PatientFullName
+                                }}</span>
                             </div>
                           </td>
                           <td>
                             <div class="relationship">
                               <span>Relationship (write self if patient):</span>
-                              <span class="text-bold">{{RelationshipToThePatient}}</span>
+                              <span class="text-bold">{{ @root.AppointmentDetails.RelationshipwriteSelfIfPatient}}</span>
                             </div>
                           </td>
                         </tr>
@@ -386,7 +389,7 @@
                           <td>
                             <div class="date">
                               <span>Date:</span>
-                              <span class="text-bold">{{formatDate @root.AppointmentInformation.PatientsSignatureDate}}</span>
+                              <span class="text-bold">{{formatDate @root.AppointmentDetails.PatientSignatureDatePOLST}}</span>
                             </div>
                           </td>
                         </tr>
@@ -394,19 +397,19 @@
                           <td>
                             <div class="address">
                               <span>Mailing Address (street/city/state/zip):</span>
-                              <span class="text-bold">{{pyHomeAddress1}} {{pyHomeAddress2}}, {{pyCity}}, {{SelectState}}, {{ZipCode}}</span>
+                              <span class="text-bold">{{HomeAddress}} {{pyHomeAddress2}}, {{City}}, {{SelectState}}, {{ZipCode}}</span>
                             </div>
                           </td>
                           <td>
                             <div class="phone">
                               <span>Phone:</span>
-                              <span class="text-bold">{{pyPhoneNumber}}</span>
+                              <span class="text-bold">{{@root.PatientDataEmbed.CellPhone}}</span>
                             </div>
                           </td>
                           <td>
                             <div class="office-use-only">
                               <span>Office Use Only:</span>
-                              <span></span>
+                              <span class="text-bold">{{@root.AppointmentDetails.OfficeUseOnly}}</span>
                             </div>
                           </td>
                         </tr>

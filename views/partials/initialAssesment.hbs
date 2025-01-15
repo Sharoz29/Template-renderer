@@ -38,7 +38,7 @@
             </div>
           </td>
 
-          <td>
+          {{!-- <td>
             <div class="frow justify-start gutters">
               <span>Sex:</span>
               <div class="cb ml-10">
@@ -48,7 +48,7 @@
               {{> checkbox name="F" IsChecked=(equalityChecker @root.AppointmentDetails.Female "Female")}}
               </div>
             </div>
-          </td>
+          </td> --}}
 
           <td colspan="3">
             <div class="frow justify-start ml-5">
@@ -57,7 +57,7 @@
                 {{> checkbox name="Home Visit" IsChecked= HomeVisit }}              
               </div>
               <div class="cb ml-10">
-                {{> checkbox name="Boarding Care" IsChecked=(equalityChecker BoardingCare "Boarding Care")}}
+                {{> checkbox name="Boarding Care" IsChecked=BoardingCare}}
               </div>
             </div>
           </td>
@@ -66,7 +66,7 @@
           <td colspan="6">
             <div class="p-10 pl-0">
             <span class="text-bold">Chief Complaint:</span>
-            <span class="p-5">{{ChiefComplaints}}</span>
+            <span class="p-5">{{ChiefComplaint}}</span>
             </div>
           </td>
         </tr>
@@ -100,8 +100,8 @@
           </td>
         </tr>
         <!-- Repeat this row -->
-        {{#if DrugFood}}
-        {{#each DrugFood}}        
+        {{#if Allergies}}
+        {{#each Allergies}}        
         <tr>
           <td colspan="3">
             <span>{{DrugFood}}</span>
@@ -163,12 +163,12 @@
               <div class="col-1-3">
                 {{> checkbox IsChecked=PatientIsFullyContinent name="Patient is fully continent"}}
               </div>
-              {{#if (isTrue PatientHasIncontinenceBool)}}
+              {{#if (isTrue PatientHasIncontinence)}}
               <div class="col-1-3">
-                {{> checkbox IsChecked=PatientHasIncontinenceBool name="Patient has incontinence: "}}
+                {{> checkbox IsChecked=PatientHasIncontinence name="Patient has incontinence: "}}
               </div>
               <div class="col-1-3">
-                {{> checkbox IsChecked=true name=PatientHasIncontinence}}
+                {{> checkbox IsChecked=true name=BladderBowel}}
               </div>
               {{/if}}              
               {{!-- <div class="frow justify-start"> --}}
@@ -209,9 +209,9 @@
               <div class="col-1-8">
                 Basic ADLs  
               </div>
-              {{#each @root.SelectedBasicADLs}}
+              {{#each (mapCheckedItems BasicADLsEmbed BasicADLs)}}
               <div class="col-1-8">
-                {{> checkbox IsChecked=IsChecked name=BasicADLs}}                
+                {{> checkbox IsChecked=IsChecked name=Name}}                
               </div>
               {{/each}}
             </div>
@@ -223,9 +223,9 @@
               <div class="col-1-6">
                 Instrumental ADLs
               </div>
-              {{#each @root.SelectedInstrumentalADLs}}
+              {{#each  (mapCheckedItems InstrumentalADLsEmbed InstrumentalADLs)}}
               <div class="col-1-6">
-                {{> checkbox IsChecked=IsChecked name=InstrumentalADLs}}
+                {{> checkbox IsChecked=IsChecked name=Name}}
               </div>
               {{/each}}
             </div>
@@ -241,7 +241,7 @@
           <td colspan="6">
             <div class="frow cb justify-start">
               <!-- Repeat Below for all Surgical Histories -->
-              {{#each (mapCheckedItems PastMedicalHistoryEmbed PastMedicalHistory)}}
+              {{#each (mapCheckedItems PastMedicalHistoryEmbed PastMedicalHistory2)}}
                 <div class="cb col-1-6">
                   {{> checkbox IsChecked=IsChecked name=Name }}
                 </div>
@@ -299,13 +299,13 @@
             <div class="frow justify-start gutters">
               {{!-- <strong>Tobacco / THC</strong> --}}
               {{!-- <div class="cb col-1-6"> --}}              
-              <strong class="col-1-6">{{> checkbox IsChecked=(isTrue PatientUseTobacco) name="Tobacco / THC"}}</strong>
+              <strong class="col-1-6">{{> checkbox IsChecked=(isTrue PatientUsesTobacco) name="Tobacco / THC"}}</strong>
               {{!-- </div> --}}
               {{!-- <div class="cb col-1-6">
                   {{> checkbox IsChecked=(checker PatientUseTobacco "No") name="No" }}
               </div> --}}
-              {{#if (isTrue PatientUseTobacco)}}
-              {{#each (mapCheckedItems TobaccoTHCEmbed  SocialHistoryTobaccoTHC)}}
+              {{#if (isTrue PatientUsesTobacco)}}
+              {{#each (mapCheckedItems TobaccoTHCEmbed  SocialHistoryTobaccoTHC)}} 
               <div class="col-1-6">
                 <div class="cb">
                   {{> checkbox IsChecked=IsChecked name=Name }}
@@ -978,7 +978,7 @@
         <tr>
           <td colspan="6">
             {{#each (getMedicalConditionsFromF2F @root)}}
-            <span class="pr-5">{{PASTMEDICALHISTORY}},</span>
+            <span class="pr-5">{{Name}},</span>
             {{/each}}&nbsp
           </td>
         </tr>
@@ -1000,8 +1000,8 @@
           {{/each}}
         {{/splitArrayByNumber}}
           <td>
-            <div class="cb">{{> checkbox name="Follow up in" IsChecked=FollowUpIn}}
-              <span class="px-5">{{FollowUpWeeks}} With PCP</span>
+            <div class="cb">{{> checkbox name="Follow up in" IsChecked=FollowUpInWithPCP}}
+              <span class="px-5">{{PleaseEnterDaysOrWeek}} With PCP</span>
               <span></span>
             </div>
           </td>

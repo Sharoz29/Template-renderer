@@ -1,4 +1,4 @@
-{{#with AppointmentDetails}}
+{{#with MedicalRecord}}
 <section class="frow" id="referal-form">
   <div class="container-padding width-100">
     <div class="container centered mb-20">
@@ -9,11 +9,11 @@
       <div class="frow">
         {{!-- {{#each doctors}} --}}
         <div class="checkbox-container col-6-12">
-          <span class="md-id fz-18"><strong>{{@root.AppointmentInformation.OperatorDataMD.pyUserName}}</strong></span>
+          <span class="md-id fz-18"><strong>{{@root.AppointmentDetails.OperatorDataMD.pyUserName}}</strong></span>
         </div>
         {{!-- {{/each}} --}}
         <div class="md-id-container col-3-6 fz-18">
-          <span class="md-id"><strong>NPI ID: {{@root.AppointmentInformation.OperatorDataMD.NPIID}}</strong></span>
+          <span class="md-id"><strong>NPI ID: {{@root.AppointmentDetails.OperatorDataMD.NPIID}}</strong></span>
         </div>
       </div>
       <!-- <pega:forEach name="Doctors.pxResults">
@@ -42,34 +42,31 @@
           <span class="value text-bold">{{@root.ReferralAgencyEmbed.ReferralAgencyName}}</span>
         </div>
         <div class="item col-6-6 mt-30 fz-20">
-            <h3 class="label">Home Health Service </h3>
-        </div>
-        <div class="item col-6-6 mt-5 fz-18">
-          {{> checkbox name="For Skill Nursing Services" IsChecked=ForSkillNursingServices}}
-        </div>
-        <div class="item col-6-6 mt-5 fz-18">
-          {{> checkbox name="For Physical Therapy Treatment" IsChecked=ForPhysicalTherapyTreatment}}
-          
-        </div>
-        <div class="item col-6-6 mt-5 fz-18">
-          {{> checkbox name="For Occupational Therapy" IsChecked=ForOccupationalTherapy}}
+
+              <div class="frow justify-start fz-15">
+
+              <div class="col-1-8">
+               Home Health Service
+              </div>
+              {{#each (mapCheckedItems HomeHealthServiceEmbed  HomeHealthService)}}
+              <div class="col-1-8">
+                {{> checkbox IsChecked=IsChecked name=Name}}                
+              </div>
+              {{/each}}
+            </div>
         </div>
         <div class="item col-6-6"></div>
         <div class="item col-6-6 mt-30 fz-20">
-          <h3 class="label">Treatment</h3>
-        </div>
-        <div class="item col-6-6 mt-5 fz-18">
-          {{> checkbox name="Pain Management" IsChecked=PainManagement}}
-        </div>
-        <div class="item col-6-6 mt-5 fz-18">
-          {{> checkbox name="Psychiatry" IsChecked=Psychiatry}}
-        </div>
-        <div class="item col-6-6 mt-5 fz-18">
-          {{> checkbox name="Neurology" IsChecked=Neurology}}
-        </div>
-        <div class="item col-6-6 mt-5 mb-10 fz-18">
-          {{> checkbox name="Wound Care Specialist" IsChecked=WoundCareSpecialist}}
-        </div>
+            <div class="frow justify-start fz-15">
+              <div class="col-1-8">
+               Treatment
+              </div>
+              {{#each (mapCheckedItems TreatmentEmbed Treatment)}}
+              <div class="col-1-8">
+                {{> checkbox IsChecked=IsChecked name=Name}}                
+              </div>
+              {{/each}}
+            </div>
       </div>
     </div>
     <div class="labs p-10 mb-10 ba">
@@ -79,9 +76,19 @@
             <span class="label">Lab(s) </span>
             <span class="value">_________</span>
           </div>
-          {{#each @root.SelectedLabsOnReferal}}
+          {{#each  (mapCheckedItems LabsEmbed  Labs)}}
             <div class="item col-3-6 mt-5 mb-5 fz-18" style="width: 50%">
-              {{> checkbox name=LabTypes IsChecked=IsChecked}}
+              {{> checkbox name=Name IsChecked=IsChecked}}
+            </div>
+          {{/each}}  
+            <div class="item col-6-6 mb-10 fz-18"> 
+
+             <span class="label"> Dx-Lab(s) </span>
+            <span class="value">_________</span>
+            </div>
+            {{#each  (mapCheckedItems DxLabsEmbed  DxLabs)}}
+            <div class="item col-3-6 mt-5 mb-5 fz-18" style="width: 50%">
+              {{> checkbox name=Name IsChecked=IsChecked}}
             </div>
           {{/each}}                  
             <div class="cb fz-18">

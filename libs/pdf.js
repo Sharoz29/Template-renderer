@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import { HBS, helpers } from "./helpers.js";
 import { getCaseData } from "./pega.js";
 import { coloredText } from "./global.js";
+import { mockContext } from "./mock.js";
 
 // Get the current file's directory
 const __filename = fileURLToPath(import.meta.url);
@@ -112,35 +113,34 @@ export async function getCombinedPDFBuffer(renderView, data, selectedForms) {
     " --> Before Rendering and Creation of PDF"
   );
 
-  const context = {
-    allForms: selectedForms,
-    selectedForms: selectedForms,
-    labOrders: [
-      "labOrders_Labs",
-      "labOrders_Dx",
-      "labOrders_DME",
-      "labOrders_Supplies",
-      "labOrders_ReferTo",
-    ],
-    labReferences: [
-      "CBC",
-      "BMP",
-      "CMP",
-      "CMP1",
-      "CMP2",
-      "CMP3",
-      "CMP4",
-      "CMP5",
-      "CMP6",
-    ],
-    selectedLabs: ["CBC", "BMP", "CMP", "CMP1"],
-  };
-  const { AppointmentInformation } = data.content;
+  // const context = {
+  //   allForms: selectedForms,
+  //   selectedForms: selectedForms,
+  //   labOrders: [
+  //     "labOrders_Labs",
+  //     "labOrders_Dx",
+  //     "labOrders_DME",
+  //     "labOrders_Supplies",
+  //     "labOrders_ReferTo",
+  //   ],
+  //   labReferences: [
+  //     "CBC",
+  //     "BMP",
+  //     "CMP",
+  //     "CMP1",
+  //     "CMP2",
+  //     "CMP3",
+  //     "CMP4",
+  //     "CMP5",
+  //     "CMP6",
+  //   ],
+  //   selectedLabs: ["CBC", "BMP", "CMP", "CMP1"],
+  // };
+
 
   const processedData = {
-    ...context,
-    ...AppointmentInformation,
-    ...data.content,
+    ...mockContext,
+    ...data,
   };
 
   const viewData = { ...processedData, type: "pdf" };

@@ -14,22 +14,22 @@
   <div style="flex: 1 1 33%; justify-self:center; text-align:center;">
     <div>
       <b><span>
-          {{PatientData.pyFullName}}
+        {{@root.PatientDataEmbed.PatientFullName}}
           --
-          {{PatientData.PatAccountID}}
+          {{BusinessID}}
         </span>
       </b>
     </div>
     <div>
       Date of Birth:
       <b><span>
-          {{formatDate PatientData.DateOfBirth}}
+           {{formatDate @root.PatientDataEmbed.DateOfBirth}}
         </span></b>
     </div>
     <div>
       <span>
         Date of Service:
-        <b>{{formatDate @root.AppointmentInformation.DateOfService}}</b>
+        <b>{{formatDate @root.AppointmentDetails.DateOfService}}</b>
       </span>
     </div>
   </div>

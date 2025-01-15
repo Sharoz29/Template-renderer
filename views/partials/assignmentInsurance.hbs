@@ -123,7 +123,7 @@
                 Name of Legal Representative: 
               </span>
               <span class="text-bold">
-                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyFullName}}
+                {{@root.PatientDataEmbed.NameLegalRepresentative}}
               </span>
             </td>
           </tr>
@@ -133,7 +133,7 @@
                 Relationship: 
               </span>
               <span class="text-bold">
-                {{@root.AppointmentDetails.RelationshipToPatient}}
+                {{@root.PatientDataEmbed.RelationshipToThePatient}}
               </span>
             </td>
             <td colspan="3">
@@ -141,7 +141,7 @@
                 Telephone:
               </span>
               <span class="text-bold">
-                {{@root.AppointmentDetails.RelationshipToPatient}}                
+                {{@root.PatientDataEmbed.RelationshipTelephone}}                
               </span>
             </td>
           </tr>
@@ -151,7 +151,8 @@
                 Address:
               </span>
               <span class="text-bold">
-                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyHomeAddress1}} {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyHomeAddress2}} 
+                {{@root.PatientDataEmbed.AddressLegalRep.Address}} 
+                {{!-- {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyHomeAddress2}}  --}}
               </span>
             </td>
           </tr>
@@ -179,7 +180,7 @@
                  City:
               </span>
               <span class="text-bold">
-                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyCity}}
+                {{@root.PatientDataEmbed.CityLegalRepresentative}}
               </span>
             </td>
             <td colspan="2">
@@ -187,7 +188,7 @@
                 State:
               </span>
               <span class="text-bold">
-                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyState}}
+                {{@root.PatientDataEmbed.StateLegalRepresentative}}
               </span>
             </td>
             <td colspan="2">
@@ -195,13 +196,18 @@
                 Zip:
               </span>
               <span class="text-bold">
-                {{@root.AppointmentInformation.PatientData.LegalRepresentative.pyPostalCode}}
+                {{@root.PatientDataEmbed.ZipcodeLegalRepresentative}}
               </span>
             </td>
           </tr>
           <tr>
             <td colspan="4">Signature of Legal Rep:</td>
-            <td colspan="2">Date:<strong></strong></td>
+            <td colspan="2">Date:
+                 <span class="text-bold">
+                 {{formatDate @root.SignatureDateForLegalRep}}
+              </span>
+            
+            </td>
           </tr>
           <tr>
             <td colspan="3">
@@ -234,7 +240,7 @@
                 Reason patient is unable to sign:
               </span>
               <span class="text-bold">
-                 {{@root.AppointmentInformation.PatientData.Witness.LegalRepresentative.SpecificDetails}}
+                 {{@root.AppointmentDetails.ReasonOfUnavailability}}
               </span>
               </td>
           </tr>

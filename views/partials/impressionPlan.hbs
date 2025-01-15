@@ -4,9 +4,9 @@
       {{> formTitle }}
     </div>
     <div class="mb-10">
-        {{stringToHTML @root 'The patient, <strong>{{@root.AppointmentInformation.PatientData.pyFullName}} {{calculateAge @root.AppointmentInformation.PatientData.DateOfBirth}} year old {{@root.AppointmentInformation.PatientData.Sex}}</strong>, has had the following medical conditions in the past:'}}
+        {{stringToHTML @root 'The patient, <strong>{{@root.PatientDataEmbed.PatientFullName}} is {{calculateAge @root.PatientDataEmbed.DateOfBirth}} year old {{ @root.MedicalRecord.Sex}}</strong>, has had the following medical conditions in the past:'}}
       {{stringToHTML @root '<strong>{{#each (getMedicalConditionsFromF2F @root)}}
-          <span class="pr-5">{{PASTMEDICALHISTORY}},</span>
+          <span class="pr-5">{{Name}},</span>
       {{/each}}
       </strong>'}}
     </div>
@@ -90,10 +90,10 @@
 
 
       <div class="frow justify-start">
-        &nbsp{{#each SelectedMedicalConditionsOnFaceToFaceChecked}}
+        &nbsp{{#each MedicalRecord.MedicalConditions}}
         <div>
-          <div class="text-bold pt-5">{{HHSMedicalCondition}}</div>
-          <div class="mb-10">{{Definition}}</div>        
+          <div class="text-bold pt-5">{{Name}}</div>
+          <div class="mb-10">{{Value}}</div>        
         </div>      
         {{/each}}
       </div>
@@ -186,8 +186,8 @@
      {{stringToHTML @root ' <p>
         <span>Advanced Care Planning: Advanced care planning with patient, time
           spent
-          <strong>15</strong>
-          minutes. Reviewed care plan options such as code status, intubation
+          <strong>{{@root.AppointmentDetails.VisitLength}}.</strong>
+          Reviewed care plan options such as code status, intubation
           and hospitalization. Reviewed risks of cardiac resuscitation including
           rib fracture. Reviewed prolong life expectancy and benefit to
           aggressive care and treatment.</span>
@@ -199,7 +199,7 @@
             Continue current medications and plan of care.
             Frail elderly, on medications requiring regular monitoring. Follow labs closely.
             Medications prescribed using electronic prescribing system.
-            I verify that a total of <strong>{{@root.AppointmentInformation.VisitLength}}</strong> was spent on this encounter by the Nurse Practitioner directly.
+            I verify that a total of <strong>{{@root.AppointmentDetails.VisitLength}}</strong> was spent on this encounter by the Nurse Practitioner directly.
             Follow-up visit mentioned in plan.
         </span>'}}
       </p>
