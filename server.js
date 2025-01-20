@@ -143,7 +143,22 @@ router.get("/get-lab/:id", async (req, res) => {
 });
 
 router.post("/get-selected-forms", async (req, res) => {
-  const caseInfo =req.body.case.data[0];
+  const caseID =req?.body?.ID;
+  const caseInfo=  await getCaseData(caseID).then(async (res) => {
+    console.timeLog(
+      coloredText(caseID, "green") + " in",
+      " --> Before Rendering and Creation of PDF"
+    )
+    console.log(res,"response");
+    return res;
+  });
+  if (!caseInfo) {
+    console.error("Error: No case data found for caseID:", caseID);
+    return res.status(404).send({
+      error: "No case data found",
+      caseID,
+    });
+  }
   const selectedForms = req.body.selectedForms;
 
   return await getCombinedPDFBuffer(renderView, caseInfo, selectedForms)
@@ -152,23 +167,23 @@ router.post("/get-selected-forms", async (req, res) => {
       res.setHeader(
         "Content-Disposition",
         `attachment; filename=${req.body.fileName || "output"}-${
-          caseInfo.ID
+          caseID
         }.pdf`
       );
       res.json({
         fileName: `${req.body.fileName || "output"}-${
-          caseInfo.ID
+          caseID
         }.pdf`,
         pdf:pdfBase64,
       });
 
       console.timeEnd(
-        coloredText(caseInfo.ID)
+        coloredText(caseID)
       );
     })
     .catch((error) => {
       console.timeEnd(
-        coloredText(caseInfo.ID))
+        coloredText(caseID))
       console.log("Has Error:", error.message);
       res.send(error);
     });

@@ -107,39 +107,15 @@ export function getPDFBuffer(caseID, renderView, type) {
 }
 
 export async function getCombinedPDFBuffer(renderView, data, selectedForms) {
-  const caseID = data.ID;
+  const caseID = data?.ID;
   console.timeLog(
     coloredText(caseID, "green") + " in",
     " --> Before Rendering and Creation of PDF"
   );
 
-  // const context = {
-  //   allForms: selectedForms,
-  //   selectedForms: selectedForms,
-  //   labOrders: [
-  //     "labOrders_Labs",
-  //     "labOrders_Dx",
-  //     "labOrders_DME",
-  //     "labOrders_Supplies",
-  //     "labOrders_ReferTo",
-  //   ],
-  //   labReferences: [
-  //     "CBC",
-  //     "BMP",
-  //     "CMP",
-  //     "CMP1",
-  //     "CMP2",
-  //     "CMP3",
-  //     "CMP4",
-  //     "CMP5",
-  //     "CMP6",
-  //   ],
-  //   selectedLabs: ["CBC", "BMP", "CMP", "CMP1"],
-  // };
 
 
   const processedData = {
-    ...mockContext,
     ...data,
   };
 
