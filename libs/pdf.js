@@ -69,8 +69,8 @@ export async function createPdfFromHtml(htmlContent, options = {}) {
   // Close the browser instance
 }
 
-export function getPDFBuffer(caseID, renderView, type) {
-  return getCaseData(caseID).then(async (data) => {
+export function getPDFBuffer(caseID,pdfType, renderView, type) {
+  return getCaseData(caseID,pdfType).then(async (data) => {
     console.timeLog(
       coloredText(caseID, "green") + " in",
       " --> Before Rendering and Creation of PDF"

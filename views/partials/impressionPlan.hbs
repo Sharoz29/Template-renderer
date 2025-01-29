@@ -28,7 +28,7 @@
           <strong class="ml-5">Instrmental ADLs: {{getCheckedItems SelectedInstrumentalADLs "InstrumentalADLs"}}</strong>
         {{/if}}
       {{/if}} --}}
-      {{#if (isTrue InitialAssessmentForm.PatientIsFullyContinent)}}
+      {{#if (isTrue MedicalRecord.PatientIsFullyContinent)}}
         {{stringToHTML @root '<strong class="mr-5">Patient is fully continent.</strong>'}}
       {{else}}
         {{#if (isTrue InitialAssessmentForm.PatientHasIncontinenceBool)}}

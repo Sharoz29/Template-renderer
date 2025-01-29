@@ -2,7 +2,7 @@
 <section class="frow" id="admission-orders">
   <div class="container-padding width-100">
     <div class="container mb-20">
-      {{> formTitle ..}}
+      {{heading @root.AdmissionOrderHeading}}
     </div>
     <div class="new-medications ba">
       <div class="frow container p-10 ba">
@@ -56,7 +56,7 @@
     <div class="treatment-orders ba stripes">
       <div class="frow container p-10 ba">
         <div class="frow col-6-12">
-          <span class="text-center col-3-6"><h4>Treatment Orders</h4></span>
+          <span class="text-center col-3-6">{{stringToHTML @root @root.TreatmentOrdersHeadingAO}}</span>
         </div>
       </div>
       <table class="width-100">
@@ -138,7 +138,7 @@
           <tr class="stripes">
             <td colspan="6" class="ba">
               <div class="frow justify-center text-bold">
-                <h4>Refer To</h4>
+            {{stringToHTML @root @root.ReferToHeadingAO}}
               </div>
             </td>
           </tr>

@@ -13,6 +13,11 @@ const twoPointOption = [
 
 export function camelToSentence(str) {
   if (!str) return;
+    // Only process if the string is in camel case or has no spaces
+    if (str.includes(" ")) {
+      // Return the string as is, but capitalize the first letter
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
   return str.replace(/([A-Z])/g, " $1").replace(/^./, function (str) {
     return str.toUpperCase();
   });
@@ -63,10 +68,11 @@ export function addToObject(obj, key, value) {
   return { ...obj, [key]: value };
 }
 
-export function heading(context) {
+export function heading(text) {
+  if(!text) return;
   return new HBS.handlebars.SafeString(
     `<h2 class="text-center m-auto">${HBS.helpers.camelToSentence(
-      context.currentForm
+      text
     )}</h2>`
   );
 }
@@ -307,13 +313,25 @@ export function getCheckedItems(arr, valueProp) {
   return checkedItems.map((item) => " " + item).join(",");
 }
 
+
+
+
 export function getDiagnosisAndICD(arr) {
   if (!Array.isArray(arr) || arr.length === 0) return [];
-  // Filter checked items and map to "Diagnosis ICD"
-  return arr
-    .filter((item) => item.IsChecked === "true")
-    .map((item) => `${item.Diagnosis} ${item.ICD}`);
+
+  return arr?.map((item) => {
+    return item.SelectICDCode ? item.SelectICDCode : `${item.Definition} ${item.ICDCode}`;
+  });
 }
+export function selectedListLabOrder(allItems, checkedItems) {
+  if (!Array.isArray(allItems) || !Array.isArray(checkedItems)) return [];
+
+  const checkedIds = new Set(checkedItems.map(item => item.ID));
+  console.log(allItems.filter(item => checkedIds.has(item.ID)));
+
+  return allItems.filter(item => checkedIds.has(item.ID));
+}
+
 
 export const helpers = {
   camelToSentence,
@@ -346,7 +364,8 @@ export const helpers = {
   getCheckedItems,
   getDiagnosisAndICD,
   stringToHTML,
-  mapCheckedItems
+  mapCheckedItems,
+  selectedListLabOrder
 };
 
 export const HBS = create({
@@ -357,6 +376,7 @@ export const HBS = create({
   partialsDir: ["views/partials/"],
 });
 export function stringToHTML(context, string) {
+  if(!string) return;               
   const template = HBS.handlebars.compile(string);
   return new HBS.handlebars.SafeString(template({ ...context, ...helpers }));
 }

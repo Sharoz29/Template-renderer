@@ -8,24 +8,24 @@
           style="background-color: #e7e7e7"
         >
           <div class="p-5 pt-10">PATIENT NAME:
-            <span class="px-5">{{PatientData.pyFullName}}</span></div>
+            <span class="px-5">{{@root.PatientCheckupEmbed.PatientDataEmbed.PatientFullName}}</span></div>
           <div class="p-5">DATE OF BIRTH:
             <span class="px-5">{{formatDate
-                PatientData.DateOfBirth
+            @root.PatientCheckupEmbed.PatientDataEmbed.DateOfBirth
               }}</span></div>
           <div class="p-5">ADDRESS:
             <span
               class="px-5"
-            >{{@root.AppointmentInformation.PatientData.pyHomeAddress1}}
-              {{@root.AppointmentInformation.PatientData.pyHomeAddress2}}</span></div>
+            >{{@root.PatientCheckupEmbed.PatientDataEmbed.HomeAddress}}
+              {{@root.PatientDataEmbedLabOrder.PatientData.pyHomeAddress2}}</span></div>
           <div class="p-5">PHONE NO:
             <span
               class="px-5"
-            >{{@root.AppointmentInformation.PatientData.pyPhoneNumber}}</span></div>
+            >{{@root.PatientCheckupEmbed.PatientDataEmbed.CellPhone}}</span></div>
           <div class="p-5 pb-10">HOME HEALTH:
             <span
               class="px-5"
-            >{{@root.AppointmentInformation.Referral.HH}}</span></div>
+            >{{@root.PatientCheckupEmbed.PatientDataEmbed.Referral.HH}}</span></div>
         </div>
 
         <div class="frow justify-start pr-10">
@@ -40,6 +40,21 @@
           </div>
           {{! <div class="col-4-5 pt-100 mt-50 fz-18"> }}
           <div class="col-4-5 fz-20">
+
+            <div class="frow justify-start mb-100 mt-50 fz-20">
+
+            <div>
+              {{#each
+                (selectedListLabOrder  @root.MedicalRecord.DMEEmbed @root.MedicalRecord.DME)
+                as |diagnostic|
+              }}
+                <div class="col-1 ">
+                  {{diagnostic.Name}}
+
+                </div>
+              {{/each}}
+            </div>
+</div>
 
             {{! <div class="ml-50"> }}
 
@@ -81,7 +96,7 @@
           <div class="col-1-6"></div>
           <div class="col-5-6">
             <strong>Dx:</strong>
-            {{#each (getDiagnosisAndICD SelectedQADiagnosis) as |diagnosis|}}
+            {{#each (getDiagnosisAndICD @root.MedicalRecord.ICDCodeDMEOrders) as |diagnosis|}}
 
               <span>{{diagnosis}},</span>
 
@@ -95,7 +110,7 @@
           </div>
           <div class="col-1-2">
             NPI:
-            {{@root.AppointmentInformation.OperatorData.NPIID}}
+              {{@root.NursePractitionerEmbedLabOrder.NPIID}}
           </div>
         </div>
 
@@ -117,7 +132,7 @@
 
         <div class="frow justify-start fz-20 px-20 mb-10">
           <div class="col-1-2 text-bold">
-            {{@root.AppointmentInformation.OperatorDataMD.pyUserName}}
+            {{@root.PatientCheckupEmbed.NursePractitionerEmbed.UserName}}
           </div>
           <div class="col-1-2 text-bold">
             NPI:

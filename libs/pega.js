@@ -4,41 +4,47 @@ import { mockContext } from "./mock.js";
 import { coloredText } from "./global.js";
 import FormData from "form-data";
 
-export async function getCaseData(caseID) {
+import 'dotenv/config'
+import { env } from 'process';
+
+export async function getCaseData(caseID,type) {
+
   const access_token = await getToken();
+  if (!["LabOrder", "PatientCheckup"].includes(type)) {
+    console.warn("Invalid type provided. Must be 'LabOrder' or 'PatientCheckup'.");
+    return;
+  }
+
+  const endpoints = {
+    LabOrder:`${process.env.PEGA_API_BASE_URL}/LabOrderLookup`,
+    PatientCheckup: `${process.env.PEGA_API_BASE_URL}/PatientCheckupLookup`,
+  };
+  let data = {};
+  let showForms = type === "LabOrder" ? mockContext?.labOrders : mockContext?.selectedForms;
   try {
-    // console.time("Got Data for Case: " + coloredText(caseID, "green") + " in");
-    console.timeLog(
-      coloredText(caseID, "green") + " in",
-      " --> Before Getting Case Data"
-    );
 
-    const response = await axios.post(
-      // `${process.env.BASEURL}/prweb/api/v1/cases/LCS-CALLADOC-WORK ${caseID}`,
-      `https://calladocfw-rra3n9-prod.pegalaunchpad.com/dx/api/application/v2/data_views/PatientCheckupLookup`,
-      {
-        "dataViewParameters": {"ID":caseID}
-      },
-      {
-        headers: {
-          Cookie: `PEGA-SESSION-COOKIE=${access_token}`,
-          Authorization: `Bearer ${access_token}`,
-          Accept: "application/json",
-        },
-        
-      }
-    );
-    const data = response?.data?.data?.[0] ?? {};
 
-    // console.timeEnd(
-    //   "Got Data for Case: " + coloredText(caseID, "green") + " in"
-    // );
+      const response = await axios.post(
+        endpoints[type],
+        { dataViewParameters: { ID: caseID } },
+        {
+          headers: {
+            Cookie: `PEGA-SESSION-COOKIE=${access_token}`,
+            Authorization: `Bearer ${access_token}`,
+            Accept: "application/json",
+          },
+        }
+      );
+      data = response?.data?.data?.[0] ?? {};
     console.timeLog(
       coloredText(caseID, "green") + " in",
       " --> After Case Data Received"
     );
+
     return {
-      ...mockContext,
+      allForms: mockContext?.allForms || [],
+      showForms:showForms,
+      type:type,
       ...data,
       access_token,
     };

@@ -2,7 +2,8 @@
 <section class="frow" id="referal-form">
   <div class="container-padding width-100">
     <div class="container centered mb-20">
-      {{>formTitle ..}}
+      
+       {{heading  @root.ReferralFormHeading}}
     </div>
 
     <div class="mds p-10 mb-10 mb-20 ba">
@@ -13,7 +14,7 @@
         </div>
         {{!-- {{/each}} --}}
         <div class="md-id-container col-3-6 fz-18">
-          <span class="md-id"><strong>NPI ID: {{@root.AppointmentDetails.OperatorDataMD.NPIID}}</strong></span>
+          <span class="md-id"><strong> {{stringToHTML @root  @root.NPIIDHeading}} {{@root.AppointmentDetails.OperatorDataMD.NPIID}}</strong></span>
         </div>
       </div>
       <!-- <pega:forEach name="Doctors.pxResults">
@@ -38,7 +39,7 @@
     <div class="agency p-10 mb-10 mb-20 ba">
       <div class="frow">
         <div class="item col-6-6 mt-10 fz-18">
-          <span class="label">Name of Agency : </span>
+          <span class="label">{{@root.NameOfAgencyFieldRef}}</span>
           <span class="value text-bold">{{@root.ReferralAgencyEmbed.ReferralAgencyName}}</span>
         </div>
         <div class="item col-6-6 mt-30 fz-20">
@@ -46,7 +47,8 @@
               <div class="frow justify-start fz-15">
 
               <div class="col-1-8">
-               Home Health Service
+              
+               <span class="value text-bold">{{stringToHTML @root @root.HomeHealthServiceListRef}}</span>
               </div>
               {{#each (mapCheckedItems HomeHealthServiceEmbed  HomeHealthService)}}
               <div class="col-1-8">
@@ -59,7 +61,7 @@
         <div class="item col-6-6 mt-30 fz-20">
             <div class="frow justify-start fz-15">
               <div class="col-1-8">
-               Treatment
+               {{stringToHTML @root @root.TreatmentListRef}}
               </div>
               {{#each (mapCheckedItems TreatmentEmbed Treatment)}}
               <div class="col-1-8">
@@ -73,8 +75,7 @@
       <div class="lab-info">
         <div class="frow justify-start">
           <div class="item col-6-6 mb-10 fz-18">
-            <span class="label">Lab(s) </span>
-            <span class="value">_________</span>
+            <span class="label">{{stringToHTML @root @root.LabsListRef}}</span>
           </div>
           {{#each  (mapCheckedItems LabsEmbed  Labs)}}
             <div class="item col-3-6 mt-5 mb-5 fz-18" style="width: 50%">
@@ -83,8 +84,7 @@
           {{/each}}  
             <div class="item col-6-6 mb-10 fz-18"> 
 
-             <span class="label"> Dx-Lab(s) </span>
-            <span class="value">_________</span>
+             <span class="label">{{stringToHTML @root @root.DxLabsListRef}}</span>
             </div>
             {{#each  (mapCheckedItems DxLabsEmbed  DxLabs)}}
             <div class="item col-3-6 mt-5 mb-5 fz-18" style="width: 50%">

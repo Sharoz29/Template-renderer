@@ -4,9 +4,9 @@
       <div class="container centered mb-20">
         {{> formTitle}}
       </div>
-      <div class="text">
+      <div class="frow justify-start fz-18">
         <p>
-      {{ @root.AppointmentParagraph}}
+      {{stringToHTML @root @root.AssignmentInsurancePara}}
         </p>
         {{!-- <p>
           I certify that all information given are correct and consent to the

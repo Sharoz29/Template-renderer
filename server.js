@@ -103,9 +103,9 @@ router.get("/attach-lab/:id", async (req, res) => {
     });
 });
 
-router.get("/get-pdf/:id/:fileName", async (req, res) => {
+router.get("/get-pdf/:type/:id/:fileName", async (req, res) => {
   console.time(coloredText(req.params.id, "green") + " in");
-  getPDFBuffer(req.params.id, renderView, "pdf")
+  getPDFBuffer(req.params.id,req.params.type,renderView, "pdf")
     .then(({ pdfBuffer }) => {
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader(
@@ -144,7 +144,8 @@ router.get("/get-lab/:id", async (req, res) => {
 
 router.post("/get-selected-forms", async (req, res) => {
   const caseID =req?.body?.ID;
-  const caseInfo=  await getCaseData(caseID).then(async (res) => {
+  const type=req?.body?.Type;
+  const caseInfo=  await getCaseData(caseID,type).then(async (res) => {
     console.timeLog(
       coloredText(caseID, "green") + " in",
       " --> Before Rendering and Creation of PDF"
@@ -189,10 +190,11 @@ router.post("/get-selected-forms", async (req, res) => {
     });
 });
 
-router.get("/get-html/:id", async (req, res) => {
+router.get("/get-html/:type/:id", async (req, res) => {
   console.time(coloredText(req.params.id, "green") + " in");
   try {
-    res.render("home", { ...(await getCaseData(req.params.id)), type: null });
+    res.render("home", { ...(await getCaseData(req.params.id,req.params.type  
+    )), type: null });
     console.timeEnd(coloredText(req.params.id, "green") + " in");
   } catch (error) {
     console.timeEnd(coloredText(req.params.id, "green") + " in");

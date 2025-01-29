@@ -2,7 +2,7 @@
 <section class="frow" id="initial-assesment">
   <div class="container-padding width-100">
     <div class="container centered mb-20">
-      {{> formTitle ..}}
+      {{heading  @root.InitialAssessmentHeading}}
     </div>
     <table class="width-100 no-y-padding no-p">
       <col width="16.666%" />
@@ -65,7 +65,7 @@
         <tr>
           <td colspan="6">
             <div class="p-10 pl-0">
-            <span class="text-bold">Chief Complaint:</span>
+            <span class="text-bold"> {{stringToHTML @root @root.ChiefComplaintHeadingIA}}</span>      
             <span class="p-5">{{ChiefComplaint}}</span>
             </div>
           </td>
@@ -88,7 +88,7 @@
         
         <tr class="bg-shaded">
           <td colspan="6">
-            <h4 class="fc m-auto text-uppercase">Allergies</h4>
+            <h4 class="fc m-auto text-uppercase">{{stringToHTML @root @root.ALLERGIESHeadingIA}}</h4>        
           </td>
         </tr>
         <tr>

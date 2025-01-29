@@ -1,4 +1,4 @@
-{{#with  PatientDataEmbed}}
+{{#with  AppointmentDetails}}
 <section class="frow" id="intake-form">
     <div class="container-padding width-100">
         <div class="content">
@@ -62,7 +62,7 @@
             <div class="frow justify-start fz-18">
                 <!-- <span> -->
                 <p>
-         {{@root.PatientConsent}}
+                     {{stringToHTML @root @root.PatientConsentParaIntake}}
                     {{!-- I acknowledge that
                     <b>RECEIPT</b> of <b>Notice of Privacy (HIPAA Form)</b> and was
                     given opportunity to ask the questions and voice concerns. I
@@ -72,12 +72,11 @@
                 </p>
                 <!-- </span> -->
             </div>
-            <div class="frow justify-start text-capitalize text-underline text-bold mt-10 fz-20">
-                <span>ACKNOWLEDGEMENT OF PRIVACY PRACTICES</span>
-            </div>
+            <br>
             <div class="frow justify-start fz-18">
                 <p>
-     {{@root.ACKNOWLEDGEMENTOFPRIVACYPRACTICES}}
+        
+     {{stringToHTML @root @root.ACKNOWLEDGEMENTOFPRIVACYPRACTICESParaIntake}}
                     {{!-- I acknowledge the <b>Receipt of Privacy Practices</b> and was
                     given opportunity to review notices, ask the questions and voice
                     concerns, set limitations / restrictions on the use of my health
