@@ -15,7 +15,6 @@
     "deploy": "kubectl apply -f ./k8s.yaml -n pega23",
     "node": "node server.js"
   },
-  "author": "arslan.ansari@lowcodesol.com",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.2",
